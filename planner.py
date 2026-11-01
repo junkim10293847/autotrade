@@ -83,7 +83,7 @@ def make(plan, state, kis):
     cap = float(plan.get("max_total_krw", 2000000))
     used = sum(float(s.get("budget_krw", 0)) for s in plan.get("stocks", []))
     room = max(0, cap - used)
-    each = int(min(room / len(picks), cap / PICKS) // 10000 * 10000)  # 한 종목은 한도의 1/3까지만
+    each = int(room / len(picks) // 10000 * 10000)
     if each < 50000:
         return None
     return {
@@ -113,11 +113,6 @@ def main():
     if not prop:
         bot.log("이번 주는 조건에 맞는 종목이 없어 계획을 올리지 않음")
         bot.notify("이번 주 매수 계획 없음", "조건에 맞는 종목이 없어 쉬어갑니다")
-        return
-    old = plan.get("proposal") or {}
-    key = lambda p: [(s["code"], s["budget_krw"], s["max_buy_price"]) for s in p.get("stocks", [])]
-    if key(old) == key(prop):
-        print("기존 제안과 같아 그대로 둠")
         return
     plan["proposal"] = prop
     bot.save(bot.PLAN, plan)
