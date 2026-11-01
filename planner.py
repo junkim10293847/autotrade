@@ -4,7 +4,7 @@
 매주 일요일 저녁 실행. 우량주 목록에서 아래 조건을 모두 통과한 종목 중 점수 상위 3개를
 plan.json 의 proposal 로 올리고 휴대폰으로 알림을 보낸다. 실제 매수는 앱에서 컨펌해야 시작된다.
 
-조건 (최근 100거래일 기준)
+조건 (최근 100거래일 기준) — 아래 score() 설명 참고
 - 장기 상승 추세: 종가가 60일 평균 위
 - 눌림: 60일 최고가 대비 -8% ~ -25%
 - 단기 조정 중: 종가가 20일 평균 아래
@@ -13,6 +13,7 @@ plan.json 의 proposal 로 올리고 휴대폰으로 알림을 보낸다. 실제
 """
 import json
 import os
+import time
 from datetime import timedelta
 
 import requests
@@ -29,6 +30,14 @@ UNIVERSE = {
     "017670": "SK텔레콤", "030200": "KT", "033780": "KT&G", "018260": "삼성에스디에스",
     "012450": "한화에어로스페이스", "009540": "HD한국조선해양", "034020": "두산에너빌리티",
     "010130": "고려아연", "005490": "POSCO홀딩스", "096770": "SK이노베이션",
+    "373220": "LG에너지솔루션", "035720": "카카오", "323410": "카카오뱅크", "259960": "크래프톤",
+    "036570": "엔씨소프트", "352820": "하이브", "009150": "삼성전기", "011070": "LG이노텍",
+    "034730": "SK", "003670": "포스코퓨처엠", "086280": "현대글로비스", "000720": "현대건설",
+    "028050": "삼성E&A", "010140": "삼성중공업", "042660": "한화오션", "329180": "HD현대중공업",
+    "267260": "HD현대일렉트릭", "064350": "현대로템", "047810": "한국항공우주", "079550": "LIG넥스원",
+    "024110": "기업은행", "006800": "미래에셋증권", "071050": "한국금융지주", "015760": "한국전력",
+    "090430": "아모레퍼시픽", "097950": "CJ제일제당", "271560": "오리온", "021240": "코웨이",
+    "161390": "한국타이어앤테크놀로지", "128940": "한미약품", "000100": "유한양행", "010950": "S-Oil",
 }
 PICKS = 3
 
@@ -47,18 +56,26 @@ def daily(kis, code):
 
 
 def score(closes):
+    """1순위(strict): 60일선 위 + 고점 대비 -8~-25% + 20일선 아래
+       2순위(relaxed): 60일선 -5% 이내 + 고점 대비 -5~-25% — 1순위가 3개 안 되면 채움"""
     if len(closes) < 60:
         return None
     c = closes[0]
     ma20 = sum(closes[:20]) / 20
     ma60 = sum(closes[:60]) / 60
-    high60 = max(closes[:60])
-    dd = (c / high60 - 1) * 100
+    dd = (c / max(closes[:60]) - 1) * 100
     wk = (c / closes[5] - 1) * 100
-    if not (c > ma60 and -25 <= dd <= -8 and c < ma20 and wk > -12):
+    above = (c / ma60 - 1) * 100
+    if wk <= -12 or not (-25 <= dd <= -5):
         return None
-    return {"dd": round(dd, 1), "above60": round((c / ma60 - 1) * 100, 1), "close": c,
-            "score": -dd + (c / ma60 - 1) * 100}
+    if c > ma60 and dd <= -8 and c < ma20:
+        tier = 1
+    elif above >= -5:
+        tier = 2
+    else:
+        return None
+    return {"dd": round(dd, 1), "above60": round(above, 1), "close": c, "tier": tier,
+            "score": (100 if tier == 1 else 0) - dd + above}
 
 
 def make(plan, state, kis):
@@ -75,6 +92,7 @@ def make(plan, state, kis):
             continue
         if s:
             cands.append({"code": code, "name": name, **s})
+        time.sleep(0.12)  # 조회 속도 제한
     cands.sort(key=lambda x: -x["score"])
     picks = cands[:PICKS]
     if not picks:
@@ -88,10 +106,10 @@ def make(plan, state, kis):
         return None
     return {
         "created": bot.now().isoformat(timespec="minutes"),
-        "note": f"우량주 {len(universe)}개 중 추세는 살아 있고 최근 눌린 {len(picks)}종목 (규칙 자동 선정)",
+        "note": f"우량주 {len(universe)}개 중 최근 눌린 {len(picks)}종목 (규칙 자동 선정)",
         "stocks": [{"code": p["code"], "name": p["name"], "budget_krw": each,
                     "max_buy_price": bot.round_up_tick(p["close"] * 1.01),
-                    "why": f"60일 고점 대비 {p['dd']}%, 60일선 위 +{p['above60']}%"} for p in picks],
+                    "why": f"{'눌림목' if p['tier'] == 1 else '조정 초입'} · 60일 고점 대비 {p['dd']}%, 60일선 {p['above60']:+}%"} for p in picks],
     }
 
 
