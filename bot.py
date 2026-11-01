@@ -38,6 +38,17 @@ def log(msg):
         f.write(line + "\n")
 
 
+def notify(title, body):
+    """휴대폰 알림 (ntfy 앱에서 notify.txt 의 주제를 구독)"""
+    try:
+        topic = open(os.path.join(ROOT, "notify.txt"), encoding="utf-8").read().strip()
+        if topic:
+            requests.post("https://ntfy.sh/", timeout=10,
+                          json={"topic": topic, "title": title, "message": body, "tags": ["chart_with_upwards_trend"]})
+    except Exception as e:
+        print("알림 실패", e)
+
+
 def load(path, default):
     try:
         with open(path, encoding="utf-8") as f:
@@ -174,6 +185,7 @@ def run(plan, state, kis):
             if reason and h["sellable"] > 0:
                 ok, msg = kis.order("sell", code, h["sellable"])
                 log(f"**매도** {name} {h['sellable']}주 시장가 ({reason}) → {'접수' if ok else '실패: ' + msg}")
+                notify(f"매도 {name}", f"{h['sellable']}주 · {reason}" + ("" if ok else " · 실패: " + msg))
                 if ok:
                     pnl = (h["now"] - h["avg"]) * h["sellable"]
                     sells[code] = {"date": now().isoformat(timespec="minutes"), "reason": reason}
@@ -207,6 +219,7 @@ def run(plan, state, kis):
             continue
         ok, msg = kis.order("buy", code, qty, px)
         log(f"**매수** {name} {qty}주 @ {won(px)} (예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}")
+        notify(f"매수 {name}", f"{qty}주 @ {won(px)}" + ("" if ok else " · 실패: " + msg))
         if ok:
             buys[code] = {"date": now().isoformat(timespec="minutes"), "qty": qty, "krw": qty * px}
             spent += qty * px
