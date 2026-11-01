@@ -7,5 +7,17 @@
   "max_total_krw": 2000000,
   "review_every": "2주",
   "stocks": [],
-  "proposal": null
+  "proposal": {
+    "created": "2026-11-01T15:13+09:00",
+    "note": "우량주 30개 중 추세는 살아 있고 최근 눌린 1종목 (규칙 자동 선정)",
+    "stocks": [
+      {
+        "code": "006400",
+        "name": "삼성SDI",
+        "budget_krw": 660000,
+        "max_buy_price": 541000,
+        "why": "60일 고점 대비 -9.6%, 60일선 위 +2.2%"
+      }
+    ]
+  }
 }
