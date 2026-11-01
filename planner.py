@@ -1,0 +1,125 @@
+"""
+주간 매수 계획 자동 작성 — 우량주 눌림목 (존박)
+
+매주 일요일 저녁 실행. 우량주 목록에서 아래 조건을 모두 통과한 종목 중 점수 상위 3개를
+plan.json 의 proposal 로 올리고 휴대폰으로 알림을 보낸다. 실제 매수는 앱에서 컨펌해야 시작된다.
+
+조건 (최근 100거래일 기준)
+- 장기 상승 추세: 종가가 60일 평균 위
+- 눌림: 60일 최고가 대비 -8% ~ -25%
+- 단기 조정 중: 종가가 20일 평균 아래
+- 급락 중 아님: 최근 5일 하락이 -12% 이내
+점수 = 눌림 폭 + 60일선 위 여유 (깊게 빠졌지만 추세는 살아 있는 종목 우선)
+"""
+import json
+import os
+from datetime import timedelta
+
+import requests
+
+import bot
+
+# 실적이 꾸준한 국내 대형 우량주 (plan.json 의 "universe" 로 바꿀 수 있음)
+UNIVERSE = {
+    "005930": "삼성전자", "000660": "SK하이닉스", "005380": "현대차", "000270": "기아",
+    "012330": "현대모비스", "035420": "NAVER", "051910": "LG화학", "006400": "삼성SDI",
+    "207940": "삼성바이오로직스", "068270": "셀트리온", "105560": "KB금융", "055550": "신한지주",
+    "086790": "하나금융지주", "316140": "우리금융지주", "138040": "메리츠금융지주", "032830": "삼성생명",
+    "000810": "삼성화재", "028260": "삼성물산", "066570": "LG전자", "003550": "LG",
+    "017670": "SK텔레콤", "030200": "KT", "033780": "KT&G", "018260": "삼성에스디에스",
+    "012450": "한화에어로스페이스", "009540": "HD한국조선해양", "034020": "두산에너빌리티",
+    "010130": "고려아연", "005490": "POSCO홀딩스", "096770": "SK이노베이션",
+}
+PICKS = 3
+
+
+def daily(kis, code):
+    end = bot.now().date()
+    start = end - timedelta(days=160)
+    r = requests.get(f"{kis.base}/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice", timeout=15,
+                     headers=kis._h("FHKST03010100"),
+                     params={"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code,
+                             "FID_INPUT_DATE_1": start.strftime("%Y%m%d"), "FID_INPUT_DATE_2": end.strftime("%Y%m%d"),
+                             "FID_PERIOD_DIV_CODE": "D", "FID_ORG_ADJ_PRC": "0"})
+    r.raise_for_status()
+    rows = [x for x in r.json().get("output2", []) or [] if x.get("stck_clpr")]
+    return [float(x["stck_clpr"]) for x in rows]  # 최신이 앞
+
+
+def score(closes):
+    if len(closes) < 60:
+        return None
+    c = closes[0]
+    ma20 = sum(closes[:20]) / 20
+    ma60 = sum(closes[:60]) / 60
+    high60 = max(closes[:60])
+    dd = (c / high60 - 1) * 100
+    wk = (c / closes[5] - 1) * 100
+    if not (c > ma60 and -25 <= dd <= -8 and c < ma20 and wk > -12):
+        return None
+    return {"dd": round(dd, 1), "above60": round((c / ma60 - 1) * 100, 1), "close": c,
+            "score": -dd + (c / ma60 - 1) * 100}
+
+
+def make(plan, state, kis):
+    universe = plan.get("universe") or UNIVERSE
+    busy = {s["code"] for s in plan.get("stocks", [])}
+    cands = []
+    for code, name in universe.items():
+        if code in busy:
+            continue
+        try:
+            s = score(daily(kis, code))
+        except Exception as e:
+            print(name, "조회 실패", e)
+            continue
+        if s:
+            cands.append({"code": code, "name": name, **s})
+    cands.sort(key=lambda x: -x["score"])
+    picks = cands[:PICKS]
+    if not picks:
+        return None
+
+    cap = float(plan.get("max_total_krw", 2000000))
+    used = sum(float(s.get("budget_krw", 0)) for s in plan.get("stocks", []))
+    room = max(0, cap - used)
+    each = int(room / len(picks) // 10000 * 10000)
+    if each < 50000:
+        return None
+    return {
+        "created": bot.now().isoformat(timespec="minutes"),
+        "note": f"우량주 {len(universe)}개 중 추세는 살아 있고 최근 눌린 {len(picks)}종목 (규칙 자동 선정)",
+        "stocks": [{"code": p["code"], "name": p["name"], "budget_krw": each,
+                    "max_buy_price": bot.round_up_tick(p["close"] * 1.01),
+                    "why": f"60일 고점 대비 {p['dd']}%, 60일선 위 +{p['above60']}%"} for p in picks],
+    }
+
+
+def main():
+    plan = bot.load(bot.PLAN, {})
+    state = bot.load(bot.STATE, {})
+    mode = plan.get("mode", "demo")
+    try:
+        # 시세 조회는 실전 서버가 정확해서 실전 키가 있으면 실전으로 조회 (주문은 하지 않음)
+        try:
+            kis = bot.KIS("real")
+        except Exception:
+            kis = bot.KIS(mode)
+        prop = make(plan, state, kis)
+    except Exception as e:
+        bot.log(f"계획 작성 실패: {type(e).__name__}: {e}")
+        bot.notify("계획 작성 실패", "앱의 기록을 확인해 주세요")
+        return
+    if not prop:
+        bot.log("이번 주는 조건에 맞는 종목이 없어 계획을 올리지 않음")
+        bot.notify("이번 주 매수 계획 없음", "조건에 맞는 종목이 없어 쉬어갑니다")
+        return
+    plan["proposal"] = prop
+    bot.save(bot.PLAN, plan)
+    names = ", ".join(s["name"] for s in prop["stocks"])
+    bot.log(f"새 매수 계획 제안: {names}")
+    bot.notify("새 매수 계획 — 컨펌해 주세요", f"{names} · 앱에서 확인")
+
+
+if __name__ == "__main__":
+    main()
