@@ -1,0 +1,44 @@
+name: 주간 매수 계획
+
+on:
+  schedule:
+    - cron: "37 10 * * 0"   # 매주 일요일 19:37 (한국 시간)
+  workflow_dispatch: {}      # 앱의 '새 계획 받기' 버튼
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trade
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: 토큰 캐시
+        uses: actions/cache@v4
+        with:
+          path: .kis_token_*.json
+          key: kis-${{ github.run_id }}
+          restore-keys: kis-
+      - name: 계획 작성
+        env:
+          KIS_APP_KEY_DEMO: ${{ secrets.KIS_APP_KEY_DEMO }}
+          KIS_APP_SECRET_DEMO: ${{ secrets.KIS_APP_SECRET_DEMO }}
+          KIS_ACCOUNT_DEMO: ${{ secrets.KIS_ACCOUNT_DEMO }}
+          KIS_APP_KEY_REAL: ${{ secrets.KIS_APP_KEY_REAL }}
+          KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}
+          KIS_ACCOUNT_REAL: ${{ secrets.KIS_ACCOUNT_REAL }}
+        run: python planner.py
+      - name: 기록 저장
+        run: |
+          git config user.name "trade-bot"
+          git config user.email "trade-bot@users.noreply.github.com"
+          for f in plan.json log.md; do [ -f "$f" ] && git add "$f"; done
+          git diff --cached --quiet || (git commit -m "주간 매수 계획 $(date -u +%F)" && git pull --rebase -q && git push)
