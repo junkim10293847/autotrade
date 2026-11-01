@@ -117,9 +117,7 @@ def main():
     old = plan.get("proposal") or {}
     key = lambda p: [(s["code"], s["budget_krw"], s["max_buy_price"]) for s in p.get("stocks", [])]
     if key(old) == key(prop):
-        bot.log("계획 다시 확인 · 기존 제안과 같음")
-        if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
-            bot.notify("계획 변동 없음", "올라와 있는 계획이 지금도 유효합니다")
+        print("기존 제안과 같아 그대로 둠")
         return
     plan["proposal"] = prop
     bot.save(bot.PLAN, plan)
