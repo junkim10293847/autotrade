@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<title>존박 트레이딩</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 한 줄 카드 스택: 상태 → 컨펌할 일 → 보유 → 대기 → 기록, 하단에 큰 버튼 두 개 */
+:root{
+  --bg:#F3F4F7; --card:#FFFFFF; --ink:#15171C; --ink-fg:#F6F7F9; --ink-sub:#9AA0AC;
+  --fg:#15171C; --sub:#6B7280; --line:#E5E7EC;
+  --up:#E5383B; --down:#2F6FEB; --up-soft:#FDECEC; --down-soft:#E9F0FE;
+  --accent:#6A5AE0; --accent-soft:#EEEBFD; --accent-fg:#FFFFFF;
+  --warn:#B7791F; --warn-soft:#FFF6E5;
+  --sans:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:22px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1014; --card:#181B21; --ink:#22262E; --ink-fg:#F6F7F9; --ink-sub:#9AA0AC;
+  --fg:#ECEEF2; --sub:#9AA0AC; --line:#2A2E36;
+  --up:#FF6B6E; --down:#6C9BFF; --up-soft:#3A1C1E; --down-soft:#1A2540;
+  --accent:#9B8FFF; --accent-soft:#25213F; --accent-fg:#14121F;
+  --warn:#F2B35A; --warn-soft:#33270F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1014; --card:#181B21; --ink:#22262E; --ink-fg:#F6F7F9; --ink-sub:#9AA0AC;
+  --fg:#ECEEF2; --sub:#9AA0AC; --line:#2A2E36;
+  --up:#FF6B6E; --down:#6C9BFF; --up-soft:#3A1C1E; --down-soft:#1A2540;
+  --accent:#9B8FFF; --accent-soft:#25213F; --accent-fg:#14121F;
+  --warn:#F2B35A; --warn-soft:#33270F; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 calc(120px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+button{font:inherit;cursor:pointer;border:0}
+button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.top{display:flex;align-items:center;justify-content:space-between;padding-top:14px}
+.top h1{margin:0;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.top .r{display:flex;gap:8px;align-items:center}
+.chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--sub)}
+.chip.demo{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.chip.real{background:var(--up-soft);color:var(--up);border-color:transparent}
+.icon-btn{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--fg);display:grid;place-items:center}
+
+.sample{font-size:13px;color:var(--warn);background:var(--warn-soft);border-radius:14px;padding:10px 14px}
+
+.hero{background:var(--ink);color:var(--ink-fg);border-radius:var(--r);padding:22px 22px 20px}
+.hero .lbl{font-size:13px;color:var(--ink-sub)}
+.hero .big{font-size:34px;font-weight:700;letter-spacing:-.02em;margin:4px 0 2px}
+.hero .rate{font-size:16px;font-weight:700}
+.hero .meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:var(--ink-sub)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--ink-sub)}
+.dot.on{background:#3DD68C}
+.up{color:var(--up)} .down{color:var(--down)}
+.hero .up{color:#FF7A7C} .hero .down{color:#7FA8FF}
+
+.rec{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px}
+.rec div{background:var(--card);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.rec .k{font-size:12px;color:var(--sub)}
+.rec .v{font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card{background:var(--card);border-radius:var(--r);padding:18px}
+.sec{display:flex;justify-content:space-between;align-items:baseline;margin:6px 4px 0}
+.sec h2{margin:0;font-size:16px;font-weight:700}
+.sec span{font-size:13px;color:var(--sub)}
+
+.prop{background:var(--accent-soft);border-radius:var(--r);padding:20px}
+.prop .tag{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.prop h3{margin:4px 0 6px;font-size:19px;text-wrap:balance}
+.prop p{margin:0 0 12px;color:var(--sub);font-size:14px}
+.prow{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-top:1px solid color-mix(in srgb,var(--accent) 20%,transparent)}
+.prow b{font-size:15px}
+.prow .s{font-size:13px;color:var(--sub);grid-column:1/-1}
+.btn{width:100%;padding:15px;border-radius:16px;font-weight:700;font-size:16px}
+.btn.primary{background:var(--accent);color:var(--accent-fg)}
+.btn.ghost{background:transparent;color:var(--sub);font-weight:500;padding:10px}
+.btn.danger{background:var(--up);color:#fff}
+
+.pos{display:flex;flex-direction:column;gap:12px}
+.ph{display:flex;justify-content:space-between;align-items:center}
+.ph .t{font-weight:700;font-size:18px}
+.ph .q{font-size:13px;color:var(--sub);margin-left:8px;font-family:var(--sans)}
+.pill{font-family:var(--mono);font-weight:700;font-size:15px;padding:4px 10px;border-radius:10px}
+.pill.up{background:var(--up-soft)} .pill.down{background:var(--down-soft)}
+.range{position:relative;height:30px;margin-top:2px}
+.track{position:absolute;left:0;right:0;top:9px;height:8px;border-radius:8px;
+  background:linear-gradient(90deg,var(--down-soft),var(--line) 41%,var(--line) 41%,var(--up-soft))}
+.zero{position:absolute;top:5px;width:2px;height:16px;background:var(--sub);opacity:.5}
+.mark{position:absolute;top:4px;width:18px;height:18px;margin-left:-9px;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 2px currentColor;background:currentColor}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--sub)}
+.ends .num{font-size:12px}
+.px{display:flex;gap:16px;font-size:13px;color:var(--sub)}
+.px .num{color:var(--fg)}
+.divider{height:1px;background:var(--line);margin:4px 0}
+
+.wait{display:flex;flex-wrap:wrap;gap:8px}
+.wchip{background:var(--card);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column}
+.wchip b{font-weight:700} .wchip span{font-size:12px;color:var(--sub)}
+
+.log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.log li{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px;min-width:0}
+.log li:first-child{border-top:0;padding-top:0}
+.log time{font-family:var(--mono);font-size:12px;color:var(--sub);padding-top:2px;white-space:nowrap}
+.log .m{min-width:0;overflow-wrap:anywhere}
+.empty{color:var(--sub);font-size:14px;text-align:center;padding:8px 0}
+
+.dock{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));border-top:1px solid var(--line)}
+.dock .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dock button{padding:16px;border-radius:16px;font-weight:700;font-size:16px}
+.d-pause{background:var(--ink);color:var(--ink-fg)}
+.d-pause.paused{background:var(--accent);color:var(--accent-fg)}
+.d-run{background:var(--card);color:var(--fg);border:1px solid var(--line)}
+
+.sheet{position:fixed;inset:0;background:rgba(10,12,16,.45);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.sheet .box{background:var(--card);width:100%;max-width:560px;border-radius:24px 24px 0 0;
+  padding:22px max(18px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px}
+.sheet h3{margin:0;font-size:18px}
+.sheet p{margin:0;color:var(--sub);font-size:14px}
+.sheet label{font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px}
+.sheet input{font:inherit;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:100%}
+.sheet ol{margin:0;padding-left:20px;color:var(--sub);font-size:13px;display:flex;flex-direction:column;gap:2px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--ink-fg);padding:11px 18px;border-radius:999px;font-size:14px;z-index:30;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:no-preference){.mark{transition:left .6s ease}}
+</style>
+</head><body>
+
+
+<div class="wrap">
+  <header class="top">
+    <h1>존박 트레이딩</h1>
+    <div class="r">
+      <button id="mode" class="chip demo" aria-label="모의/실전 바꾸기">모의</button>
+      <button id="gear" class="icon-btn" aria-label="연결 설정">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="sample" class="sample" hidden>예시 화면입니다. 오른쪽 위 톱니바퀴에서 연결하면 존박님 실제 계좌가 보입니다.</div>
+
+  <section class="hero" aria-label="요약">
+    <div class="lbl">자동매매 평가손익</div>
+    <div class="big num" id="pnl">0원</div>
+    <div class="rate num" id="rate">0.00%</div>
+    <div class="meta">
+      <span id="market"><i class="dot"></i>국내장 확인 중</span>
+      <span id="updated">마지막 실행 -</span>
+      <span id="rule">익절 +10% · 손절 -7%</span>
+    </div>
+  </section>
+
+  <section class="rec" aria-label="성적">
+    <div><span class="k">올해 실현손익</span><span id="rReal" class="v num">0원</span></div>
+    <div><span class="k">승률</span><span id="rWin" class="v num">-</span></div>
+    <div><span class="k">매매</span><span id="rCnt" class="v num">0건</span></div>
+  </section>
+
+  <section id="propWrap" hidden></section>
+
+  <div class="sec"><h2>보유 중</h2><span id="posCount"></span></div>
+  <section class="card"><div id="pos" class="pos"></div></section>
+
+  <div class="sec"><h2>매수 대기</h2><span>최대 매수가 이하면 삽니다</span></div>
+  <div id="wait" class="wait"></div>
+
+  <div class="sec"><h2>최근 기록</h2><span id="logCount"></span></div>
+  <section class="card"><ul id="log" class="log"></ul></section>
+</div>
+
+<nav class="dock">
+  <div class="in">
+    <button id="pause" class="d-pause">일시정지</button>
+    <button id="run" class="d-run">지금 실행</button>
+  </div>
+</nav>
+
+<div id="sheet" class="sheet" hidden>
+  <form class="box" id="cfg">
+    <h3>계좌 연결</h3>
+    <p>처음 한 번만 넣으면 이 기기에 저장됩니다.</p>
+    <label for="tok">깃허브 토큰
+      <input id="tok" type="password" autocomplete="off" placeholder="github_pat_로 시작">
+    </label>
+    <label for="repo">저장소
+      <input id="repo" type="text" autocomplete="off" value="junkim10293847/autotrade">
+    </label>
+    <ol>
+      <li>깃허브 → Settings → Developer settings → Fine-grained tokens</li>
+      <li>Repository access: <b>autotrade 하나만</b></li>
+      <li>권한 3개 <b>Read and write</b>: Actions, Contents, Workflows</li>
+      <li>처음 연결하면 봇 파일이 자동으로 설치됩니다</li>
+    </ol>
+    <button class="btn primary" type="submit" id="cfgGo">연결하기</button>
+    <button class="btn ghost" type="button" id="cfgClose">닫기</button>
+  </form>
+</div>
+
+<div id="confirmSheet" class="sheet" hidden>
+  <div class="box">
+    <h3 id="cTitle">확인</h3>
+    <p id="cBody"></p>
+    <button class="btn primary" id="cYes">실행</button>
+    <button class="btn ghost" id="cNo">취소</button>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const store = {
+  get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
+  set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
+};
+
+/* ---------- 예시 데이터 (연결 전 화면) ---------- */
+const SAMPLE = {
+  plan:{mode:"demo",paused:false,take_profit_pct:10,stop_loss_pct:-7,hold_days:14,max_total_krw:2000000,
+    stocks:[{code:"005930",name:"삼성전자",budget_krw:700000,max_buy_price:60000},
+            {code:"000660",name:"SK하이닉스",budget_krw:700000,max_buy_price:180000},
+            {code:"035420",name:"NAVER",budget_krw:600000,max_buy_price:190000}],
+    proposal:{note:"실적은 견조한데 최근 시장 하락으로 같이 밀린 대형주 2종목",
+      stocks:[{code:"105560",name:"KB금융",budget_krw:500000,max_buy_price:90000,why:"배당·자사주 확대, 20일선 아래로 눌림"},
+              {code:"012330",name:"현대모비스",budget_krw:500000,max_buy_price:250000,why:"실적 대비 낮은 주가, 고점 대비 -15%"}]}},
+  status:{updated:"2026-10-30T14:45+09:00",mode:"demo",
+    positions:[{code:"005930",name:"삼성전자",qty:12,avg:57800,now:60900,rate:5.36,days:3},
+               {code:"035420",name:"NAVER",qty:3,avg:186500,now:178000,rate:-4.56,days:9}],
+    total:{cost:1253100,value:1264800,pnl:11700,rate:0.93},
+    record:{trades:4,wins:3,win_rate:75,realized_year:96000}},
+  log:`- 2026-10-30 10:15 KST · **매도** 기아 5주 시장가 (익절 +10.4%) → 접수
+- 2026-10-27 09:30 KST · **매수** 삼성전자 12주 @ 57,800원 (예산 700,000원) → 접수
+- 2026-10-21 13:00 KST · **매수** NAVER 3주 @ 186,500원 (예산 600,000원) → 접수`
+};
+
+const FILES = {"bot.py": "\"\"\"\n국내주식 자동매매 봇 (한국투자증권 Open API) — 존박\n\n규칙 (단순하게)\n1. plan.json 에 존박님이 '컨펌'한 종목만 매매한다. 그 외 보유 종목은 절대 건드리지 않는다.\n2. 매수: 현재가가 '최대매수가' 이하이면 종목별 예산만큼 지정가로 한 번만 산다.\n3. 매도(시장가, 전량): 익절 +10% 이상 / 손절 -7% 이하 / 산 지 14일 지나면 정리.\n4. \"paused\": true 이면 아무것도 하지 않는다. (비상 정지)\n5. 모든 행동은 log.md, 주문·성적은 state.json, 휴대폰 화면용 요약은 status.json 에 남긴다.\n\"\"\"\nimport json\nimport math\nimport os\nimport sys\nfrom datetime import datetime, timedelta\nfrom zoneinfo import ZoneInfo\n\nimport requests\n\nROOT = os.path.dirname(os.path.abspath(__file__))\nPLAN, STATE, STATUS, LOG = (os.path.join(ROOT, f) for f in (\"plan.json\", \"state.json\", \"status.json\", \"log.md\"))\n\nURLS = {\n    \"demo\": \"https://openapivts.koreainvestment.com:29443\",\n    \"real\": \"https://openapi.koreainvestment.com:9443\",\n}\nKST = ZoneInfo(\"Asia/Seoul\")\n\n\ndef now():\n    return datetime.now(KST)\n\n\ndef log(msg):\n    line = f\"- {now():%Y-%m-%d %H:%M} KST · {msg}\"\n    print(line)\n    with open(LOG, \"a\", encoding=\"utf-8\") as f:\n        f.write(line + \"\\n\")\n\n\ndef load(path, default):\n    try:\n        with open(path, encoding=\"utf-8\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        return default\n\n\ndef save(path, data):\n    with open(path, \"w\", encoding=\"utf-8\") as f:\n        json.dump(data, f, ensure_ascii=False, indent=2)\n\n\ndef market_open(t=None):\n    t = t or now()\n    if t.weekday() >= 5:\n        return False\n    m = t.hour * 60 + t.minute\n    return 9 * 60 + 5 <= m <= 15 * 60 + 15  # 장 시작 5분 후 ~ 마감 15분 전\n\n\ndef tick(price):\n    \"\"\"국내 주식 호가 단위\"\"\"\n    for limit, unit in ((2000, 1), (5000, 5), (20000, 10), (50000, 50), (200000, 100), (500000, 500)):\n        if price < limit:\n            return unit\n    return 1000\n\n\ndef round_up_tick(price):\n    u = tick(price)\n    return int(math.ceil(price / u) * u)\n\n\nclass KIS:\n    def __init__(self, mode, accounts=None):\n        self.mode = mode\n        self.base = URLS[mode]\n        sfx = mode.upper()\n        self.key = os.environ[f\"KIS_APP_KEY_{sfx}\"]\n        self.secret = os.environ[f\"KIS_APP_SECRET_{sfx}\"]\n        acct = (os.environ.get(f\"KIS_ACCOUNT_{sfx}\") or (accounts or {}).get(mode, \"\")).replace(\"-\", \"\").strip()\n        if len(acct) < 8:\n            raise ValueError(f\"{mode} 계좌번호가 없습니다 (plan.json accounts)\")\n        self.acct, self.prod = acct[:8], (acct[8:10] or \"01\")\n        self.token = self._token()\n\n    def _token(self):\n        \"\"\"토큰은 하루 유효 — 캐시해 두고 20시간마다만 새로 받는다 (발급 횟수 제한·알림 방지)\"\"\"\n        cache = os.path.join(ROOT, f\".kis_token_{self.mode}.json\")\n        c = load(cache, {})\n        if c.get(\"key\") == self.key[:6] and now().timestamp() - c.get(\"at\", 0) < 20 * 3600:\n            return c[\"token\"]\n        r = requests.post(f\"{self.base}/oauth2/tokenP\", timeout=15,\n                          json={\"grant_type\": \"client_credentials\", \"appkey\": self.key, \"appsecret\": self.secret})\n        r.raise_for_status()\n        tok = r.json()[\"access_token\"]\n        save(cache, {\"key\": self.key[:6], \"at\": now().timestamp(), \"token\": tok})\n        return tok\n\n    def _h(self, tr_id):\n        return {\"content-type\": \"application/json; charset=utf-8\", \"authorization\": f\"Bearer {self.token}\",\n                \"appkey\": self.key, \"appsecret\": self.secret, \"tr_id\": tr_id, \"custtype\": \"P\"}\n\n    def tr(self, real_id):\n        return (\"V\" + real_id[1:]) if self.mode == \"demo\" else real_id\n\n    def price(self, code):\n        r = requests.get(f\"{self.base}/uapi/domestic-stock/v1/quotations/inquire-price\", timeout=15,\n                         headers=self._h(\"FHKST01010100\"),\n                         params={\"FID_COND_MRKT_DIV_CODE\": \"J\", \"FID_INPUT_ISCD\": code})\n        r.raise_for_status()\n        p = r.json().get(\"output\", {}).get(\"stck_prpr\")\n        return int(p) if p else None\n\n    def holdings(self):\n        r = requests.get(f\"{self.base}/uapi/domestic-stock/v1/trading/inquire-balance\", timeout=15,\n                         headers=self._h(self.tr(\"TTTC8434R\")),\n                         params={\"CANO\": self.acct, \"ACNT_PRDT_CD\": self.prod, \"AFHR_FLPR_YN\": \"N\", \"OFL_YN\": \"\",\n                                 \"INQR_DVSN\": \"02\", \"UNPR_DVSN\": \"01\", \"FUND_STTL_ICLD_YN\": \"N\",\n                                 \"FNCG_AMT_AUTO_RDPT_YN\": \"N\", \"PRCS_DVSN\": \"00\",\n                                 \"CTX_AREA_FK100\": \"\", \"CTX_AREA_NK100\": \"\"})\n        r.raise_for_status()\n        out = {}\n        for row in r.json().get(\"output1\", []) or []:\n            qty = int(float(row.get(\"hldg_qty\") or 0))\n            if qty > 0:\n                out[row[\"pdno\"]] = {\"name\": row.get(\"prdt_name\", \"\"), \"qty\": qty,\n                                    \"sellable\": int(float(row.get(\"ord_psbl_qty\") or 0)),\n                                    \"avg\": float(row.get(\"pchs_avg_pric\") or 0), \"now\": float(row.get(\"prpr\") or 0),\n                                    \"rate\": float(row.get(\"evlu_pfls_rt\") or 0)}\n        return out\n\n    def order(self, side, code, qty, price=None):\n        \"\"\"price=None 이면 시장가\"\"\"\n        tr_id = self.tr(\"TTTC0012U\" if side == \"buy\" else \"TTTC0011U\")\n        body = {\"CANO\": self.acct, \"ACNT_PRDT_CD\": self.prod, \"PDNO\": code,\n                \"ORD_DVSN\": \"01\" if price is None else \"00\", \"ORD_QTY\": str(qty),\n                \"ORD_UNPR\": \"0\" if price is None else str(price), \"EXCG_ID_DVSN_CD\": \"KRX\",\n                \"SLL_TYPE\": \"01\" if side == \"sell\" else \"\", \"CNDT_PRIC\": \"\"}\n        data = requests.post(f\"{self.base}/uapi/domestic-stock/v1/trading/order-cash\", timeout=15,\n                             headers=self._h(tr_id), json=body).json()\n        return data.get(\"rt_cd\") == \"0\", data.get(\"msg1\", \"\")\n\n\ndef won(v):\n    return f\"{int(round(v)):,}원\"\n\n\ndef run(plan, state, kis):\n    tp = float(plan.get(\"take_profit_pct\", 10))\n    sl = float(plan.get(\"stop_loss_pct\", -7))\n    hold_days = int(plan.get(\"hold_days\", 14))\n    cap = float(plan.get(\"max_total_krw\", 0))\n    buys, sells = state.setdefault(\"buys\", {}), state.setdefault(\"sells\", {})\n    trades = state.setdefault(\"trades\", [])\n    held = kis.holdings()\n    spent = sum(v.get(\"krw\", 0) for k, v in buys.items() if k not in sells)\n\n    for item in plan.get(\"stocks\", []):\n        code, name = item[\"code\"], item.get(\"name\", item[\"code\"])\n        h = held.get(code)\n\n        # ---- 매도: 익절 / 손절 / 기간 만료\n        if h and code in buys:\n            days = (now().date() - datetime.fromisoformat(buys[code][\"date\"]).date()).days\n            reason = None\n            if h[\"rate\"] >= float(item.get(\"take_profit_pct\", tp)):\n                reason = f\"익절 {h['rate']:+.1f}%\"\n            elif h[\"rate\"] <= float(item.get(\"stop_loss_pct\", sl)):\n                reason = f\"손절 {h['rate']:+.1f}%\"\n            elif days >= hold_days:\n                reason = f\"{hold_days}일 경과 정리 {h['rate']:+.1f}%\"\n            if reason and h[\"sellable\"] > 0:\n                ok, msg = kis.order(\"sell\", code, h[\"sellable\"])\n                log(f\"**매도** {name} {h['sellable']}주 시장가 ({reason}) → {'접수' if ok else '실패: ' + msg}\")\n                if ok:\n                    pnl = (h[\"now\"] - h[\"avg\"]) * h[\"sellable\"]\n                    sells[code] = {\"date\": now().isoformat(timespec=\"minutes\"), \"reason\": reason}\n                    trades.append({\"code\": code, \"name\": name, \"date\": now().isoformat(timespec=\"minutes\"),\n                                   \"rate\": h[\"rate\"], \"pnl\": round(pnl), \"days\": days})\n            continue\n\n        # ---- 어제 낸 매수 주문이 체결 안 됐으면 다시 대기 상태로\n        if code in buys and code not in sells and not h \\\n                and datetime.fromisoformat(buys[code][\"date\"]).date() < now().date():\n            log(f\"{name} 매수 주문 미체결 → 다시 대기\")\n            del buys[code]\n\n        # ---- 매수: 한 번도 주문 안 한 종목만\n        if code in buys or code in sells or h:\n            continue\n        price = kis.price(code)\n        if not price:\n            log(f\"{name} 시세 조회 실패, 다음 회차에 재시도\")\n            continue\n        if price > float(item[\"max_buy_price\"]):\n            continue\n        px = round_up_tick(price * 1.003)  # 체결 잘 되도록 현재가보다 살짝 위\n        budget = float(item[\"budget_krw\"])\n        qty = int(budget // px)\n        if qty < 1:\n            log(f\"{name} 예산 {won(budget)}으로 1주도 못 삼 (현재가 {won(price)})\")\n            continue\n        if cap and spent + qty * px > cap:\n            log(f\"{name} 총 투자한도 {won(cap)} 초과라 매수 보류\")\n            continue\n        ok, msg = kis.order(\"buy\", code, qty, px)\n        log(f\"**매수** {name} {qty}주 @ {won(px)} (예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}\")\n        if ok:\n            buys[code] = {\"date\": now().isoformat(timespec=\"minutes\"), \"qty\": qty, \"krw\": qty * px}\n            spent += qty * px\n\n    write_status(plan, state, kis.holdings())\n\n\ndef write_status(plan, state, held):\n    \"\"\"휴대폰 화면용 요약\"\"\"\n    mine = {s[\"code\"] for s in plan.get(\"stocks\", [])}\n    buys = state.get(\"buys\", {})\n    pos, cost, value = [], 0.0, 0.0\n    for code, h in held.items():\n        if code not in mine:\n            continue\n        d = buys.get(code, {}).get(\"date\")\n        days = (now().date() - datetime.fromisoformat(d).date()).days if d else None\n        pos.append({\"code\": code, \"name\": h[\"name\"], \"qty\": h[\"qty\"], \"avg\": h[\"avg\"], \"now\": h[\"now\"],\n                    \"rate\": h[\"rate\"], \"days\": days})\n        cost += h[\"avg\"] * h[\"qty\"]\n        value += h[\"now\"] * h[\"qty\"]\n    trades = state.get(\"trades\", [])\n    year = str(now().year)\n    wins = sum(1 for t in trades if t[\"pnl\"] > 0)\n    save(STATUS, {\n        \"updated\": now().isoformat(timespec=\"minutes\"),\n        \"mode\": plan.get(\"mode\", \"demo\"),\n        \"positions\": pos,\n        \"total\": {\"cost\": round(cost), \"value\": round(value), \"pnl\": round(value - cost),\n                  \"rate\": round((value / cost - 1) * 100, 2) if cost else 0},\n        \"record\": {\"trades\": len(trades), \"wins\": wins,\n                   \"win_rate\": round(wins / len(trades) * 100, 1) if trades else None,\n                   \"realized_year\": sum(t[\"pnl\"] for t in trades if t[\"date\"].startswith(year))},\n    })\n\n\ndef main():\n    plan = load(PLAN, {})\n    if plan.get(\"paused\"):\n        print(\"일시정지 상태 — 종료\")\n        return\n    state = load(STATE, {})\n    mode = plan.get(\"mode\", \"demo\")\n    if not market_open() and \"--force\" not in sys.argv:\n        if \"--check\" in sys.argv:  # 장 밖에서 '지금 실행' → 연결만 확인, 주문 없음\n            try:\n                write_status(plan, state, KIS(mode, plan.get(\"accounts\")).holdings())\n                log(f\"연결 확인 완료 ({'실전' if mode == 'real' else '모의'}) · 장이 닫혀 주문은 하지 않음\")\n            except Exception as e:\n                log(f\"연결 실패 ({'실전' if mode == 'real' else '모의'}): {type(e).__name__}: {e}\")\n            return\n        print(\"국내 정규장 시간이 아님 — 종료\")\n        return\n    try:\n        run(plan, state, KIS(mode, plan.get(\"accounts\")))\n    except Exception as e:  # 오류가 나도 기록만 남기고 다음 회차에 재시도\n        log(f\"오류: {type(e).__name__}: {e}\")\n    save(STATE, state)\n\n\nif __name__ == \"__main__\":\n    main()\n", "plan.json": "{\n  \"mode\": \"demo\",\n  \"paused\": false,\n  \"take_profit_pct\": 10,\n  \"stop_loss_pct\": -7,\n  \"hold_days\": 14,\n  \"max_total_krw\": 2000000,\n  \"review_every\": \"2주\",\n  \"stocks\": [],\n  \"proposal\": null,\n  \"accounts\": {\n    \"demo\": \"5022145501\",\n    \"real\": \"7124028201\"\n  }\n}", ".github/workflows/trade.yml": "name: 자동매매\n\non:\n  schedule:\n    # 평일 국내장 시간(한국 9~15시 = UTC 0~6시)에 15분마다 — 정확한 장시간 판단은 bot.py가 함\n    - cron: \"*/15 0-6 * * 1-5\"\n  workflow_dispatch: {}   # 앱의 '지금 실행' 버튼 (장 밖이면 연결 확인만)\n\npermissions:\n  contents: write\n\nconcurrency:\n  group: trade\n  cancel-in-progress: false\n\njobs:\n  trade:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-python@v5\n        with:\n          python-version: \"3.12\"\n      - run: pip install requests\n      - name: 토큰 캐시\n        uses: actions/cache@v4\n        with:\n          path: .kis_token_*.json\n          key: kis-${{ github.run_id }}\n          restore-keys: kis-\n      - name: 봇 실행\n        env:\n          KIS_APP_KEY_DEMO: ${{ secrets.KIS_APP_KEY_DEMO }}\n          KIS_APP_SECRET_DEMO: ${{ secrets.KIS_APP_SECRET_DEMO }}\n          KIS_APP_KEY_REAL: ${{ secrets.KIS_APP_KEY_REAL }}\n          KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}\n        run: python bot.py ${{ github.event_name == 'workflow_dispatch' && '--check' || '' }}\n      - name: 기록 저장\n        run: |\n          git config user.name \"trade-bot\"\n          git config user.email \"trade-bot@users.noreply.github.com\"\n          for f in state.json log.md status.json; do [ -f \"$f\" ] && git add \"$f\"; done\n          git diff --cached --quiet || (git commit -m \"매매 기록 $(date -u +%F' '%H:%M)\" && git push)\n", "README.md": "# 국내주식 자동매매 (존박)\n\n## 흐름\n1. 2주마다 Claude가 종목을 분석해 **매수 계획**을 제안\n2. 존박님이 **컨펌**\n3. 휴대폰 화면에서 컨펌 → 봇이 평일 장중 15분마다 자동으로 매수·익절·손절\n4. 결과는 `log.md`에서 확인 (아이패드 GitHub 앱)\n\n## 규칙\n- 익절 **+10%**, 손절 **-7%**, **14일 지나면 정리** (전량 시장가 매도)\n- `plan.json`에 있는 종목만 매매, 종목당 1회 매수\n- 총 투자한도 `max_total_usd` 초과 시 매수 안 함\n- **비상 정지:** `plan.json`에서 `\"paused\": true`\n\n## 처음 한 번만 하는 설정 (아이패드)\n1. GitHub에서 **Private** 저장소 `autotrade` 생성 후 이 파일들 업로드\n2. 저장소 → Settings → Secrets and variables → Actions → New repository secret 6개:\n   - `KIS_APP_KEY_DEMO`, `KIS_APP_SECRET_DEMO`, `KIS_ACCOUNT_DEMO` — 모의투자 앱키·시크릿·계좌번호 10자리\n   - `KIS_APP_KEY_REAL`, `KIS_APP_SECRET_REAL`, `KIS_ACCOUNT_REAL` — 실전 앱키·시크릿·계좌번호 10자리\n3. Actions 탭 → \"미국주식 자동매매\" → Run workflow 로 연결 확인\n\n## 실전 전환\n모의투자 1주일 확인 후 `plan.json`의 `\"mode\"`를 `\"real\"`로 바꾸면 끝 (키는 미리 넣어둠)\n\n## plan.json 종목 예시\n```json\n{\"code\": \"005930\", \"name\": \"삼성전자\", \"budget_krw\": 700000, \"max_buy_price\": 60000}\n```\n미국주식 버전은 `bot_us.py` (내년에 사용 예정)\n"};
+async function install(){
+  if(!Object.keys(FILES).length) return false;
+  if(await getFile("bot.py")!==null) return false;
+  for(const [path,text] of Object.entries(FILES)){
+    if(path==="plan.json" && await getFile(path)!==null) continue;
+    await putFile(path, text, "봇 설치: "+path);
+  }
+  return true;
+}
+
+const cfg = { token: store.get("tt_token") || "", repo: store.get("tt_repo") || "junkim10293847/autotrade" };
+let data = null, sha = {};
+
+/* ---------- GitHub ---------- */
+const api = (path, opt={}) => fetch(`https://api.github.com/repos/${cfg.repo}${path?"/"+path:""}`, {
+  ...opt, headers:{Authorization:`Bearer ${cfg.token}`,Accept:"application/vnd.github+json",...(opt.headers||{})}
+});
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,"")), c=>c.charCodeAt(0)));
+const b64enc = s => { const b=new TextEncoder().encode(s); let r=""; b.forEach(x=>r+=String.fromCharCode(x)); return btoa(r) };
+async function getFile(p){
+  const r = await api(`contents/${p}`);
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error(r.status===401?"토큰이 맞지 않습니다":`불러오기 실패 (${r.status})`);
+  const j = await r.json(); sha[p]=j.sha; return b64dec(j.content);
+}
+async function putFile(p, text, msg){
+  const r = await api(`contents/${p}`, {method:"PUT", body:JSON.stringify({message:msg, content:b64enc(text), sha:sha[p]})});
+  if(!r.ok) throw new Error(r.status===409?"다른 곳에서 바뀌었습니다. 새로고침 후 다시 해주세요":`저장 실패 (${r.status})`);
+  sha[p] = (await r.json()).content.sha;
+}
+
+async function load(){
+  if(!cfg.token){ data = SAMPLE; $("sample").hidden=false; render(); return }
+  $("sample").hidden = true;
+  try{
+    const [plan,status,log] = await Promise.all([getFile("plan.json"),getFile("status.json"),getFile("log.md")]);
+    data = { plan: JSON.parse(plan||"{}"), status: status?JSON.parse(status):null, log: log||"" };
+    render();
+  }catch(e){ toast(e.message); data = SAMPLE; $("sample").hidden=false; render() }
+}
+
+/* ---------- 화면 ---------- */
+const won = v => (v<0?"-":"")+Math.round(Math.abs(v)).toLocaleString("ko-KR")+"원";
+const sign = v => (v>0?"+":"")+v.toFixed(2)+"%";
+const cls = v => v>0?"up":v<0?"down":"";
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function krOpen(){
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Seoul",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+  const m = (+p.hour%24)*60 + +p.minute;
+  return !["Sat","Sun"].includes(p.weekday) && m>=540 && m<930;
+}
+
+function render(){
+  const {plan, status, log} = data;
+  const tp = +plan.take_profit_pct||10, sl = +plan.stop_loss_pct||-7, hd = +plan.hold_days||14;
+  const mode = plan.mode==="real";
+  $("mode").textContent = mode?"실전":"모의"; $("mode").className = "chip "+(mode?"real":"demo");
+
+  const t = status?.total || {pnl:0,rate:0};
+  $("pnl").textContent = (t.pnl>0?"+":"")+won(t.pnl); $("pnl").className = "big num "+cls(t.pnl);
+  $("rate").textContent = sign(t.rate); $("rate").className = "rate num "+cls(t.rate);
+  const open = krOpen();
+  $("market").innerHTML = `<i class="dot ${open?"on":""}"></i>국내장 ${open?"열림":"닫힘"}`;
+  $("updated").textContent = "마지막 실행 " + (status?.updated ? new Date(status.updated).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : "아직 없음");
+  $("rule").textContent = `익절 +${tp}% · 손절 ${sl}% · ${hd}일`;
+  const rc = status?.record || {};
+  $("rWin").textContent = rc.win_rate==null?"-":rc.win_rate+"%";
+  $("rWin").className = "v num "+(rc.win_rate==null?"":rc.win_rate>=50?"up":rc.win_rate<45?"down":"");
+  $("rCnt").textContent = (rc.trades||0)+"건";
+  const ry = rc.realized_year||0;
+  $("rReal").textContent = (ry>0?"+":"")+won(ry); $("rReal").className = "v num "+cls(ry);
+
+  // 컨펌할 계획
+  const pr = plan.proposal;
+  $("propWrap").hidden = !pr;
+  if(pr){
+    const sum = pr.stocks.reduce((a,s)=>a+ +s.budget_krw,0);
+    $("propWrap").innerHTML = `<div class="prop">
+      <div class="tag">CLAUDE 제안 · 컨펌 대기</div>
+      <h3>새 매수 계획 ${pr.stocks.length}종목 · ${won(sum)}</h3>
+      ${pr.note?`<p>${esc(pr.note)}</p>`:""}
+      ${pr.stocks.map(s=>`<div class="prow"><b>${esc(s.name)}</b><span class="num">${won(+s.budget_krw)}</span>
+        <span class="s">${won(+s.max_buy_price)} 이하에서 매수${s.why?" · "+esc(s.why):""}</span></div>`).join("")}
+      <button class="btn primary" id="okProp" style="margin-top:12px">컨펌하고 자동매매 시작</button>
+      <button class="btn ghost" id="noProp">이번 계획은 넘기기</button></div>`;
+    $("okProp").onclick = () => ask("이 계획을 컨펌할까요?", `${pr.stocks.map(s=>s.name).join(", ")}을(를) 정해진 가격 이하에서 자동으로 삽니다.`, confirmProposal);
+    $("noProp").onclick = () => ask("이번 계획을 넘길까요?", "제안이 사라지고 아무것도 사지 않습니다.", dropProposal);
+  }
+
+  // 보유
+  const held = status?.positions || [];
+  $("posCount").textContent = held.length?`${held.length}종목`:"";
+  const lo = sl*1.3, hi = tp*1.3, pct = v => Math.max(0,Math.min(100,(v-lo)/(hi-lo)*100));
+  $("pos").innerHTML = held.length ? held.map((h,i)=>`${i?'<div class="divider"></div>':""}
+    <div class="ph"><div><span class="t">${esc(h.name)}</span><span class="q">${h.qty}주${h.days!=null?` · ${h.days}/${hd}일`:""}</span></div>
+      <span class="pill num ${cls(h.rate)}">${sign(h.rate)}</span></div>
+    <div class="range" aria-label="손절 ${sl}%와 익절 +${tp}% 사이 현재 위치">
+      <div class="track"></div><div class="zero" style="left:${pct(0)}%"></div>
+      <div class="zero" style="left:${pct(sl)}%;background:var(--down);opacity:1"></div>
+      <div class="zero" style="left:${pct(tp)}%;background:var(--up);opacity:1"></div>
+      <div class="mark ${cls(h.rate)}" style="left:${pct(h.rate)}%"></div></div>
+    <div class="ends"><span>손절 <span class="num">${sl}%</span></span><span>익절 <span class="num">+${tp}%</span></span></div>
+    <div class="px"><span>평균 <span class="num">${won(h.avg)}</span></span><span>현재 <span class="num">${won(h.now)}</span></span></div>`).join("")
+    : `<div class="empty">아직 산 종목이 없습니다</div>`;
+
+  // 대기
+  const heldSet = new Set(held.map(h=>h.code));
+  const waiting = (plan.stocks||[]).filter(s=>!heldSet.has(s.code));
+  $("wait").innerHTML = waiting.length ? waiting.map(s=>`<div class="wchip"><b>${esc(s.name)}</b><span>${won(+s.max_buy_price)} 이하 · ${won(+s.budget_krw)}</span></div>`).join("")
+    : `<div class="card empty" style="width:100%">대기 중인 종목이 없습니다</div>`;
+
+  // 기록
+  const lines = (log||"").split("\n").filter(l=>l.startsWith("- ")).slice(-8).reverse();
+  $("logCount").textContent = lines.length?`최근 ${lines.length}건`:"";
+  $("log").innerHTML = lines.length ? lines.map(l=>{
+    const m = l.match(/^- (\d{4}-(\d\d)-(\d\d) (\d\d:\d\d)) KST · (.*)$/);
+    const when = m?`${+m[2]}/${+m[3]} ${m[4]}`:"";
+    const msg = esc(m?m[5]:l.slice(2)).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
+    return `<li><time>${when}</time><span class="m">${msg}</span></li>`}).join("")
+    : `<li class="empty">아직 기록이 없습니다</li>`;
+
+  $("pause").textContent = plan.paused?"다시 시작":"일시정지";
+  $("pause").classList.toggle("paused", !!plan.paused);
+}
+
+/* ---------- 동작 ---------- */
+function toast(t){ const el=$("toast"); el.textContent=t; el.hidden=false; clearTimeout(el._t); el._t=setTimeout(()=>el.hidden=true,2600) }
+function ask(title, body, fn){
+  $("cTitle").textContent=title; $("cBody").textContent=body; $("confirmSheet").hidden=false;
+  $("cYes").onclick=async()=>{ $("confirmSheet").hidden=true; await fn() };
+}
+$("cNo").onclick=()=>$("confirmSheet").hidden=true;
+
+async function savePlan(msg){
+  if(!cfg.token){ toast("예시 화면이라 저장하지 않았습니다"); render(); return false }
+  await putFile("plan.json", JSON.stringify(data.plan,null,2)+"\n", msg); return true;
+}
+async function guarded(fn){ try{ await fn() }catch(e){ toast(e.message); await load() } }
+
+const confirmProposal = () => guarded(async()=>{
+  const p = data.plan, pr = p.proposal;
+  const have = new Set((p.stocks||[]).map(s=>s.code));
+  p.stocks = [...(p.stocks||[]), ...pr.stocks.filter(s=>!have.has(s.code)).map(({why,...s})=>s)];
+  p.proposal = null; render();
+  if(await savePlan("휴대폰에서 매수 계획 컨펌")) toast("컨펌했습니다. 장중에 자동으로 매수합니다");
+});
+const dropProposal = () => guarded(async()=>{
+  data.plan.proposal = null; render();
+  if(await savePlan("매수 계획 넘김")) toast("이번 계획을 넘겼습니다");
+});
+$("pause").onclick = () => {
+  const p = data.plan, to = !p.paused;
+  ask(to?"자동매매를 멈출까요?":"자동매매를 다시 시작할까요?", to?"다시 시작할 때까지 사거나 팔지 않습니다. 이미 접수된 주문은 그대로입니다.":"다음 실행부터 계획대로 매매합니다.",
+    () => guarded(async()=>{ p.paused = to; render(); if(await savePlan(to?"일시정지":"다시 시작")) toast(to?"멈췄습니다":"다시 시작했습니다") }));
+};
+$("run").onclick = () => ask("지금 한 번 실행할까요?", "장이 닫혀 있으면 주문 없이 계좌 연결만 확인합니다. 1~2분 뒤 새로고침하세요.",
+  () => guarded(async()=>{
+    if(!cfg.token){ toast("예시 화면이라 실행하지 않았습니다"); return }
+    const r = await api("actions/workflows/trade.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})});
+    if(!r.ok) throw new Error(`실행 요청 실패 (${r.status})`);
+    toast("실행을 요청했습니다");
+  }));
+
+$("mode").onclick = () => {
+  const p = data.plan, toReal = p.mode!=="real";
+  ask(toReal?"실전으로 바꿀까요?":"모의로 바꿀까요?",
+    toReal?"다음 실행부터 실제 돈으로 주문합니다. 모의에서 산 종목은 실전 계좌에 없으니 새로 시작합니다.":"다음 실행부터 연습 계좌로 주문합니다. 실전 보유 종목은 그대로 둡니다.",
+    () => guarded(async()=>{ p.mode = toReal?"real":"demo"; render(); if(await savePlan(toReal?"실전 전환":"모의 전환")) toast(toReal?"실전으로 바꿨습니다":"모의로 바꿨습니다") }));
+};
+$("gear").onclick = () => { $("tok").value=cfg.token; $("repo").value=cfg.repo; $("sheet").hidden=false };
+$("cfgClose").onclick = () => $("sheet").hidden=true;
+$("cfg").addEventListener("submit", e=>{
+  e.preventDefault();
+  cfg.token=$("tok").value.trim(); cfg.repo=$("repo").value.trim()||cfg.repo;
+  store.set("tt_token",cfg.token); store.set("tt_repo",cfg.repo);
+  if(!cfg.token){ $("sheet").hidden=true; toast("연결을 해제했습니다"); load(); return }
+  $("cfgGo").disabled=true; $("cfgGo").textContent="연결 중…";
+  (async()=>{
+    try{
+      const r = await api("");
+      if(!r.ok) throw new Error(r.status===401?"토큰이 맞지 않습니다":r.status===404?"저장소를 찾을 수 없습니다. 이름과 토큰 권한을 확인하세요":`연결 실패 (${r.status})`);
+      const did = await install();
+      $("sheet").hidden=true; toast(did?"봇을 설치했습니다. '지금 실행'으로 연결을 확인하세요":"연결했습니다");
+      load();
+    }catch(err){ toast(err.message) }
+    finally{ $("cfgGo").disabled=false; $("cfgGo").textContent="연결하기" }
+  })();
+});
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden && cfg.token) load() });
+load();
+</script>
+
+</body></html>
