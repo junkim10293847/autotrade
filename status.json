@@ -1,0 +1,17 @@
+{
+  "updated": "2026-11-01T14:15+09:00",
+  "mode": "demo",
+  "positions": [],
+  "total": {
+    "cost": 0,
+    "value": 0,
+    "pnl": 0,
+    "rate": 0
+  },
+  "record": {
+    "trades": 0,
+    "wins": 0,
+    "win_rate": null,
+    "realized_year": 0
+  }
+}
