@@ -1,0 +1,45 @@
+name: 자동매매
+
+on:
+  schedule:
+    # 평일 국내장 시간(한국 9~15시 = UTC 0~6시)에 15분마다 — 정확한 장시간 판단은 bot.py가 함
+    - cron: "*/15 0-6 * * 1-5"
+  workflow_dispatch: {}   # 앱의 '지금 실행' 버튼 (장 밖이면 연결 확인만)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trade
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: 토큰 캐시
+        uses: actions/cache@v4
+        with:
+          path: .kis_token_*.json
+          key: kis-${{ github.run_id }}
+          restore-keys: kis-
+      - name: 봇 실행
+        env:
+          KIS_APP_KEY_DEMO: ${{ secrets.KIS_APP_KEY_DEMO }}
+          KIS_APP_SECRET_DEMO: ${{ secrets.KIS_APP_SECRET_DEMO }}
+          KIS_ACCOUNT_DEMO: ${{ secrets.KIS_ACCOUNT_DEMO }}
+          KIS_APP_KEY_REAL: ${{ secrets.KIS_APP_KEY_REAL }}
+          KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}
+          KIS_ACCOUNT_REAL: ${{ secrets.KIS_ACCOUNT_REAL }}
+        run: python bot.py ${{ github.event_name == 'workflow_dispatch' && '--check' || '' }}
+      - name: 기록 저장
+        run: |
+          git config user.name "trade-bot"
+          git config user.email "trade-bot@users.noreply.github.com"
+          for f in state.json log.md status.json; do [ -f "$f" ] && git add "$f"; done
+          git diff --cached --quiet || (git commit -m "매매 기록 $(date -u +%F' '%H:%M)" && git push)
