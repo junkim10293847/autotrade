@@ -1,1 +1,29 @@
-# autotrade
+# 국내주식 자동매매 (존박)
+
+## 흐름
+1. 2주마다 Claude가 종목을 분석해 **매수 계획**을 제안
+2. 존박님이 **컨펌**
+3. 휴대폰 화면에서 컨펌 → 봇이 평일 장중 15분마다 자동으로 매수·익절·손절
+4. 결과는 `log.md`에서 확인 (아이패드 GitHub 앱)
+
+## 규칙
+- 익절 **+10%**, 손절 **-7%**, **14일 지나면 정리** (전량 시장가 매도)
+- `plan.json`에 있는 종목만 매매, 종목당 1회 매수
+- 총 투자한도 `max_total_usd` 초과 시 매수 안 함
+- **비상 정지:** `plan.json`에서 `"paused": true`
+
+## 처음 한 번만 하는 설정 (아이패드)
+1. GitHub에서 **Private** 저장소 `autotrade` 생성 후 이 파일들 업로드
+2. 저장소 → Settings → Secrets and variables → Actions → New repository secret 6개:
+   - `KIS_APP_KEY_DEMO`, `KIS_APP_SECRET_DEMO`, `KIS_ACCOUNT_DEMO` — 모의투자 앱키·시크릿·계좌번호 10자리
+   - `KIS_APP_KEY_REAL`, `KIS_APP_SECRET_REAL`, `KIS_ACCOUNT_REAL` — 실전 앱키·시크릿·계좌번호 10자리
+3. Actions 탭 → "미국주식 자동매매" → Run workflow 로 연결 확인
+
+## 실전 전환
+모의투자 1주일 확인 후 `plan.json`의 `"mode"`를 `"real"`로 바꾸면 끝 (키는 미리 넣어둠)
+
+## plan.json 종목 예시
+```json
+{"code": "005930", "name": "삼성전자", "budget_krw": 700000, "max_buy_price": 60000}
+```
+미국주식 버전은 `bot_us.py` (내년에 사용 예정)
