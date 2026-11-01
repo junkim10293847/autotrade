@@ -7,31 +7,5 @@
   "max_total_krw": 2000000,
   "review_every": "2주",
   "stocks": [],
-  "proposal": {
-    "created": "2026-11-01T17:29+09:00",
-    "note": "우량주 106개 중 최근 눌린 3종목 (규칙 자동 선정)",
-    "stocks": [
-      {
-        "code": "006400",
-        "name": "삼성SDI",
-        "budget_krw": 660000,
-        "max_buy_price": 541000,
-        "why": "눌림목 · 60일 고점 대비 -9.6%, 60일선 +2.2%"
-      },
-      {
-        "code": "005830",
-        "name": "DB손해보험",
-        "budget_krw": 660000,
-        "max_buy_price": 186500,
-        "why": "눌림목 · 60일 고점 대비 -9.1%, 60일선 +1.1%"
-      },
-      {
-        "code": "028050",
-        "name": "삼성E&A",
-        "budget_krw": 660000,
-        "max_buy_price": 61300,
-        "why": "조정 초입 · 60일 고점 대비 -5.6%, 60일선 +22.6%"
-      }
-    ]
-  }
+  "proposal": null
 }
