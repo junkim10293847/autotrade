@@ -12,33 +12,25 @@
       "name": "DB손해보험",
       "budget_krw": 660000,
       "max_buy_price": 186500
+    },
+    {
+      "code": "006400",
+      "name": "삼성SDI",
+      "budget_krw": 440000,
+      "max_buy_price": 543000
+    },
+    {
+      "code": "004020",
+      "name": "현대제철",
+      "budget_krw": 440000,
+      "max_buy_price": 29400
+    },
+    {
+      "code": "096770",
+      "name": "SK이노베이션",
+      "budget_krw": 440000,
+      "max_buy_price": 133000
     }
   ],
-  "proposal": {
-    "created": "2026-11-02T09:57+09:00",
-    "note": "우량주 106개 중 최근 눌린 3종목 (규칙 자동 선정)",
-    "stocks": [
-      {
-        "code": "006400",
-        "name": "삼성SDI",
-        "budget_krw": 440000,
-        "max_buy_price": 543000,
-        "why": "눌림목 · 60일 고점 대비 -9.3%, 60일선 +2.1%"
-      },
-      {
-        "code": "004020",
-        "name": "현대제철",
-        "budget_krw": 440000,
-        "max_buy_price": 29400,
-        "why": "조정 초입 · 60일 고점 대비 -19.2%, 60일선 -2.5%"
-      },
-      {
-        "code": "096770",
-        "name": "SK이노베이션",
-        "budget_krw": 440000,
-        "max_buy_price": 133000,
-        "why": "조정 초입 · 60일 고점 대비 -19.4%, 60일선 -4.2%"
-      }
-    ]
-  }
+  "proposal": null
 }
