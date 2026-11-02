@@ -8,22 +8,10 @@
   "review_every": "2주",
   "stocks": [
     {
-      "code": "006400",
-      "name": "삼성SDI",
-      "budget_krw": 660000,
-      "max_buy_price": 541000
-    },
-    {
       "code": "005830",
       "name": "DB손해보험",
       "budget_krw": 660000,
       "max_buy_price": 186500
-    },
-    {
-      "code": "028050",
-      "name": "삼성E&A",
-      "budget_krw": 660000,
-      "max_buy_price": 61300
     }
   ],
   "proposal": null
