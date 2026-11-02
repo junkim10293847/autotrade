@@ -310,23 +310,14 @@ def write_status(plan, state, held, kis):
     year = str(now().year)
     wins = sum(1 for t in trades if t.get("pnl", 0) > 0)
     account = getattr(kis, "account_summary", {})
-    cash = float(account.get("cash", 0))  # 증권사 주문가능 현금
-    cap = float(plan.get("max_total_krw", 2000000))
-    held_codes = set(held.keys())
-    today = now().date().isoformat()
-    reserved = sum(float(v.get("krw", 0)) for code, v in buys.items()
-                   if code not in held_codes and v.get("pending", True)
-                   and str(v.get("date", ""))[:10] == today)
-    remaining = max(0, cap - cost - reserved)
+    cash = float(account.get("cash", 0))
     realized = sum(t.get("pnl", 0) for t in trades)
     save(STATUS, {
         "updated": now().isoformat(timespec="minutes"), "mode": plan.get("mode", "demo"),
         "positions": pos,
         "total": {"cost": round(cost), "value": round(value), "pnl": round(value - cost),
                   "rate": round((value / cost - 1) * 100, 2) if cost else 0,
-                  "cash": round(cash), "assets": round(float(account.get("account_value") or (value + cash))),
-                  "limit": round(cap), "invested": round(cost), "reserved": round(reserved),
-                  "remaining": round(remaining)},
+                  "cash": round(cash), "assets": round(value + cash)},
         "record": {"trades": len(trades), "wins": wins,
                    "win_rate": round(wins / len(trades) * 100, 1) if trades else None,
                    "realized_year": sum(t.get("pnl", 0) for t in trades if str(t.get("date", "")).startswith(year)),
