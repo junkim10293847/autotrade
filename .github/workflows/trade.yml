@@ -41,5 +41,5 @@ jobs:
         run: |
           git config user.name "trade-bot"
           git config user.email "trade-bot@users.noreply.github.com"
-          for f in state.json log.md status.json; do [ -f "$f" ] && git add "$f"; done
+          for f in state.json log.md status.json plan.json; do [ -f "$f" ] && git add "$f"; done
           git diff --cached --quiet || (git commit -m "매매 기록 $(date -u +%F' '%H:%M)" && git pull --rebase -q && git push)
