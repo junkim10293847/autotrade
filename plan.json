@@ -1,6 +1,6 @@
 {
   "mode": "demo",
-  "paused": true,
+  "paused": false,
   "take_profit_pct": 10,
   "stop_loss_pct": -7,
   "hold_days": 14,
