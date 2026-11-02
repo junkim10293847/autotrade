@@ -24,5 +24,6 @@
   },
   "sells": {},
   "trades": [],
-  "sell_orders": {}
+  "sell_orders": {},
+  "orders": {}
 }
