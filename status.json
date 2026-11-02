@@ -1,12 +1,22 @@
 {
-  "updated": "2026-11-02T08:10+09:00",
+  "updated": "2026-11-02T09:05+09:00",
   "mode": "demo",
-  "positions": [],
+  "positions": [
+    {
+      "code": "005830",
+      "name": "DB손해보험",
+      "qty": 3,
+      "avg": 181400.0,
+      "now": 181200.0,
+      "rate": -0.11,
+      "days": 0
+    }
+  ],
   "total": {
-    "cost": 0,
-    "value": 0,
-    "pnl": 0,
-    "rate": 0
+    "cost": 544200,
+    "value": 543600,
+    "pnl": -600,
+    "rate": -0.11
   },
   "record": {
     "trades": 0,
