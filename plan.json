@@ -7,7 +7,33 @@
   "max_total_krw": 2000000,
   "review_every": "2주",
   "stocks": [],
-  "proposal": null,
+  "proposal": {
+    "created": "2026-11-02T13:34+09:00",
+    "note": "우량주 106개 중 최근 눌린 3종목 (규칙 자동 선정)",
+    "stocks": [
+      {
+        "code": "004020",
+        "name": "현대제철",
+        "budget_krw": 660000,
+        "max_buy_price": 29150,
+        "why": "조정 초입 · 60일 고점 대비 -19.9%, 60일선 -3.3%"
+      },
+      {
+        "code": "128940",
+        "name": "한미약품",
+        "budget_krw": 660000,
+        "max_buy_price": 432500,
+        "why": "조정 초입 · 60일 고점 대비 -20.7%, 60일선 -4.5%"
+      },
+      {
+        "code": "373220",
+        "name": "LG에너지솔루션",
+        "budget_krw": 660000,
+        "max_buy_price": 360500,
+        "why": "조정 초입 · 60일 고점 대비 -17.5%, 60일선 -3.5%"
+      }
+    ]
+  },
   "monitor_all_holdings": true,
   "replacement": {
     "pending": false,
