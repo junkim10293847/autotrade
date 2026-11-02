@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T12:29+09:00",
+  "updated": "2026-11-02T13:27+09:00",
   "mode": "demo",
   "positions": [
     {
@@ -7,9 +7,13 @@
       "name": "DB손해보험",
       "qty": 3,
       "avg": 181400.0,
-      "now": 176500.0,
-      "rate": -2.7,
-      "days": 0
+      "now": 176200.0,
+      "rate": -2.87,
+      "days": 0,
+      "cost": 544200,
+      "value": 528600,
+      "pnl": -15600,
+      "tracked": true
     },
     {
       "code": "006400",
@@ -18,7 +22,11 @@
       "avg": 534000.0,
       "now": 535000.0,
       "rate": 0.19,
-      "days": 0
+      "days": 0,
+      "cost": 534000,
+      "value": 535000,
+      "pnl": 1000,
+      "tracked": true
     },
     {
       "code": "096770",
@@ -27,19 +35,26 @@
       "avg": 132033.333,
       "now": 128600.0,
       "rate": -2.6,
-      "days": 0
+      "days": 0,
+      "cost": 396100,
+      "value": 385800,
+      "pnl": -10300,
+      "tracked": true
     }
   ],
   "total": {
     "cost": 1474300,
-    "value": 1450300,
-    "pnl": -24000,
-    "rate": -1.63
+    "value": 1449400,
+    "pnl": -24900,
+    "rate": -1.69,
+    "cash": 10000000,
+    "assets": 11449400
   },
   "record": {
     "trades": 0,
     "wins": 0,
     "win_rate": null,
-    "realized_year": 0
+    "realized_year": 0,
+    "realized_total": 0
   }
 }
