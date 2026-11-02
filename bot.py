@@ -2,7 +2,7 @@
 국내주식 자동매매 봇 (한국투자증권 Open API) — 존박
 
 규칙 (단순하게)
-1. plan.json 에 존박님이 '컨펌'한 종목만 매매한다. 그 외 보유 종목은 절대 건드리지 않는다.
+1. 매도 감시는 계좌의 모든 보유 종목에 적용한다. 신규 매수는 plan.json 에 컨펌된 종목만 한다.
 2. 매수: 현재가가 '최대매수가' 이하이면 종목별 예산만큼 지정가로 한 번만 산다.
 3. 매도(시장가, 전량): 익절 +10% 이상 / 손절 -7% 이하 / 산 지 14일 지나면 정리.
 4. "paused": true 이면 아무것도 하지 않는다. (비상 정지)
@@ -132,8 +132,16 @@ class KIS:
                                  "FNCG_AMT_AUTO_RDPT_YN": "N", "PRCS_DVSN": "00",
                                  "CTX_AREA_FK100": "", "CTX_AREA_NK100": ""})
         r.raise_for_status()
+        payload = r.json()
+        summary_rows = payload.get("output2", []) or []
+        summary = summary_rows[0] if summary_rows else {}
+        self.account_summary = {
+            "cash": float(summary.get("ord_psbl_cash") or summary.get("dnca_tot_amt") or 0),
+            "deposit": float(summary.get("dnca_tot_amt") or 0),
+            "account_value": float(summary.get("tot_evlu_amt") or 0),
+        }
         out = {}
-        for row in r.json().get("output1", []) or []:
+        for row in payload.get("output1", []) or []:
             qty = int(float(row.get("hldg_qty") or 0))
             if qty > 0:
                 out[row["pdno"]] = {"name": row.get("prdt_name", ""), "qty": qty,
@@ -162,97 +170,158 @@ def run(plan, state, kis):
     tp = float(plan.get("take_profit_pct", 10))
     sl = float(plan.get("stop_loss_pct", -7))
     hold_days = int(plan.get("hold_days", 14))
-    cap = float(plan.get("max_total_krw", 0))
-    buys, sells = state.setdefault("buys", {}), state.setdefault("sells", {})
+    cap = float(plan.get("max_total_krw", 2000000))
+    buys = state.setdefault("buys", {})
     trades = state.setdefault("trades", [])
     held = kis.holdings()
-    spent = sum(v.get("krw", 0) for k, v in buys.items() if k not in sells)
 
-    for item in plan.get("stocks", []):
-        code, name = item["code"], item.get("name", item["code"])
+    # 교체 선택 시 기존 보유분 매도가 끝날 때까지 신규 매수는 보류
+    replacement = plan.get("replacement") or {}
+    replace_codes = set(replacement.get("sell_codes", [])) if replacement.get("pending") else set()
+    replacement_waiting = False
+    for code in list(replace_codes):
         h = held.get(code)
-
-        # ---- 매도: 익절 / 손절 / 기간 만료
-        if h and code in buys:
-            days = (now().date() - datetime.fromisoformat(buys[code]["date"]).date()).days
-            reason = None
-            if h["rate"] >= float(item.get("take_profit_pct", tp)):
-                reason = f"익절 {h['rate']:+.1f}%"
-            elif h["rate"] <= float(item.get("stop_loss_pct", sl)):
-                reason = f"손절 {h['rate']:+.1f}%"
-            elif days >= hold_days:
-                reason = f"{hold_days}일 경과 정리 {h['rate']:+.1f}%"
-            if reason and h["sellable"] > 0:
-                ok, msg = kis.order("sell", code, h["sellable"])
-                log(f"**매도** {name} {h['sellable']}주 시장가 ({reason}) → {'접수' if ok else '실패: ' + msg}")
-                notify(f"매도 {name}", f"{h['sellable']}주 · {reason}" + ("" if ok else " · 실패: " + msg))
-                if ok:
+        if not h:
+            continue
+        replacement_waiting = True
+        pending = state.setdefault("replacement_sell_orders", {})
+        last = pending.get(code, {})
+        if last.get("date") == now().date().isoformat():
+            continue
+        if h["sellable"] > 0:
+            ok, msg = kis.order("sell", code, h["sellable"])
+            log(f"**교체 매도** {h['name']} {h['sellable']}주 시장가 → {'접수' if ok else '실패: ' + msg}")
+            if ok:
+                pending[code] = {"date": now().date().isoformat(), "qty": h["sellable"]}
+                sent = state.setdefault("sell_orders", {}).get(code, {})
+                if not sent.get("recorded"):
                     pnl = (h["now"] - h["avg"]) * h["sellable"]
-                    sells[code] = {"date": now().isoformat(timespec="minutes"), "reason": reason}
-                    trades.append({"code": code, "name": name, "date": now().isoformat(timespec="minutes"),
-                                   "rate": h["rate"], "pnl": round(pnl), "days": days})
-            continue
+                    trades.append({"code": code, "name": h["name"], "date": now().isoformat(timespec="minutes"),
+                                   "rate": h["rate"], "pnl": round(pnl), "days": None, "estimated": True, "reason": "교체"})
+                state["sell_orders"][code] = {"date": now().date().isoformat(), "qty": h["sellable"], "recorded": True}
+                notify(f"교체 매도 {h['name']}", f"{h['sellable']}주 매도 주문 접수")
+    if replacement.get("pending") and not any(c in held for c in replace_codes):
+        replacement["pending"] = False
+        plan["replacement"] = replacement
+        save(PLAN, plan)
+        log("기존 종목 교체 매도 완료 · 신규 매수 재개")
+        notify("종목 교체 완료", "기존 보유 종목 정리가 확인되어 신규 매수를 재개합니다")
 
-        # ---- 어제 낸 매수 주문이 체결 안 됐으면 다시 대기 상태로
-        if code in buys and code not in sells and not h \
-                and datetime.fromisoformat(buys[code]["date"]).date() < now().date():
-            log(f"{name} 매수 주문 미체결 → 다시 대기")
-            del buys[code]
-
-        # ---- 매수: 한 번도 주문 안 한 종목만
-        if code in buys or code in sells or h:
+    # 모든 계좌 보유 종목을 감시한다. 과거 매수일이 저장되지 않은 종목은 14일 조건만 적용하지 않는다.
+    for code, h in held.items():
+        if code in replace_codes:
             continue
+        meta = buys.get(code, {})
+        d = meta.get("date")
+        days = (now().date() - datetime.fromisoformat(d).date()).days if d else None
+        reason = None
+        if h["rate"] >= tp:
+            reason = f"익절 {h['rate']:+.1f}%"
+        elif h["rate"] <= sl:
+            reason = f"손절 {h['rate']:+.1f}%"
+        elif days is not None and days >= hold_days:
+            reason = f"{hold_days}일 경과 정리 {h['rate']:+.1f}%"
+        if reason and h["sellable"] > 0:
+            # 같은 날짜에 동일 종목의 매도 주문을 중복 제출하지 않음
+            sent = state.setdefault("sell_orders", {}).get(code, {})
+            if sent.get("date") == now().date().isoformat():
+                continue
+            ok, msg = kis.order("sell", code, h["sellable"])
+            log(f"**매도** {h['name']} {h['sellable']}주 시장가 ({reason}) → {'접수' if ok else '실패: ' + msg}")
+            notify(f"매도 {h['name']}", f"{h['sellable']}주 · {reason}" + ("" if ok else " · 실패: " + msg))
+            if ok:
+                sent = state["sell_orders"].get(code, {})
+                if not sent.get("recorded"):
+                    pnl = (h["now"] - h["avg"]) * h["sellable"]
+                    trades.append({"code": code, "name": h["name"], "date": now().isoformat(timespec="minutes"),
+                                   "rate": h["rate"], "pnl": round(pnl), "days": days, "estimated": True})
+                state["sell_orders"][code] = {"date": now().date().isoformat(), "qty": h["sellable"], "recorded": True}
+
+    # 교체 매도가 남아 있으면 신규 매수 금지
+    if replacement.get("pending") or replacement_waiting:
+        write_status(plan, state, kis.holdings(), kis)
+        return
+
+    # 투자한도는 계획 예산이 아니라 실제 보유원가 + 당일 미체결 예약금액 기준
+    held_now = kis.holdings()
+    invested = sum(h["avg"] * h["qty"] for h in held_now.values())
+    pending_cost = sum(float(v.get("krw", 0)) for c, v in buys.items()
+                       if c not in held_now and v.get("pending", True)
+                       and v.get("date", "")[:10] == now().date().isoformat())
+    available = max(0, cap - invested - pending_cost)
+    eligible = []
+    for item in plan.get("stocks", []):
+        code = item["code"]
+        if code in held_now:
+            continue
+        if code in buys:
+            old_date = str(buys[code].get("date", ""))[:10]
+            if old_date and old_date < now().date().isoformat():
+                log(f"{item.get('name', code)} 전일 매수 주문 미체결 가능성 → 재시도 대기 해제")
+                buys.pop(code, None)
+            else:
+                continue
+        eligible.append(item)
+    # 남은 한도를 미매수 후보 수로 나눠 특정 종목 하나가 현금을 독점하지 않도록 한다.
+    per_stock_room = min(cap / 3, available / max(1, len(eligible))) if eligible else 0
+
+    for item in eligible:
+        code, name = item["code"], item.get("name", item["code"])
         price = kis.price(code)
         if not price:
             log(f"{name} 시세 조회 실패, 다음 회차에 재시도")
             continue
         if price > float(item["max_buy_price"]):
             continue
-        px = round_up_tick(price * 1.003)  # 체결 잘 되도록 현재가보다 살짝 위
-        budget = float(item["budget_krw"])
+        px = round_up_tick(price * 1.003)
+        budget = min(float(item.get("budget_krw", 0)), per_stock_room, available)
         qty = int(budget // px)
         if qty < 1:
-            log(f"{name} 예산 {won(budget)}으로 1주도 못 삼 (현재가 {won(price)})")
+            log(f"{name} 매수 보류 · 남은 투자 가능액 {won(available)}, 현재가 {won(price)}")
             continue
-        if cap and spent + qty * px > cap:
-            log(f"{name} 총 투자한도 {won(cap)} 초과라 매수 보류")
-            continue
+        cost = qty * px
         ok, msg = kis.order("buy", code, qty, px)
         log(f"**매수** {name} {qty}주 @ {won(px)} (예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}")
         notify(f"매수 {name}", f"{qty}주 @ {won(px)}" + ("" if ok else " · 실패: " + msg))
         if ok:
-            buys[code] = {"date": now().isoformat(timespec="minutes"), "qty": qty, "krw": qty * px}
-            spent += qty * px
+            state.setdefault("sell_orders", {}).pop(code, None)
+            buys[code] = {"date": now().isoformat(timespec="minutes"), "qty": qty, "krw": cost, "pending": True}
+            available -= cost
 
-    write_status(plan, state, kis.holdings())
+    write_status(plan, state, kis.holdings(), kis)
 
 
-def write_status(plan, state, held):
-    """휴대폰 화면용 요약"""
-    mine = {s["code"] for s in plan.get("stocks", [])}
+def write_status(plan, state, held, kis):
+    """계좌 전체 보유 현황과 실제 계좌 잔액을 휴대폰 화면용으로 저장"""
     buys = state.get("buys", {})
     pos, cost, value = [], 0.0, 0.0
     for code, h in held.items():
-        if code not in mine:
-            continue
-        d = buys.get(code, {}).get("date")
+        meta = buys.get(code, {})
+        d = meta.get("date")
         days = (now().date() - datetime.fromisoformat(d).date()).days if d else None
+        buy_amount = h["avg"] * h["qty"]
+        eval_amount = h["now"] * h["qty"]
         pos.append({"code": code, "name": h["name"], "qty": h["qty"], "avg": h["avg"], "now": h["now"],
-                    "rate": h["rate"], "days": days})
-        cost += h["avg"] * h["qty"]
-        value += h["now"] * h["qty"]
+                    "rate": h["rate"], "days": days, "cost": round(buy_amount), "value": round(eval_amount),
+                    "pnl": round(eval_amount - buy_amount), "tracked": bool(d)})
+        cost += buy_amount
+        value += eval_amount
     trades = state.get("trades", [])
     year = str(now().year)
-    wins = sum(1 for t in trades if t["pnl"] > 0)
+    wins = sum(1 for t in trades if t.get("pnl", 0) > 0)
+    account = getattr(kis, "account_summary", {})
+    cash = float(account.get("cash", 0))
+    realized = sum(t.get("pnl", 0) for t in trades)
     save(STATUS, {
-        "updated": now().isoformat(timespec="minutes"),
-        "mode": plan.get("mode", "demo"),
+        "updated": now().isoformat(timespec="minutes"), "mode": plan.get("mode", "demo"),
         "positions": pos,
         "total": {"cost": round(cost), "value": round(value), "pnl": round(value - cost),
-                  "rate": round((value / cost - 1) * 100, 2) if cost else 0},
+                  "rate": round((value / cost - 1) * 100, 2) if cost else 0,
+                  "cash": round(cash), "assets": round(value + cash)},
         "record": {"trades": len(trades), "wins": wins,
                    "win_rate": round(wins / len(trades) * 100, 1) if trades else None,
-                   "realized_year": sum(t["pnl"] for t in trades if t["date"].startswith(year))},
+                   "realized_year": sum(t.get("pnl", 0) for t in trades if str(t.get("date", "")).startswith(year)),
+                   "realized_total": round(realized)},
     })
 
 
@@ -266,7 +335,9 @@ def main():
     if not market_open() and "--force" not in sys.argv:
         if "--check" in sys.argv:  # 장 밖에서 '지금 실행' → 연결만 확인, 주문 없음
             try:
-                write_status(plan, state, KIS(mode, plan.get("accounts")).holdings())
+                k = KIS(mode, plan.get("accounts"))
+                k.holdings()
+                write_status(plan, state, k.holdings(), k)
                 log(f"연결 확인 완료 ({'실전' if mode == 'real' else '모의'}) · 장이 닫혀 주문은 하지 않음")
             except Exception as e:
                 log(f"연결 실패 ({'실전' if mode == 'real' else '모의'}): {type(e).__name__}: {e}")

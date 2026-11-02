@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}.pick-options{display:flex;flex-direction:column;gap:8px;padding:12px;margin-top:10px;border:1px solid var(--line);border-radius:14px;font-size:13px}
+.pick-options label{display:flex;align-items:center;gap:8px;font-weight:500}
+.pick-options input{accent-color:var(--accent)}
+.pick-options small{display:block;color:var(--sub);font-size:11px;margin-left:24px}
+#oldPickList{display:flex;flex-direction:column;gap:6px;padding:6px 0 0 18px}
+</style>
+<title>존박 트레이딩</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 한 줄 카드 스택: 상태 → 컨펌할 일 → 보유 → 대기 → 기록, 하단에 큰 버튼 두 개 */
+:root{
+  --bg:#F3F4F7; --card:#FFFFFF; --ink:#15171C; --ink-fg:#F6F7F9; --ink-sub:#9AA0AC;
+  --fg:#15171C; --sub:#6B7280; --line:#E5E7EC;
+  --up:#E5383B; --down:#2F6FEB; --up-soft:#FDECEC; --down-soft:#E9F0FE;
+  --accent:#6A5AE0; --accent-soft:#EEEBFD; --accent-fg:#FFFFFF;
+  --warn:#B7791F; --warn-soft:#FFF6E5;
+  --sans:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:22px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1014; --card:#181B21; --ink:#22262E; --ink-fg:#F6F7F9; --ink-sub:#9AA0AC;
+  --fg:#ECEEF2; --sub:#9AA0AC; --line:#2A2E36;
+  --up:#FF6B6E; --down:#6C9BFF; --up-soft:#3A1C1E; --down-soft:#1A2540;
+  --accent:#9B8FFF; --accent-soft:#25213F; --accent-fg:#14121F;
+  --warn:#F2B35A; --warn-soft:#33270F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1014; --card:#181B21; --ink:#22262E; --ink-fg:#F6F7F9; --ink-sub:#9AA0AC;
+  --fg:#ECEEF2; --sub:#9AA0AC; --line:#2A2E36;
+  --up:#FF6B6E; --down:#6C9BFF; --up-soft:#3A1C1E; --down-soft:#1A2540;
+  --accent:#9B8FFF; --accent-soft:#25213F; --accent-fg:#14121F;
+  --warn:#F2B35A; --warn-soft:#33270F; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 calc(120px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+button{font:inherit;cursor:pointer;border:0}
+button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.top{display:flex;align-items:center;justify-content:space-between;padding-top:14px}
+.top h1{margin:0;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.top .r{display:flex;gap:8px;align-items:center}
+.chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--sub)}
+.chip.demo{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.chip.real{background:var(--up-soft);color:var(--up);border-color:transparent}
+.icon-btn{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--fg);display:grid;place-items:center}
+
+.sample{font-size:13px;color:var(--warn);background:var(--warn-soft);border-radius:14px;padding:10px 14px}
+
+.hero{background:var(--ink);color:var(--ink-fg);border-radius:var(--r);padding:22px 22px 20px}
+.hero .lbl{font-size:13px;color:var(--ink-sub)}
+.hero .big{font-size:34px;font-weight:700;letter-spacing:-.02em;margin:4px 0 2px}
+.hero .rate{font-size:16px;font-weight:700}
+.hero .meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:var(--ink-sub)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--ink-sub)}
+.dot.on{background:#3DD68C}
+.up{color:var(--up)} .down{color:var(--down)}
+.hero .up{color:#FF7A7C} .hero .down{color:#7FA8FF}
+
+.rec{display:grid;grid-template-columns:1.25fr 1.25fr 1fr 1fr;gap:8px}
+.rec div{background:var(--card);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.rec .k{font-size:12px;color:var(--sub)}
+.rec .v{font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:480px){.rec{grid-template-columns:1fr 1fr}}
+
+/* 총자산 현황 */
+.asset-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.asset-item{background:var(--card);border-radius:16px;padding:13px 12px;min-width:0}
+.asset-item .k{display:block;font-size:12px;color:var(--sub);margin-bottom:4px}
+.asset-item .v{display:block;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.asset-item .hint{display:block;font-size:11px;color:var(--sub);margin-top:3px}
+@media(max-width:380px){.asset-grid{grid-template-columns:1fr 1fr}.asset-item:last-child{grid-column:1/-1}}
+.card{background:var(--card);border-radius:var(--r);padding:18px}
+.sec{display:flex;justify-content:space-between;align-items:baseline;margin:6px 4px 0}
+.sec h2{margin:0;font-size:16px;font-weight:700}
+.sec span{font-size:13px;color:var(--sub)}
+.ver{background:none;color:var(--sub);font-size:12px;padding:8px;align-self:center}
+.vlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;max-height:50vh;overflow:auto}
+.vlist li{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14px}
+.vlist b{font-family:var(--mono);color:var(--accent)}
+.vlist time{grid-column:2;font-size:12px;color:var(--sub)}
+.linkbtn:disabled{color:var(--sub);cursor:default}
+.linkbtn{background:none;color:var(--accent);font-weight:600;font-size:14px;padding:4px 2px}
+
+.prop{background:var(--accent-soft);border-radius:var(--r);padding:20px}
+.prop .tag{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.prop h3{margin:4px 0 6px;font-size:19px;text-wrap:balance}
+.prop p{margin:0 0 12px;color:var(--sub);font-size:14px}
+.prow{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-top:1px solid color-mix(in srgb,var(--accent) 20%,transparent)}
+.prow b{font-size:15px}
+.prow .s{font-size:13px;color:var(--sub);grid-column:1/-1}
+.btn{width:100%;padding:15px;border-radius:16px;font-weight:700;font-size:16px}
+.btn.primary{background:var(--accent);color:var(--accent-fg)}
+.btn.ghost{background:transparent;color:var(--sub);font-weight:500;padding:10px}
+.btn.danger{background:var(--up);color:#fff}
+
+.pos{display:flex;flex-direction:column;gap:12px}
+.ph{display:flex;justify-content:space-between;align-items:center}
+.ph .t{font-weight:700;font-size:18px}
+.ph .q{font-size:13px;color:var(--sub);margin-left:8px;font-family:var(--sans)}
+.pill{font-family:var(--mono);font-weight:700;font-size:15px;padding:4px 10px;border-radius:10px}
+.pill.up{background:var(--up-soft)} .pill.down{background:var(--down-soft)}
+.range{position:relative;height:30px;margin-top:2px}
+.track{position:absolute;left:0;right:0;top:9px;height:8px;border-radius:8px;
+  background:linear-gradient(90deg,var(--down-soft),var(--line) 41%,var(--line) 41%,var(--up-soft))}
+.zero{position:absolute;top:5px;width:2px;height:16px;background:var(--sub);opacity:.5}
+.mark{position:absolute;top:4px;width:18px;height:18px;margin-left:-9px;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 2px currentColor;background:currentColor}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--sub)}
+.ends .num{font-size:12px}
+.px{display:flex;gap:16px;font-size:13px;color:var(--sub)}
+.px .num{color:var(--fg)}
+.divider{height:1px;background:var(--line);margin:4px 0}
+
+.wait{display:flex;flex-wrap:wrap;gap:8px}
+.wchip{background:var(--card);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column}
+.wchip b{font-weight:700} .wchip span{font-size:12px;color:var(--sub)}
+
+.log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.log li{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px;min-width:0}
+.log li:first-child{border-top:0;padding-top:0}
+.log time{font-family:var(--mono);font-size:12px;color:var(--sub);padding-top:2px;white-space:nowrap}
+.log .m{min-width:0;overflow-wrap:anywhere}
+.empty{color:var(--sub);font-size:14px;text-align:center;padding:8px 0}
+
+.dock{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));border-top:1px solid var(--line)}
+.dock .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.dock button{padding:12px 14px;border-radius:16px;font-weight:700;font-size:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px}
+.dock button .main{font-size:15px;font-weight:700;line-height:1.2}
+.dock button .sub{font-size:11px;font-weight:500;opacity:.75;line-height:1.2}
+
+.d-pause{background:var(--ink);color:var(--ink-fg)}
+.d-pause.paused{background:var(--accent);color:var(--accent-fg)}
+.d-run{background:var(--card);color:var(--fg);border:1px solid var(--line)}
+
+.sheet{position:fixed;inset:0;background:rgba(10,12,16,.45);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.sheet .box{background:var(--card);width:100%;max-width:560px;border-radius:24px 24px 0 0;
+  padding:22px max(18px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px}
+.sheet h3{margin:0;font-size:18px}
+.sheet p{margin:0;color:var(--sub);font-size:14px}
+.sheet label{font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:6px}
+.sheet input{font:inherit;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:100%}
+.sheet ol{margin:0;padding-left:20px;color:var(--sub);font-size:13px;display:flex;flex-direction:column;gap:2px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--ink-fg);padding:11px 18px;border-radius:999px;font-size:14px;z-index:30;max-width:calc(100% - 32px)}
+
+/* v9 */
+.status-bar{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 4px}
+.status-chip{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:5px}
+.status-chip .dot{width:6px;height:6px;border-radius:50%;margin:0;background:currentColor}
+.status-chip.on{background:#E8F8EF;color:#067F4C}
+.status-chip.off{background:#F3F4F6;color:#6B7280}
+.status-chip.pause{background:#FFF6E5;color:#B7791F}
+.status-chip.live{background:#FDECEC;color:#C53030}
+.status-chip.demo{background:#EEEBFD;color:#6A5AE0}
+.logo{width:36px;height:36px;border-radius:10px;object-fit:cover;background:var(--line);flex-shrink:0}
+.logo-fallback{width:36px;height:36px;border-radius:10px;display:none;place-items:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.ph-left{display:flex;align-items:center;gap:12px;min-width:0}
+.ph-left .meta-col{min-width:0}
+.ph-left .t{font-weight:700;font-size:16px}
+.ph-left .q{font-size:12px;color:var(--sub);margin-top:1px}
+.pnl-amt{font-size:12px;font-weight:600;margin-top:3px}
+.wchip .cond{font-size:11px;margin-top:2px}
+.wchip .cond.ok{color:#067F4C;font-weight:600}
+.wchip .cond.wait{color:var(--sub)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .status-chip.on{background:#163528;color:#3DD68C}
+  :root:not([data-theme="light"]) .status-chip.off{background:#22262E;color:#9AA0AC}
+  :root:not([data-theme="light"]) .status-chip.pause{background:#33270F;color:#F2B35A}
+  :root:not([data-theme="light"]) .status-chip.live{background:#3A1C1E;color:#FF6B6E}
+  :root:not([data-theme="light"]) .status-chip.demo{background:#25213F;color:#9B8FFF}
+}
+:root[data-theme="dark"] .status-chip.on{background:#163528;color:#3DD68C}
+:root[data-theme="dark"] .status-chip.off{background:#22262E;color:#9AA0AC}
+:root[data-theme="dark"] .status-chip.pause{background:#33270F;color:#F2B35A}
+:root[data-theme="dark"] .status-chip.live{background:#3A1C1E;color:#FF6B6E}
+:root[data-theme="dark"] .status-chip.demo{background:#25213F;color:#9B8FFF}
+
+
+.wchip{position:relative}
+.wchip .wa{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.wchip .wa button{font-size:12px;font-weight:600;padding:6px 10px;border-radius:10px;background:var(--bg);border:1px solid var(--line);color:var(--fg)}
+.wchip .wa button.primary{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.wchip .wa button.danger{color:var(--up);border-color:color-mix(in srgb,var(--up) 25%,var(--line))}
+.sec-actions{display:flex;gap:8px;align-items:center}
+
+@media (prefers-reduced-motion:no-preference){.mark{transition:left .6s ease}}
+</style>
+</head><body>
+
+
+<div class="wrap">
+  <header class="top">
+    <h1>존박 트레이딩</h1>
+    <div class="r">
+      <button id="mode" class="chip demo" aria-label="모의/실전 바꾸기">모의</button>
+      <button id="gear" class="icon-btn" aria-label="연결 설정">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="sample" class="sample" hidden>예시 화면입니다. 오른쪽 위 톱니바퀴에서 연결하면 존박님 실제 계좌가 보입니다.</div>
+
+  <div class="status-bar" id="statusBar" aria-label="모니터링 상태"></div>
+
+  <section class="hero" aria-label="요약">
+    <div class="lbl">자동매매 평가손익</div>
+    <div class="big num" id="pnl">0원</div>
+    <div class="rate num" id="rate">0.00%</div>
+    <div class="meta">
+      <span id="market"><i class="dot"></i>국내장 확인 중</span>
+      <span id="updated">마지막 실행 -</span>
+      <span id="rule">익절 +10% · 손절 -7%</span>
+    </div>
+  </section>
+
+  <section class="asset-grid" aria-label="총 보유자산 현황">
+    <div class="asset-item">
+      <span class="k">총 취득금액</span>
+      <span id="totalCost" class="v num">0원</span>
+      <span class="hint">보유 주식 매수 원금</span>
+    </div>
+    <div class="asset-item">
+      <span class="k">총 평가금액</span>
+      <span id="totalValue" class="v num">0원</span>
+      <span class="hint">현재가 기준</span>
+    </div>
+    <div class="asset-item">
+      <span class="k">평가손익</span>
+      <span id="totalPnl" class="v num">0원</span>
+      <span id="totalRate" class="hint num">0.00%</span>
+    </div>
+    <div class="asset-item">
+      <span class="k">주문 가능 현금</span>
+      <span id="totalCash" class="v num">-</span>
+      <span class="hint">계좌 잔액 기준</span>
+    </div>
+  </section>
+
+  <section class="rec" aria-label="성적">
+    <div><span class="k">누적 매도 추정손익</span><span id="rTotal" class="v num">0원</span></div>
+    <div><span class="k">올해 매도 추정손익</span><span id="rReal" class="v num">0원</span></div>
+    <div><span class="k">승률</span><span id="rWin" class="v num">-</span></div>
+    <div><span class="k">매매</span><span id="rCnt" class="v num">0건</span></div>
+  </section>
+
+  <section id="propWrap" hidden></section>
+
+  <div class="sec"><h2>보유 중</h2><span id="posCount"></span></div>
+  <section class="card"><div id="pos" class="pos"></div></section>
+
+  <div class="sec"><h2>매수 대기</h2><div class="sec-actions"><button id="skipAllWait" class="linkbtn" type="button">전부 넘기기</button><button id="newPlan" class="linkbtn">새 계획 받기</button></div></div>
+  <div id="wait" class="wait"></div>
+
+  <div class="sec"><h2>최근 기록</h2><button id="logCount" class="linkbtn"></button></div>
+  <section class="card"><ul id="log" class="log"></ul></section>
+  <button id="verBtn" class="ver">버전 확인 중</button>
+</div>
+
+<nav class="dock">
+  <div class="in">
+    <button id="pause" class="d-pause" type="button">
+      <span class="main" id="pauseMain">자동매매 일시정지</span>
+      <span class="sub" id="pauseSub">스케줄 매매 멈춤</span>
+    </button>
+    <button id="run" class="d-run" type="button">
+      <span class="main" id="runMain">지금 한 번 실행</span>
+      <span class="sub" id="runSub">봇을 즉시 돌림</span>
+    </button>
+  </div>
+</nav>
+
+<div id="sheet" class="sheet" hidden>
+  <form class="box" id="cfg">
+    <h3>계좌 연결</h3>
+    <p>처음 한 번만 넣으면 이 기기에 저장됩니다.</p>
+    <label for="tok">깃허브 토큰
+      <input id="tok" type="password" autocomplete="off" placeholder="github_pat_로 시작">
+    </label>
+    <label for="repo">저장소
+      <input id="repo" type="text" autocomplete="off" value="junkim10293847/autotrade">
+    </label>
+    <ol>
+      <li>깃허브 → Settings → Developer settings → Fine-grained tokens</li>
+      <li>Repository access: <b>autotrade 하나만</b></li>
+      <li>권한 3개 <b>Read and write</b>: Actions, Contents, Workflows</li>
+      <li>처음 연결하면 봇 파일이 자동으로 설치됩니다</li>
+      <li>휴대폰 알림: <b>ntfy</b> 앱 설치 → + → 주제 <b id="topic">jonpark-a02cc1254b</b> 구독</li>
+    </ol>
+    <button class="btn primary" type="submit" id="cfgGo">연결하기</button>
+    <button class="btn ghost" type="button" id="cfgClose">닫기</button>
+  </form>
+</div>
+
+<div id="confirmSheet" class="sheet" hidden>
+  <div class="box">
+    <h3 id="cTitle">확인</h3>
+    <p id="cBody"></p>
+    <button class="btn primary" id="cYes">실행</button>
+    <button class="btn ghost" id="cNo">취소</button>
+  </div>
+</div>
+
+<div id="verSheet" class="sheet" hidden>
+  <div class="box">
+    <h3 id="verTitle">버전</h3>
+    <p id="verState"></p>
+    <ul id="verList" class="vlist"></ul>
+    <button class="btn ghost" id="verClose">닫기</button>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const store = {
+  get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
+  set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
+};
+
+/* ---------- 예시 데이터 (연결 전 화면) ---------- */
+const SAMPLE = {
+  plan:{mode:"demo",paused:false,take_profit_pct:10,stop_loss_pct:-7,hold_days:14,max_total_krw:2000000,
+    stocks:[{code:"005930",name:"삼성전자",budget_krw:700000,max_buy_price:60000},
+            {code:"000660",name:"SK하이닉스",budget_krw:700000,max_buy_price:180000},
+            {code:"035420",name:"NAVER",budget_krw:600000,max_buy_price:190000}],
+    proposal:{note:"실적은 견조한데 최근 시장 하락으로 같이 밀린 대형주 2종목",
+      stocks:[{code:"105560",name:"KB금융",budget_krw:500000,max_buy_price:90000,why:"배당·자사주 확대, 20일선 아래로 눌림"},
+              {code:"012330",name:"현대모비스",budget_krw:500000,max_buy_price:250000,why:"실적 대비 낮은 주가, 고점 대비 -15%"}]}},
+  status:{updated:"2026-10-30T14:45+09:00",mode:"demo",
+    positions:[{code:"005930",name:"삼성전자",qty:12,avg:57800,now:60900,rate:5.36,days:3},
+               {code:"035420",name:"NAVER",qty:3,avg:186500,now:178000,rate:-4.56,days:9}],
+    total:{cost:1253100,value:1264800,pnl:11700,rate:0.93},
+    record:{trades:4,wins:3,win_rate:75,realized_year:96000,realized_total:96000}},
+  log:`- 2026-10-30 10:15 KST · **매도** 기아 5주 시장가 (익절 +10.4%) → 접수
+- 2026-10-27 09:30 KST · **매수** 삼성전자 12주 @ 57,800원 (예산 700,000원) → 접수
+- 2026-10-21 13:00 KST · **매수** NAVER 3주 @ 186,500원 (예산 600,000원) → 접수`
+};
+
+const VERSION = 13;
+const CHANGES = [
+  [13,"11/2","계좌 전체 보유 감시, 실제 투자한도, 종목 교체 선택, 계좌 현황 개선"],
+  [13,"11/2","누적 매도 추정손익 추가"],
+  [11,"11/2","하단 일시정지/실행 버튼 문구·설명 명확화"],
+  [10,"11/2","대기 종목 넘기기·지정가 상향·새계획 연동"],
+  [9,"11/2","모니터링 상태바, 보유 로고·손익금액, 대기 지정가 비교, UI 개선"],
+  [8,"11/2","보유 손익금액·장마감 버튼"],
+  [7,"11/1","추천 후보를 코스피 시가총액 상위 약 100개로 확대"],
+  [6,"11/1","우량주 65개로 확대, 최대 3종목 추천, 기록은 3건만 보이고 접기"],
+  [5,"11/1","버전 표시와 변경 내역 추가"],
+  [4,"11/1","새 계획 받기 진행 표시, 결과를 항상 알림"],
+  [3,"11/1","한 종목은 한도의 1/3까지만, 같은 계획 반복 방지"],
+  [2,"11/1","주간 매수 계획 자동 작성, 휴대폰 알림, 모의/실전 전환"],
+  [1,"10/30","국내주식 자동매매 첫 버전 (익절 +10%, 손절 -7%, 14일 정리)"]
+];
+let botVer = null, logOpen = false, pendingProposalChoice = null;
+const FILES = {"bot.py":"\"\"\"\n국내주식 자동매매 봇 (한국투자증권 Open API) — 존박\n\n규칙 (단순하게)\n1. 매도 감시는 계좌의 모든 보유 종목에 적용한다. 신규 매수는 plan.json 에 컨펌된 종목만 한다.\n2. 매수: 현재가가 '최대매수가' 이하이면 종목별 예산만큼 지정가로 한 번만 산다.\n3. 매도(시장가, 전량): 익절 +10% 이상 / 손절 -7% 이하 / 산 지 14일 지나면 정리.\n4. \"paused\": true 이면 아무것도 하지 않는다. (비상 정지)\n5. 모든 행동은 log.md, 주문·성적은 state.json, 휴대폰 화면용 요약은 status.json 에 남긴다.\n\"\"\"\nimport json\nimport math\nimport os\nimport sys\nfrom datetime import datetime, timedelta\nfrom zoneinfo import ZoneInfo\n\nimport requests\n\nROOT = os.path.dirname(os.path.abspath(__file__))\nPLAN, STATE, STATUS, LOG = (os.path.join(ROOT, f) for f in (\"plan.json\", \"state.json\", \"status.json\", \"log.md\"))\n\nURLS = {\n    \"demo\": \"https://openapivts.koreainvestment.com:29443\",\n    \"real\": \"https://openapi.koreainvestment.com:9443\",\n}\nKST = ZoneInfo(\"Asia/Seoul\")\n\n\ndef now():\n    return datetime.now(KST)\n\n\ndef log(msg):\n    line = f\"- {now():%Y-%m-%d %H:%M} KST · {msg}\"\n    print(line)\n    with open(LOG, \"a\", encoding=\"utf-8\") as f:\n        f.write(line + \"\\n\")\n\n\ndef notify(title, body):\n    \"\"\"휴대폰 알림 (ntfy 앱에서 notify.txt 의 주제를 구독)\"\"\"\n    try:\n        topic = open(os.path.join(ROOT, \"notify.txt\"), encoding=\"utf-8\").read().strip()\n        if topic:\n            requests.post(\"https://ntfy.sh/\", timeout=10,\n                          json={\"topic\": topic, \"title\": title, \"message\": body, \"tags\": [\"chart_with_upwards_trend\"]})\n    except Exception as e:\n        print(\"알림 실패\", e)\n\n\ndef load(path, default):\n    try:\n        with open(path, encoding=\"utf-8\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        return default\n\n\ndef save(path, data):\n    with open(path, \"w\", encoding=\"utf-8\") as f:\n        json.dump(data, f, ensure_ascii=False, indent=2)\n\n\ndef market_open(t=None):\n    t = t or now()\n    if t.weekday() >= 5:\n        return False\n    m = t.hour * 60 + t.minute\n    return 9 * 60 + 5 <= m <= 15 * 60 + 15  # 장 시작 5분 후 ~ 마감 15분 전\n\n\ndef tick(price):\n    \"\"\"국내 주식 호가 단위\"\"\"\n    for limit, unit in ((2000, 1), (5000, 5), (20000, 10), (50000, 50), (200000, 100), (500000, 500)):\n        if price < limit:\n            return unit\n    return 1000\n\n\ndef round_up_tick(price):\n    u = tick(price)\n    return int(math.ceil(price / u) * u)\n\n\nclass KIS:\n    def __init__(self, mode, accounts=None):\n        self.mode = mode\n        self.base = URLS[mode]\n        sfx = mode.upper()\n        self.key = os.environ[f\"KIS_APP_KEY_{sfx}\"]\n        self.secret = os.environ[f\"KIS_APP_SECRET_{sfx}\"]\n        acct = (os.environ.get(f\"KIS_ACCOUNT_{sfx}\") or (accounts or {}).get(mode, \"\")).replace(\"-\", \"\").strip()\n        if len(acct) < 8:\n            raise ValueError(f\"{mode} 계좌번호가 없습니다 (Secrets: KIS_ACCOUNT_DEMO / KIS_ACCOUNT_REAL)\")\n        self.acct, self.prod = acct[:8], (acct[8:10] or \"01\")\n        self.token = self._token()\n\n    def _token(self):\n        \"\"\"토큰은 하루 유효 — 캐시해 두고 20시간마다만 새로 받는다 (발급 횟수 제한·알림 방지)\"\"\"\n        cache = os.path.join(ROOT, f\".kis_token_{self.mode}.json\")\n        c = load(cache, {})\n        if c.get(\"key\") == self.key[:6] and now().timestamp() - c.get(\"at\", 0) < 20 * 3600:\n            return c[\"token\"]\n        r = requests.post(f\"{self.base}/oauth2/tokenP\", timeout=15,\n                          json={\"grant_type\": \"client_credentials\", \"appkey\": self.key, \"appsecret\": self.secret})\n        r.raise_for_status()\n        tok = r.json()[\"access_token\"]\n        save(cache, {\"key\": self.key[:6], \"at\": now().timestamp(), \"token\": tok})\n        return tok\n\n    def _h(self, tr_id):\n        return {\"content-type\": \"application/json; charset=utf-8\", \"authorization\": f\"Bearer {self.token}\",\n                \"appkey\": self.key, \"appsecret\": self.secret, \"tr_id\": tr_id, \"custtype\": \"P\"}\n\n    def tr(self, real_id):\n        return (\"V\" + real_id[1:]) if self.mode == \"demo\" else real_id\n\n    def price(self, code):\n        r = requests.get(f\"{self.base}/uapi/domestic-stock/v1/quotations/inquire-price\", timeout=15,\n                         headers=self._h(\"FHKST01010100\"),\n                         params={\"FID_COND_MRKT_DIV_CODE\": \"J\", \"FID_INPUT_ISCD\": code})\n        r.raise_for_status()\n        p = r.json().get(\"output\", {}).get(\"stck_prpr\")\n        return int(p) if p else None\n\n    def holdings(self):\n        r = requests.get(f\"{self.base}/uapi/domestic-stock/v1/trading/inquire-balance\", timeout=15,\n                         headers=self._h(self.tr(\"TTTC8434R\")),\n                         params={\"CANO\": self.acct, \"ACNT_PRDT_CD\": self.prod, \"AFHR_FLPR_YN\": \"N\", \"OFL_YN\": \"\",\n                                 \"INQR_DVSN\": \"02\", \"UNPR_DVSN\": \"01\", \"FUND_STTL_ICLD_YN\": \"N\",\n                                 \"FNCG_AMT_AUTO_RDPT_YN\": \"N\", \"PRCS_DVSN\": \"00\",\n                                 \"CTX_AREA_FK100\": \"\", \"CTX_AREA_NK100\": \"\"})\n        r.raise_for_status()\n        payload = r.json()\n        summary_rows = payload.get(\"output2\", []) or []\n        summary = summary_rows[0] if summary_rows else {}\n        self.account_summary = {\n            \"cash\": float(summary.get(\"ord_psbl_cash\") or summary.get(\"dnca_tot_amt\") or 0),\n            \"deposit\": float(summary.get(\"dnca_tot_amt\") or 0),\n            \"account_value\": float(summary.get(\"tot_evlu_amt\") or 0),\n        }\n        out = {}\n        for row in payload.get(\"output1\", []) or []:\n            qty = int(float(row.get(\"hldg_qty\") or 0))\n            if qty > 0:\n                out[row[\"pdno\"]] = {\"name\": row.get(\"prdt_name\", \"\"), \"qty\": qty,\n                                    \"sellable\": int(float(row.get(\"ord_psbl_qty\") or 0)),\n                                    \"avg\": float(row.get(\"pchs_avg_pric\") or 0), \"now\": float(row.get(\"prpr\") or 0),\n                                    \"rate\": float(row.get(\"evlu_pfls_rt\") or 0)}\n        return out\n\n    def order(self, side, code, qty, price=None):\n        \"\"\"price=None 이면 시장가\"\"\"\n        tr_id = self.tr(\"TTTC0012U\" if side == \"buy\" else \"TTTC0011U\")\n        body = {\"CANO\": self.acct, \"ACNT_PRDT_CD\": self.prod, \"PDNO\": code,\n                \"ORD_DVSN\": \"01\" if price is None else \"00\", \"ORD_QTY\": str(qty),\n                \"ORD_UNPR\": \"0\" if price is None else str(price), \"EXCG_ID_DVSN_CD\": \"KRX\",\n                \"SLL_TYPE\": \"01\" if side == \"sell\" else \"\", \"CNDT_PRIC\": \"\"}\n        data = requests.post(f\"{self.base}/uapi/domestic-stock/v1/trading/order-cash\", timeout=15,\n                             headers=self._h(tr_id), json=body).json()\n        return data.get(\"rt_cd\") == \"0\", data.get(\"msg1\", \"\")\n\n\ndef won(v):\n    return f\"{int(round(v)):,}원\"\n\n\ndef run(plan, state, kis):\n    tp = float(plan.get(\"take_profit_pct\", 10))\n    sl = float(plan.get(\"stop_loss_pct\", -7))\n    hold_days = int(plan.get(\"hold_days\", 14))\n    cap = float(plan.get(\"max_total_krw\", 2000000))\n    buys = state.setdefault(\"buys\", {})\n    trades = state.setdefault(\"trades\", [])\n    held = kis.holdings()\n\n    # 교체 선택 시 기존 보유분 매도가 끝날 때까지 신규 매수는 보류\n    replacement = plan.get(\"replacement\") or {}\n    replace_codes = set(replacement.get(\"sell_codes\", [])) if replacement.get(\"pending\") else set()\n    replacement_waiting = False\n    for code in list(replace_codes):\n        h = held.get(code)\n        if not h:\n            continue\n        replacement_waiting = True\n        pending = state.setdefault(\"replacement_sell_orders\", {})\n        last = pending.get(code, {})\n        if last.get(\"date\") == now().date().isoformat():\n            continue\n        if h[\"sellable\"] > 0:\n            ok, msg = kis.order(\"sell\", code, h[\"sellable\"])\n            log(f\"**교체 매도** {h['name']} {h['sellable']}주 시장가 → {'접수' if ok else '실패: ' + msg}\")\n            if ok:\n                pending[code] = {\"date\": now().date().isoformat(), \"qty\": h[\"sellable\"]}\n                sent = state.setdefault(\"sell_orders\", {}).get(code, {})\n                if not sent.get(\"recorded\"):\n                    pnl = (h[\"now\"] - h[\"avg\"]) * h[\"sellable\"]\n                    trades.append({\"code\": code, \"name\": h[\"name\"], \"date\": now().isoformat(timespec=\"minutes\"),\n                                   \"rate\": h[\"rate\"], \"pnl\": round(pnl), \"days\": None, \"estimated\": True, \"reason\": \"교체\"})\n                state[\"sell_orders\"][code] = {\"date\": now().date().isoformat(), \"qty\": h[\"sellable\"], \"recorded\": True}\n                notify(f\"교체 매도 {h['name']}\", f\"{h['sellable']}주 매도 주문 접수\")\n    if replacement.get(\"pending\") and not any(c in held for c in replace_codes):\n        replacement[\"pending\"] = False\n        plan[\"replacement\"] = replacement\n        save(PLAN, plan)\n        log(\"기존 종목 교체 매도 완료 · 신규 매수 재개\")\n        notify(\"종목 교체 완료\", \"기존 보유 종목 정리가 확인되어 신규 매수를 재개합니다\")\n\n    # 모든 계좌 보유 종목을 감시한다. 과거 매수일이 저장되지 않은 종목은 14일 조건만 적용하지 않는다.\n    for code, h in held.items():\n        if code in replace_codes:\n            continue\n        meta = buys.get(code, {})\n        d = meta.get(\"date\")\n        days = (now().date() - datetime.fromisoformat(d).date()).days if d else None\n        reason = None\n        if h[\"rate\"] >= tp:\n            reason = f\"익절 {h['rate']:+.1f}%\"\n        elif h[\"rate\"] <= sl:\n            reason = f\"손절 {h['rate']:+.1f}%\"\n        elif days is not None and days >= hold_days:\n            reason = f\"{hold_days}일 경과 정리 {h['rate']:+.1f}%\"\n        if reason and h[\"sellable\"] > 0:\n            # 같은 날짜에 동일 종목의 매도 주문을 중복 제출하지 않음\n            sent = state.setdefault(\"sell_orders\", {}).get(code, {})\n            if sent.get(\"date\") == now().date().isoformat():\n                continue\n            ok, msg = kis.order(\"sell\", code, h[\"sellable\"])\n            log(f\"**매도** {h['name']} {h['sellable']}주 시장가 ({reason}) → {'접수' if ok else '실패: ' + msg}\")\n            notify(f\"매도 {h['name']}\", f\"{h['sellable']}주 · {reason}\" + (\"\" if ok else \" · 실패: \" + msg))\n            if ok:\n                sent = state[\"sell_orders\"].get(code, {})\n                if not sent.get(\"recorded\"):\n                    pnl = (h[\"now\"] - h[\"avg\"]) * h[\"sellable\"]\n                    trades.append({\"code\": code, \"name\": h[\"name\"], \"date\": now().isoformat(timespec=\"minutes\"),\n                                   \"rate\": h[\"rate\"], \"pnl\": round(pnl), \"days\": days, \"estimated\": True})\n                state[\"sell_orders\"][code] = {\"date\": now().date().isoformat(), \"qty\": h[\"sellable\"], \"recorded\": True}\n\n    # 교체 매도가 남아 있으면 신규 매수 금지\n    if replacement.get(\"pending\") or replacement_waiting:\n        write_status(plan, state, kis.holdings(), kis)\n        return\n\n    # 투자한도는 계획 예산이 아니라 실제 보유원가 + 당일 미체결 예약금액 기준\n    held_now = kis.holdings()\n    invested = sum(h[\"avg\"] * h[\"qty\"] for h in held_now.values())\n    pending_cost = sum(float(v.get(\"krw\", 0)) for c, v in buys.items()\n                       if c not in held_now and v.get(\"pending\", True)\n                       and v.get(\"date\", \"\")[:10] == now().date().isoformat())\n    available = max(0, cap - invested - pending_cost)\n    eligible = []\n    for item in plan.get(\"stocks\", []):\n        code = item[\"code\"]\n        if code in held_now:\n            continue\n        if code in buys:\n            old_date = str(buys[code].get(\"date\", \"\"))[:10]\n            if old_date and old_date < now().date().isoformat():\n                log(f\"{item.get('name', code)} 전일 매수 주문 미체결 가능성 → 재시도 대기 해제\")\n                buys.pop(code, None)\n            else:\n                continue\n        eligible.append(item)\n    # 남은 한도를 미매수 후보 수로 나눠 특정 종목 하나가 현금을 독점하지 않도록 한다.\n    per_stock_room = min(cap / 3, available / max(1, len(eligible))) if eligible else 0\n\n    for item in eligible:\n        code, name = item[\"code\"], item.get(\"name\", item[\"code\"])\n        price = kis.price(code)\n        if not price:\n            log(f\"{name} 시세 조회 실패, 다음 회차에 재시도\")\n            continue\n        if price > float(item[\"max_buy_price\"]):\n            continue\n        px = round_up_tick(price * 1.003)\n        budget = min(float(item.get(\"budget_krw\", 0)), per_stock_room, available)\n        qty = int(budget // px)\n        if qty < 1:\n            log(f\"{name} 매수 보류 · 남은 투자 가능액 {won(available)}, 현재가 {won(price)}\")\n            continue\n        cost = qty * px\n        ok, msg = kis.order(\"buy\", code, qty, px)\n        log(f\"**매수** {name} {qty}주 @ {won(px)} (예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}\")\n        notify(f\"매수 {name}\", f\"{qty}주 @ {won(px)}\" + (\"\" if ok else \" · 실패: \" + msg))\n        if ok:\n            state.setdefault(\"sell_orders\", {}).pop(code, None)\n            buys[code] = {\"date\": now().isoformat(timespec=\"minutes\"), \"qty\": qty, \"krw\": cost, \"pending\": True}\n            available -= cost\n\n    write_status(plan, state, kis.holdings(), kis)\n\n\ndef write_status(plan, state, held, kis):\n    \"\"\"계좌 전체 보유 현황과 실제 계좌 잔액을 휴대폰 화면용으로 저장\"\"\"\n    buys = state.get(\"buys\", {})\n    pos, cost, value = [], 0.0, 0.0\n    for code, h in held.items():\n        meta = buys.get(code, {})\n        d = meta.get(\"date\")\n        days = (now().date() - datetime.fromisoformat(d).date()).days if d else None\n        buy_amount = h[\"avg\"] * h[\"qty\"]\n        eval_amount = h[\"now\"] * h[\"qty\"]\n        pos.append({\"code\": code, \"name\": h[\"name\"], \"qty\": h[\"qty\"], \"avg\": h[\"avg\"], \"now\": h[\"now\"],\n                    \"rate\": h[\"rate\"], \"days\": days, \"cost\": round(buy_amount), \"value\": round(eval_amount),\n                    \"pnl\": round(eval_amount - buy_amount), \"tracked\": bool(d)})\n        cost += buy_amount\n        value += eval_amount\n    trades = state.get(\"trades\", [])\n    year = str(now().year)\n    wins = sum(1 for t in trades if t.get(\"pnl\", 0) > 0)\n    account = getattr(kis, \"account_summary\", {})\n    cash = float(account.get(\"cash\", 0))\n    realized = sum(t.get(\"pnl\", 0) for t in trades)\n    save(STATUS, {\n        \"updated\": now().isoformat(timespec=\"minutes\"), \"mode\": plan.get(\"mode\", \"demo\"),\n        \"positions\": pos,\n        \"total\": {\"cost\": round(cost), \"value\": round(value), \"pnl\": round(value - cost),\n                  \"rate\": round((value / cost - 1) * 100, 2) if cost else 0,\n                  \"cash\": round(cash), \"assets\": round(value + cash)},\n        \"record\": {\"trades\": len(trades), \"wins\": wins,\n                   \"win_rate\": round(wins / len(trades) * 100, 1) if trades else None,\n                   \"realized_year\": sum(t.get(\"pnl\", 0) for t in trades if str(t.get(\"date\", \"\")).startswith(year)),\n                   \"realized_total\": round(realized)},\n    })\n\n\ndef main():\n    plan = load(PLAN, {})\n    if plan.get(\"paused\"):\n        print(\"일시정지 상태 — 종료\")\n        return\n    state = load(STATE, {})\n    mode = plan.get(\"mode\", \"demo\")\n    if not market_open() and \"--force\" not in sys.argv:\n        if \"--check\" in sys.argv:  # 장 밖에서 '지금 실행' → 연결만 확인, 주문 없음\n            try:\n                k = KIS(mode, plan.get(\"accounts\"))\n                k.holdings()\n                write_status(plan, state, k.holdings(), k)\n                log(f\"연결 확인 완료 ({'실전' if mode == 'real' else '모의'}) · 장이 닫혀 주문은 하지 않음\")\n            except Exception as e:\n                log(f\"연결 실패 ({'실전' if mode == 'real' else '모의'}): {type(e).__name__}: {e}\")\n            return\n        print(\"국내 정규장 시간이 아님 — 종료\")\n        return\n    try:\n        run(plan, state, KIS(mode, plan.get(\"accounts\")))\n    except Exception as e:  # 오류가 나도 기록만 남기고 다음 회차에 재시도\n        log(f\"오류: {type(e).__name__}: {e}\")\n    save(STATE, state)\n\n\nif __name__ == \"__main__\":\n    main()\n","planner.py":"\"\"\"\n주간 매수 계획 자동 작성 — 우량주 눌림목 (존박)\n\n매주 일요일 저녁 실행. 우량주 목록에서 아래 조건을 모두 통과한 종목 중 점수 상위 3개를\nplan.json 의 proposal 로 올리고 휴대폰으로 알림을 보낸다. 실제 매수는 앱에서 컨펌해야 시작된다.\n\n조건 (최근 100거래일 기준) — 아래 score() 설명 참고\n- 장기 상승 추세: 종가가 60일 평균 위\n- 눌림: 60일 최고가 대비 -8% ~ -25%\n- 단기 조정 중: 종가가 20일 평균 아래\n- 급락 중 아님: 최근 5일 하락이 -12% 이내\n점수 = 눌림 폭 + 60일선 위 여유 (깊게 빠졌지만 추세는 살아 있는 종목 우선)\n\"\"\"\nimport json\nimport os\nimport time\nfrom datetime import timedelta\n\nimport requests\n\nimport bot\n\n# 코스피 대형 우량주 약 100개 (plan.json 의 \"universe\" 로 바꿀 수 있음)\nUNIVERSE = {\n    \"005930\": \"삼성전자\", \"000660\": \"SK하이닉스\", \"005380\": \"현대차\", \"000270\": \"기아\",\n    \"012330\": \"현대모비스\", \"035420\": \"NAVER\", \"051910\": \"LG화학\", \"006400\": \"삼성SDI\",\n    \"207940\": \"삼성바이오로직스\", \"068270\": \"셀트리온\", \"105560\": \"KB금융\", \"055550\": \"신한지주\",\n    \"086790\": \"하나금융지주\", \"316140\": \"우리금융지주\", \"138040\": \"메리츠금융지주\", \"032830\": \"삼성생명\",\n    \"000810\": \"삼성화재\", \"028260\": \"삼성물산\", \"066570\": \"LG전자\", \"003550\": \"LG\",\n    \"017670\": \"SK텔레콤\", \"030200\": \"KT\", \"033780\": \"KT&G\", \"018260\": \"삼성에스디에스\",\n    \"012450\": \"한화에어로스페이스\", \"009540\": \"HD한국조선해양\", \"034020\": \"두산에너빌리티\",\n    \"010130\": \"고려아연\", \"005490\": \"POSCO홀딩스\", \"096770\": \"SK이노베이션\",\n    \"373220\": \"LG에너지솔루션\", \"035720\": \"카카오\", \"323410\": \"카카오뱅크\", \"259960\": \"크래프톤\",\n    \"036570\": \"엔씨소프트\", \"352820\": \"하이브\", \"009150\": \"삼성전기\", \"011070\": \"LG이노텍\",\n    \"034730\": \"SK\", \"003670\": \"포스코퓨처엠\", \"086280\": \"현대글로비스\", \"000720\": \"현대건설\",\n    \"028050\": \"삼성E&A\", \"010140\": \"삼성중공업\", \"042660\": \"한화오션\", \"329180\": \"HD현대중공업\",\n    \"267260\": \"HD현대일렉트릭\", \"064350\": \"현대로템\", \"047810\": \"한국항공우주\", \"079550\": \"LIG넥스원\",\n    \"024110\": \"기업은행\", \"006800\": \"미래에셋증권\", \"071050\": \"한국금융지주\", \"015760\": \"한국전력\",\n    \"090430\": \"아모레퍼시픽\", \"097950\": \"CJ제일제당\", \"271560\": \"오리온\", \"021240\": \"코웨이\",\n    \"161390\": \"한국타이어앤테크놀로지\", \"128940\": \"한미약품\", \"000100\": \"유한양행\", \"010950\": \"S-Oil\",\n    # v7: 코스피 시가총액 상위 약 100위까지\n    \"003490\": \"대한항공\", \"078930\": \"GS\", \"004020\": \"현대제철\", \"011780\": \"금호석유\",\n    \"001040\": \"CJ\", \"005830\": \"DB손해보험\", \"000150\": \"두산\", \"241560\": \"두산밥캣\",\n    \"010620\": \"HD현대미포\", \"267250\": \"HD현대\", \"042700\": \"한미반도체\", \"000880\": \"한화\",\n    \"009830\": \"한화솔루션\", \"272210\": \"한화시스템\", \"029780\": \"삼성카드\", \"016360\": \"삼성증권\",\n    \"039490\": \"키움증권\", \"005940\": \"NH투자증권\", \"088350\": \"한화생명\", \"001450\": \"현대해상\",\n    \"282330\": \"BGF리테일\", \"139480\": \"이마트\", \"023530\": \"롯데쇼핑\", \"004990\": \"롯데지주\",\n    \"011170\": \"롯데케미칼\", \"051900\": \"LG생활건강\", \"032640\": \"LG유플러스\", \"034220\": \"LG디스플레이\",\n    \"006260\": \"LS\", \"010120\": \"LS ELECTRIC\", \"047050\": \"포스코인터내셔널\", \"002380\": \"KCC\",\n    \"004370\": \"농심\", \"007310\": \"오뚜기\", \"036460\": \"한국가스공사\", \"180640\": \"한진칼\",\n    \"012750\": \"에스원\", \"302440\": \"SK바이오사이언스\", \"326030\": \"SK바이오팜\", \"011790\": \"SKC\",\n    \"402340\": \"SK스퀘어\", \"035250\": \"강원랜드\", \"008770\": \"호텔신라\", \"069960\": \"현대백화점\",\n}\nPICKS = 3\n\n\ndef daily(kis, code):\n    end = bot.now().date()\n    start = end - timedelta(days=160)\n    r = requests.get(f\"{kis.base}/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice\", timeout=15,\n                     headers=kis._h(\"FHKST03010100\"),\n                     params={\"FID_COND_MRKT_DIV_CODE\": \"J\", \"FID_INPUT_ISCD\": code,\n                             \"FID_INPUT_DATE_1\": start.strftime(\"%Y%m%d\"), \"FID_INPUT_DATE_2\": end.strftime(\"%Y%m%d\"),\n                             \"FID_PERIOD_DIV_CODE\": \"D\", \"FID_ORG_ADJ_PRC\": \"0\"})\n    r.raise_for_status()\n    rows = [x for x in r.json().get(\"output2\", []) or [] if x.get(\"stck_clpr\")]\n    return [float(x[\"stck_clpr\"]) for x in rows]  # 최신이 앞\n\n\ndef score(closes):\n    \"\"\"1순위(strict): 60일선 위 + 고점 대비 -8~-25% + 20일선 아래\n       2순위(relaxed): 60일선 -5% 이내 + 고점 대비 -5~-25% — 1순위가 3개 안 되면 채움\"\"\"\n    if len(closes) < 60:\n        return None\n    c = closes[0]\n    ma20 = sum(closes[:20]) / 20\n    ma60 = sum(closes[:60]) / 60\n    dd = (c / max(closes[:60]) - 1) * 100\n    wk = (c / closes[5] - 1) * 100\n    above = (c / ma60 - 1) * 100\n    if wk <= -12 or not (-25 <= dd <= -5):\n        return None\n    if c > ma60 and dd <= -8 and c < ma20:\n        tier = 1\n    elif above >= -5:\n        tier = 2\n    else:\n        return None\n    return {\"dd\": round(dd, 1), \"above60\": round(above, 1), \"close\": c, \"tier\": tier,\n            \"score\": (100 if tier == 1 else 0) - dd + above}\n\n\ndef make(plan, state, kis):\n    universe = plan.get(\"universe\") or UNIVERSE\n    # 기존 보유 종목과 현재 대기 중인 종목은 신규 후보에서 제외\n    held_codes = set(kis.holdings().keys())\n    busy = held_codes | {s[\"code\"] for s in plan.get(\"stocks\", [])}\n    cands = []\n    for code, name in universe.items():\n        if code in busy:\n            continue\n        try:\n            s = score(daily(kis, code))\n        except Exception as e:\n            print(name, \"조회 실패\", e)\n            continue\n        if s:\n            cands.append({\"code\": code, \"name\": name, **s})\n        time.sleep(0.12)  # 조회 속도 제한\n    cands.sort(key=lambda x: -x[\"score\"])\n    picks = cands[:PICKS]\n    if not picks:\n        return None\n\n    cap = float(plan.get(\"max_total_krw\", 2000000))\n    # 제안 예산은 전체 한도의 1/3로 제시한다. 실제 주문 시 봇이 계좌 보유원가와\n    # 당일 미체결 예약액을 다시 계산해 남은 한도 안에서만 매수한다.\n    each = int((cap / PICKS) // 10000 * 10000)\n    if each < 50000:\n        return None\n    return {\n        \"created\": bot.now().isoformat(timespec=\"minutes\"),\n        \"note\": f\"우량주 {len(universe)}개 중 최근 눌린 {len(picks)}종목 (규칙 자동 선정)\",\n        \"stocks\": [{\"code\": p[\"code\"], \"name\": p[\"name\"], \"budget_krw\": each,\n                    \"max_buy_price\": bot.round_up_tick(p[\"close\"] * 1.01),\n                    \"why\": f\"{'눌림목' if p['tier'] == 1 else '조정 초입'} · 60일 고점 대비 {p['dd']}%, 60일선 {p['above60']:+}%\"} for p in picks],\n    }\n\n\ndef main():\n    plan = bot.load(bot.PLAN, {})\n    state = bot.load(bot.STATE, {})\n    mode = plan.get(\"mode\", \"demo\")\n    try:\n        # 종목 중복 확인은 실제 주문이 이루어지는 계좌와 동일한 계좌 기준으로 한다.\n        # 모의투자 중에는 모의 계좌, 실전 중에는 실전 계좌의 보유 종목을 조회한다.\n        kis = bot.KIS(mode, plan.get(\"accounts\"))\n        prop = make(plan, state, kis)\n    except Exception as e:\n        bot.log(f\"계획 작성 실패: {type(e).__name__}: {e}\")\n        bot.notify(\"계획 작성 실패\", \"앱의 기록을 확인해 주세요\")\n        return\n    if not prop:\n        bot.log(\"이번 주는 조건에 맞는 종목이 없어 계획을 올리지 않음\")\n        bot.notify(\"이번 주 매수 계획 없음\", \"조건에 맞는 종목이 없어 쉬어갑니다\")\n        return\n    old = plan.get(\"proposal\") or {}\n    key = lambda p: [(s[\"code\"], s[\"budget_krw\"], s[\"max_buy_price\"]) for s in p.get(\"stocks\", [])]\n    if key(old) == key(prop):\n        bot.log(\"계획 다시 확인 · 기존 제안과 같음\")\n        if os.environ.get(\"GITHUB_EVENT_NAME\") == \"workflow_dispatch\":\n            bot.notify(\"계획 변동 없음\", \"올라와 있는 계획이 지금도 유효합니다\")\n        return\n    plan[\"proposal\"] = prop\n    bot.save(bot.PLAN, plan)\n    names = \", \".join(s[\"name\"] for s in prop[\"stocks\"])\n    bot.log(f\"새 매수 계획 제안: {names}\")\n    bot.notify(\"새 매수 계획 — 컨펌해 주세요\", f\"{names} · 앱에서 확인\")\n\n\nif __name__ == \"__main__\":\n    main()\n","plan.json":"{\n  \"mode\": \"demo\",\n  \"paused\": false,\n  \"take_profit_pct\": 10,\n  \"stop_loss_pct\": -7,\n  \"hold_days\": 14,\n  \"max_total_krw\": 2000000,\n  \"review_every\": \"2주\",\n  \"stocks\": [],\n  \"proposal\": null,\n  \"monitor_all_holdings\": true,\n  \"replacement\": {\"pending\": false, \"sell_codes\": []},\n  \"monitor_all_holdings\": true,\n  \"replacement\": {\n    \"pending\": false,\n    \"sell_codes\": []\n  }\n}\n","notify.txt":"jonpark-a02cc1254b\n","version.txt":"13\n",".github/workflows/trade.yml":"name: 자동매매\n\non:\n  schedule:\n    # 평일 국내장 시간(한국 9~15시 = UTC 0~6시)에 15분마다 — 정확한 장시간 판단은 bot.py가 함\n    - cron: \"*/15 0-6 * * 1-5\"\n  workflow_dispatch: {}   # 앱의 '지금 실행' 버튼 (장 밖이면 연결 확인만)\n\npermissions:\n  contents: write\n\nconcurrency:\n  group: trade\n  cancel-in-progress: false\n\njobs:\n  trade:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-python@v5\n        with:\n          python-version: \"3.12\"\n      - run: pip install requests\n      - name: 토큰 캐시\n        uses: actions/cache@v4\n        with:\n          path: .kis_token_*.json\n          key: kis-${{ github.run_id }}\n          restore-keys: kis-\n      - name: 봇 실행\n        env:\n          KIS_APP_KEY_DEMO: ${{ secrets.KIS_APP_KEY_DEMO }}\n          KIS_APP_SECRET_DEMO: ${{ secrets.KIS_APP_SECRET_DEMO }}\n          KIS_ACCOUNT_DEMO: ${{ secrets.KIS_ACCOUNT_DEMO }}\n          KIS_APP_KEY_REAL: ${{ secrets.KIS_APP_KEY_REAL }}\n          KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}\n          KIS_ACCOUNT_REAL: ${{ secrets.KIS_ACCOUNT_REAL }}\n        run: python bot.py ${{ github.event_name == 'workflow_dispatch' && '--check' || '' }}\n      - name: 기록 저장\n        run: |\n          git config user.name \"trade-bot\"\n          git config user.email \"trade-bot@users.noreply.github.com\"\n          for f in state.json log.md status.json plan.json; do [ -f \"$f\" ] && git add \"$f\"; done\n          git diff --cached --quiet || (git commit -m \"매매 기록 $(date -u +%F' '%H:%M)\" && git pull --rebase -q && git push)\n",".github/workflows/plan.yml":"name: 주간 매수 계획\n\non:\n  schedule:\n    - cron: \"37 10 * * 0\"   # 매주 일요일 19:37 (한국 시간)\n  workflow_dispatch: {}      # 앱의 '새 계획 받기' 버튼\n\npermissions:\n  contents: write\n\nconcurrency:\n  group: trade\n  cancel-in-progress: false\n\njobs:\n  plan:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-python@v5\n        with:\n          python-version: \"3.12\"\n      - run: pip install requests\n      - name: 토큰 캐시\n        uses: actions/cache@v4\n        with:\n          path: .kis_token_*.json\n          key: kis-${{ github.run_id }}\n          restore-keys: kis-\n      - name: 계획 작성\n        env:\n          KIS_APP_KEY_DEMO: ${{ secrets.KIS_APP_KEY_DEMO }}\n          KIS_APP_SECRET_DEMO: ${{ secrets.KIS_APP_SECRET_DEMO }}\n          KIS_ACCOUNT_DEMO: ${{ secrets.KIS_ACCOUNT_DEMO }}\n          KIS_APP_KEY_REAL: ${{ secrets.KIS_APP_KEY_REAL }}\n          KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}\n          KIS_ACCOUNT_REAL: ${{ secrets.KIS_ACCOUNT_REAL }}\n        run: python planner.py\n      - name: 기록 저장\n        run: |\n          git config user.name \"trade-bot\"\n          git config user.email \"trade-bot@users.noreply.github.com\"\n          for f in plan.json log.md; do [ -f \"$f\" ] && git add \"$f\"; done\n          git diff --cached --quiet || (git commit -m \"주간 매수 계획 $(date -u +%F)\" && git pull --rebase -q && git push)\n","README.md":"# 국내주식 자동매매 (존박)\n\n## 흐름\n1. 2주마다 Claude가 종목을 분석해 **매수 계획**을 제안\n2. 존박님이 **컨펌**\n3. 휴대폰 화면에서 컨펌 → 봇이 평일 장중 15분마다 자동으로 매수·익절·손절\n4. 결과는 `log.md`에서 확인 (아이패드 GitHub 앱)\n\n## 규칙\n- 익절 **+10%**, 손절 **-7%**, **14일 지나면 정리** (전량 시장가 매도)\n- `plan.json`에 있는 종목만 매매, 종목당 1회 매수\n- 총 투자한도 `max_total_usd` 초과 시 매수 안 함\n- **비상 정지:** `plan.json`에서 `\"paused\": true`\n\n## 처음 한 번만 하는 설정 (아이패드)\n1. GitHub에서 **Private** 저장소 `autotrade` 생성 후 이 파일들 업로드\n2. 저장소 → Settings → Secrets and variables → Actions → New repository secret 6개:\n   - `KIS_APP_KEY_DEMO`, `KIS_APP_SECRET_DEMO`, `KIS_ACCOUNT_DEMO` — 모의투자 앱키·시크릿·계좌번호 10자리\n   - `KIS_APP_KEY_REAL`, `KIS_APP_SECRET_REAL`, `KIS_ACCOUNT_REAL` — 실전 앱키·시크릿·계좌번호 10자리\n3. Actions 탭 → \"미국주식 자동매매\" → Run workflow 로 연결 확인\n\n## 실전 전환\n모의투자 1주일 확인 후 `plan.json`의 `\"mode\"`를 `\"real\"`로 바꾸면 끝 (키는 미리 넣어둠)\n\n## plan.json 종목 예시\n```json\n{\"code\": \"005930\", \"name\": \"삼성전자\", \"budget_krw\": 700000, \"max_buy_price\": 60000}\n```\n미국주식 버전은 `bot_us.py` (내년에 사용 예정)\n\n\n## v13 개선\n- 계좌 전체 보유 종목을 계획과 무관하게 익절/손절 감시\n- 매수일 기록이 있는 종목에 한해 14일 보유기간 정리 적용\n- 신규 후보는 실제 보유 종목 및 기존 대기 종목과 중복 제외\n- 총 투자한도는 계획 예산 합계가 아니라 실제 보유원가와 당일 주문 예약액으로 계산\n- 교체 선택 시 선택한 기존 종목의 매도 완료 확인 후 신규 매수\n- 종목별 매수원금/평가금액/평가손익 및 계좌 현금·자산 요약 저장\n\n- 매도 손익은 주문 접수 시점의 계좌 평균단가·현재가로 계산한 추정치이며, 체결가 확정값과 차이가 날 수 있음\n- 모의/실전 모드에 맞는 동일 계좌에서 보유 종목 중복 여부 확인\n"};
+async function install(){
+  if(!Object.keys(FILES).length) return false;
+  const have = await getFile("version.txt");
+  botVer = have!==null ? +have.trim() : null;
+  if(have!==null && have.trim()===String(FILES["version.txt"]||"").trim()) return false;
+  for(const [path,text] of Object.entries(FILES)){
+    const cur = await getFile(path);  // 기존 파일이면 sha 확보
+    if(path==="plan.json" && cur!==null) continue;
+    if(cur===text) continue;
+    await putFile(path, text, "봇 설치: "+path);
+  }
+  botVer = VERSION;
+  return true;
+}
+
+const cfg = { token: store.get("tt_token") || "", repo: store.get("tt_repo") || "junkim10293847/autotrade" };
+let data = null, sha = {};
+
+/* ---------- GitHub ---------- */
+const api = (path, opt={}) => fetch(`https://api.github.com/repos/${cfg.repo}${path?"/"+path:""}`, {
+  ...opt, headers:{Authorization:`Bearer ${cfg.token}`,Accept:"application/vnd.github+json",...(opt.headers||{})}
+});
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,"")), c=>c.charCodeAt(0)));
+const b64enc = s => { const b=new TextEncoder().encode(s); let r=""; b.forEach(x=>r+=String.fromCharCode(x)); return btoa(r) };
+async function getFile(p){
+  const r = await api(`contents/${p}`);
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error(r.status===401?"토큰이 맞지 않습니다":`불러오기 실패 (${r.status})`);
+  const j = await r.json(); sha[p]=j.sha; return b64dec(j.content);
+}
+async function putFile(p, text, msg){
+  const r = await api(`contents/${p}`, {method:"PUT", body:JSON.stringify({message:msg, content:b64enc(text), sha:sha[p]})});
+  if(!r.ok) throw new Error(r.status===409?"다른 곳에서 바뀌었습니다. 새로고침 후 다시 해주세요":`저장 실패 (${r.status})`);
+  sha[p] = (await r.json()).content.sha;
+}
+
+let checked = false;
+async function load(){
+  if(cfg.token && !checked){ checked = true; try{ if(await install()) toast("봇을 새 버전으로 업데이트했습니다") }catch(e){} }
+  if(!cfg.token){ data = SAMPLE; $("sample").hidden=false; render(); return }
+  $("sample").hidden = true;
+  try{
+    const [plan,status,log] = await Promise.all([getFile("plan.json"),getFile("status.json"),getFile("log.md")]);
+    data = { plan: JSON.parse(plan||"{}"), status: status?JSON.parse(status):null, log: log||"" };
+    render();
+  }catch(e){ toast(e.message); data = SAMPLE; $("sample").hidden=false; render() }
+}
+
+/* ---------- 화면 ---------- */
+const won = v => (v<0?"-":"")+Math.round(Math.abs(v)).toLocaleString("ko-KR")+"원";
+const sign = v => (v>0?"+":"")+v.toFixed(2)+"%";
+const cls = v => v>0?"up":v<0?"down":"";
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function krOpen(){
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Seoul",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+  const m = (+p.hour%24)*60 + +p.minute;
+  return !["Sat","Sun"].includes(p.weekday) && m>=540 && m<930;
+}
+
+function render(){
+  const {plan, status, log} = data;
+  const tp = +plan.take_profit_pct||10, sl = +plan.stop_loss_pct||-7, hd = +plan.hold_days||14;
+  const mode = plan.mode==="real";
+  $("mode").textContent = mode?"실전":"모의"; $("mode").className = "chip "+(mode?"real":"demo");
+
+  const t = status?.total || {cost:0,value:0,pnl:0,rate:0};
+  $("totalCost").textContent = won(t.cost||0);
+  $("totalValue").textContent = won(t.value||0);
+  $("totalPnl").textContent = (t.pnl>0?"+":"")+won(t.pnl||0);
+  $("totalPnl").className = "v num "+cls(t.pnl||0);
+  $("totalRate").textContent = sign(+t.rate||0);
+  $("totalRate").className = "hint num "+cls(+t.rate||0);
+  $("totalCash").textContent = t.cash==null?"조회 대기":won(t.cash);
+  $("pnl").textContent = (t.pnl>0?"+":"")+won(t.pnl||0); $("pnl").className = "big num "+cls(t.pnl||0);
+  $("rate").textContent = sign(t.rate); $("rate").className = "rate num "+cls(t.rate);
+  const open = krOpen();
+  $("market").innerHTML = `<i class="dot ${open?"on":""}"></i>국내장 ${open?"열림":"닫힘"}`;
+  $("updated").textContent = "마지막 실행 " + (status?.updated ? new Date(status.updated).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : "아직 없음");
+  $("rule").textContent = `익절 +${tp}% · 손절 ${sl}% · ${hd}일`;
+  const connected = !!cfg.token;
+  const paused = !!plan.paused;
+  let sb = "";
+  if(!connected) sb += `<span class="status-chip off"><i class="dot"></i>예시 화면</span>`;
+  else if(paused) sb += `<span class="status-chip pause"><i class="dot"></i>일시정지</span>`;
+  else sb += `<span class="status-chip on"><i class="dot"></i>모니터링 중</span>`;
+  sb += mode ? `<span class="status-chip live">실전</span>` : `<span class="status-chip demo">모의</span>`;
+  sb += open ? `<span class="status-chip on">장 열림</span>` : `<span class="status-chip off">장 닫힘</span>`;
+  $("statusBar").innerHTML = sb;
+  const rc = status?.record || {};
+  $("rWin").textContent = rc.win_rate==null?"-":rc.win_rate+"%";
+  $("rWin").className = "v num "+(rc.win_rate==null?"":rc.win_rate>=50?"up":rc.win_rate<45?"down":"");
+  $("rCnt").textContent = (rc.trades||0)+"건";
+  const rt = rc.realized_total ?? (rc.realized_year||0);
+  $("rTotal").textContent = (rt>0?"+":"")+won(rt); $("rTotal").className = "v num "+cls(rt);
+  const ry = rc.realized_year||0;
+  $("rReal").textContent = (ry>0?"+":"")+won(ry); $("rReal").className = "v num "+cls(ry);
+
+  // 컨펌할 계획
+  const pr = plan.proposal;
+  $("propWrap").hidden = !pr;
+  if(pr){
+    const sum = pr.stocks.reduce((a,s)=>a+ +s.budget_krw,0);
+    $("propWrap").innerHTML = `<div class="prop">
+      <div class="tag">CLAUDE 제안 · 컨펌 대기</div>
+      <h3>새 매수 계획 ${pr.stocks.length}종목 · ${won(sum)}</h3>
+      ${pr.note?`<p>${esc(pr.note)}</p>`:""}
+      <div class="pick-options"><b>기존 보유 종목 처리</b>
+        <label><input type="radio" name="replaceMode" value="keep" checked> 기존 종목 유지 + 새 종목 추가</label>
+        <label><input type="radio" name="replaceMode" value="replace"> 기존 보유 종목 전부 매도 후 교체</label>
+        <label><input type="radio" name="replaceMode" value="partial"> 선택한 기존 종목만 매도 후 교체</label>
+        <div id="oldPickList">${(status?.positions||[]).map(h=>`<label><input type="checkbox" class="oldPick" value="${esc(h.code)}"> ${esc(h.name)} · ${h.qty}주</label>`).join("") || '<small>현재 보유 종목 없음</small>'}</div>
+      </div>
+      <div class="pick-options"><b>신규 추천 종목 선택</b>
+        ${pr.stocks.map(s=>`<label><input type="checkbox" class="newPick" value="${esc(s.code)}" checked> ${esc(s.name)} · ${won(+s.budget_krw)}<small>${won(+s.max_buy_price)} 이하 매수${s.why?" · "+esc(s.why):""}</small></label>`).join("")}
+      </div>
+      <button class="btn primary" id="okProp" style="margin-top:12px">선택한 내용으로 컨펌</button>
+      <button class="btn ghost" id="noProp">이번 계획은 넘기기</button></div>`;
+    document.querySelectorAll('input[name="replaceMode"]').forEach(el=>el.onchange=()=>{
+      const partial=document.querySelector('input[name="replaceMode"][value="partial"]').checked;
+      $("oldPickList").style.opacity=partial?"1":".55";
+      document.querySelectorAll(".oldPick").forEach(x=>x.disabled=!partial);
+    });
+    document.querySelectorAll(".oldPick").forEach(x=>x.disabled=true);
+    $("okProp").onclick = () => {
+      const mode=document.querySelector('input[name="replaceMode"]:checked')?.value||"keep";
+      const chosen=[...document.querySelectorAll(".newPick:checked")].map(x=>x.value);
+      const old=[...document.querySelectorAll(".oldPick:checked")].map(x=>x.value);
+      if(!chosen.length){toast("신규 종목을 최소 1개 선택하세요");return}
+      if(mode==="partial"&&!old.length){toast("매도할 기존 종목을 선택하세요");return}
+      pendingProposalChoice={mode,chosen,old};
+      const sellNames=(status?.positions||[]).filter(h=>mode==="replace"||old.includes(h.code)).map(h=>h.name);
+      ask("이 매수 계획을 확정할까요?", `${chosen.length}개 신규 종목 선택. ${mode==="keep"?"기존 보유 유지":`기존 매도 대상: ${sellNames.join(", ")||"없음"}`}. 매도 주문은 선택한 경우에만 제출합니다.`, confirmProposal);
+    };
+    $("noProp").onclick = () => ask("이번 계획을 넘길까요?", "제안이 사라지고 아무것도 사지 않습니다.", dropProposal);
+  }
+
+  // 보유
+  const held = status?.positions || [];
+  $("posCount").textContent = held.length?`${held.length}종목`:"";
+  const lo = sl*1.3, hi = tp*1.3, pct = v => Math.max(0,Math.min(100,(v-lo)/(hi-lo)*100));
+  const logoColors = ["#6A5AE0","#E5383B","#2F6FEB","#059669","#D97706","#7C3AED","#0891B2","#DB2777"];
+  const logoOf = (code, name) => {
+    const c = logoColors[(code||"").split("").reduce((a,ch)=>a+ch.charCodeAt(0),0) % logoColors.length];
+    const initial = (name||code||"?").replace(/\s/g,"").slice(0,2);
+    return `<img class="logo" src="https://ssl.pstatic.net/imgstock/fn/real/logo/stock/${code}.png" alt="" loading="lazy"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" />
+      <div class="logo-fallback" style="background:${c}">${esc(initial)}</div>`;
+  };
+  $("pos").innerHTML = held.length ? held.map((h,i)=>{
+    const pnlAmt = (h.now - h.avg) * h.qty;
+    return `${i?'<div class="divider"></div>':""}
+    <div class="ph">
+      <div class="ph-left">
+        ${logoOf(h.code, h.name)}
+        <div class="meta-col">
+          <div class="t">${esc(h.name)}</div>
+          <div class="q">${h.qty}주${h.days!=null?` · ${h.days}/${hd}일`:""}</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <span class="pill num ${cls(h.rate)}">${sign(h.rate)}</span>
+        <div class="pnl-amt num ${cls(pnlAmt)}">${(pnlAmt>0?"+":"")+won(pnlAmt)}</div>
+      </div>
+    </div>
+    <div class="range" aria-label="손절 ${sl}%와 익절 +${tp}% 사이 현재 위치">
+      <div class="track"></div><div class="zero" style="left:${pct(0)}%"></div>
+      <div class="zero" style="left:${pct(sl)}%;background:var(--down);opacity:1"></div>
+      <div class="zero" style="left:${pct(tp)}%;background:var(--up);opacity:1"></div>
+      <div class="mark ${cls(h.rate)}" style="left:${pct(h.rate)}%"></div></div>
+    <div class="ends"><span>손절 <span class="num">${sl}%</span></span><span>익절 <span class="num">+${tp}%</span></span></div>
+    <div class="px"><span>평균단가 <span class="num">${won(h.avg)}</span></span><span>현재가 <span class="num">${won(h.now)}</span></span></div>
+    <div class="px"><span>매수금액 <span class="num">${won(h.avg*h.qty)}</span></span><span>평가금액 <span class="num">${won(h.now*h.qty)}</span></span></div>`;
+  }).join("")
+    : `<div class="empty">아직 산 종목이 없습니다</div>`;
+
+  // 대기
+  const heldSet = new Set(held.map(h=>h.code));
+  const waiting = (plan.stocks||[]).filter(s=>!heldSet.has(s.code));
+  $("wait").innerHTML = waiting.length ? waiting.map(s=>`<div class="wchip" data-code="${esc(s.code)}">
+      <b>${esc(s.name)}</b>
+      <span>지정가 ${won(+s.max_buy_price)} 이하 · 예산 ${won(+s.budget_krw)}</span>
+      <span class="cond wait">현재가가 지정가 이하일 때 매수</span>
+      <div class="wa">
+        <button type="button" class="primary" data-act="raise" data-code="${esc(s.code)}">지정가 +3% 올리기</button>
+        <button type="button" class="danger" data-act="skip" data-code="${esc(s.code)}">이 종목 넘기기</button>
+      </div>
+    </div>`).join("")
+    : `<div class="card empty" style="width:100%">대기 중인 종목이 없습니다</div>`;
+  $("skipAllWait").style.display = waiting.length ? "" : "none";
+  // 대기 종목 버튼 이벤트
+  $("wait").querySelectorAll("button[data-act]").forEach(btn=>{
+    btn.onclick = () => {
+      const code = btn.getAttribute("data-code");
+      const act = btn.getAttribute("data-act");
+      const item = (data.plan.stocks||[]).find(s=>s.code===code);
+      if(!item) return;
+      if(act==="skip"){
+        ask("이 종목을 넘길까요?", `${item.name}을(를) 대기 목록에서 빼고 더 이상 사지 않습니다. 예산이 비면 새 계획을 받을 수 있습니다.`,
+          () => guarded(async()=>{
+            data.plan.stocks = (data.plan.stocks||[]).filter(s=>s.code!==code);
+            render();
+            if(await savePlan(`${item.name} 대기 넘김`)) toast(`${item.name}을(를) 넘겼습니다`);
+          }));
+      } else if(act==="raise"){
+        const old = +item.max_buy_price;
+        const next = Math.round(old * 1.03 / 10) * 10; // +3%, 10원 단위
+        ask("지정가를 올릴까요?", `${item.name} 지정가 ${won(old)} → ${won(next)} (+3%). 현재가가 이 가격 이하면 매수합니다.`,
+          () => guarded(async()=>{
+            item.max_buy_price = next;
+            render();
+            if(await savePlan(`${item.name} 지정가 상향`)) toast(`지정가를 ${won(next)}로 올렸습니다. 「지금 실행」을 눌러보세요`);
+          }));
+      }
+    };
+  });
+
+  // 기록
+  const all = (log||"").split("\n").filter(l=>l.startsWith("- ")).reverse();
+  const lines = all.slice(0, logOpen?20:3);
+  $("logCount").textContent = all.length>3 ? (logOpen?"접기":`더 보기 (${Math.min(all.length,20)}건)`) : "";
+  $("log").innerHTML = lines.length ? lines.map(l=>{
+    const m = l.match(/^- (\d{4}-(\d\d)-(\d\d) (\d\d:\d\d)) KST · (.*)$/);
+    const when = m?`${+m[2]}/${+m[3]} ${m[4]}`:"";
+    const msg = esc(m?m[5]:l.slice(2)).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
+    return `<li><time>${when}</time><span class="m">${msg}</span></li>`}).join("")
+    : `<li class="empty">아직 기록이 없습니다</li>`;
+
+  $("verBtn").textContent = `v${VERSION} · 변경 내역`;
+  $("pause").classList.toggle("paused", !!plan.paused);
+  if(plan.paused){
+    $("pauseMain").textContent = "자동매매 재개";
+    $("pauseSub").textContent = "스케줄 매매 다시 켜기";
+  } else {
+    $("pauseMain").textContent = "자동매매 일시정지";
+    $("pauseSub").textContent = "스케줄 매매 멈춤";
+  }
+  if(open){
+    $("runMain").textContent = "지금 한 번 실행";
+    $("runSub").textContent = "조건 맞으면 즉시 주문";
+  } else {
+    $("runMain").textContent = "연결만 확인";
+    $("runSub").textContent = "장 마감 · 주문 없음";
+  }
+  $("run").style.opacity = "1";
+}
+
+/* ---------- 동작 ---------- */
+function toast(t){ const el=$("toast"); el.textContent=t; el.hidden=false; clearTimeout(el._t); el._t=setTimeout(()=>el.hidden=true,2600) }
+function ask(title, body, fn){
+  $("cTitle").textContent=title; $("cBody").textContent=body; $("confirmSheet").hidden=false;
+  $("cYes").onclick=async()=>{ $("confirmSheet").hidden=true; await fn() };
+}
+$("cNo").onclick=()=>$("confirmSheet").hidden=true;
+
+async function savePlan(msg){
+  if(!cfg.token){ toast("예시 화면이라 저장하지 않았습니다"); render(); return false }
+  await putFile("plan.json", JSON.stringify(data.plan,null,2)+"\n", msg); return true;
+}
+async function guarded(fn){ try{ await fn() }catch(e){ toast(e.message); await load() } }
+
+const confirmProposal = () => guarded(async()=>{
+  const p = data.plan, pr = p.proposal, choice=pendingProposalChoice||{mode:"keep",chosen:pr.stocks.map(s=>s.code),old:[]};
+  const selected=pr.stocks.filter(s=>choice.chosen.includes(s.code));
+  const sellCodes=choice.mode==="replace"?(data.status?.positions||[]).map(h=>h.code):choice.mode==="partial"?choice.old:[];
+  const have = new Set((p.stocks||[]).map(s=>s.code));
+  if(choice.mode==="replace") p.stocks=[];
+  else if(choice.mode==="partial") p.stocks=(p.stocks||[]).filter(s=>!sellCodes.includes(s.code));
+  p.stocks=[...(p.stocks||[]),...selected.filter(s=>!have.has(s.code)||sellCodes.includes(s.code)).map(({why,...s})=>s)];
+  p.replacement={pending:sellCodes.length>0,sell_codes:sellCodes,mode:choice.mode};
+  p.proposal=null; pendingProposalChoice=null; render();
+  if(await savePlan("신규 계획 컨펌 · 기존 보유 처리: "+choice.mode)) toast(sellCodes.length?"기존 종목 매도 확인 후 신규 매수를 시작합니다":"컨펌했습니다. 장중에 자동매매합니다");
+});
+const dropProposal = () => guarded(async()=>{
+  data.plan.proposal = null; render();
+  if(await savePlan("매수 계획 넘김")) toast("이번 계획을 넘겼습니다");
+});
+$("pause").onclick = () => {
+  const p = data.plan, to = !p.paused;
+  ask(to?"자동매매를 일시정지할까요?":"자동매매를 다시 시작할까요?", to?"15분마다 도는 스케줄을 멈춥니다. 이미 넣은 주문은 그대로입니다.":"15분마다 자동으로 매수·익절·손절을 다시 합니다.",
+    () => guarded(async()=>{ p.paused = to; render(); if(await savePlan(to?"일시정지":"다시 시작")) toast(to?"멈췄습니다":"다시 시작했습니다") }));
+};
+$("run").onclick = () => ask("봇을 지금 한 번 실행할까요?", "대기 종목 중 지정가 이하인 것만 매수하고, 보유 종목은 익절·손절 조건을 검사합니다. 장 마감이면 연결 확인만 합니다. 1~2분 뒤 새로고침하세요.",
+  () => guarded(async()=>{
+    if(!cfg.token){ toast("예시 화면이라 실행하지 않았습니다"); return }
+    const r = await api("actions/workflows/trade.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})});
+    if(!r.ok) throw new Error(`실행 요청 실패 (${r.status})`);
+    toast("실행을 요청했습니다");
+  }));
+
+$("mode").onclick = () => {
+  const p = data.plan, toReal = p.mode!=="real";
+  ask(toReal?"실전으로 바꿀까요?":"모의로 바꿀까요?",
+    toReal?"다음 실행부터 실제 돈으로 주문합니다. 모의에서 산 종목은 실전 계좌에 없으니 새로 시작합니다.":"다음 실행부터 연습 계좌로 주문합니다. 실전 보유 종목은 그대로 둡니다.",
+    () => guarded(async()=>{ p.mode = toReal?"real":"demo"; render(); if(await savePlan(toReal?"실전 전환":"모의 전환")) toast(toReal?"실전으로 바꿨습니다":"모의로 바꿨습니다") }));
+};
+$("skipAllWait").onclick = () => {
+  const heldSet = new Set((data.status?.positions||[]).map(h=>h.code));
+  const waiting = (data.plan.stocks||[]).filter(s=>!heldSet.has(s.code));
+  if(!waiting.length){ toast("넘길 대기 종목이 없습니다"); return; }
+  const names = waiting.map(s=>s.name).join(", ");
+  ask("대기 종목을 전부 넘길까요?", `${names}을(를) 목록에서 제거합니다. 이어서 「새 계획 받기」로 다른 종목을 받을 수 있습니다.`,
+    () => guarded(async()=>{
+      data.plan.stocks = (data.plan.stocks||[]).filter(s=>heldSet.has(s.code));
+      render();
+      if(await savePlan("대기 종목 전부 넘김")) toast("대기 종목을 전부 넘겼습니다. 필요하면 새 계획을 받으세요");
+    }));
+};
+$("newPlan").onclick = () => ask("새 매수 계획을 받을까요?", "우량주 중 눌린 종목을 골라 1~2분 뒤 보라색 카드로 올립니다. 매주 일요일 저녁에는 자동으로 올라옵니다.",
+  () => guarded(async()=>{
+    if(!cfg.token){ toast("예시 화면이라 실행하지 않았습니다"); return }
+    const btn = $("newPlan"), t0 = Date.now();
+    const r = await api("actions/workflows/plan.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})});
+    if(!r.ok) throw new Error(`요청 실패 (${r.status})`);
+    btn.disabled = true;
+    // 실행이 끝날 때까지 10초마다 확인 (보통 30~60초)
+    for(let i=0;i<24;i++){
+      btn.textContent = `만드는 중… ${Math.round((Date.now()-t0)/1000)}초`;
+      await new Promise(res=>setTimeout(res,5000));
+      try{
+        const j = await (await api("actions/workflows/plan.yml/runs?per_page=1")).json();
+        const run = j.workflow_runs?.[0];
+        if(run && new Date(run.created_at).getTime() >= t0-60000 && run.status==="completed"){
+          btn.disabled=false; btn.textContent="새 계획 받기";
+          if(run.conclusion!=="success"){ toast("계획 작성이 실패했습니다. 다시 눌러 주세요"); return }
+          await load();
+          const last = (data.log||"").trim().split("\n").pop()||"";
+          toast(last.includes("같음")?"변동 없음 · 올라와 있는 계획이 그대로 유효합니다":last.includes("없어")?"이번에는 조건에 맞는 종목이 없습니다":"새 계획이 올라왔습니다. 위쪽 보라색 카드를 확인하세요");
+          window.scrollTo({top:0,behavior:"smooth"});
+          return;
+        }
+      }catch(e){}
+    }
+    btn.disabled=false; btn.textContent="새 계획 받기";
+    toast("시간이 오래 걸립니다. 잠시 뒤 새로고침하세요");
+  }));
+$("verBtn").onclick = () => {
+  $("verTitle").textContent = `존박 트레이딩 v${VERSION}`;
+  $("verState").textContent = !cfg.token ? "예시 화면입니다" : botVer===VERSION ? `앱과 봇 모두 최신 (v${VERSION})` : botVer==null ? "봇 버전 확인 중" : `봇 v${botVer} → 앱을 새로고침하면 v${VERSION}으로 업데이트됩니다`;
+  $("verList").innerHTML = CHANGES.map(([v,d,t])=>`<li><b>v${v}</b><span>${esc(t)}</span><time>${d}</time></li>`).join("");
+  $("verSheet").hidden = false;
+};
+$("logCount").onclick = () => { logOpen = !logOpen; render() };
+$("verClose").onclick = () => $("verSheet").hidden = true;
+$("gear").onclick = () => { $("tok").value=cfg.token; $("repo").value=cfg.repo; $("sheet").hidden=false };
+$("cfgClose").onclick = () => $("sheet").hidden=true;
+$("cfg").addEventListener("submit", e=>{
+  e.preventDefault();
+  cfg.token=$("tok").value.trim(); cfg.repo=$("repo").value.trim()||cfg.repo;
+  store.set("tt_token",cfg.token); store.set("tt_repo",cfg.repo);
+  if(!cfg.token){ $("sheet").hidden=true; toast("연결을 해제했습니다"); load(); return }
+  $("cfgGo").disabled=true; $("cfgGo").textContent="연결 중…";
+  (async()=>{
+    try{
+      const r = await api("");
+      if(!r.ok) throw new Error(r.status===401?"토큰이 맞지 않습니다":r.status===404?"저장소를 찾을 수 없습니다. 이름과 토큰 권한을 확인하세요":`연결 실패 (${r.status})`);
+      const did = await install();
+      $("sheet").hidden=true; toast(did?"봇을 설치했습니다. '지금 실행'으로 연결을 확인하세요":"연결했습니다");
+      load();
+    }catch(err){ toast(err.message) }
+    finally{ $("cfgGo").disabled=false; $("cfgGo").textContent="연결하기" }
+  })();
+});
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden && cfg.token) load() });
+load();
+</script>
+
+</body></html>

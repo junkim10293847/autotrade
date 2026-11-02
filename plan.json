@@ -6,43 +6,13 @@
   "hold_days": 14,
   "max_total_krw": 2000000,
   "review_every": "2주",
-  "stocks": [
-    {
-      "code": "005830",
-      "name": "DB손해보험",
-      "budget_krw": 660000,
-      "max_buy_price": 186500
-    },
-    {
-      "code": "006400",
-      "name": "삼성SDI",
-      "budget_krw": 440000,
-      "max_buy_price": 543000
-    },
-    {
-      "code": "096770",
-      "name": "SK이노베이션",
-      "budget_krw": 440000,
-      "max_buy_price": 133000
-    },
-    {
-      "code": "004020",
-      "name": "현대제철",
-      "budget_krw": 150000,
-      "max_buy_price": 29100
-    },
-    {
-      "code": "373220",
-      "name": "LG에너지솔루션",
-      "budget_krw": 150000,
-      "max_buy_price": 364000
-    },
-    {
-      "code": "271560",
-      "name": "오리온",
-      "budget_krw": 150000,
-      "max_buy_price": 118700
-    }
-  ],
-  "proposal": null
+  "stocks": [],
+  "proposal": null,
+  "monitor_all_holdings": true,
+  "replacement": {"pending": false, "sell_codes": []},
+  "monitor_all_holdings": true,
+  "replacement": {
+    "pending": false,
+    "sell_codes": []
+  }
 }

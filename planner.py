@@ -92,7 +92,9 @@ def score(closes):
 
 def make(plan, state, kis):
     universe = plan.get("universe") or UNIVERSE
-    busy = {s["code"] for s in plan.get("stocks", [])}
+    # 기존 보유 종목과 현재 대기 중인 종목은 신규 후보에서 제외
+    held_codes = set(kis.holdings().keys())
+    busy = held_codes | {s["code"] for s in plan.get("stocks", [])}
     cands = []
     for code, name in universe.items():
         if code in busy:
@@ -111,9 +113,9 @@ def make(plan, state, kis):
         return None
 
     cap = float(plan.get("max_total_krw", 2000000))
-    used = sum(float(s.get("budget_krw", 0)) for s in plan.get("stocks", []))
-    room = max(0, cap - used)
-    each = int(min(room / len(picks), cap / PICKS) // 10000 * 10000)  # 한 종목은 한도의 1/3까지만
+    # 제안 예산은 전체 한도의 1/3로 제시한다. 실제 주문 시 봇이 계좌 보유원가와
+    # 당일 미체결 예약액을 다시 계산해 남은 한도 안에서만 매수한다.
+    each = int((cap / PICKS) // 10000 * 10000)
     if each < 50000:
         return None
     return {
@@ -130,11 +132,9 @@ def main():
     state = bot.load(bot.STATE, {})
     mode = plan.get("mode", "demo")
     try:
-        # 시세 조회는 실전 서버가 정확해서 실전 키가 있으면 실전으로 조회 (주문은 하지 않음)
-        try:
-            kis = bot.KIS("real")
-        except Exception:
-            kis = bot.KIS(mode)
+        # 종목 중복 확인은 실제 주문이 이루어지는 계좌와 동일한 계좌 기준으로 한다.
+        # 모의투자 중에는 모의 계좌, 실전 중에는 실전 계좌의 보유 종목을 조회한다.
+        kis = bot.KIS(mode, plan.get("accounts"))
         prop = make(plan, state, kis)
     except Exception as e:
         bot.log(f"계획 작성 실패: {type(e).__name__}: {e}")
