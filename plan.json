@@ -1,6 +1,6 @@
 {
   "mode": "demo",
-  "paused": false,
+  "paused": true,
   "take_profit_pct": 10,
   "stop_loss_pct": -7,
   "hold_days": 14,
@@ -8,8 +8,6 @@
   "review_every": "2주",
   "stocks": [],
   "proposal": null,
-  "monitor_all_holdings": true,
-  "replacement": {"pending": false, "sell_codes": []},
   "monitor_all_holdings": true,
   "replacement": {
     "pending": false,
