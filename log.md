@@ -42,3 +42,4 @@
 - 2026-11-02 14:01 KST · 한미약품 매수 보류 · 남은 투자 가능액 353,200원, 현재가 427,000원
 - 2026-11-02 14:01 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 353,200원, 현재가 353,500원
 - 2026-11-02 14:03 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=50221455&ACNT_PRDT_CD=01&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
+- 2026-11-02 14:15 KST · 새 매수 계획 제안: 포스코퓨처엠, 한진칼, 오리온
