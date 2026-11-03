@@ -7,7 +7,33 @@
   "max_total_krw": 10000000,
   "review_every": "2주",
   "stocks": [],
-  "proposal": null,
+  "proposal": {
+    "created": "2026-11-04T08:14+09:00",
+    "note": "우량주 106개 중 최근 눌린 3종목 (규칙 자동 선정)",
+    "stocks": [
+      {
+        "code": "004020",
+        "name": "현대제철",
+        "budget_krw": 3330000,
+        "max_buy_price": 28800,
+        "why": "조정 초입 · 60일 고점 대비 -20.8%, 60일선 -4.7%"
+      },
+      {
+        "code": "271560",
+        "name": "오리온",
+        "budget_krw": 3330000,
+        "max_buy_price": 117600,
+        "why": "조정 초입 · 60일 고점 대비 -15.4%, 60일선 -1.5%"
+      },
+      {
+        "code": "326030",
+        "name": "SK바이오팜",
+        "budget_krw": 3330000,
+        "max_buy_price": 80100,
+        "why": "조정 초입 · 60일 고점 대비 -13.4%, 60일선 -1.2%"
+      }
+    ]
+  },
   "monitor_all_holdings": true,
   "replacement": {
     "pending": false,
