@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T14:01+09:00",
+  "updated": "2026-11-03T10:32+09:00",
   "mode": "demo",
   "positions": [
     {
@@ -7,12 +7,12 @@
       "name": "현대제철",
       "qty": 6,
       "avg": 28750.0,
-      "now": 28900.0,
-      "rate": 0.52,
-      "days": 0,
+      "now": 28650.0,
+      "rate": -0.35,
+      "days": 1,
       "cost": 172500,
-      "value": 173400,
-      "pnl": 900,
+      "value": 171900,
+      "pnl": -600,
       "tracked": true
     },
     {
@@ -20,12 +20,12 @@
       "name": "DB손해보험",
       "qty": 3,
       "avg": 181400.0,
-      "now": 176300.0,
-      "rate": -2.81,
-      "days": 0,
+      "now": 177600.0,
+      "rate": -2.09,
+      "days": 1,
       "cost": 544200,
-      "value": 528900,
-      "pnl": -15300,
+      "value": 532800,
+      "pnl": -11400,
       "tracked": true
     },
     {
@@ -33,45 +33,33 @@
       "name": "삼성SDI",
       "qty": 1,
       "avg": 534000.0,
-      "now": 533000.0,
-      "rate": -0.19,
-      "days": 0,
+      "now": 517000.0,
+      "rate": -3.18,
+      "days": 1,
       "cost": 534000,
-      "value": 533000,
-      "pnl": -1000,
-      "tracked": true
-    },
-    {
-      "code": "096770",
-      "name": "SK이노베이션",
-      "qty": 3,
-      "avg": 132033.333,
-      "now": 128400.0,
-      "rate": -2.75,
-      "days": 0,
-      "cost": 396100,
-      "value": 385200,
-      "pnl": -10900,
+      "value": 517000,
+      "pnl": -17000,
       "tracked": true
     }
   ],
   "total": {
-    "cost": 1646800,
-    "value": 1620500,
-    "pnl": -26300,
-    "rate": -1.6,
+    "cost": 1250700,
+    "value": 1221700,
+    "pnl": -29000,
+    "rate": -2.32,
     "cash": 10000000,
-    "assets": 9973490,
+    "assets": 9934919,
     "limit": 2000000,
-    "invested": 1646800,
+    "invested": 1250700,
     "reserved": 0,
-    "remaining": 353200
+    "remaining": 749300
   },
   "record": {
     "trades": 0,
     "wins": 0,
     "win_rate": null,
     "realized_year": 0,
-    "realized_total": 0
+    "realized_total": 0,
+    "estimated_legacy_count": 0
   }
 }

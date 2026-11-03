@@ -53,3 +53,10 @@
 - 2026-11-02 14:27 KST · 포스코퓨처엠 매수 보류 · 남은 투자 가능액 353,200원, 현재가 167,600원
 - 2026-11-02 14:27 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=271560
 - 2026-11-03 09:26 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/order-cash
+- 2026-11-03 10:32 KST · **매도** SK이노베이션 3주 시장가 (손절 -9.0%) → 접수
+- 2026-11-03 10:32 KST · SK이노베이션 주문번호 0000018616 저장 · 체결 확인 대기
+- 2026-11-03 10:32 KST · 한미약품 매수 보류 · 남은 투자 가능액 749,300원, 현재가 416,500원
+- 2026-11-03 10:32 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 749,300원, 현재가 348,000원
+- 2026-11-03 10:32 KST · 포스코퓨처엠 매수 보류 · 남은 투자 가능액 749,300원, 현재가 167,600원
+- 2026-11-03 10:32 KST · **매수** 오리온 1주 @ 116,100원 (예산 149,860원) → 접수
+- 2026-11-03 10:32 KST · 오리온 주문번호 0000018624 저장 · 체결 확인 대기
