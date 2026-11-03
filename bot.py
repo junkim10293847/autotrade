@@ -12,6 +12,7 @@ import json
 import math
 import os
 import sys
+import time
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -39,14 +40,32 @@ def log(msg):
 
 
 def notify(title, body):
-    """휴대폰 알림 (ntfy 앱에서 notify.txt 의 주제를 구독)"""
+    """ntfy 주제 URL로 휴대폰 알림 전송"""
     try:
         topic = open(os.path.join(ROOT, "notify.txt"), encoding="utf-8").read().strip()
         if topic:
-            requests.post("https://ntfy.sh/", timeout=10,
-                          json={"topic": topic, "title": title, "message": body, "tags": ["chart_with_upwards_trend"]})
+            requests.post(f"https://ntfy.sh/{topic}", data=str(body).encode("utf-8"), timeout=10,
+                          headers={"Title": str(title), "Tags": "chart_with_upwards_trend"})
     except Exception as e:
         print("알림 실패", e)
+
+
+def api_error_detail(response):
+    """HTTP 오류 응답에 포함된 KIS 메시지를 로그에 남긴다."""
+    try:
+        data = response.json()
+        detail = data.get("msg1") or data.get("message") or data.get("error_description") or str(data)
+    except Exception:
+        detail = (response.text or "").strip()[:500]
+    return f"HTTP {response.status_code}: {detail or response.reason}"
+
+
+def write_api_health(ok, message, mode=None):
+    """API 연결 결과를 status.json에 남기되 기존 손익/주문 데이터는 보존한다."""
+    status = load(STATUS, {})
+    status["api"] = {"ok": bool(ok), "message": str(message)[:600],
+                     "checked": now().isoformat(timespec="seconds"), "mode": mode}
+    save(STATUS, status)
 
 
 def load(path, default):
@@ -116,23 +135,46 @@ class KIS:
     def tr(self, real_id):
         return ("V" + real_id[1:]) if self.mode == "demo" else real_id
 
+    def get_read(self, url, *, timeout=20, **kwargs):
+        """잔고·시세 등 조회 GET만 재시도. 주문 POST는 절대 자동 재전송하지 않는다."""
+        last = None
+        for attempt in range(4):
+            try:
+                r = requests.get(url, timeout=timeout, **kwargs)
+                if r.status_code == 429 or r.status_code >= 500:
+                    last = RuntimeError(api_error_detail(r))
+                    if attempt < 3:
+                        time.sleep((2, 4, 8)[attempt])
+                        continue
+                    raise last
+                if not r.ok:
+                    raise RuntimeError(api_error_detail(r))
+                return r
+            except (requests.Timeout, requests.ConnectionError) as e:
+                last = e
+                if attempt < 3:
+                    time.sleep((2, 4, 8)[attempt])
+                    continue
+                raise RuntimeError(f"조회 재시도 4회 실패: {type(e).__name__}: {e}") from e
+        raise RuntimeError(f"조회 재시도 실패: {last}")
+
     def price(self, code):
-        r = requests.get(f"{self.base}/uapi/domestic-stock/v1/quotations/inquire-price", timeout=15,
-                         headers=self._h("FHKST01010100"),
-                         params={"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code})
-        r.raise_for_status()
+        r = self.get_read(f"{self.base}/uapi/domestic-stock/v1/quotations/inquire-price", timeout=15,
+                          headers=self._h("FHKST01010100"),
+                          params={"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code})
         p = r.json().get("output", {}).get("stck_prpr")
         return int(p) if p else None
 
     def holdings(self):
-        r = requests.get(f"{self.base}/uapi/domestic-stock/v1/trading/inquire-balance", timeout=15,
-                         headers=self._h(self.tr("TTTC8434R")),
-                         params={"CANO": self.acct, "ACNT_PRDT_CD": self.prod, "AFHR_FLPR_YN": "N", "OFL_YN": "",
-                                 "INQR_DVSN": "02", "UNPR_DVSN": "01", "FUND_STTL_ICLD_YN": "N",
-                                 "FNCG_AMT_AUTO_RDPT_YN": "N", "PRCS_DVSN": "00",
-                                 "CTX_AREA_FK100": "", "CTX_AREA_NK100": ""})
-        r.raise_for_status()
+        r = self.get_read(f"{self.base}/uapi/domestic-stock/v1/trading/inquire-balance", timeout=20,
+                          headers=self._h(self.tr("TTTC8434R")),
+                          params={"CANO": self.acct, "ACNT_PRDT_CD": self.prod, "AFHR_FLPR_YN": "N", "OFL_YN": "",
+                                  "INQR_DVSN": "02", "UNPR_DVSN": "01", "FUND_STTL_ICLD_YN": "N",
+                                  "FNCG_AMT_AUTO_RDPT_YN": "N", "PRCS_DVSN": "00",
+                                  "CTX_AREA_FK100": "", "CTX_AREA_NK100": ""})
         payload = r.json()
+        if payload.get("rt_cd") != "0":
+            raise RuntimeError(f"잔고 조회 실패(KIS {payload.get('msg_cd', '')}): {payload.get('msg1', '응답 코드 오류')}")
         summary_rows = payload.get("output2", []) or []
         summary = summary_rows[0] if summary_rows else {}
         self.account_summary = {
@@ -182,9 +224,8 @@ class KIS:
         rows, fk, nk, cont = [], "", "", ""
         for _ in range(10):
             q = dict(params, CTX_AREA_FK100=fk, CTX_AREA_NK100=nk)
-            r = requests.get(f"{self.base}/uapi/domestic-stock/v1/trading/inquire-daily-ccld",
-                             timeout=20, headers=self._h(tr_id), params=q)
-            r.raise_for_status()
+            r = self.get_read(f"{self.base}/uapi/domestic-stock/v1/trading/inquire-daily-ccld",
+                              timeout=20, headers=self._h(tr_id), params=q)
             data = r.json()
             if data.get("rt_cd") != "0":
                 raise RuntimeError(f"체결 조회 실패: {data.get('msg1', 'KIS API 오류')}")
@@ -470,6 +511,8 @@ def write_status(plan, state, held, kis):
     realized = sum(t.get("pnl", 0) for t in actual_trades)
     save(STATUS, {
         "updated": now().isoformat(timespec="minutes"), "mode": plan.get("mode", "demo"),
+        "api": {"ok": True, "message": "계좌 잔고 조회 정상", "checked": now().isoformat(timespec="seconds"),
+                "mode": plan.get("mode", "demo")},
         "positions": pos,
         "total": {"cost": round(cost), "value": round(value), "pnl": round(value - cost),
                   "rate": round((value / cost - 1) * 100, 2) if cost else 0,
@@ -503,22 +546,24 @@ def main():
         return
     state = load(STATE, {})
     mode = plan.get("mode", "demo")
-    if not market_open() and "--force" not in sys.argv:
-        if "--check" in sys.argv:  # 장 밖에서 '지금 실행' → 연결만 확인, 주문 없음
-            try:
-                k = KIS(mode, plan.get("accounts"))
-                k.holdings()
-                write_status(plan, state, k.holdings(), k)
-                log(f"연결 확인 완료 ({'실전' if mode == 'real' else '모의'}) · 장이 닫혀 주문은 하지 않음")
-            except Exception as e:
-                log(f"연결 실패 ({'실전' if mode == 'real' else '모의'}): {type(e).__name__}: {e}")
-            return
-        print("국내 정규장 시간이 아님 — 종료")
-        return
     try:
-        run(plan, state, KIS(mode, plan.get("accounts")))
-    except Exception as e:  # 오류가 나도 기록만 남기고 다음 회차에 재시도
-        log(f"오류: {type(e).__name__}: {e}")
+        kis = KIS(mode, plan.get("accounts"))
+        if not market_open() and "--force" not in sys.argv:
+            if "--check" in sys.argv:
+                # 기존 코드의 중복 잔고 조회를 제거: 한 번 조회한 결과를 그대로 사용
+                held = kis.holdings()
+                write_status(plan, state, held, kis)
+                log(f"API 연결 정상 ({'실전' if mode == 'real' else '모의'}) · 잔고 {len(held)}종목 확인 · 장외 주문 없음")
+                notify("자동매매 API 연결 정상", f"{'실전' if mode == 'real' else '모의'} 계좌 잔고 조회 성공 · 보유 {len(held)}종목")
+            else:
+                print("국내 정규장 시간이 아님 — 종료")
+            return
+        run(plan, state, kis)
+    except Exception as e:
+        detail = f"{type(e).__name__}: {e}"
+        log(f"API/매매 오류: {detail}")
+        write_api_health(False, detail, mode)
+        notify("자동매매 API 오류", detail[:350] + " · 앱의 최근 기록 확인")
     save(STATE, state)
 
 
