@@ -504,7 +504,8 @@ def write_status(plan, state, held, kis):
         eval_amount = h["now"] * h["qty"]
         pos.append({"code": code, "name": h["name"], "qty": h["qty"], "avg": h["avg"], "now": h["now"],
                     "rate": h["rate"], "days": days, "cost": round(buy_amount), "value": round(eval_amount),
-                    "pnl": round(eval_amount - buy_amount), "tracked": bool(d)})
+                    "pnl": round(eval_amount - buy_amount), "tracked": bool(d),
+                    "buy_date": str(d)[:10] if d else None})
         cost += buy_amount
         value += eval_amount
     trades = state.get("trades", [])
@@ -531,6 +532,14 @@ def write_status(plan, state, held, kis):
                   "cash": round(cash), "assets": round(float(account.get("account_value") or (value + cash))),
                   "limit": round(cap), "invested": round(cost), "reserved": round(reserved),
                   "remaining": round(remaining)},
+        # 매매 내역 (최근 매도 20건): 매수일·매도일·보유일·손익
+        "history": [{"code": t.get("code"), "name": t.get("name"),
+                     "sell_date": str(t.get("date", ""))[:10],
+                     "buy_date": ((datetime.fromisoformat(t["date"]) - timedelta(days=int(t["days"]))).date().isoformat()
+                                  if t.get("days") is not None and t.get("date") else None),
+                     "days": t.get("days"), "qty": t.get("qty"), "price": t.get("price"),
+                     "pnl": t.get("pnl", 0), "reason": t.get("reason")}
+                    for t in reversed(actual_trades[-20:])],
         "record": {"trades": len(actual_trades), "wins": wins,
                    "win_rate": round(wins / len(actual_trades) * 100, 1) if actual_trades else None,
                    "realized_year": sum(t.get("pnl", 0) for t in actual_trades if str(t.get("date", "")).startswith(year)),
