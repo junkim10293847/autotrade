@@ -52,6 +52,26 @@
       "qty": 3,
       "recorded": false,
       "order_no": "0000018616"
+    },
+    "004020": {
+      "date": "2026-11-03",
+      "qty": 6,
+      "recorded": false
+    },
+    "005830": {
+      "date": "2026-11-03",
+      "qty": 3,
+      "recorded": false
+    },
+    "271560": {
+      "date": "2026-11-03",
+      "qty": 1,
+      "recorded": false
+    },
+    "006400": {
+      "date": "2026-11-03",
+      "qty": 1,
+      "recorded": false
     }
   },
   "orders": {
@@ -72,7 +92,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-03T11:26+09:00"
+      "last_seen": "2026-11-03T14:39+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -91,7 +111,105 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-03T11:26+09:00"
+      "last_seen": "2026-11-03T14:39+09:00"
+    },
+    "20261103:0000033661": {
+      "order_no": "0000033661",
+      "branch": "00950",
+      "side": "sell",
+      "code": "004020",
+      "name": "현대제철",
+      "ordered_qty": 6,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 6,
+      "created": "2026-11-03T14:39+09:00",
+      "reason": "교체",
+      "unit_cost": 28750.0,
+      "days": null,
+      "order_rate": -0.7,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261103:0000033666": {
+      "order_no": "0000033666",
+      "branch": "00950",
+      "side": "sell",
+      "code": "005830",
+      "name": "DB손해보험",
+      "ordered_qty": 3,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 3,
+      "created": "2026-11-03T14:39+09:00",
+      "reason": "교체",
+      "unit_cost": 181400.0,
+      "days": null,
+      "order_rate": -3.8,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261103:0000033671": {
+      "order_no": "0000033671",
+      "branch": "00950",
+      "side": "sell",
+      "code": "271560",
+      "name": "오리온",
+      "ordered_qty": 1,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 1,
+      "created": "2026-11-03T14:39+09:00",
+      "reason": "교체",
+      "unit_cost": 115600.0,
+      "days": null,
+      "order_rate": 0.78,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261103:0000033677": {
+      "order_no": "0000033677",
+      "branch": "00950",
+      "side": "sell",
+      "code": "006400",
+      "name": "삼성SDI",
+      "ordered_qty": 1,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 1,
+      "created": "2026-11-03T14:39+09:00",
+      "reason": "교체",
+      "unit_cost": 534000.0,
+      "days": null,
+      "order_rate": -8.15,
+      "status": "accepted",
+      "last_seen": null
+    }
+  },
+  "replacement_sell_orders": {
+    "004020": {
+      "date": "2026-11-03",
+      "qty": 6,
+      "order_no": "0000033661"
+    },
+    "005830": {
+      "date": "2026-11-03",
+      "qty": 3,
+      "order_no": "0000033666"
+    },
+    "271560": {
+      "date": "2026-11-03",
+      "qty": 1,
+      "order_no": "0000033671"
+    },
+    "006400": {
+      "date": "2026-11-03",
+      "qty": 1,
+      "order_no": "0000033677"
     }
   }
 }
