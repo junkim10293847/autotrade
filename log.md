@@ -72,3 +72,4 @@
 - 2026-11-03 11:26 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=128940
 - 2026-11-03 11:50 KST · 새 매수 계획 제안: SK바이오팜, 대한항공, CJ제일제당
 - 2026-11-03 12:14 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=50221455&ACNT_PRDT_CD=01&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
+- 2026-11-03 12:47 KST · 새 매수 계획 제안: SK바이오팜, 대한항공, CJ제일제당

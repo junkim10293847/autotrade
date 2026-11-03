@@ -7,7 +7,33 @@
   "max_total_krw": 2000000,
   "review_every": "2주",
   "stocks": [],
-  "proposal": null,
+  "proposal": {
+    "created": "2026-11-03T12:47+09:00",
+    "note": "우량주 106개 중 최근 눌린 3종목 (규칙 자동 선정)",
+    "stocks": [
+      {
+        "code": "326030",
+        "name": "SK바이오팜",
+        "budget_krw": 660000,
+        "max_buy_price": 82100,
+        "why": "조정 초입 · 60일 고점 대비 -11.4%, 60일선 +1.1%"
+      },
+      {
+        "code": "003490",
+        "name": "대한항공",
+        "budget_krw": 660000,
+        "max_buy_price": 29950,
+        "why": "조정 초입 · 60일 고점 대비 -7.3%, 60일선 +4.5%"
+      },
+      {
+        "code": "097950",
+        "name": "CJ제일제당",
+        "budget_krw": 660000,
+        "max_buy_price": 178100,
+        "why": "조정 초입 · 60일 고점 대비 -14.2%, 60일선 -3.2%"
+      }
+    ]
+  },
   "monitor_all_holdings": true,
   "replacement": {
     "pending": true,
