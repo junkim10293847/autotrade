@@ -480,6 +480,19 @@ def write_status(plan, state, held, kis):
                    "win_rate": round(wins / len(actual_trades) * 100, 1) if actual_trades else None,
                    "realized_year": sum(t.get("pnl", 0) for t in actual_trades if str(t.get("date", "")).startswith(year)),
                    "realized_total": round(realized), "estimated_legacy_count": sum(1 for t in trades if t.get("estimated"))},
+        # 주문 접수와 실제 체결을 구분해 화면에 전달한다. 체결가는 누적 체결금액/수량 기준.
+        "orders": sorted([
+            {"order_no": str(o.get("order_no", "")), "side": o.get("side"),
+             "code": o.get("code"), "name": o.get("name"),
+             "ordered_qty": int(o.get("ordered_qty", 0) or 0),
+             "filled_qty": int(o.get("filled_qty", 0) or 0),
+             "filled_amount": round(float(o.get("filled_amount", 0) or 0)),
+             "avg_fill_price": round(float(o.get("filled_amount", 0) or 0) / int(o.get("filled_qty", 0)), 2) if int(o.get("filled_qty", 0) or 0) else 0,
+             "remaining_qty": int(o.get("remaining_qty", o.get("ordered_qty", 0)) or 0),
+             "status": o.get("status", "accepted"), "reason": o.get("reason"),
+             "created": o.get("created"), "last_seen": o.get("last_seen")}
+            for o in state.get("orders", {}).values()
+        ], key=lambda x: str(x.get("created") or ""), reverse=True)[:100],
     })
 
 
