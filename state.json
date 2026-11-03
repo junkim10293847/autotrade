@@ -23,15 +23,29 @@
     },
     "271560": {
       "date": "2026-11-03T10:32+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 1,
+      "krw": 115600.0,
+      "pending": false,
       "requested_qty": 1,
       "requested_krw": 116100
     }
   },
   "sells": {},
-  "trades": [],
+  "trades": [
+    {
+      "code": "096770",
+      "name": "SK이노베이션",
+      "date": "2026-11-03T11:13+09:00",
+      "side": "sell",
+      "qty": 3,
+      "price": 120333.3333,
+      "pnl": -35100,
+      "days": 1,
+      "reason": "손절 -9.0%",
+      "estimated": false,
+      "order_no": "0000018616"
+    }
+  ],
   "sell_orders": {
     "096770": {
       "date": "2026-11-03",
@@ -49,16 +63,16 @@
       "name": "SK이노베이션",
       "ordered_qty": 3,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 3,
+      "filled_qty": 3,
+      "filled_amount": 361000.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T10:32+09:00",
       "reason": "손절 -9.0%",
       "unit_cost": 132033.333,
       "days": 1,
       "order_rate": -9.04,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-03T11:13+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -68,16 +82,16 @@
       "name": "오리온",
       "ordered_qty": 1,
       "limit_price": 116100.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 1,
+      "filled_qty": 1,
+      "filled_amount": 115600.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T10:32+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-03T11:13+09:00"
     }
   }
 }
