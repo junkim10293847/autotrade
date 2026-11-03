@@ -28,6 +28,30 @@
       "pending": false,
       "requested_qty": 1,
       "requested_krw": 116100
+    },
+    "326030": {
+      "date": "2026-11-03T14:53+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 41,
+      "requested_krw": 3284100
+    },
+    "003490": {
+      "date": "2026-11-03T14:53+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 113,
+      "requested_krw": 3310900
+    },
+    "097950": {
+      "date": "2026-11-03T14:53+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 18,
+      "requested_krw": 3182400
     }
   },
   "sells": {},
@@ -44,6 +68,58 @@
       "reason": "손절 -9.0%",
       "estimated": false,
       "order_no": "0000018616"
+    },
+    {
+      "code": "004020",
+      "name": "현대제철",
+      "date": "2026-11-03T14:53+09:00",
+      "side": "sell",
+      "qty": 6,
+      "price": 28575.0,
+      "pnl": -1050,
+      "days": null,
+      "reason": "교체",
+      "estimated": false,
+      "order_no": "0000033661"
+    },
+    {
+      "code": "005830",
+      "name": "DB손해보험",
+      "date": "2026-11-03T14:53+09:00",
+      "side": "sell",
+      "qty": 3,
+      "price": 174600.0,
+      "pnl": -20400,
+      "days": null,
+      "reason": "교체",
+      "estimated": false,
+      "order_no": "0000033666"
+    },
+    {
+      "code": "271560",
+      "name": "오리온",
+      "date": "2026-11-03T14:53+09:00",
+      "side": "sell",
+      "qty": 1,
+      "price": 116500.0,
+      "pnl": 900,
+      "days": null,
+      "reason": "교체",
+      "estimated": false,
+      "order_no": "0000033671"
+    },
+    {
+      "code": "006400",
+      "name": "삼성SDI",
+      "date": "2026-11-03T14:53+09:00",
+      "side": "sell",
+      "qty": 1,
+      "price": 490500.0,
+      "pnl": -43500,
+      "days": null,
+      "reason": "교체",
+      "estimated": false,
+      "order_no": "0000033677"
     }
   ],
   "sell_orders": {
@@ -92,7 +168,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-03T14:39+09:00"
+      "last_seen": "2026-11-03T14:53+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -111,7 +187,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-03T14:39+09:00"
+      "last_seen": "2026-11-03T14:53+09:00"
     },
     "20261103:0000033661": {
       "order_no": "0000033661",
@@ -121,16 +197,16 @@
       "name": "현대제철",
       "ordered_qty": 6,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 6,
+      "filled_qty": 6,
+      "filled_amount": 171450.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T14:39+09:00",
       "reason": "교체",
       "unit_cost": 28750.0,
       "days": null,
       "order_rate": -0.7,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-03T14:53+09:00"
     },
     "20261103:0000033666": {
       "order_no": "0000033666",
@@ -140,16 +216,16 @@
       "name": "DB손해보험",
       "ordered_qty": 3,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 3,
+      "filled_qty": 3,
+      "filled_amount": 523800.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T14:39+09:00",
       "reason": "교체",
       "unit_cost": 181400.0,
       "days": null,
       "order_rate": -3.8,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-03T14:53+09:00"
     },
     "20261103:0000033671": {
       "order_no": "0000033671",
@@ -159,16 +235,16 @@
       "name": "오리온",
       "ordered_qty": 1,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 1,
+      "filled_qty": 1,
+      "filled_amount": 116500.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T14:39+09:00",
       "reason": "교체",
       "unit_cost": 115600.0,
       "days": null,
       "order_rate": 0.78,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-03T14:53+09:00"
     },
     "20261103:0000033677": {
       "order_no": "0000033677",
@@ -178,14 +254,71 @@
       "name": "삼성SDI",
       "ordered_qty": 1,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 1,
+      "filled_qty": 1,
+      "filled_amount": 490500.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T14:39+09:00",
       "reason": "교체",
       "unit_cost": 534000.0,
       "days": null,
       "order_rate": -8.15,
+      "status": "filled",
+      "last_seen": "2026-11-03T14:53+09:00"
+    },
+    "20261103:0000034808": {
+      "order_no": "0000034808",
+      "branch": "00950",
+      "side": "buy",
+      "code": "326030",
+      "name": "SK바이오팜",
+      "ordered_qty": 41,
+      "limit_price": 80100.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 41,
+      "created": "2026-11-03T14:53+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261103:0000034815": {
+      "order_no": "0000034815",
+      "branch": "00950",
+      "side": "buy",
+      "code": "003490",
+      "name": "대한항공",
+      "ordered_qty": 113,
+      "limit_price": 29300.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 113,
+      "created": "2026-11-03T14:53+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261103:0000034818": {
+      "order_no": "0000034818",
+      "branch": "00950",
+      "side": "buy",
+      "code": "097950",
+      "name": "CJ제일제당",
+      "ordered_qty": 18,
+      "limit_price": 176800.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 18,
+      "created": "2026-11-03T14:53+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
       "status": "accepted",
       "last_seen": null
     }

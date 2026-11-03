@@ -29,7 +29,7 @@
   "proposal": null,
   "monitor_all_holdings": true,
   "replacement": {
-    "pending": true,
+    "pending": false,
     "sell_codes": [
       "004020",
       "005830",
