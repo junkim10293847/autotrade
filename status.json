@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T10:32+09:00",
+  "updated": "2026-11-03T11:14+09:00",
   "mode": "demo",
   "positions": [
     {
@@ -7,12 +7,12 @@
       "name": "현대제철",
       "qty": 6,
       "avg": 28750.0,
-      "now": 28650.0,
-      "rate": -0.35,
+      "now": 28900.0,
+      "rate": 0.52,
       "days": 1,
       "cost": 172500,
-      "value": 171900,
-      "pnl": -600,
+      "value": 173400,
+      "pnl": 900,
       "tracked": true
     },
     {
@@ -20,12 +20,12 @@
       "name": "DB손해보험",
       "qty": 3,
       "avg": 181400.0,
-      "now": 177600.0,
-      "rate": -2.09,
+      "now": 177800.0,
+      "rate": -1.98,
       "days": 1,
       "cost": 544200,
-      "value": 532800,
-      "pnl": -11400,
+      "value": 533400,
+      "pnl": -10800,
       "tracked": true
     },
     {
@@ -33,33 +33,46 @@
       "name": "삼성SDI",
       "qty": 1,
       "avg": 534000.0,
-      "now": 517000.0,
-      "rate": -3.18,
+      "now": 509000.0,
+      "rate": -4.68,
       "days": 1,
       "cost": 534000,
-      "value": 517000,
-      "pnl": -17000,
+      "value": 509000,
+      "pnl": -25000,
+      "tracked": true
+    },
+    {
+      "code": "271560",
+      "name": "오리온",
+      "qty": 1,
+      "avg": 115600.0,
+      "now": 116200.0,
+      "rate": 0.52,
+      "days": 0,
+      "cost": 115600,
+      "value": 116200,
+      "pnl": 600,
       "tracked": true
     }
   ],
   "total": {
-    "cost": 1250700,
-    "value": 1221700,
-    "pnl": -29000,
-    "rate": -2.32,
+    "cost": 1366300,
+    "value": 1332000,
+    "pnl": -34300,
+    "rate": -2.51,
     "cash": 10000000,
-    "assets": 9934919,
+    "assets": 9929609,
     "limit": 2000000,
-    "invested": 1250700,
+    "invested": 1366300,
     "reserved": 0,
-    "remaining": 749300
+    "remaining": 633700
   },
   "record": {
-    "trades": 0,
+    "trades": 1,
     "wins": 0,
-    "win_rate": null,
-    "realized_year": 0,
-    "realized_total": 0,
+    "win_rate": 0.0,
+    "realized_year": -35100,
+    "realized_total": -35100,
     "estimated_legacy_count": 0
   }
 }
