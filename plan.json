@@ -6,26 +6,7 @@
   "hold_days": 14,
   "max_total_krw": 10000000,
   "review_every": "2주",
-  "stocks": [
-    {
-      "code": "326030",
-      "name": "SK바이오팜",
-      "budget_krw": 3330000,
-      "max_buy_price": 80500
-    },
-    {
-      "code": "003490",
-      "name": "대한항공",
-      "budget_krw": 3330000,
-      "max_buy_price": 29500
-    },
-    {
-      "code": "097950",
-      "name": "CJ제일제당",
-      "budget_krw": 3330000,
-      "max_buy_price": 178100
-    }
-  ],
+  "stocks": [],
   "proposal": null,
   "monitor_all_holdings": true,
   "replacement": {
