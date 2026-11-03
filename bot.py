@@ -521,20 +521,6 @@ def write_status(plan, state, held, kis):
                    and str(v.get("date", ""))[:10] == today)
     remaining = max(0, cap - cost - reserved)
     realized = sum(t.get("pnl", 0) for t in actual_trades)
-    # 추천 분류(눌림목/조정 초입)별 승률 — 컨펌 당시 계획의 분류를 종목별로 기억해 둔다
-    tiers = state.setdefault("tiers", {})
-    for st in plan.get("stocks", []):
-        w = str(st.get("why", ""))
-        if w.startswith("눌림목") or w.startswith("조정 초입"):
-            tiers[st["code"]] = "눌림목" if w.startswith("눌림목") else "조정 초입"
-    by_tier = {}
-    for t in actual_trades:
-        k = t.get("tier") or tiers.get(t.get("code")) or "이전 계획"
-        g = by_tier.setdefault(k, {"trades": 0, "wins": 0})
-        g["trades"] += 1
-        g["wins"] += 1 if t.get("pnl", 0) > 0 else 0
-    for g in by_tier.values():
-        g["win_rate"] = round(g["wins"] / g["trades"] * 100) if g["trades"] else None
     save(STATUS, {
         "updated": now().isoformat(timespec="minutes"), "mode": plan.get("mode", "demo"),
         "api": {"ok": True, "message": "계좌 잔고 조회 정상", "checked": now().isoformat(timespec="seconds"),
@@ -548,8 +534,7 @@ def write_status(plan, state, held, kis):
         "record": {"trades": len(actual_trades), "wins": wins,
                    "win_rate": round(wins / len(actual_trades) * 100, 1) if actual_trades else None,
                    "realized_year": sum(t.get("pnl", 0) for t in actual_trades if str(t.get("date", "")).startswith(year)),
-                   "realized_total": round(realized), "estimated_legacy_count": sum(1 for t in trades if t.get("estimated")),
-                   "by_tier": by_tier},
+                   "realized_total": round(realized), "estimated_legacy_count": sum(1 for t in trades if t.get("estimated"))},
         # 주문 접수와 실제 체결을 구분해 화면에 전달한다. 체결가는 누적 체결금액/수량 기준.
         "orders": sorted([
             {"order_no": str(o.get("order_no", "")), "side": o.get("side"),
