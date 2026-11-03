@@ -91,9 +91,9 @@ def score(closes):
 
 def make(plan, state, kis):
     universe = plan.get("universe") or UNIVERSE
-    # 기존 보유 종목과 현재 대기 중인 종목은 신규 후보에서 제외
-    held_codes = set(kis.holdings().keys())
-    busy = held_codes | {s["code"] for s in plan.get("stocks", [])}
+    # 기존 보유 종목도 조건을 충족하면 추가 매수 후보로 제안한다.
+    # 이미 확정 대기 목록에 들어 있는 종목만 중복 제안에서 제외한다.
+    busy = {s["code"] for s in plan.get("stocks", [])}
     cands = []
     for code, name in universe.items():
         if code in busy:
