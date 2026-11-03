@@ -52,3 +52,4 @@
 - 2026-11-02 14:27 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 353,200원, 현재가 353,500원
 - 2026-11-02 14:27 KST · 포스코퓨처엠 매수 보류 · 남은 투자 가능액 353,200원, 현재가 167,600원
 - 2026-11-02 14:27 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=271560
+- 2026-11-03 09:26 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/order-cash
