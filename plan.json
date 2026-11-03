@@ -1,8 +1,8 @@
 {
   "mode": "demo",
   "paused": false,
-  "take_profit_pct": 3,
-  "stop_loss_pct": -5,
+  "take_profit_pct": 5,
+  "stop_loss_pct": -3,
   "hold_days": 14,
   "max_total_krw": 10000000,
   "review_every": "2주",
