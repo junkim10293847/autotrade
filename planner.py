@@ -85,8 +85,55 @@ def score(closes):
         tier = 2
     else:
         return None
+    high = max(closes[:60])
+    vs20 = (c / ma20 - 1) * 100
     return {"dd": round(dd, 1), "above60": round(above, 1), "close": c, "tier": tier,
-            "score": (100 if tier == 1 else 0) - dd + above}
+            "score": (100 if tier == 1 else 0) - dd + above,
+            "detail": {"close": round(c), "high60": round(high), "ma20": round(ma20), "ma60": round(ma60),
+                       "dd": round(dd, 1), "vs20": round(vs20, 1), "vs60": round(above, 1), "wk5": round(wk, 1)}}
+
+
+def reasons(p):
+    """앱에서 종목을 눌렀을 때 보여줄 추천 사유 (쉬운 말로)"""
+    d = p["detail"]
+    won = lambda v: f"{v:,}원"
+    r = []
+    if p["tier"] == 1:
+        r.append("눌림목: 큰 흐름은 오르는 중인데 최근 일시적으로 빠진 상태라, 반등을 노리기 좋은 자리로 판단했습니다.")
+    else:
+        r.append("조정 초입: 최근 고점에서 내려오기 시작했지만 아직 큰 흐름이 꺾이지 않은 상태입니다. 눌림목 후보가 부족해 채운 종목이라 확신도는 한 단계 낮습니다.")
+    r.append(f"최근 60거래일 최고가 {won(d['high60'])} → 현재 {won(d['close'])}, 고점 대비 {d['dd']}% 내려와 있습니다.")
+    r.append(f"60일 평균가 {won(d['ma60'])} 대비 {d['vs60']:+}% — " + ("평균 위에 있어 중기 상승 흐름이 유지되고 있습니다." if d["vs60"] > 0 else "평균 근처라 추세가 아직 무너지지 않았습니다."))
+    r.append(f"20일 평균가 {won(d['ma20'])} 대비 {d['vs20']:+}% — " + ("단기적으로는 쉬어가는 중이라 싸게 살 기회입니다." if d["vs20"] < 0 else "단기 평균 위로 다시 올라서는 중입니다."))
+    r.append(f"최근 5거래일 {d['wk5']:+}% — 급락(-12% 이상)이 아니어서 악재로 무너지는 중은 아닌 것으로 봤습니다.")
+    r.append("주의: 주가 흐름만 본 규칙 추천이라 실적 발표·뉴스는 반영되지 않았습니다.")
+    return r
+
+
+def news(kis, code, n=5):
+    """종목 최근 뉴스 제목 (한국투자 뉴스 API · 실전 서버만 지원)"""
+    try:
+        r = kis.get_read(f"{kis.base}/uapi/domestic-stock/v1/quotations/news-title", timeout=15,
+                         headers=kis._h("FHKST01011800"),
+                         params={"FID_NEWS_OFER_ENTP_CODE": "", "FID_COND_MRKT_CLS_CODE": "", "FID_INPUT_ISCD": code,
+                                 "FID_TITL_CNTT": "", "FID_INPUT_DATE_1": "", "FID_INPUT_HOUR_1": "",
+                                 "FID_RANK_SORT_CLS_CODE": "", "FID_INPUT_SRNO": ""})
+        j = r.json()
+        rows = j.get("output") or j.get("output1") or []
+        out, seen = [], set()
+        for x in rows:
+            t = (x.get("hts_pbnt_titl_cntt") or "").strip()
+            if not t or t in seen:
+                continue
+            seen.add(t)
+            d = x.get("data_dt", "")
+            out.append({"date": f"{d[4:6]}/{d[6:8]}" if len(d) == 8 else "", "title": t, "src": x.get("dorg", "")})
+            if len(out) >= n:
+                break
+        return out
+    except Exception as e:
+        print(code, "뉴스 조회 실패", e)
+        return None
 
 
 def make(plan, state, kis):
@@ -111,6 +158,15 @@ def make(plan, state, kis):
     if not picks:
         return None
 
+    # 뉴스는 모의 서버가 지원하지 않아 실전 키로 조회 (조회만, 주문 없음)
+    try:
+        nk = bot.KIS("real", plan.get("accounts"))
+    except Exception:
+        nk = kis
+    for p in picks:
+        p["news"] = news(nk, p["code"])
+        time.sleep(0.12)
+
     cap = float(plan.get("max_total_krw", 2000000))
     # 제안 예산은 전체 한도의 1/3로 제시한다. 실제 주문 시 봇이 계좌 보유원가와
     # 당일 미체결 예약액을 다시 계산해 남은 한도 안에서만 매수한다.
@@ -122,7 +178,8 @@ def make(plan, state, kis):
         "note": f"우량주 {len(universe)}개 중 최근 눌린 {len(picks)}종목 (규칙 자동 선정)",
         "stocks": [{"code": p["code"], "name": p["name"], "budget_krw": each,
                     "max_buy_price": bot.round_up_tick(p["close"] * 1.01),
-                    "why": f"{'눌림목' if p['tier'] == 1 else '조정 초입'} · 60일 고점 대비 {p['dd']}%, 60일선 {p['above60']:+}%"} for p in picks],
+                    "why": f"{'눌림목' if p['tier'] == 1 else '조정 초입'} · 60일 고점 대비 {p['dd']}%, 60일선 {p['above60']:+}%",
+                    "reasons": reasons(p), "news": p.get("news")} for p in picks],
     }
 
 
@@ -146,7 +203,7 @@ def main():
         bot.notify("이번 주 매수 계획 없음", "조건에 맞는 종목이 없어 쉬어갑니다")
         return
     old = plan.get("proposal") or {}
-    key = lambda p: [(s["code"], s["budget_krw"], s["max_buy_price"]) for s in p.get("stocks", [])]
+    key = lambda p: [(s["code"], s["budget_krw"], s["max_buy_price"], bool(s.get("reasons"))) for s in p.get("stocks", [])]
     if key(old) == key(prop):
         bot.log("계획 다시 확인 · 기존 제안과 같음")
         if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
