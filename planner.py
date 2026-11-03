@@ -57,12 +57,11 @@ PICKS = 3
 def daily(kis, code):
     end = bot.now().date()
     start = end - timedelta(days=160)
-    r = requests.get(f"{kis.base}/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice", timeout=15,
+    r = kis.get_read(f"{kis.base}/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice", timeout=20,
                      headers=kis._h("FHKST03010100"),
                      params={"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code,
                              "FID_INPUT_DATE_1": start.strftime("%Y%m%d"), "FID_INPUT_DATE_2": end.strftime("%Y%m%d"),
                              "FID_PERIOD_DIV_CODE": "D", "FID_ORG_ADJ_PRC": "0"})
-    r.raise_for_status()
     rows = [x for x in r.json().get("output2", []) or [] if x.get("stck_clpr")]
     return [float(x["stck_clpr"]) for x in rows]  # 최신이 앞
 
@@ -137,8 +136,10 @@ def main():
         kis = bot.KIS(mode, plan.get("accounts"))
         prop = make(plan, state, kis)
     except Exception as e:
-        bot.log(f"계획 작성 실패: {type(e).__name__}: {e}")
-        bot.notify("계획 작성 실패", "앱의 기록을 확인해 주세요")
+        detail = f"{type(e).__name__}: {e}"
+        bot.log(f"계획 작성 실패: {detail}")
+        bot.write_api_health(False, f"매수 계획 생성 실패 · {detail}", mode)
+        bot.notify("계획 작성 실패", detail[:350] + " · 앱의 최근 기록 확인")
         return
     if not prop:
         bot.log("이번 주는 조건에 맞는 종목이 없어 계획을 올리지 않음")
