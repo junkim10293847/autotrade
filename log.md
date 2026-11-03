@@ -70,3 +70,4 @@
 - 2026-11-03 11:14 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 633,700원, 현재가 345,500원
 - 2026-11-03 11:14 KST · 포스코퓨처엠 매수 보류 · 남은 투자 가능액 633,700원, 현재가 166,500원
 - 2026-11-03 11:26 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=128940
+- 2026-11-03 11:50 KST · 새 매수 계획 제안: SK바이오팜, 대한항공, CJ제일제당
