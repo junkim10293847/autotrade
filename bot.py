@@ -432,6 +432,8 @@ def run(plan, state, kis):
     # 교체 선택 시 기존 보유분 매도가 끝날 때까지 신규 매수는 보류
     replacement = plan.get("replacement") or {}
     replace_codes = set(replacement.get("sell_codes", [])) if replacement.get("pending") else set()
+    # B 방식: 새 계획에도 들어 있는 보유 종목은 교체 매도하지 않고 그대로 보유 (부족분만 추가 매수)
+    replace_codes -= {s_["code"] for s_ in plan.get("stocks", [])}
     replacement_waiting = False
     for code in list(replace_codes):
         h = held.get(code)
@@ -596,6 +598,15 @@ def run(plan, state, kis):
         # 현재가가 이미 지정가 이하면 즉시 체결, 아니면 가격이 닿는 순간 증권사가 체결한다.
         px = round_down_tick(float(item["max_buy_price"]))
         budget = min(float(item.get("budget_krw", 0)), per_stock_room, available)
+        if code in held_now:
+            # 이미 보유한 종목은 새 계획 예산에서 보유 금액을 뺀 부족분만 산다
+            have_krw = held_now[code]["avg"] * held_now[code]["qty"]
+            budget = min(budget, float(item.get("budget_krw", 0)) - have_krw)
+            if budget < px:
+                watch[code] = {**watch.get(code, {}), "state": "enough"}
+                plan_attempts[f"{plan_key}:{code}"] = {"date": now().isoformat(timespec="minutes"), "order_no": None, "qty": 0, "enough": True}
+                log(f"{name} 이미 {won(have_krw)} 보유 · 새 계획 예산 {won(float(item.get('budget_krw', 0)))} 대비 부족분이 1주 미만이라 추가 매수 없음")
+                continue
         qty = int(budget // px)
         if qty < 1:
             log(f"{name} 매수 보류 · 남은 투자 가능액 {won(available)}, 현재가 {won(price)}")
