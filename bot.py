@@ -579,10 +579,7 @@ def run(plan, state, kis):
         if att:
             watch[code] = {**watch.get(code, {}), "state": "done", "checked": now().isoformat(timespec="minutes")}
             continue
-        meta = buys.get(code, {})
-        if code not in held_now and int(meta.get("qty", 0) or 0) > 0:
-            # 이미 매수 체결 이력이 있는 미보유 종목은 같은 계획으로 재매수하지 않는다.
-            continue
+        # 같은 계획 안에서의 재매수는 위 attempt 기록이 막는다. 예전에 사고판 종목도 새 계획이면 다시 살 수 있다.
         eligible.append(item)
     # 남은 한도를 미매수 후보 수로 나눠 특정 종목 하나가 현금을 독점하지 않도록 한다.
     per_stock_room = min(cap / 3, available / max(1, len(eligible))) if eligible else 0
@@ -593,6 +590,7 @@ def run(plan, state, kis):
         if not price:
             log(f"{name} 시세 조회 실패, 다음 회차에 재시도")
             continue
+        prev_state = watch.get(code, {}).get("state")
         watch[code] = {**watch.get(code, {}), "price": price, "checked": now().isoformat(timespec="minutes"), "state": "above"}
         # 미리 주문: 현재가와 상관없이 지정가 매수 주문을 증권사에 걸어 둔다.
         # 현재가가 이미 지정가 이하면 즉시 체결, 아니면 가격이 닿는 순간 증권사가 체결한다.
@@ -608,9 +606,17 @@ def run(plan, state, kis):
                 log(f"{name} 이미 {won(have_krw)} 보유 · 새 계획 예산 {won(float(item.get('budget_krw', 0)))} 대비 부족분이 1주 미만이라 추가 매수 없음")
                 continue
         qty = int(budget // px)
+        plan_budget = float(item.get("budget_krw", 0))
+        if code not in held_now and plan_budget and budget < plan_budget * 0.5:
+            # 남은 한도가 계획 예산의 절반도 안 되면 자투리 매수를 하지 않고, 보유 종목이 팔려 한도가 생길 때까지 기다린다
+            if prev_state != "no_budget":
+                log(f"{name} 매수 보류 · 남은 투자 가능액 {won(available)} (계획 예산 {won(plan_budget)}의 절반 미만) · 한도가 생기면 매수")
+            watch[code] = {**watch.get(code, {}), "state": "no_budget", "room": round(available)}
+            continue
         if qty < 1:
-            log(f"{name} 매수 보류 · 남은 투자 가능액 {won(available)}, 현재가 {won(price)}")
-            watch[code]["state"] = "no_budget"
+            if prev_state != "no_budget":
+                log(f"{name} 매수 보류 · 남은 투자 가능액 {won(available)}, 현재가 {won(price)}")
+            watch[code] = {**watch.get(code, {}), "state": "no_budget", "room": round(available)}
             continue
         cost = qty * px
         result = kis.order("buy", code, qty, px)
