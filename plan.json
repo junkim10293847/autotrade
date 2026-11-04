@@ -137,7 +137,7 @@
   "proposal": null,
   "monitor_all_holdings": true,
   "replacement": {
-    "pending": true,
+    "pending": false,
     "sell_codes": [
       "097950"
     ],

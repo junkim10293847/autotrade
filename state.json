@@ -146,6 +146,19 @@
       "reason": "교체",
       "estimated": false,
       "order_no": "0000008882"
+    },
+    {
+      "code": "097950",
+      "name": "CJ제일제당",
+      "date": "2026-11-04T11:36+09:00",
+      "side": "sell",
+      "qty": 18,
+      "price": 175963.8889,
+      "pnl": -5650,
+      "days": null,
+      "reason": "교체",
+      "estimated": false,
+      "order_no": "0000026415"
     }
   ],
   "sell_orders": {
@@ -209,7 +222,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -228,7 +241,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000033661": {
       "order_no": "0000033661",
@@ -247,7 +260,7 @@
       "days": null,
       "order_rate": -0.7,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000033666": {
       "order_no": "0000033666",
@@ -266,7 +279,7 @@
       "days": null,
       "order_rate": -3.8,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000033671": {
       "order_no": "0000033671",
@@ -285,7 +298,7 @@
       "days": null,
       "order_rate": 0.78,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000033677": {
       "order_no": "0000033677",
@@ -304,7 +317,7 @@
       "days": null,
       "order_rate": -8.15,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000034808": {
       "order_no": "0000034808",
@@ -323,7 +336,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000034815": {
       "order_no": "0000034815",
@@ -342,7 +355,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261103:0000034818": {
       "order_no": "0000034818",
@@ -361,7 +374,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261104:0000008600": {
       "order_no": "0000008600",
@@ -380,7 +393,7 @@
       "days": null,
       "order_rate": -0.0,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261104:0000008882": {
       "order_no": "0000008882",
@@ -399,7 +412,7 @@
       "days": null,
       "order_rate": 1.2,
       "status": "filled",
-      "last_seen": "2026-11-04T11:21+09:00"
+      "last_seen": "2026-11-04T11:36+09:00"
     },
     "20261104:0000008886": {
       "order_no": "0000008886",
@@ -428,14 +441,33 @@
       "name": "CJ제일제당",
       "ordered_qty": 18,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 18,
+      "filled_qty": 18,
+      "filled_amount": 3167350.0,
+      "remaining_qty": 0,
       "created": "2026-11-04T11:21+09:00",
       "reason": "교체",
       "unit_cost": 176277.777,
       "days": null,
       "order_rate": -0.16,
+      "status": "filled",
+      "last_seen": "2026-11-04T11:36+09:00"
+    },
+    "20261104:0000027852": {
+      "order_no": "0000027852",
+      "branch": "00950",
+      "side": "sell",
+      "code": "259960",
+      "name": "크래프톤",
+      "ordered_qty": 16,
+      "limit_price": 213500.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 16,
+      "created": "2026-11-04T11:36+09:00",
+      "reason": "익절 예약 +5% (213,500원)",
+      "unit_cost": 203000.0,
+      "days": null,
+      "order_rate": 0.0,
       "status": "accepted",
       "last_seen": null
     }
@@ -478,5 +510,19 @@
     }
   },
   "plan_buy_attempts": {},
-  "watch": {}
+  "watch": {
+    "004020": {
+      "price": 28150,
+      "checked": "2026-11-04T11:36+09:00"
+    },
+    "271560": {
+      "price": 115700,
+      "checked": "2026-11-04T11:36+09:00"
+    },
+    "259960": {
+      "price": 202500,
+      "checked": "2026-11-04T11:36+09:00",
+      "state": "failed"
+    }
+  }
 }
