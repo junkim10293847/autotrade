@@ -31,25 +31,25 @@
     },
     "326030": {
       "date": "2026-11-03T14:53+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 41,
+      "krw": 3271850.0,
+      "pending": false,
       "requested_qty": 41,
       "requested_krw": 3284100
     },
     "003490": {
       "date": "2026-11-03T14:53+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 113,
+      "krw": 3305250.0,
+      "pending": false,
       "requested_qty": 113,
       "requested_krw": 3310900
     },
     "097950": {
       "date": "2026-11-03T14:53+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 18,
+      "krw": 3173000.0,
+      "pending": false,
       "requested_qty": 18,
       "requested_krw": 3182400
     }
@@ -148,6 +148,11 @@
       "date": "2026-11-03",
       "qty": 1,
       "recorded": false
+    },
+    "326030": {
+      "date": "2026-11-04",
+      "qty": 41,
+      "recorded": false
     }
   },
   "orders": {
@@ -168,7 +173,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -187,7 +192,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000033661": {
       "order_no": "0000033661",
@@ -206,7 +211,7 @@
       "days": null,
       "order_rate": -0.7,
       "status": "filled",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000033666": {
       "order_no": "0000033666",
@@ -225,7 +230,7 @@
       "days": null,
       "order_rate": -3.8,
       "status": "filled",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000033671": {
       "order_no": "0000033671",
@@ -244,7 +249,7 @@
       "days": null,
       "order_rate": 0.78,
       "status": "filled",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000033677": {
       "order_no": "0000033677",
@@ -263,7 +268,7 @@
       "days": null,
       "order_rate": -8.15,
       "status": "filled",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000034808": {
       "order_no": "0000034808",
@@ -273,16 +278,16 @@
       "name": "SK바이오팜",
       "ordered_qty": 41,
       "limit_price": 80100.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 41,
+      "filled_qty": 41,
+      "filled_amount": 3271850.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T14:53+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000034815": {
       "order_no": "0000034815",
@@ -292,16 +297,16 @@
       "name": "대한항공",
       "ordered_qty": 113,
       "limit_price": 29300.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 113,
+      "filled_qty": 113,
+      "filled_amount": 3305250.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T14:53+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-04T09:15+09:00"
     },
     "20261103:0000034818": {
       "order_no": "0000034818",
@@ -311,14 +316,33 @@
       "name": "CJ제일제당",
       "ordered_qty": 18,
       "limit_price": 176800.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 18,
+      "filled_qty": 18,
+      "filled_amount": 3173000.0,
+      "remaining_qty": 0,
       "created": "2026-11-03T14:53+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
+      "status": "filled",
+      "last_seen": "2026-11-04T09:15+09:00"
+    },
+    "20261104:0000008600": {
+      "order_no": "0000008600",
+      "branch": "00950",
+      "side": "sell",
+      "code": "326030",
+      "name": "SK바이오팜",
+      "ordered_qty": 41,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 41,
+      "created": "2026-11-04T09:15+09:00",
+      "reason": "교체",
+      "unit_cost": 79801.219,
+      "days": null,
+      "order_rate": -0.0,
       "status": "accepted",
       "last_seen": null
     }
@@ -343,6 +367,11 @@
       "date": "2026-11-03",
       "qty": 1,
       "order_no": "0000033677"
+    },
+    "326030": {
+      "date": "2026-11-04",
+      "qty": 41,
+      "order_no": "0000008600"
     }
   }
 }
