@@ -219,8 +219,19 @@ class KIS:
                                     "rate": float(row.get("evlu_pfls_rt") or 0)}
         return out
 
+    _last_order = 0.0
+
+    def _pace(self):
+        """주문 API 사이 간격 확보 (모의 서버는 초당 처리 한도가 낮아 연속 주문 시 500 오류)"""
+        gap = 1.2 if self.mode == "demo" else 0.3
+        wait = KIS._last_order + gap - time.time()
+        if wait > 0:
+            time.sleep(wait)
+        KIS._last_order = time.time()
+
     def order(self, side, code, qty, price=None):
         """주문 접수 결과와 주문번호를 반환한다. 접수는 체결을 의미하지 않는다."""
+        self._pace()
         tr_id = self.tr("TTTC0012U" if side == "buy" else "TTTC0011U")
         body = {"CANO": self.acct, "ACNT_PRDT_CD": self.prod, "PDNO": code,
                 "ORD_DVSN": "01" if price is None else "00", "ORD_QTY": str(qty),
@@ -228,6 +239,9 @@ class KIS:
                 "SLL_TYPE": "01" if side == "sell" else "", "CNDT_PRIC": ""}
         r = requests.post(f"{self.base}/uapi/domestic-stock/v1/trading/order-cash", timeout=15,
                           headers=self._h(tr_id), json=body)
+        if r.status_code >= 500:
+            # 접수 여부가 불확실하므로 재전송하지 않는다 (중복 주문 방지). 다음 실행 때 체결내역으로 확인 후 다시 판단.
+            return {"ok": False, "msg": f"증권사 서버 일시 오류({r.status_code}) · 다음 실행 때 다시 시도", "order_no": "", "branch": "", "raw": {}}
         r.raise_for_status()
         data = r.json()
         out = data.get("output") or {}
@@ -238,6 +252,7 @@ class KIS:
 
     def cancel(self, order_no, branch):
         """미체결 주문 전량 취소 (정정취소 API)"""
+        self._pace()
         body = {"CANO": self.acct, "ACNT_PRDT_CD": self.prod, "KRX_FWDG_ORD_ORGNO": branch or "",
                 "ORGN_ODNO": order_no, "ORD_DVSN": "00", "RVSE_CNCL_DVSN_CD": "02",
                 "ORD_QTY": "0", "ORD_UNPR": "0", "QTY_ALL_ORD_YN": "Y", "EXCG_ID_DVSN_CD": "KRX"}
