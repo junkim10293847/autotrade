@@ -624,8 +624,26 @@ def run(plan, state, kis):
     write_status(plan, state, kis.holdings(), kis)
 
 
+def recover_missing(state, held):
+    """기록 저장이 실패해 매수 기록이 빠진 보유 종목을 찾아 복구 (매수일은 처음 발견한 날로)"""
+    buys = state.setdefault("buys", {})
+    orders = state.setdefault("orders", {})
+    for code, h in held.items():
+        if code in buys:
+            continue
+        stamp = now().isoformat(timespec="minutes")
+        buys[code] = {"date": stamp, "qty": h["qty"], "krw": round(h["avg"] * h["qty"]), "inferred": True}
+        orders[f"{now():%Y%m%d}:recovered-{code}"] = {
+            "order_no": f"recovered-{code}", "branch": "", "side": "buy", "code": code, "name": h["name"],
+            "ordered_qty": h["qty"], "limit_price": h["avg"], "filled_qty": h["qty"],
+            "filled_amount": round(h["avg"] * h["qty"]), "remaining_qty": 0, "created": stamp,
+            "reason": "기록 복구 (체결 기록이 저장되지 않았던 매수)", "status": "filled", "last_seen": stamp}
+        log(f"{h['name']} 보유 중인데 매수 기록이 없어 복구 · {h['qty']}주 평균 {won(h['avg'])} · 14일 계산은 오늘부터")
+
+
 def write_status(plan, state, held, kis):
     """계좌 전체 보유 현황과 실제 계좌 잔액을 휴대폰 화면용으로 저장"""
+    recover_missing(state, held)
     buys = state.get("buys", {})
     pos, cost, value = [], 0.0, 0.0
     for code, h in held.items():
