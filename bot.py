@@ -32,7 +32,11 @@ def now():
     return datetime.now(KST)
 
 
+_MASK = __import__("re").compile(r"(CANO=|ACNT_PRDT_CD=)[0-9]+")
+
+
 def log(msg):
+    msg = _MASK.sub(lambda m: m.group(1) + "****", str(msg))  # 오류 주소에 들어간 계좌번호 가리기
     line = f"- {now():%Y-%m-%d %H:%M} KST · {msg}"
     print(line)
     with open(LOG, "a", encoding="utf-8") as f:

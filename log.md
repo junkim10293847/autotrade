@@ -41,7 +41,7 @@
 - 2026-11-02 13:49 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 352,900원, 현재가 354,000원
 - 2026-11-02 14:01 KST · 한미약품 매수 보류 · 남은 투자 가능액 353,200원, 현재가 427,000원
 - 2026-11-02 14:01 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 353,200원, 현재가 353,500원
-- 2026-11-02 14:03 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=50221455&ACNT_PRDT_CD=01&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
+- 2026-11-02 14:03 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=****&ACNT_PRDT_CD=****&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
 - 2026-11-02 14:15 KST · 새 매수 계획 제안: 포스코퓨처엠, 한진칼, 오리온
 - 2026-11-02 14:23 KST · 한미약품 매수 보류 · 남은 투자 가능액 353,200원, 현재가 423,500원
 - 2026-11-02 14:23 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 353,200원, 현재가 353,500원
@@ -65,15 +65,15 @@
 - 2026-11-03 11:14 KST · 한미약품 매수 보류 · 남은 투자 가능액 633,700원, 현재가 414,500원
 - 2026-11-03 11:14 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 633,700원, 현재가 346,000원
 - 2026-11-03 11:14 KST · 포스코퓨처엠 매수 보류 · 남은 투자 가능액 633,700원, 현재가 166,800원
-- 2026-11-03 11:14 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=50221455&ACNT_PRDT_CD=01&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
+- 2026-11-03 11:14 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=****&ACNT_PRDT_CD=****&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
 - 2026-11-03 11:14 KST · 한미약품 매수 보류 · 남은 투자 가능액 633,700원, 현재가 415,500원
 - 2026-11-03 11:14 KST · LG에너지솔루션 매수 보류 · 남은 투자 가능액 633,700원, 현재가 345,500원
 - 2026-11-03 11:14 KST · 포스코퓨처엠 매수 보류 · 남은 투자 가능액 633,700원, 현재가 166,500원
 - 2026-11-03 11:26 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/quotations/inquire-price?FID_COND_MRKT_DIV_CODE=J&FID_INPUT_ISCD=128940
 - 2026-11-03 11:50 KST · 새 매수 계획 제안: SK바이오팜, 대한항공, CJ제일제당
-- 2026-11-03 12:14 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=50221455&ACNT_PRDT_CD=01&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
+- 2026-11-03 12:14 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=****&ACNT_PRDT_CD=****&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
 - 2026-11-03 12:47 KST · 새 매수 계획 제안: SK바이오팜, 대한항공, CJ제일제당
-- 2026-11-03 14:33 KST · 계획 작성 실패: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=50221455&ACNT_PRDT_CD=01&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
+- 2026-11-03 14:33 KST · 계획 작성 실패: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=****&ACNT_PRDT_CD=****&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
 - 2026-11-03 14:37 KST · 새 매수 계획 제안: SK바이오팜, 대한항공, CJ제일제당
 - 2026-11-03 14:39 KST · **교체 매도** 현대제철 6주 시장가 → 접수
 - 2026-11-03 14:39 KST · 현대제철 주문번호 0000033661 저장 · 체결 확인 대기
@@ -83,7 +83,7 @@
 - 2026-11-03 14:39 KST · 오리온 주문번호 0000033671 저장 · 체결 확인 대기
 - 2026-11-03 14:39 KST · **교체 매도** 삼성SDI 1주 시장가 → 접수
 - 2026-11-03 14:39 KST · 삼성SDI 주문번호 0000033677 저장 · 체결 확인 대기
-- 2026-11-03 14:39 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=50221455&ACNT_PRDT_CD=01&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
+- 2026-11-03 14:39 KST · 오류: HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/inquire-balance?CANO=****&ACNT_PRDT_CD=****&AFHR_FLPR_YN=N&OFL_YN=&INQR_DVSN=02&UNPR_DVSN=01&FUND_STTL_ICLD_YN=N&FNCG_AMT_AUTO_RDPT_YN=N&PRCS_DVSN=00&CTX_AREA_FK100=&CTX_AREA_NK100=
 - 2026-11-03 14:53 KST · 실제 매도 체결 현대제철 6주 @ 28,575원 · 실현손익 -1,050원
 - 2026-11-03 14:53 KST · 실제 매도 체결 DB손해보험 3주 @ 174,600원 · 실현손익 -20,400원
 - 2026-11-03 14:53 KST · 실제 매도 체결 오리온 1주 @ 116,500원 · 실현손익 900원
