@@ -120,6 +120,19 @@
       "reason": "교체",
       "estimated": false,
       "order_no": "0000033677"
+    },
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "date": "2026-11-04T09:17+09:00",
+      "side": "sell",
+      "qty": 41,
+      "price": 79509.7561,
+      "pnl": -11950,
+      "days": null,
+      "reason": "교체",
+      "estimated": false,
+      "order_no": "0000008600"
     }
   ],
   "sell_orders": {
@@ -153,6 +166,11 @@
       "date": "2026-11-04",
       "qty": 41,
       "recorded": false
+    },
+    "003490": {
+      "date": "2026-11-04",
+      "qty": 113,
+      "recorded": false
     }
   },
   "orders": {
@@ -173,7 +191,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -192,7 +210,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000033661": {
       "order_no": "0000033661",
@@ -211,7 +229,7 @@
       "days": null,
       "order_rate": -0.7,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000033666": {
       "order_no": "0000033666",
@@ -230,7 +248,7 @@
       "days": null,
       "order_rate": -3.8,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000033671": {
       "order_no": "0000033671",
@@ -249,7 +267,7 @@
       "days": null,
       "order_rate": 0.78,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000033677": {
       "order_no": "0000033677",
@@ -268,7 +286,7 @@
       "days": null,
       "order_rate": -8.15,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000034808": {
       "order_no": "0000034808",
@@ -287,7 +305,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000034815": {
       "order_no": "0000034815",
@@ -306,7 +324,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261103:0000034818": {
       "order_no": "0000034818",
@@ -325,7 +343,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T09:15+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     "20261104:0000008600": {
       "order_no": "0000008600",
@@ -335,14 +353,52 @@
       "name": "SK바이오팜",
       "ordered_qty": 41,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 41,
+      "filled_qty": 41,
+      "filled_amount": 3259900.0,
+      "remaining_qty": 0,
       "created": "2026-11-04T09:15+09:00",
       "reason": "교체",
       "unit_cost": 79801.219,
       "days": null,
       "order_rate": -0.0,
+      "status": "filled",
+      "last_seen": "2026-11-04T09:17+09:00"
+    },
+    "20261104:0000008882": {
+      "order_no": "0000008882",
+      "branch": "00950",
+      "side": "sell",
+      "code": "003490",
+      "name": "대한항공",
+      "ordered_qty": 113,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 113,
+      "created": "2026-11-04T09:17+09:00",
+      "reason": "교체",
+      "unit_cost": 29250.0,
+      "days": null,
+      "order_rate": 1.2,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261104:0000008886": {
+      "order_no": "0000008886",
+      "branch": "00950",
+      "side": "sell",
+      "code": "097950",
+      "name": "CJ제일제당",
+      "ordered_qty": 18,
+      "limit_price": 185100.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 18,
+      "created": "2026-11-04T09:17+09:00",
+      "reason": "익절 예약 +5% (185,100원)",
+      "unit_cost": 176277.777,
+      "days": 1,
+      "order_rate": 0.98,
       "status": "accepted",
       "last_seen": null
     }
@@ -372,6 +428,11 @@
       "date": "2026-11-04",
       "qty": 41,
       "order_no": "0000008600"
+    },
+    "003490": {
+      "date": "2026-11-04",
+      "qty": 113,
+      "order_no": "0000008882"
     }
   }
 }

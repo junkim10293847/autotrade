@@ -1,79 +1,135 @@
 {
-  "updated": "2026-11-03T14:53+09:00",
+  "updated": "2026-11-04T09:17+09:00",
   "mode": "demo",
   "api": {
-    "ok": false,
-    "message": "HTTPError: 500 Server Error: Internal Server Error for url: https://openapivts.koreainvestment.com:29443/uapi/domestic-stock/v1/trading/order-cash",
-    "checked": "2026-11-04T09:15:51+09:00",
+    "ok": true,
+    "message": "계좌 잔고 조회 정상",
+    "checked": "2026-11-04T09:17:15+09:00",
     "mode": "demo"
   },
   "positions": [
     {
       "code": "003490",
       "name": "대한항공",
-      "qty": 113,
+      "qty": 47,
       "avg": 29250.0,
-      "now": 29250.0,
-      "rate": 0.0,
-      "days": 0,
-      "cost": 3305250,
-      "value": 3305250,
-      "pnl": 0,
-      "tracked": true
+      "now": 29600.0,
+      "rate": 1.2,
+      "days": 1,
+      "cost": 1374750,
+      "value": 1391200,
+      "pnl": 16450,
+      "tracked": true,
+      "buy_date": "2026-11-03"
     },
     {
-      "code": "326030",
-      "name": "SK바이오팜",
-      "qty": 41,
-      "avg": 79801.219,
-      "now": 79800.0,
-      "rate": -0.0,
-      "days": 0,
-      "cost": 3271850,
-      "value": 3271800,
-      "pnl": -50,
-      "tracked": true
+      "code": "097950",
+      "name": "CJ제일제당",
+      "qty": 18,
+      "avg": 176277.777,
+      "now": 177800.0,
+      "rate": 0.86,
+      "days": 1,
+      "cost": 3173000,
+      "value": 3200400,
+      "pnl": 27400,
+      "tracked": true,
+      "buy_date": "2026-11-03"
     }
   ],
   "total": {
-    "cost": 6577100,
-    "value": 6577050,
-    "pnl": -50,
-    "rate": -0.0,
-    "cash": 10000000,
-    "assets": 9896129,
+    "cost": 4547750,
+    "value": 4591600,
+    "pnl": 43850,
+    "rate": 0.96,
+    "cash": 8352990,
+    "assets": 9939575,
     "limit": 10000000,
-    "invested": 6577100,
+    "invested": 4547750,
     "reserved": 0,
-    "remaining": 3422900
+    "remaining": 5452250
   },
+  "history": [
+    {
+      "code": "326030",
+      "name": "SK바이오팜",
+      "sell_date": "2026-11-04",
+      "buy_date": null,
+      "days": null,
+      "qty": 41,
+      "price": 79509.7561,
+      "pnl": -11950,
+      "reason": "교체"
+    },
+    {
+      "code": "006400",
+      "name": "삼성SDI",
+      "sell_date": "2026-11-03",
+      "buy_date": null,
+      "days": null,
+      "qty": 1,
+      "price": 490500.0,
+      "pnl": -43500,
+      "reason": "교체"
+    },
+    {
+      "code": "271560",
+      "name": "오리온",
+      "sell_date": "2026-11-03",
+      "buy_date": null,
+      "days": null,
+      "qty": 1,
+      "price": 116500.0,
+      "pnl": 900,
+      "reason": "교체"
+    },
+    {
+      "code": "005830",
+      "name": "DB손해보험",
+      "sell_date": "2026-11-03",
+      "buy_date": null,
+      "days": null,
+      "qty": 3,
+      "price": 174600.0,
+      "pnl": -20400,
+      "reason": "교체"
+    },
+    {
+      "code": "004020",
+      "name": "현대제철",
+      "sell_date": "2026-11-03",
+      "buy_date": null,
+      "days": null,
+      "qty": 6,
+      "price": 28575.0,
+      "pnl": -1050,
+      "reason": "교체"
+    },
+    {
+      "code": "096770",
+      "name": "SK이노베이션",
+      "sell_date": "2026-11-03",
+      "buy_date": "2026-11-02",
+      "days": 1,
+      "qty": 3,
+      "price": 120333.3333,
+      "pnl": -35100,
+      "reason": "손절 -9.0%"
+    }
+  ],
+  "watch": {},
   "record": {
-    "trades": 5,
+    "trades": 6,
     "wins": 1,
-    "win_rate": 20.0,
-    "realized_year": -99150,
-    "realized_total": -99150,
+    "win_rate": 16.7,
+    "realized_year": -111100,
+    "realized_total": -111100,
     "estimated_legacy_count": 0
   },
   "orders": [
     {
-      "order_no": "0000034808",
-      "side": "buy",
-      "code": "326030",
-      "name": "SK바이오팜",
-      "ordered_qty": 41,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 41,
-      "status": "accepted",
-      "reason": null,
-      "created": "2026-11-03T14:53+09:00",
-      "last_seen": null
-    },
-    {
-      "order_no": "0000034815",
-      "side": "buy",
+      "order_no": "0000008882",
+      "side": "sell",
       "code": "003490",
       "name": "대한항공",
       "ordered_qty": 113,
@@ -82,13 +138,16 @@
       "avg_fill_price": 0,
       "remaining_qty": 113,
       "status": "accepted",
-      "reason": null,
-      "created": "2026-11-03T14:53+09:00",
+      "reason": "교체",
+      "balance_qty": 47,
+      "balance_avg": 29250.0,
+      "limit_price": 0.0,
+      "created": "2026-11-04T09:17+09:00",
       "last_seen": null
     },
     {
-      "order_no": "0000034818",
-      "side": "buy",
+      "order_no": "0000008886",
+      "side": "sell",
       "code": "097950",
       "name": "CJ제일제당",
       "ordered_qty": 18,
@@ -97,9 +156,84 @@
       "avg_fill_price": 0,
       "remaining_qty": 18,
       "status": "accepted",
-      "reason": null,
-      "created": "2026-11-03T14:53+09:00",
+      "reason": "익절 예약 +5% (185,100원)",
+      "balance_qty": 18,
+      "balance_avg": 176277.777,
+      "limit_price": 185100.0,
+      "created": "2026-11-04T09:17+09:00",
       "last_seen": null
+    },
+    {
+      "order_no": "0000008600",
+      "side": "sell",
+      "code": "326030",
+      "name": "SK바이오팜",
+      "ordered_qty": 41,
+      "filled_qty": 41,
+      "filled_amount": 3259900,
+      "avg_fill_price": 79509.76,
+      "remaining_qty": 0,
+      "status": "filled",
+      "reason": "교체",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
+      "created": "2026-11-04T09:15+09:00",
+      "last_seen": "2026-11-04T09:17+09:00"
+    },
+    {
+      "order_no": "0000034808",
+      "side": "buy",
+      "code": "326030",
+      "name": "SK바이오팜",
+      "ordered_qty": 41,
+      "filled_qty": 41,
+      "filled_amount": 3271850,
+      "avg_fill_price": 79801.22,
+      "remaining_qty": 0,
+      "status": "filled",
+      "reason": null,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 80100.0,
+      "created": "2026-11-03T14:53+09:00",
+      "last_seen": "2026-11-04T09:17+09:00"
+    },
+    {
+      "order_no": "0000034815",
+      "side": "buy",
+      "code": "003490",
+      "name": "대한항공",
+      "ordered_qty": 113,
+      "filled_qty": 113,
+      "filled_amount": 3305250,
+      "avg_fill_price": 29250.0,
+      "remaining_qty": 0,
+      "status": "filled",
+      "reason": null,
+      "balance_qty": 47,
+      "balance_avg": 29250.0,
+      "limit_price": 29300.0,
+      "created": "2026-11-03T14:53+09:00",
+      "last_seen": "2026-11-04T09:17+09:00"
+    },
+    {
+      "order_no": "0000034818",
+      "side": "buy",
+      "code": "097950",
+      "name": "CJ제일제당",
+      "ordered_qty": 18,
+      "filled_qty": 18,
+      "filled_amount": 3173000,
+      "avg_fill_price": 176277.78,
+      "remaining_qty": 0,
+      "status": "filled",
+      "reason": null,
+      "balance_qty": 18,
+      "balance_avg": 176277.777,
+      "limit_price": 176800.0,
+      "created": "2026-11-03T14:53+09:00",
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     {
       "order_no": "0000033661",
@@ -113,8 +247,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "교체",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     {
       "order_no": "0000033666",
@@ -128,8 +265,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "교체",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     {
       "order_no": "0000033671",
@@ -143,8 +283,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "교체",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     {
       "order_no": "0000033677",
@@ -158,8 +301,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "교체",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     {
       "order_no": "0000018616",
@@ -173,8 +319,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "손절 -9.0%",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     },
     {
       "order_no": "0000018624",
@@ -188,8 +337,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 116100.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-03T14:53+09:00"
+      "last_seen": "2026-11-04T09:17+09:00"
     }
   ]
 }
