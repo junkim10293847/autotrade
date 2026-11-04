@@ -86,7 +86,7 @@ def market_open(t=None):
     if t.weekday() >= 5:
         return False
     m = t.hour * 60 + t.minute
-    return 9 * 60 + 5 <= m <= 15 * 60 + 15  # 장 시작 5분 후 ~ 마감 15분 전
+    return 9 * 60 <= m <= 15 * 60 + 15  # 장 시작 ~ 마감 15분 전 (9시 첫 실행에 미리 주문을 건다)
 
 
 def tick(price):
@@ -95,6 +95,33 @@ def tick(price):
         if price < limit:
             return unit
     return 1000
+
+
+def round_down_tick(price):
+    u = tick(price)
+    return int(math.floor(price / u) * u)
+
+
+def today_orders(state, code=None, side=None, active=True):
+    """오늘 낸 주문만 (지정가 주문은 장 마감 때 소멸하므로 지난날 주문은 제외)"""
+    t = now().date().isoformat()
+    out = []
+    for key, o in state.get("orders", {}).items():
+        if str(o.get("created", ""))[:10] != t:
+            continue
+        if code and o.get("code") != code or side and o.get("side") != side:
+            continue
+        if active and o.get("status") not in ("accepted", "partial", "unmatched"):
+            continue
+        out.append((key, o))
+    return out
+
+
+def find_order(state, order_no):
+    for o in state.get("orders", {}).values():
+        if str(o.get("order_no")) == str(order_no):
+            return o
+    return {}
 
 
 def round_up_tick(price):
@@ -208,6 +235,17 @@ class KIS:
                 "order_no": str(out.get("ODNO") or out.get("odno") or ""),
                 "branch": str(out.get("KRX_FWDG_ORD_ORGNO") or out.get("ord_gno_brno") or ""),
                 "raw": data}
+
+    def cancel(self, order_no, branch):
+        """미체결 주문 전량 취소 (정정취소 API)"""
+        body = {"CANO": self.acct, "ACNT_PRDT_CD": self.prod, "KRX_FWDG_ORD_ORGNO": branch or "",
+                "ORGN_ODNO": order_no, "ORD_DVSN": "00", "RVSE_CNCL_DVSN_CD": "02",
+                "ORD_QTY": "0", "ORD_UNPR": "0", "QTY_ALL_ORD_YN": "Y", "EXCG_ID_DVSN_CD": "KRX"}
+        r = requests.post(f"{self.base}/uapi/domestic-stock/v1/trading/order-rvsecncl", timeout=15,
+                          headers=self._h(self.tr("TTTC0013U")), json=body)
+        r.raise_for_status()
+        data = r.json()
+        return data.get("rt_cd") == "0", data.get("msg1", "")
 
     def daily_fills(self, start_date=None, end_date=None):
         """당일 포함 3개월 이내 주문/체결 조회. output1은 주문별 누적 체결정보."""
@@ -390,33 +428,56 @@ def run(plan, state, kis):
         notify("종목 교체 완료", "기존 보유 종목 정리가 확인되어 신규 매수를 재개합니다")
 
     # 모든 계좌 보유 종목을 감시한다. 과거 매수일이 저장되지 않은 종목은 14일 조건만 적용하지 않는다.
+    #  - 익절: 증권사에 +익절가 지정가 매도 주문을 미리 걸어 둔다 (닿는 순간 체결)
+    #  - 손절·기간 정리: 봇이 확인할 때 걸어 둔 익절 주문을 취소하고 시장가로 판다
     for code, h in held.items():
         if code in replace_codes:
             continue
         meta = buys.get(code, {})
         d = meta.get("date")
         days = (now().date() - datetime.fromisoformat(d).date()).days if d else None
-        reason = None
-        if h["rate"] >= tp:
-            reason = f"익절 {h['rate']:+.1f}%"
-        elif h["rate"] <= sl:
-            reason = f"손절 {h['rate']:+.1f}%"
+        cut = None
+        if h["rate"] <= sl:
+            cut = f"손절 {h['rate']:+.1f}%"
         elif days is not None and days >= hold_days:
-            reason = f"{hold_days}일 경과 정리 {h['rate']:+.1f}%"
-        if reason and h["sellable"] > 0:
-            # 같은 날짜에 동일 종목의 매도 주문을 중복 제출하지 않음
-            sent = state.setdefault("sell_orders", {}).get(code, {})
-            if sent.get("date") == now().date().isoformat() or any(o.get("code") == code and o.get("side") == "sell" and o.get("status") in ("accepted", "partial", "unmatched") for o in state.get("orders", {}).values()):
+            cut = f"{hold_days}일 경과 정리 {h['rate']:+.1f}%"
+        open_sells = today_orders(state, code, "sell")
+        if cut:
+            if any(o.get("reason") and not str(o.get("reason")).startswith("익절 예약") for _, o in open_sells):
+                continue  # 이미 손절/정리 시장가 주문이 나가 있음
+            for key, o in open_sells:  # 걸어 둔 익절 주문 취소
+                ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
+                if ok:
+                    o["status"] = "canceled"
+                log(f"{h['name']} 익절 예약 취소 ({cut}) → {'완료' if ok else '실패: ' + msg}")
+                time.sleep(0.5)
+            qty = h["qty"] if open_sells else h["sellable"]
+            if qty <= 0:
                 continue
-            result = kis.order("sell", code, h["sellable"])
+            result = kis.order("sell", code, qty)
             ok, msg = result["ok"], result["msg"]
-            log(f"**매도** {h['name']} {h['sellable']}주 시장가 ({reason}) → {'접수' if ok else '실패: ' + msg}")
-            notify(f"매도 {h['name']}", f"{h['sellable']}주 · {reason}" + ("" if ok else " · 실패: " + msg))
+            log(f"**매도** {h['name']} {qty}주 시장가 ({cut}) → {'접수' if ok else '실패: ' + msg}")
+            notify(f"매도 {h['name']}", f"{qty}주 · {cut}" + ("" if ok else " · 실패: " + msg))
             if ok:
-                track_order(state, result, "sell", code, h["name"], h["sellable"], None,
-                            reason=reason, unit_cost=h["avg"], days=days, rate=h["rate"])
-                state["sell_orders"][code] = {"date": now().date().isoformat(), "qty": h["sellable"], "recorded": False,
-                                               "order_no": result.get("order_no")}
+                track_order(state, result, "sell", code, h["name"], qty, None,
+                            reason=cut, unit_cost=h["avg"], days=days, rate=h["rate"])
+            continue
+        # 익절 예약: 아직 주문이 안 걸린 수량(sellable)만큼 익절가 지정가 매도를 건다
+        if h["sellable"] > 0 and h["avg"] > 0:
+            px = round_up_tick(h["avg"] * (1 + tp / 100))
+            if h["now"] >= px:  # 이미 익절가 위면 바로 시장가로
+                px, why = None, f"익절 {h['rate']:+.1f}%"
+            else:
+                why = f"익절 예약 +{tp:g}% ({won(px)})"
+            result = kis.order("sell", code, h["sellable"], px)
+            ok, msg = result["ok"], result["msg"]
+            log(f"{'**매도**' if px is None else '익절 예약'} {h['name']} {h['sellable']}주 {'시장가' if px is None else '@ ' + won(px)} → {'접수' if ok else '실패: ' + msg}")
+            if px is None:
+                notify(f"매도 {h['name']}", f"{h['sellable']}주 · {why}")
+            if ok:
+                track_order(state, result, "sell", code, h["name"], h["sellable"], px,
+                            reason=why, unit_cost=h["avg"], days=days, rate=h["rate"])
+            time.sleep(0.3)
 
     # 교체 매도가 남아 있으면 신규 매수 금지
     if replacement.get("pending") or replacement_waiting:
@@ -447,15 +508,22 @@ def run(plan, state, kis):
     for item in plan.get("stocks", []):
         code = item["code"]
         # 오늘 낸 매수 주문이 살아 있으면 체결을 기다린다 (지정가 주문은 장 마감 때 자동 소멸)
-        active_buy = any(o.get("code") == code and o.get("side") == "buy"
-                         and o.get("status") in ("accepted", "partial", "unmatched")
-                         and str(o.get("created", ""))[:10] == today
-                         for o in orders_all.values())
+        active_list = today_orders(state, code, "buy")
+        # 앱에서 지정가를 올렸으면 오늘 걸어 둔 미체결 주문을 취소하고 새 지정가로 다시 건다
+        new_lim = round_down_tick(float(item["max_buy_price"]))
+        for key, o in active_list:
+            if int(o.get("filled_qty", 0) or 0) == 0 and o.get("order_no") and float(o.get("limit_price", 0)) < new_lim:
+                ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
+                log(f"{item.get('name', code)} 지정가 변경 → 기존 주문 취소 {'완료' if ok else '실패: ' + msg}")
+                if ok:
+                    o["status"] = "canceled"
+                    plan_attempts.pop(f"{plan_key}:{code}", None)
+        active_buy = bool(today_orders(state, code, "buy"))
         attempt_key = f"{plan_key}:{code}"
         att = plan_attempts.get(attempt_key)
         if att and not active_buy:
             # 지난날 주문이 한 주도 체결되지 않고 소멸했으면 같은 계획으로 다시 감시·주문한다.
-            o = orders_all.get(str(att.get("order_no")), {})
+            o = find_order(state, att.get("order_no"))
             if str(att.get("date", ""))[:10] < today and int(o.get("filled_qty", 0) or 0) == 0:
                 plan_attempts.pop(attempt_key, None)
                 log(f"{item.get('name', code)} 지난 주문 미체결 → 오늘 다시 감시")
@@ -481,9 +549,9 @@ def run(plan, state, kis):
             log(f"{name} 시세 조회 실패, 다음 회차에 재시도")
             continue
         watch[code] = {"price": price, "checked": now().isoformat(timespec="minutes"), "state": "above"}
-        if price > float(item["max_buy_price"]):
-            continue
-        px = round_up_tick(price * 1.003)
+        # 미리 주문: 현재가와 상관없이 지정가 매수 주문을 증권사에 걸어 둔다.
+        # 현재가가 이미 지정가 이하면 즉시 체결, 아니면 가격이 닿는 순간 증권사가 체결한다.
+        px = round_down_tick(float(item["max_buy_price"]))
         budget = min(float(item.get("budget_krw", 0)), per_stock_room, available)
         qty = int(budget // px)
         if qty < 1:
@@ -493,8 +561,9 @@ def run(plan, state, kis):
         cost = qty * px
         result = kis.order("buy", code, qty, px)
         ok, msg = result["ok"], result["msg"]
-        log(f"**매수** {name} {qty}주 @ {won(px)} (예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}")
-        notify(f"매수 {name}", f"{qty}주 @ {won(px)}" + ("" if ok else " · 실패: " + msg))
+        log(f"**매수 주문 걸기** {name} {qty}주 @ {won(px)} 지정가 (현재가 {won(price)}, 예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}")
+        if not ok:
+            notify(f"매수 주문 실패 {name}", msg)
         watch[code]["state"] = "ordered" if ok else "failed"
         if ok:
             state.setdefault("sell_orders", {}).pop(code, None)
