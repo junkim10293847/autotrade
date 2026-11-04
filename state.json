@@ -174,6 +174,19 @@
       "reason": "교체",
       "estimated": false,
       "order_no": "0000026415"
+    },
+    {
+      "code": "015760",
+      "name": "한국전력",
+      "date": "2026-11-04T13:20+09:00",
+      "side": "sell",
+      "qty": 220,
+      "price": 29899.0909,
+      "pnl": -13375,
+      "days": null,
+      "reason": "교체",
+      "estimated": false,
+      "order_no": "0000034234"
     }
   ],
   "sell_orders": {
@@ -242,7 +255,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -261,7 +274,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000033661": {
       "order_no": "0000033661",
@@ -280,7 +293,7 @@
       "days": null,
       "order_rate": -0.7,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000033666": {
       "order_no": "0000033666",
@@ -299,7 +312,7 @@
       "days": null,
       "order_rate": -3.8,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000033671": {
       "order_no": "0000033671",
@@ -318,7 +331,7 @@
       "days": null,
       "order_rate": 0.78,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000033677": {
       "order_no": "0000033677",
@@ -337,7 +350,7 @@
       "days": null,
       "order_rate": -8.15,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000034808": {
       "order_no": "0000034808",
@@ -356,7 +369,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000034815": {
       "order_no": "0000034815",
@@ -375,7 +388,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261103:0000034818": {
       "order_no": "0000034818",
@@ -394,7 +407,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261104:0000008600": {
       "order_no": "0000008600",
@@ -413,7 +426,7 @@
       "days": null,
       "order_rate": -0.0,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261104:0000008882": {
       "order_no": "0000008882",
@@ -432,7 +445,7 @@
       "days": null,
       "order_rate": 1.2,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261104:0000008886": {
       "order_no": "0000008886",
@@ -470,7 +483,7 @@
       "days": null,
       "order_rate": -0.16,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261104:0000027852": {
       "order_no": "0000027852",
@@ -508,7 +521,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261104:0000029947": {
       "order_no": "0000029947",
@@ -562,7 +575,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T13:14+09:00"
+      "last_seen": "2026-11-04T13:20+09:00"
     },
     "20261104:0000031900": {
       "order_no": "0000031900",
@@ -591,16 +604,16 @@
       "name": "한국전력",
       "ordered_qty": 220,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 220,
+      "filled_qty": 220,
+      "filled_amount": 6577800.0,
+      "remaining_qty": 0,
       "created": "2026-11-04T13:14+09:00",
       "reason": "교체",
       "unit_cost": 29959.886,
       "days": null,
       "order_rate": -0.2,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-04T13:20+09:00"
     }
   },
   "replacement_sell_orders": {
@@ -655,12 +668,19 @@
       "date": "2026-11-04T12:31+09:00",
       "order_no": "0000031390",
       "qty": 110
+    },
+    "2026-11-04T04:14:34.426Z:259960": {
+      "date": "2026-11-04T13:20+09:00",
+      "order_no": null,
+      "qty": 0,
+      "enough": true
     }
   },
   "watch": {
     "004020": {
-      "price": 28400,
-      "checked": "2026-11-04T13:14+09:00"
+      "price": 28550,
+      "checked": "2026-11-04T13:20+09:00",
+      "state": "failed"
     },
     "271560": {
       "price": 114200,
@@ -669,9 +689,9 @@
       "room": 160825
     },
     "259960": {
-      "price": 202500,
-      "checked": "2026-11-04T11:36+09:00",
-      "state": "failed"
+      "price": 203000,
+      "checked": "2026-11-04T13:20+09:00",
+      "state": "enough"
     },
     "015760": {
       "price": 30000,
@@ -697,8 +717,9 @@
       "room": 160825
     },
     "068270": {
-      "price": 193300,
-      "checked": "2026-11-04T13:14+09:00"
+      "price": 193000,
+      "checked": "2026-11-04T13:20+09:00",
+      "state": "failed"
     }
   }
 }
