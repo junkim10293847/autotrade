@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-04T11:11+09:00",
+  "updated": "2026-11-04T11:21+09:00",
   "mode": "demo",
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-04T11:11:50+09:00",
+    "checked": "2026-11-04T11:21:55+09:00",
     "mode": "demo"
   },
   "positions": [
@@ -13,23 +13,23 @@
       "name": "CJ제일제당",
       "qty": 18,
       "avg": 176277.777,
-      "now": 176300.0,
-      "rate": 0.01,
+      "now": 176000.0,
+      "rate": -0.16,
       "days": 1,
       "cost": 3173000,
-      "value": 3173400,
-      "pnl": 400,
+      "value": 3168000,
+      "pnl": -5000,
       "tracked": true,
       "buy_date": "2026-11-03"
     }
   ],
   "total": {
     "cost": 3173000,
-    "value": 3173400,
-    "pnl": 400,
-    "rate": 0.01,
+    "value": 3168000,
+    "pnl": -5000,
+    "rate": -0.16,
     "cash": 8352990,
-    "assets": 9909592,
+    "assets": 9904192,
     "limit": 10000000,
     "invested": 3173000,
     "reserved": 0,
@@ -125,6 +125,24 @@
   },
   "orders": [
     {
+      "order_no": "0000026415",
+      "side": "sell",
+      "code": "097950",
+      "name": "CJ제일제당",
+      "ordered_qty": 18,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "avg_fill_price": 0,
+      "remaining_qty": 18,
+      "status": "accepted",
+      "reason": "교체",
+      "balance_qty": 18,
+      "balance_avg": 176277.777,
+      "limit_price": 0.0,
+      "created": "2026-11-04T11:21+09:00",
+      "last_seen": null
+    },
+    {
       "order_no": "0000008882",
       "side": "sell",
       "code": "003490",
@@ -140,7 +158,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T09:17+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000008886",
@@ -152,7 +170,7 @@
       "filled_amount": 0,
       "avg_fill_price": 0,
       "remaining_qty": 18,
-      "status": "accepted",
+      "status": "canceled",
       "reason": "익절 예약 +5% (185,100원)",
       "balance_qty": 18,
       "balance_avg": 176277.777,
@@ -176,7 +194,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T09:15+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000034808",
@@ -194,7 +212,7 @@
       "balance_avg": 0.0,
       "limit_price": 80100.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000034815",
@@ -212,7 +230,7 @@
       "balance_avg": 0.0,
       "limit_price": 29300.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000034818",
@@ -230,7 +248,7 @@
       "balance_avg": 176277.777,
       "limit_price": 176800.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000033661",
@@ -248,7 +266,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000033666",
@@ -266,7 +284,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000033671",
@@ -284,7 +302,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000033677",
@@ -302,7 +320,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000018616",
@@ -320,7 +338,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     },
     {
       "order_no": "0000018624",
@@ -338,7 +356,7 @@
       "balance_avg": 0.0,
       "limit_price": 116100.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-04T11:11+09:00"
+      "last_seen": "2026-11-04T11:21+09:00"
     }
   ]
 }
