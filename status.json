@@ -1,55 +1,52 @@
 {
-  "updated": "2026-11-04T09:17+09:00",
+  "updated": "2026-11-04T10:19+09:00",
   "mode": "demo",
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-04T09:17:15+09:00",
+    "checked": "2026-11-04T10:19:59+09:00",
     "mode": "demo"
   },
   "positions": [
-    {
-      "code": "003490",
-      "name": "대한항공",
-      "qty": 47,
-      "avg": 29250.0,
-      "now": 29600.0,
-      "rate": 1.2,
-      "days": 1,
-      "cost": 1374750,
-      "value": 1391200,
-      "pnl": 16450,
-      "tracked": true,
-      "buy_date": "2026-11-03"
-    },
     {
       "code": "097950",
       "name": "CJ제일제당",
       "qty": 18,
       "avg": 176277.777,
-      "now": 177800.0,
-      "rate": 0.86,
+      "now": 176800.0,
+      "rate": 0.3,
       "days": 1,
       "cost": 3173000,
-      "value": 3200400,
-      "pnl": 27400,
+      "value": 3182400,
+      "pnl": 9400,
       "tracked": true,
       "buy_date": "2026-11-03"
     }
   ],
   "total": {
-    "cost": 4547750,
-    "value": 4591600,
-    "pnl": 43850,
-    "rate": 0.96,
+    "cost": 3173000,
+    "value": 3182400,
+    "pnl": 9400,
+    "rate": 0.3,
     "cash": 8352990,
-    "assets": 9939575,
+    "assets": 9918592,
     "limit": 10000000,
-    "invested": 4547750,
+    "invested": 3173000,
     "reserved": 0,
-    "remaining": 5452250
+    "remaining": 6827000
   },
   "history": [
+    {
+      "code": "003490",
+      "name": "대한항공",
+      "sell_date": "2026-11-04",
+      "buy_date": null,
+      "days": null,
+      "qty": 113,
+      "price": 29600.0,
+      "pnl": 39550,
+      "reason": "교체"
+    },
     {
       "code": "326030",
       "name": "SK바이오팜",
@@ -119,11 +116,11 @@
   ],
   "watch": {},
   "record": {
-    "trades": 6,
-    "wins": 1,
-    "win_rate": 16.7,
-    "realized_year": -111100,
-    "realized_total": -111100,
+    "trades": 7,
+    "wins": 2,
+    "win_rate": 28.6,
+    "realized_year": -71550,
+    "realized_total": -71550,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -133,17 +130,17 @@
       "code": "003490",
       "name": "대한항공",
       "ordered_qty": 113,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 113,
-      "status": "accepted",
+      "filled_qty": 113,
+      "filled_amount": 3344800,
+      "avg_fill_price": 29600.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "교체",
-      "balance_qty": 47,
-      "balance_avg": 29250.0,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T09:17+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000008886",
@@ -179,7 +176,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T09:15+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000034808",
@@ -197,7 +194,7 @@
       "balance_avg": 0.0,
       "limit_price": 80100.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000034815",
@@ -211,11 +208,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 47,
-      "balance_avg": 29250.0,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 29300.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000034818",
@@ -233,7 +230,7 @@
       "balance_avg": 176277.777,
       "limit_price": 176800.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000033661",
@@ -251,7 +248,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000033666",
@@ -269,7 +266,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000033671",
@@ -287,7 +284,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000033677",
@@ -305,7 +302,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000018616",
@@ -323,7 +320,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     },
     {
       "order_no": "0000018624",
@@ -341,7 +338,7 @@
       "balance_avg": 0.0,
       "limit_price": 116100.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-04T09:17+09:00"
+      "last_seen": "2026-11-04T10:19+09:00"
     }
   ]
 }
