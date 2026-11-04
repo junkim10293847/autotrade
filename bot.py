@@ -422,10 +422,19 @@ def run(plan, state, kis):
         replacement_waiting = True
         pending = state.setdefault("replacement_sell_orders", {})
         last = pending.get(code, {})
-        active_order = any(o.get("code") == code and o.get("side") == "sell" and o.get("status") in ("accepted", "partial", "unmatched") for o in state.get("orders", {}).values())
-        if last.get("date") == now().date().isoformat() or active_order:
+        # 걸어 둔 익절 예약 주문이 주식을 묶고 있으면 먼저 취소한다 (교체 매도가 막히지 않게)
+        tp_orders = [(k, o) for k, o in today_orders(state, code, "sell") if str(o.get("reason", "")).startswith("익절 예약")]
+        other_sell = [o for k, o in today_orders(state, code, "sell") if not str(o.get("reason", "")).startswith("익절 예약")]
+        if last.get("date") == now().date().isoformat() or other_sell:
             continue
-        if h["sellable"] > 0:
+        for k, o in tp_orders:
+            ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
+            if ok:
+                o["status"] = "canceled"
+            log(f"{h['name']} 교체 매도를 위해 익절 예약 취소 → {'완료' if ok else '실패: ' + msg}")
+        qty = h["qty"] if tp_orders else h["sellable"]
+        if qty > 0:
+            h = {**h, "sellable": qty}
             result = kis.order("sell", code, h["sellable"])
             ok, msg = result["ok"], result["msg"]
             log(f"**교체 매도** {h['name']} {h['sellable']}주 시장가 → {'접수' if ok else '실패: ' + msg}")
