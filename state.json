@@ -52,6 +52,15 @@
       "pending": false,
       "requested_qty": 18,
       "requested_krw": 3182400
+    },
+    "015760": {
+      "date": "2026-11-04T11:55+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 110,
+      "requested_krw": 3322000.0,
+      "last_order_date": "2026-11-04T11:55+09:00"
     }
   },
   "sells": {},
@@ -222,7 +231,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -241,7 +250,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000033661": {
       "order_no": "0000033661",
@@ -260,7 +269,7 @@
       "days": null,
       "order_rate": -0.7,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000033666": {
       "order_no": "0000033666",
@@ -279,7 +288,7 @@
       "days": null,
       "order_rate": -3.8,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000033671": {
       "order_no": "0000033671",
@@ -298,7 +307,7 @@
       "days": null,
       "order_rate": 0.78,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000033677": {
       "order_no": "0000033677",
@@ -317,7 +326,7 @@
       "days": null,
       "order_rate": -8.15,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000034808": {
       "order_no": "0000034808",
@@ -336,7 +345,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000034815": {
       "order_no": "0000034815",
@@ -355,7 +364,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261103:0000034818": {
       "order_no": "0000034818",
@@ -374,7 +383,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261104:0000008600": {
       "order_no": "0000008600",
@@ -393,7 +402,7 @@
       "days": null,
       "order_rate": -0.0,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261104:0000008882": {
       "order_no": "0000008882",
@@ -412,7 +421,7 @@
       "days": null,
       "order_rate": 1.2,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261104:0000008886": {
       "order_no": "0000008886",
@@ -450,7 +459,7 @@
       "days": null,
       "order_rate": -0.16,
       "status": "filled",
-      "last_seen": "2026-11-04T11:36+09:00"
+      "last_seen": "2026-11-04T11:55+09:00"
     },
     "20261104:0000027852": {
       "order_no": "0000027852",
@@ -468,6 +477,25 @@
       "unit_cost": 203000.0,
       "days": null,
       "order_rate": 0.0,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261104:0000029206": {
+      "order_no": "0000029206",
+      "branch": "00950",
+      "side": "buy",
+      "code": "015760",
+      "name": "한국전력",
+      "ordered_qty": 110,
+      "limit_price": 30200.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 110,
+      "created": "2026-11-04T11:55+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
       "status": "accepted",
       "last_seen": null
     }
@@ -509,7 +537,13 @@
       "order_no": "0000026415"
     }
   },
-  "plan_buy_attempts": {},
+  "plan_buy_attempts": {
+    "2026-11-04T02:36:26.686Z:015760": {
+      "date": "2026-11-04T11:55+09:00",
+      "order_no": "0000029206",
+      "qty": 110
+    }
+  },
   "watch": {
     "004020": {
       "price": 28150,
@@ -523,6 +557,19 @@
       "price": 202500,
       "checked": "2026-11-04T11:36+09:00",
       "state": "failed"
+    },
+    "015760": {
+      "price": 29950,
+      "checked": "2026-11-04T11:55+09:00",
+      "state": "ordered"
+    },
+    "326030": {
+      "price": 79400,
+      "checked": "2026-11-04T11:55+09:00"
+    },
+    "003490": {
+      "price": 28950,
+      "checked": "2026-11-04T11:55+09:00"
     }
   }
 }
