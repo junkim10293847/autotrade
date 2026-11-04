@@ -411,6 +411,20 @@ def run(plan, state, kis):
     except Exception as e:
         log(f"체결내역 조회 지연 · 기존 주문 추적 유지: {type(e).__name__}: {e}")
 
+    # 아직 보유하지 않은 계획 종목은 (교체 대기·주문 걸림과 상관없이) 매번 현재가를 기록한다 → 앱에서 지정가까지 남은 차이 표시
+    watch0 = state.setdefault("watch", {})
+    for item in plan.get("stocks", []):
+        c = item["code"]
+        if c in held:
+            continue
+        try:
+            px_now = kis.price(c)
+        except Exception:
+            px_now = None
+        if px_now:
+            watch0[c] = {**watch0.get(c, {}), "price": px_now, "checked": now().isoformat(timespec="minutes")}
+        time.sleep(0.3)
+
     # 교체 선택 시 기존 보유분 매도가 끝날 때까지 신규 매수는 보류
     replacement = plan.get("replacement") or {}
     replace_codes = set(replacement.get("sell_codes", [])) if replacement.get("pending") else set()
@@ -528,18 +542,7 @@ def run(plan, state, kis):
     plan_attempts = state.setdefault("plan_buy_attempts", {})
     today = now().date().isoformat()
     watch = state.setdefault("watch", {})
-    # 아직 보유하지 않은 계획 종목은 주문이 걸려 있어도 매번 현재가를 기록한다 (앱에서 지정가까지 남은 차이 표시)
-    for item in plan.get("stocks", []):
-        c = item["code"]
-        if c in held_now:
-            continue
-        try:
-            px_now = kis.price(c)
-        except Exception:
-            px_now = None
-        if px_now:
-            watch[c] = {**watch.get(c, {}), "price": px_now, "checked": now().isoformat(timespec="minutes")}
-        time.sleep(0.3)
+
     orders_all = state.get("orders", {})
     for item in plan.get("stocks", []):
         code = item["code"]
