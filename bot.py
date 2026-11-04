@@ -528,6 +528,18 @@ def run(plan, state, kis):
     plan_attempts = state.setdefault("plan_buy_attempts", {})
     today = now().date().isoformat()
     watch = state.setdefault("watch", {})
+    # 아직 보유하지 않은 계획 종목은 주문이 걸려 있어도 매번 현재가를 기록한다 (앱에서 지정가까지 남은 차이 표시)
+    for item in plan.get("stocks", []):
+        c = item["code"]
+        if c in held_now:
+            continue
+        try:
+            px_now = kis.price(c)
+        except Exception:
+            px_now = None
+        if px_now:
+            watch[c] = {**watch.get(c, {}), "price": px_now, "checked": now().isoformat(timespec="minutes")}
+        time.sleep(0.3)
     orders_all = state.get("orders", {})
     for item in plan.get("stocks", []):
         code = item["code"]
@@ -572,7 +584,7 @@ def run(plan, state, kis):
         if not price:
             log(f"{name} 시세 조회 실패, 다음 회차에 재시도")
             continue
-        watch[code] = {"price": price, "checked": now().isoformat(timespec="minutes"), "state": "above"}
+        watch[code] = {**watch.get(code, {}), "price": price, "checked": now().isoformat(timespec="minutes"), "state": "above"}
         # 미리 주문: 현재가와 상관없이 지정가 매수 주문을 증권사에 걸어 둔다.
         # 현재가가 이미 지정가 이하면 즉시 체결, 아니면 가격이 닿는 순간 증권사가 체결한다.
         px = round_down_tick(float(item["max_buy_price"]))
