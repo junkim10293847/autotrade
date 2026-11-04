@@ -428,7 +428,8 @@ def run(plan, state, kis):
     invested = sum(h["avg"] * h["qty"] for h in held_now.values())
     # 미체결 매수 주문은 보유 여부와 무관하게 투자한도에서 예약액으로 차감한다.
     active_buy_orders = [o for o in state.get("orders", {}).values()
-                         if o.get("side") == "buy" and o.get("status") in ("accepted", "partial", "unmatched")]
+                         if o.get("side") == "buy" and o.get("status") in ("accepted", "partial", "unmatched")
+                         and str(o.get("created", ""))[:10] == now().date().isoformat()]  # 지난날 주문은 소멸
     pending_cost = sum(max(0, int(o.get("remaining_qty", 0) or 0)) * float(o.get("limit_price", 0) or 0)
                        for o in active_buy_orders)
     # 구버전 state에 주문 상세가 없을 때만 buys의 예약액을 보완 사용한다.
@@ -440,14 +441,30 @@ def run(plan, state, kis):
     eligible = []
     plan_key = str(plan.get("confirmed_at") or plan.get("created") or "legacy")
     plan_attempts = state.setdefault("plan_buy_attempts", {})
+    today = now().date().isoformat()
+    watch = state.setdefault("watch", {})
+    orders_all = state.get("orders", {})
     for item in plan.get("stocks", []):
         code = item["code"]
+        # 오늘 낸 매수 주문이 살아 있으면 체결을 기다린다 (지정가 주문은 장 마감 때 자동 소멸)
         active_buy = any(o.get("code") == code and o.get("side") == "buy"
                          and o.get("status") in ("accepted", "partial", "unmatched")
-                         for o in state.get("orders", {}).values())
-        # 같은 확정 계획에서는 종목당 한 번만 주문한다. 보유 종목도 추가 매수 후보로 허용.
+                         and str(o.get("created", ""))[:10] == today
+                         for o in orders_all.values())
         attempt_key = f"{plan_key}:{code}"
-        if active_buy or attempt_key in plan_attempts:
+        att = plan_attempts.get(attempt_key)
+        if att and not active_buy:
+            # 지난날 주문이 한 주도 체결되지 않고 소멸했으면 같은 계획으로 다시 감시·주문한다.
+            o = orders_all.get(str(att.get("order_no")), {})
+            if str(att.get("date", ""))[:10] < today and int(o.get("filled_qty", 0) or 0) == 0:
+                plan_attempts.pop(attempt_key, None)
+                log(f"{item.get('name', code)} 지난 주문 미체결 → 오늘 다시 감시")
+                att = None
+        if active_buy:
+            watch[code] = {**watch.get(code, {}), "state": "ordered", "checked": now().isoformat(timespec="minutes")}
+            continue
+        if att:
+            watch[code] = {**watch.get(code, {}), "state": "done", "checked": now().isoformat(timespec="minutes")}
             continue
         meta = buys.get(code, {})
         if code not in held_now and int(meta.get("qty", 0) or 0) > 0:
@@ -463,6 +480,7 @@ def run(plan, state, kis):
         if not price:
             log(f"{name} 시세 조회 실패, 다음 회차에 재시도")
             continue
+        watch[code] = {"price": price, "checked": now().isoformat(timespec="minutes"), "state": "above"}
         if price > float(item["max_buy_price"]):
             continue
         px = round_up_tick(price * 1.003)
@@ -470,12 +488,14 @@ def run(plan, state, kis):
         qty = int(budget // px)
         if qty < 1:
             log(f"{name} 매수 보류 · 남은 투자 가능액 {won(available)}, 현재가 {won(price)}")
+            watch[code]["state"] = "no_budget"
             continue
         cost = qty * px
         result = kis.order("buy", code, qty, px)
         ok, msg = result["ok"], result["msg"]
         log(f"**매수** {name} {qty}주 @ {won(px)} (예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}")
         notify(f"매수 {name}", f"{qty}주 @ {won(px)}" + ("" if ok else " · 실패: " + msg))
+        watch[code]["state"] = "ordered" if ok else "failed"
         if ok:
             state.setdefault("sell_orders", {}).pop(code, None)
             # 기존 보유 종목의 추가 매수에서도 누적 매수수량·금액과 최초 매수일을 보존한다.
@@ -540,6 +560,9 @@ def write_status(plan, state, held, kis):
                      "days": t.get("days"), "qty": t.get("qty"), "price": t.get("price"),
                      "pnl": t.get("pnl", 0), "reason": t.get("reason")}
                     for t in reversed(actual_trades[-20:])],
+        # 매수 대기 종목 감시 상태 (현재가·마지막 확인 시각·상태)
+        "watch": {c: w for c, w in state.get("watch", {}).items()
+                  if c in {st["code"] for st in plan.get("stocks", [])}},
         "record": {"trades": len(actual_trades), "wins": wins,
                    "win_rate": round(wins / len(actual_trades) * 100, 1) if actual_trades else None,
                    "realized_year": sum(t.get("pnl", 0) for t in actual_trades if str(t.get("date", "")).startswith(year)),
