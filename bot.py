@@ -475,6 +475,12 @@ def run(plan, state, kis):
         log("기존 종목 교체 매도 완료 · 신규 매수 재개")
         notify("종목 교체 완료", "기존 보유 종목 정리가 확인되어 신규 매수를 재개합니다")
 
+    trail_mode = plan.get("tp_mode") == "trail"
+    trail = float(plan.get("trail_pct", 2))
+    peaks = state.setdefault("peaks", {})
+    for c in list(peaks):  # 팔린 종목의 추적 기록 정리
+        if c not in held:
+            peaks.pop(c, None)
     # 모든 계좌 보유 종목을 감시한다. 과거 매수일이 저장되지 않은 종목은 14일 조건만 적용하지 않는다.
     #  - 익절: 증권사에 +익절가 지정가 매도 주문을 미리 걸어 둔다 (닿는 순간 체결)
     #  - 손절·기간 정리: 봇이 확인할 때 걸어 둔 익절 주문을 취소하고 시장가로 판다
@@ -490,6 +496,7 @@ def run(plan, state, kis):
         elif days is not None and days >= hold_days:
             cut = f"{hold_days}일 경과 정리 {h['rate']:+.1f}%"
         open_sells = today_orders(state, code, "sell")
+        tp_open = [(k, o) for k, o in open_sells if str(o.get("reason", "")).startswith("익절 예약")]
         if cut:
             if any(o.get("reason") and not str(o.get("reason")).startswith("익절 예약") for _, o in open_sells):
                 continue  # 이미 손절/정리 시장가 주문이 나가 있음
@@ -510,7 +517,35 @@ def run(plan, state, kis):
                 track_order(state, result, "sell", code, h["name"], qty, None,
                             reason=cut, unit_cost=h["avg"], days=days, rate=h["rate"])
             continue
-        # 익절 예약: 아직 주문이 안 걸린 수량(sellable)만큼 익절가 지정가 매도를 건다
+        if trail_mode:
+            # 추적 익절(C): 증권사 익절 예약 대신 봇이 최고가를 기억했다가, 최고가에서 trail% 빠지면 시장가 매도
+            for k, o in tp_open:  # 예약 방식에서 바꿨다면 남아 있는 익절 예약 주문 취소
+                ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
+                if ok:
+                    o["status"] = "canceled"
+                log(f"{h['name']} 추적 익절로 전환 · 익절 예약 취소 → {'완료' if ok else '실패: ' + msg}")
+            pk = peaks.get(code)
+            if pk is None and h["rate"] >= tp:
+                pk = peaks[code] = {"start": now().isoformat(timespec="minutes"), "peak": h["now"]}
+                log(f"{h['name']} 익절선 +{tp:g}% 도달 ({h['rate']:+.1f}%) → 추적 시작 · 최고가에서 {trail:g}% 빠지면 매도")
+                notify(f"추적 익절 시작 {h['name']}", f"{h['rate']:+.1f}% · 최고가에서 {trail:g}% 빠지면 매도")
+            if pk is not None:
+                pk["peak"] = max(pk["peak"], h["now"])
+                line = pk["peak"] * (1 - trail / 100)
+                pk["line"] = round(line)
+                sell_qty = h["qty"] if tp_open else h["sellable"]
+                if h["now"] <= line and sell_qty > 0 and not today_orders(state, code, "sell"):
+                    peak_rate = (pk["peak"] / h["avg"] - 1) * 100 if h["avg"] else 0
+                    why = f"추적 익절 (최고 {peak_rate:+.1f}% → {h['rate']:+.1f}%)"
+                    result = kis.order("sell", code, sell_qty)
+                    ok, msg = result["ok"], result["msg"]
+                    log(f"**매도** {h['name']} {sell_qty}주 시장가 ({why}) → {'접수' if ok else '실패: ' + msg}")
+                    notify(f"매도 {h['name']}", f"{sell_qty}주 · {why}" + ("" if ok else " · 실패: " + msg))
+                    if ok:
+                        track_order(state, result, "sell", code, h["name"], sell_qty, None,
+                                    reason=why, unit_cost=h["avg"], days=days, rate=h["rate"])
+            continue
+        # 익절 예약(A): 아직 주문이 안 걸린 수량(sellable)만큼 익절가 지정가 매도를 건다
         if h["sellable"] > 0 and h["avg"] > 0:
             px = round_up_tick(h["avg"] * (1 + tp / 100))
             if h["now"] >= px:  # 이미 익절가 위면 바로 시장가로
@@ -714,6 +749,8 @@ def write_status(plan, state, held, kis):
         # 매수 대기 종목 감시 상태 (현재가·마지막 확인 시각·상태)
         "watch": {c: w for c, w in state.get("watch", {}).items()
                   if c in {st["code"] for st in plan.get("stocks", [])}},
+        "trail": {"mode": plan.get("tp_mode", "limit"), "pct": float(plan.get("trail_pct", 2)),
+                  "peaks": {c: v for c, v in state.get("peaks", {}).items() if c in held}},
         "record": {"trades": len(actual_trades), "wins": wins,
                    "win_rate": round(wins / len(actual_trades) * 100, 1) if actual_trades else None,
                    "realized_year": sum(t.get("pnl", 0) for t in actual_trades if str(t.get("date", "")).startswith(year)),
