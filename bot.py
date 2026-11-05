@@ -723,9 +723,10 @@ def write_status(plan, state, held, kis):
     cap = float(plan.get("max_total_krw", 2000000))
     held_codes = set(held.keys())
     today = now().date().isoformat()
-    reserved = sum(float(v.get("krw", 0)) for code, v in buys.items()
+    # 미체결 매수 주문에 묶인 돈: 오늘 낸 주문(재주문 포함)의 요청 금액
+    reserved = sum(float(v.get("requested_krw") or v.get("krw", 0)) for code, v in buys.items()
                    if code not in held_codes and v.get("pending", True)
-                   and str(v.get("date", ""))[:10] == today)
+                   and today in (str(v.get("date", ""))[:10], str(v.get("last_order_date", ""))[:10]))
     remaining = max(0, cap - cost - reserved)
     realized = sum(t.get("pnl", 0) for t in actual_trades)
     save(STATUS, {
