@@ -382,6 +382,10 @@ def reconcile_fills(kis, state):
                                "order_no": order.get("order_no")})
                 log(f"실제 매도 체결 {order.get('name')} {delta_qty}주 @ {won(delta_price)} · 실현손익 {won(pnl)}")
                 notify(f"매도 체결 {order.get('name')}", f"{delta_qty}주 · 실현손익 {won(pnl)}")
+                # 교체 매도가 아니면(익절·손절·기간 정리) 한도가 생겼으므로 같은 실행 끝에 새 계획을 자동으로 만든다
+                if order.get("reason") != "교체":
+                    need = state.setdefault("need_plan", {"since": now().isoformat(timespec="minutes"), "sold": []})
+                    need["sold"].append(order.get("name"))
             else:
                 buys = state.setdefault("buys", {})
                 meta = buys.setdefault(order.get("code"), {"date": order.get("created"), "qty": 0, "krw": 0, "pending": True})
