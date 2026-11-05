@@ -142,6 +142,9 @@ def make(plan, state, kis):
     # 기존 보유 종목도 조건을 충족하면 추가 매수 후보로 제안한다.
     # 이미 확정 대기 목록에 들어 있는 종목만 중복 제안에서 제외한다.
     busy = {s["code"] for s in plan.get("stocks", [])}
+    # 최근 7일 안에 미체결로 정리한 종목은 다시 제안하지 않는다
+    week_ago = (bot.now().date() - timedelta(days=7)).isoformat()
+    busy |= {c for c, d in (state.get("dropped") or {}).items() if str(d.get("date", "")) >= week_ago}
     cands = []
     for code, name in universe.items():
         if code in busy:
@@ -201,9 +204,9 @@ def main():
         room = float((status.get("total") or {}).get("remaining", cap))
         sold = ", ".join(dict.fromkeys(need.get("sold", [])))
         if room < cap / PICKS * 0.5:
-            bot.log(f"{sold} 매도 후 남은 투자 가능액 {bot.won(room)} · 한도가 부족해 새 계획은 만들지 않음")
+            bot.log(f"{sold} 정리 후 남은 투자 가능액 {bot.won(room)} · 한도가 부족해 새 계획은 만들지 않음")
             return
-        bot.log(f"{sold} 매도로 투자 가능액 {bot.won(room)} 생김 → 새 매수 계획 자동 작성")
+        bot.log(f"{sold} 정리로 투자 가능액 {bot.won(room)} 생김 → 새 매수 계획 자동 작성")
     try:
         # 종목 중복 확인은 실제 주문이 이루어지는 계좌와 동일한 계좌 기준으로 한다.
         # 모의투자 중에는 모의 계좌, 실전 중에는 실전 계좌의 보유 종목을 조회한다.

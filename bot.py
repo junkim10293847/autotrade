@@ -589,6 +589,8 @@ def run(plan, state, kis):
     watch = state.setdefault("watch", {})
 
     orders_all = state.get("orders", {})
+    unfilled_limit = int(plan.get("unfilled_days", 2))
+    dropped = []
     for item in plan.get("stocks", []):
         code = item["code"]
         # 오늘 낸 매수 주문이 살아 있으면 체결을 기다린다 (지정가 주문은 장 마감 때 자동 소멸)
@@ -610,8 +612,20 @@ def run(plan, state, kis):
             o = find_order(state, att.get("order_no"))
             if str(att.get("date", ""))[:10] < today and int(o.get("filled_qty", 0) or 0) == 0:
                 plan_attempts.pop(attempt_key, None)
-                log(f"{item.get('name', code)} 지난 주문 미체결 → 오늘 다시 감시")
                 att = None
+                # 방법 2: 지정가 주문이 여러 날 계속 안 사지면 계획에서 빼고, 묶였던 돈으로 새 계획을 만든다
+                misses = unfilled_days(state, code, plan)
+                if code not in held_now and misses >= unfilled_limit:
+                    nm = item.get("name", code)
+                    dropped.append(code)
+                    state.setdefault("dropped", {})[code] = {"date": today, "name": nm, "days": misses}
+                    watch[code] = {**watch.get(code, {}), "state": "dropped", "checked": now().isoformat(timespec="minutes")}
+                    need = state.setdefault("need_plan", {"since": now().isoformat(timespec="minutes"), "sold": []})
+                    need["sold"].append(f"{nm}(미체결)")
+                    log(f"{nm} 지정가 {won(round_down_tick(float(item['max_buy_price'])))} 매수가 {misses}일 연속 미체결 → 계획에서 정리 · 묶였던 돈은 새 계획에 사용")
+                    notify(f"미체결 정리 {nm}", f"{misses}일 동안 지정가에 안 사져서 계획에서 뺐습니다 · 새 계획을 만듭니다")
+                    continue
+                log(f"{item.get('name', code)} 지난 주문 미체결({misses}일째) → 오늘 다시 감시")
         if active_buy:
             watch[code] = {**watch.get(code, {}), "state": "ordered", "checked": now().isoformat(timespec="minutes")}
             continue
@@ -620,6 +634,9 @@ def run(plan, state, kis):
             continue
         # 같은 계획 안에서의 재매수는 위 attempt 기록이 막는다. 예전에 사고판 종목도 새 계획이면 다시 살 수 있다.
         eligible.append(item)
+    if dropped:
+        plan["stocks"] = [s_ for s_ in plan.get("stocks", []) if s_["code"] not in dropped]
+        save(PLAN, plan)
     # 남은 한도를 미매수 후보 수로 나눠 특정 종목 하나가 현금을 독점하지 않도록 한다.
     per_stock_room = min(cap / 3, available / max(1, len(eligible))) if eligible else 0
 
@@ -677,7 +694,70 @@ def run(plan, state, kis):
                                                      "order_no": result.get("order_no"), "qty": int(qty)}
             available -= cost
 
+    if plan.get("topup", True) and not eligible_waiting(watch, eligible):
+        top_up(plan, state, kis, held_now, available, cap, plan_key)
     write_status(plan, state, kis.holdings(), kis)
+
+
+def eligible_waiting(watch, eligible):
+    """아직 주문이 안 나간 계획 종목이 있으면(가격·시세 문제 등) 잔돈 채우기를 미룬다. 한도 부족 대기는 제외."""
+    return any(watch.get(i["code"], {}).get("state") not in ("ordered", "no_budget", "done", "enough", "dropped")
+               for i in eligible)
+
+
+def unfilled_days(state, code, plan):
+    """이 계획에서 이 종목 지정가 매수가 한 주도 안 사지고 지나간 날 수"""
+    since = str(plan.get("confirmed_at") or "")
+    try:
+        since = datetime.fromisoformat(since.replace("Z", "+00:00")).astimezone(KST).isoformat(timespec="minutes")
+    except ValueError:
+        since = ""
+    today = now().date().isoformat()
+    days = {str(o.get("created", ""))[:10] for o in state.get("orders", {}).values()
+            if o.get("side") == "buy" and o.get("code") == code and str(o.get("created", "")) >= since
+            and str(o.get("created", ""))[:10] < today and int(o.get("filled_qty", 0) or 0) == 0}
+    return len(days)
+
+
+def top_up(plan, state, kis, held_now, available, cap, plan_key):
+    """방법 1 · 잔돈 채우기: 새 계획을 만들기엔 작은 남은 돈을 보유 중인 계획 종목에 1주 단위로 더 산다.
+    - 남은 돈이 한도의 1/6(새 계획 기준) 이상이면 새 계획 몫이므로 건드리지 않는다
+    - 매수가(최대매수가) 이하이고, 손실이 손절선의 절반보다 얕고, 추적 익절 중이 아닌 종목만
+    - 한 종목 합계는 한도의 1/3을 넘지 않는다 · 1주 가격이 싼 종목부터 · 종목당 하루 한 번"""
+    sl = float(plan.get("stop_loss_pct", -7))
+    if available < 10000 or available >= cap / 3 * 0.5:
+        return
+    today = now().date().isoformat()
+    done = state.setdefault("topups", {})
+    peaks = state.get("peaks", {})
+    cands = []
+    for item in plan.get("stocks", []):
+        code = item["code"]
+        h = held_now.get(code)
+        if not h or code in peaks or done.get(code) == today or today_orders(state, code, "buy"):
+            continue
+        lim = round_down_tick(float(item["max_buy_price"]))
+        if h["now"] > lim or h["rate"] <= sl / 2:
+            continue
+        room = cap / 3 - h["avg"] * h["qty"]
+        if room >= lim:
+            cands.append((lim, code, item.get("name", code), room, h))
+    for lim, code, name, room, h in sorted(cands):
+        qty = int(min(available, room) // lim)
+        if qty < 1:
+            continue
+        result = kis.order("buy", code, qty, lim)
+        ok, msg = result["ok"], result["msg"]
+        log(f"**잔돈 채우기** {name} {qty}주 @ {won(lim)} 지정가 (남은 돈 {won(available)}) → {'접수' if ok else '실패: ' + msg}")
+        done[code] = today
+        if ok:
+            track_order(state, result, "buy", code, name, qty, lim, reason="잔돈 채우기")
+            meta = state.setdefault("buys", {}).setdefault(code, {"date": now().isoformat(timespec="minutes"), "qty": 0, "krw": 0})
+            meta["pending"] = True
+            meta["requested_qty"] = int(qty)
+            meta["requested_krw"] = float(qty * lim)
+            meta["last_order_date"] = now().isoformat(timespec="minutes")
+            available -= qty * lim
 
 
 def recover_missing(state, held):
@@ -724,9 +804,8 @@ def write_status(plan, state, held, kis):
     held_codes = set(held.keys())
     today = now().date().isoformat()
     # 미체결 매수 주문에 묶인 돈: 오늘 낸 주문(재주문 포함)의 요청 금액
-    reserved = sum(float(v.get("requested_krw") or v.get("krw", 0)) for code, v in buys.items()
-                   if code not in held_codes and v.get("pending", True)
-                   and today in (str(v.get("date", ""))[:10], str(v.get("last_order_date", ""))[:10]))
+    reserved = sum(max(0, int(o.get("remaining_qty", 0) or 0)) * float(o.get("limit_price", 0) or 0)
+                   for _, o in today_orders(state, side="buy"))
     remaining = max(0, cap - cost - reserved)
     realized = sum(t.get("pnl", 0) for t in actual_trades)
     save(STATUS, {
