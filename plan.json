@@ -267,5 +267,9 @@
     "sell_codes": [],
     "mode": "keep"
   },
-  "confirmed_at": "2026-11-05T05:34:27.584Z"
+  "confirmed_at": "2026-11-05T05:34:27.584Z",
+  "trial": {
+    "start": "2026-11-05",
+    "days": 7
+  }
 }
