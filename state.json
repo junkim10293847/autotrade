@@ -199,6 +199,45 @@
       "reason": "교체",
       "estimated": false,
       "order_no": "0000034234"
+    },
+    {
+      "code": "004020",
+      "name": "현대제철",
+      "date": "2026-11-05T09:10+09:00",
+      "side": "sell",
+      "qty": 116,
+      "price": 29850.0,
+      "pnl": 166900,
+      "days": 3,
+      "reason": "익절 예약 +5% (29,850원)",
+      "estimated": false,
+      "order_no": "0000001906"
+    },
+    {
+      "code": "068270",
+      "name": "셀트리온",
+      "date": "2026-11-05T09:10+09:00",
+      "side": "sell",
+      "qty": 17,
+      "price": 210764.7059,
+      "pnl": 306700,
+      "days": 1,
+      "reason": "익절 +7.4%",
+      "estimated": false,
+      "order_no": "0000001957"
+    },
+    {
+      "code": "259960",
+      "name": "크래프톤",
+      "date": "2026-11-05T09:10+09:00",
+      "side": "sell",
+      "qty": 16,
+      "price": 213500.0,
+      "pnl": 168000,
+      "days": 1,
+      "reason": "익절 예약 +5% (213,500원)",
+      "estimated": false,
+      "order_no": "0000001983"
     }
   ],
   "sell_orders": {
@@ -262,7 +301,7 @@
       "days": 1,
       "order_rate": -9.04,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000018624": {
       "order_no": "0000018624",
@@ -281,7 +320,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000033661": {
       "order_no": "0000033661",
@@ -300,7 +339,7 @@
       "days": null,
       "order_rate": -0.7,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000033666": {
       "order_no": "0000033666",
@@ -319,7 +358,7 @@
       "days": null,
       "order_rate": -3.8,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000033671": {
       "order_no": "0000033671",
@@ -338,7 +377,7 @@
       "days": null,
       "order_rate": 0.78,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000033677": {
       "order_no": "0000033677",
@@ -357,7 +396,7 @@
       "days": null,
       "order_rate": -8.15,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000034808": {
       "order_no": "0000034808",
@@ -376,7 +415,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000034815": {
       "order_no": "0000034815",
@@ -395,7 +434,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261103:0000034818": {
       "order_no": "0000034818",
@@ -414,7 +453,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000008600": {
       "order_no": "0000008600",
@@ -433,7 +472,7 @@
       "days": null,
       "order_rate": -0.0,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000008882": {
       "order_no": "0000008882",
@@ -452,7 +491,7 @@
       "days": null,
       "order_rate": 1.2,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000008886": {
       "order_no": "0000008886",
@@ -490,7 +529,7 @@
       "days": null,
       "order_rate": -0.16,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000027852": {
       "order_no": "0000027852",
@@ -528,7 +567,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000029947": {
       "order_no": "0000029947",
@@ -582,7 +621,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000031900": {
       "order_no": "0000031900",
@@ -620,7 +659,7 @@
       "days": null,
       "order_rate": -0.2,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000035138": {
       "order_no": "0000035138",
@@ -639,7 +678,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000035141": {
       "order_no": "0000035141",
@@ -658,7 +697,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-05T09:00+09:00"
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261104:0000035871": {
       "order_no": "0000035871",
@@ -706,16 +745,16 @@
       "name": "현대제철",
       "ordered_qty": 116,
       "limit_price": 29850.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 116,
+      "filled_qty": 116,
+      "filled_amount": 3462600.0,
+      "remaining_qty": 0,
       "created": "2026-11-05T09:00+09:00",
       "reason": "익절 예약 +5% (29,850원)",
       "unit_cost": 28411.206,
       "days": 3,
       "order_rate": 2.07,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261105:0000001957": {
       "order_no": "0000001957",
@@ -725,16 +764,16 @@
       "name": "셀트리온",
       "ordered_qty": 17,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 17,
+      "filled_qty": 17,
+      "filled_amount": 3583000.0,
+      "remaining_qty": 0,
       "created": "2026-11-05T09:00+09:00",
       "reason": "익절 +7.4%",
       "unit_cost": 192723.529,
       "days": 1,
       "order_rate": 7.41,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-05T09:10+09:00"
     },
     "20261105:0000001983": {
       "order_no": "0000001983",
@@ -744,16 +783,16 @@
       "name": "크래프톤",
       "ordered_qty": 16,
       "limit_price": 213500.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 16,
+      "filled_qty": 16,
+      "filled_amount": 3416000.0,
+      "remaining_qty": 0,
       "created": "2026-11-05T09:00+09:00",
       "reason": "익절 예약 +5% (213,500원)",
       "unit_cost": 203000.0,
       "days": 1,
       "order_rate": 2.96,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-05T09:10+09:00"
     }
   },
   "replacement_sell_orders": {
@@ -828,8 +867,8 @@
   },
   "watch": {
     "004020": {
-      "price": 28400,
-      "checked": "2026-11-05T09:00+09:00",
+      "price": 29650,
+      "checked": "2026-11-05T09:10+09:00",
       "state": "done"
     },
     "271560": {
@@ -839,9 +878,9 @@
       "room": 160825
     },
     "259960": {
-      "price": 210500,
-      "checked": "2026-11-05T09:00+09:00",
-      "state": "enough"
+      "price": 216000,
+      "checked": "2026-11-05T09:10+09:00",
+      "state": "done"
     },
     "015760": {
       "price": 30000,
@@ -867,8 +906,8 @@
       "room": 160825
     },
     "068270": {
-      "price": 192700,
-      "checked": "2026-11-05T09:00+09:00",
+      "price": 211500,
+      "checked": "2026-11-05T09:10+09:00",
       "state": "done"
     }
   }
