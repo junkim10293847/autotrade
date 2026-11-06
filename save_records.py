@@ -53,7 +53,7 @@ def main():
         for f, text in out.items():
             if text is None:
                 continue
-            if read(f) != text:
+            if remote[f] != text:  # 원격과 다르면 저장 (새 파일은 reset 후에도 남아 있으므로 원격 기준으로 비교)
                 with open(f, "w", encoding="utf-8") as fp:
                     fp.write(text)
                 sh("git", "add", f)
