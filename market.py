@@ -239,6 +239,14 @@ def main():
     if not pts or pts[-1]["t"] != t:
         pts.append({"t": t, "kospi": m["kospi"]["rate"], "kosdaq": (m.get("kosdaq") or {}).get("rate")})
     m["intraday"] = pts[-60:]
+    # 종목별 장중 흐름 (보유·계획 종목, 오늘 것만)
+    trails = old.get("trails", {}) if old.get("date") == today else {}
+    for code, q in m.get("quotes", {}).items():
+        tr = trails.get(code, [])
+        if not tr or tr[-1]["t"] != t:
+            tr.append({"t": t, "p": q["now"]})
+        trails[code] = tr[-60:]
+    m["trails"] = {c: v for c, v in trails.items() if c in m.get("quotes", {})}
     # 지난 날 마감 기록 (최근 20거래일)
     days = [d for d in old.get("days", []) if d["date"] != today]
     days.append({"date": today, "kospi": m["kospi"]["now"], "kospi_rate": m["kospi"]["rate"],
