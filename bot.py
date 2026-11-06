@@ -301,9 +301,23 @@ def sync_open_orders(kis, state, plan, held):
     - 계획에서 빠진 종목(앱에서 넘김 등)의 미체결 매수 주문은 취소
     - 같은 종목에 미체결 매수 주문이 2개 이상이면 마지막 것만 남기고 취소"""
     rows = kis.daily_fills()
-    refs = {str(r.get("orgn_odno") or "").strip() for r in rows} - {""}
-    open_rows = [r for r in rows if int(_num(r, "rmn_qty")) > 0 and r.get("cncl_yn") != "Y"
-                 and not str(r.get("orgn_odno") or "").strip() and str(r.get("odno")) not in refs]
+
+    def orgn(r):  # 원주문번호 (정정·취소 주문에만 있음, 0으로 채워진 값은 없음으로 본다)
+        v = str(r.get("orgn_odno") or "").strip()
+        return "" if not v.strip("0") else v
+
+    def left(r):  # 남은 수량: 응답에 없으면 주문 - 체결 - 취소 - 거부로 계산
+        if str(r.get("rmn_qty") or "").strip():
+            return int(_num(r, "rmn_qty"))
+        return int(_num(r, "ord_qty") - _num(r, "tot_ccld_qty") - _num(r, "cncl_cfrm_qty") - _num(r, "rjct_qty"))
+
+    refs = {orgn(r) for r in rows} - {""}
+    open_rows = [r for r in rows if left(r) > 0 and r.get("cncl_yn") != "Y"
+                 and not orgn(r) and str(r.get("odno")) not in refs]
+    if not state.get("sync_debug_" + now().date().isoformat()):
+        state["sync_debug_" + now().date().isoformat()] = True
+        smp = [{k: r.get(k) for k in ("odno", "orgn_odno", "pdno", "sll_buy_dvsn_cd", "ord_qty", "tot_ccld_qty", "rmn_qty", "cncl_yn", "cncl_cfrm_qty")} for r in rows[:3]]
+        log(f"미체결 대조 점검 · 오늘 주문 {len(rows)}건 · 미체결 {len(open_rows)}건 · 예시 {smp}")
     orders = state.setdefault("orders", {})
     known = {str(o.get("order_no")): o for o in orders.values()}
     tday = now().strftime("%Y%m%d")
@@ -317,7 +331,7 @@ def sync_open_orders(kis, state, plan, held):
         o = {"order_no": no, "branch": str(r.get("ord_gno_brno") or ""), "side": side, "code": code,
              "name": r.get("prdt_name") or h.get("name") or code, "ordered_qty": int(_num(r, "ord_qty")),
              "limit_price": _num(r, "ord_unpr"), "filled_qty": int(_num(r, "tot_ccld_qty")),
-             "filled_amount": _num(r, "tot_ccld_amt"), "remaining_qty": int(_num(r, "rmn_qty")),
+             "filled_amount": _num(r, "tot_ccld_amt"), "remaining_qty": left(r),
              "created": now().isoformat(timespec="minutes"), "unit_cost": float(h.get("avg", 0)),
              "reason": "익절 예약 (복구)" if side == "sell" else "증권사 주문 복구",
              "status": "partial" if _num(r, "tot_ccld_qty") else "accepted", "last_seen": None}
@@ -340,7 +354,7 @@ def sync_open_orders(kis, state, plan, held):
             if ok:
                 o["status"] = "canceled"
             why = "계획에서 빠진 종목" if code not in plan_codes else "중복 매수 주문"
-            log(f"{o.get('name', code)} 미체결 매수 {int(_num(r, 'rmn_qty'))}주 취소 ({why}) → {'완료' if ok else '실패: ' + msg}")
+            log(f"{o.get('name', code)} 미체결 매수 {left(r)}주 취소 ({why}) → {'완료' if ok else '실패: ' + msg}")
 
 
 def _num(row, *keys):
