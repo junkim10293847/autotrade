@@ -32,12 +32,13 @@ def index(kis, iscd):
     r = kis.get_read(f"{kis.base}/uapi/domestic-stock/v1/quotations/inquire-index-price", timeout=15,
                      headers=kis._h("FHPUP02100000"),
                      params={"FID_COND_MRKT_DIV_CODE": "U", "FID_INPUT_ISCD": iscd})
-    o = r.json().get("output") or {}
+    j = r.json()
+    o = j.get("output") or {}
     if isinstance(o, list):
         o = o[0] if o else {}
     now = num(o, "bstp_nmix_prpr")
     if not now:
-        return None
+        raise RuntimeError(f"HTTP {r.status_code} {j.get('rt_cd')} {j.get('msg_cd')} {j.get('msg1')}")
     chg = num(o, "bstp_nmix_prdy_vrss")
     if str(o.get("prdy_vrss_sign")) in ("4", "5") and chg > 0:
         chg = -chg
@@ -149,30 +150,43 @@ def summary(m):
     return lines
 
 
+def warn(msg):
+    """시황 실패는 하루 3번까지만 봇 기록에 남긴다 (원인 확인용)"""
+    print(msg)
+    st = bot.load(bot.STATE, {})
+    key = "market_warn_" + bot.now().date().isoformat()
+    if st.get(key, 0) < 3:
+        st[key] = st.get(key, 0) + 1
+        bot.save(bot.STATE, st)
+        bot.log(msg[:300])
+
+
 def main():
     plan = bot.load(bot.PLAN, {})
-    try:
-        try:
-            kis = bot.KIS("real")  # 시세는 실전 서버가 정확 (주문 없음)
-        except Exception:
-            kis = bot.KIS(plan.get("mode", "demo"))
-    except Exception as e:
-        print("시황 조회 생략:", e)
-        return
     if bot.now().strftime("%H%M") < "0900":
         print("장 시작 전 · 시황 갱신 안 함")
         return
     old = bot.load(FILE, {})
     today = bot.now().date().isoformat()
-    m = {"updated": bot.now().isoformat(timespec="minutes"), "date": today}
-    for key, (iscd, _) in INDEX.items():
+    errs, kis, m = [], None, None
+    # 시세는 실전 서버가 정확해서 실전 키 먼저, 안 되면 모의 서버로 (주문 없음)
+    for mode in dict.fromkeys(["real", plan.get("mode", "demo"), "demo"]):
         try:
-            m[key] = index(kis, iscd)
+            k = bot.KIS(mode)
+            cur = {"updated": bot.now().isoformat(timespec="minutes"), "date": today, "src": mode}
+            for key, (iscd, _) in INDEX.items():
+                try:
+                    cur[key] = index(k, iscd)
+                except Exception as e:
+                    errs.append(f"{mode} {key}: {type(e).__name__}: {e}")
+                    cur[key] = None
+            if cur.get("kospi"):
+                kis, m = k, cur
+                break
         except Exception as e:
-            print(key, "지수 조회 실패", e)
-            m[key] = None
-    if not m.get("kospi"):
-        print("지수 조회 실패 · 기존 시황 유지")
+            errs.append(f"{mode} 연결: {type(e).__name__}: {e}")
+    if not m:
+        warn("시황 지수 조회 실패 · " + " / ".join(errs))
         return
     m["flows"] = {k: flows(kis, k) for k in INDEX}
     # 보유·계획 종목 오늘 시세
