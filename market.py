@@ -97,6 +97,25 @@ def headlines(kis, n=6):
     return out
 
 
+def quote(kis, code):
+    """종목 오늘 시세: 현재가, 전일 대비, 시가·고가·저가, 52주 고저, 거래량"""
+    r = kis.get_read(f"{kis.base}/uapi/domestic-stock/v1/quotations/inquire-price", timeout=15,
+                     headers=kis._h("FHKST01010100"), params={"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code})
+    o = r.json().get("output") or {}
+    now = num(o, "stck_prpr")
+    if not now:
+        return None
+    chg = num(o, "prdy_vrss")
+    if str(o.get("prdy_vrss_sign")) in ("4", "5") and chg > 0:
+        chg = -chg
+    prev = now - chg
+    pct = lambda v: round((v / prev - 1) * 100, 2) if prev and v else None
+    hi, lo = num(o, "stck_hgpr"), num(o, "stck_lwpr")
+    return {"now": now, "chg": chg, "rate": pct(now), "prev": prev, "open": num(o, "stck_oprc"),
+            "high": hi, "low": lo, "high_rate": pct(hi), "low_rate": pct(lo),
+            "w52_high": num(o, "w52_hgpr"), "w52_low": num(o, "w52_lwpr"), "vol": int(num(o, "acml_vol"))}
+
+
 def eok(v):
     s = f"{abs(v):,.0f}억" if abs(v) < 10000 else f"{abs(v) / 10000:,.1f}조"
     return ("+" if v > 0 else "-" if v < 0 else "") + s
@@ -156,6 +175,20 @@ def main():
         print("지수 조회 실패 · 기존 시황 유지")
         return
     m["flows"] = {k: flows(kis, k) for k in INDEX}
+    # 보유·계획 종목 오늘 시세
+    status = bot.load(bot.STATUS, {})
+    names = {p["code"]: p.get("name", p["code"]) for p in status.get("positions", []) if p.get("code")}
+    held = list(names)
+    for s_ in plan.get("stocks", []):
+        names.setdefault(s_["code"], s_.get("name", s_["code"]))
+    m["quotes"] = {}
+    for code in list(names)[:12]:
+        try:
+            q = quote(kis, code)
+            if q:
+                m["quotes"][code] = {"name": names[code], "held": code in held, **q}
+        except Exception as e:
+            print(code, "시세 조회 실패", e)
     m["news"] = headlines(kis) or (old.get("news") if old.get("date") == today else [])
     # 장중 흐름: 오늘 찍은 값만 이어 붙임
     pts = old.get("intraday", []) if old.get("date") == today else []
