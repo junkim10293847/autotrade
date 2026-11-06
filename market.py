@@ -66,7 +66,7 @@ def flows(kis, key):
             o = r.json().get("output") or {}
             if isinstance(o, list):
                 o = o[0] if o else {}
-            if any(o.get(k) not in (None, "") for k in ("frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn", "prsn_ntby_tr_pbmn")):
+            if any(num(o, k) for k in ("frgn_ntby_tr_pbmn", "orgn_ntby_tr_pbmn", "prsn_ntby_tr_pbmn")):
                 # 백만원 → 억원
                 return {"foreign": round(num(o, "frgn_ntby_tr_pbmn") / 100), "inst": round(num(o, "orgn_ntby_tr_pbmn") / 100),
                         "person": round(num(o, "prsn_ntby_tr_pbmn") / 100)}
@@ -89,7 +89,7 @@ def headlines(kis, n=6):
         return None
     out, seen = [], set()
     for x in rows:
-        t = (x.get("hts_pbnt_titl_cntt") or "").strip()
+        t = "".join(ch if ch.isprintable() else " " for ch in (x.get("hts_pbnt_titl_cntt") or "")).strip()
         if not t or t in seen or not any(w in t for w in NEWS_WORDS):
             continue
         seen.add(t)
