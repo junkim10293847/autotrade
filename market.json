@@ -1,0 +1,228 @@
+{
+  "updated": "2026-11-06T12:50+09:00",
+  "date": "2026-11-06",
+  "src": "real",
+  "kospi": {
+    "now": 5110.51,
+    "chg": -273.29,
+    "rate": -5.08,
+    "open": 5263.26,
+    "high": 5269.1,
+    "low": 4911.28,
+    "low_rate": -8.78,
+    "high_rate": -2.13,
+    "up": 105,
+    "down": 789,
+    "flat": 16,
+    "limit_up": 5,
+    "limit_down": 0,
+    "amount_eok": 170301,
+    "prev_amount_eok": 236129,
+    "year_high": 9385.59,
+    "from_year_high": 45.55
+  },
+  "kosdaq": {
+    "now": 651.15,
+    "chg": -27.26,
+    "rate": -4.02,
+    "open": 654.43,
+    "high": 657.95,
+    "low": 629.17,
+    "low_rate": -7.26,
+    "high_rate": -3.02,
+    "up": 217,
+    "down": 1490,
+    "flat": 41,
+    "limit_up": 4,
+    "limit_down": 0,
+    "amount_eok": 32154,
+    "prev_amount_eok": 51650,
+    "year_high": 1229.42,
+    "from_year_high": 47.04
+  },
+  "flows": {
+    "kospi": {
+      "foreign": 0,
+      "inst": 0,
+      "person": 0
+    },
+    "kosdaq": {
+      "foreign": 0,
+      "inst": 0,
+      "person": 0
+    }
+  },
+  "quotes": {
+    "004020": {
+      "name": "현대제철",
+      "held": true,
+      "now": 28400.0,
+      "chg": -500.0,
+      "rate": -1.73,
+      "prev": 28900.0,
+      "open": 27150.0,
+      "high": 28700.0,
+      "low": 27000.0,
+      "high_rate": -0.69,
+      "low_rate": -6.57,
+      "w52_high": 50400.0,
+      "w52_low": 23650.0,
+      "vol": 204766,
+      "vol_ratio": 50.22
+    },
+    "036570": {
+      "name": "NC",
+      "held": true,
+      "now": 209500.0,
+      "chg": 0.0,
+      "rate": 0.0,
+      "prev": 209500.0,
+      "open": 199500.0,
+      "high": 211000.0,
+      "low": 198200.0,
+      "high_rate": 0.72,
+      "low_rate": -5.39,
+      "w52_high": 343500.0,
+      "w52_low": 176100.0,
+      "vol": 39845,
+      "vol_ratio": 47.66
+    },
+    "271560": {
+      "name": "오리온",
+      "held": true,
+      "now": 119700.0,
+      "chg": -1300.0,
+      "rate": -1.07,
+      "prev": 121000.0,
+      "open": 118800.0,
+      "high": 122800.0,
+      "low": 116500.0,
+      "high_rate": 1.49,
+      "low_rate": -3.72,
+      "w52_high": 150100.0,
+      "w52_low": 99800.0,
+      "vol": 82476,
+      "vol_ratio": 64.62
+    }
+  },
+  "news": [
+    {
+      "time": "12:41",
+      "title": "출렁이는 증시에 반대매매 옥죈다…정부 \"증권사 신용융자 140% 담보비율 3개월 간 면",
+      "src": "파이낸셜"
+    },
+    {
+      "time": "12:36",
+      "title": "1,360원대로 급등한 달러-원…'DXY\u001a증시\u001a선물' 압력에 한 달 만에 최고(상보)",
+      "src": "연합뉴스"
+    },
+    {
+      "time": "12:36",
+      "title": "코스닥 하락률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "12:36",
+      "title": "코스피 하락률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "12:36",
+      "title": "코스닥 상승률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "12:36",
+      "title": "코스피 상승률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    }
+  ],
+  "intraday": [
+    {
+      "t": "12:50",
+      "kospi": -5.08,
+      "kosdaq": -4.02
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-11-06",
+      "kospi": 5110.51,
+      "kospi_rate": -5.08,
+      "kosdaq": 651.15,
+      "kosdaq_rate": -4.02
+    }
+  ],
+  "strong": {
+    "checked": 106,
+    "beat": 80,
+    "top": [
+      {
+        "code": "180640",
+        "name": "한진칼",
+        "now": 210500.0,
+        "rate": 10.56,
+        "rel": 15.64,
+        "vol_ratio": 89,
+        "low_rate": -4.99,
+        "high_rate": 17.38,
+        "score": 15.31,
+        "hot": true
+      },
+      {
+        "code": "302440",
+        "name": "SK바이오사이언스",
+        "now": 38900.0,
+        "rate": 5.28,
+        "rel": 10.36,
+        "vol_ratio": 115,
+        "low_rate": -4.74,
+        "high_rate": 7.44,
+        "score": 10.76,
+        "hot": false
+      },
+      {
+        "code": "032640",
+        "name": "LG유플러스",
+        "now": 16270.0,
+        "rate": 2.13,
+        "rel": 7.21,
+        "vol_ratio": 68,
+        "low_rate": -5.21,
+        "high_rate": 2.17,
+        "score": 6.09,
+        "hot": false
+      },
+      {
+        "code": "030200",
+        "name": "KT",
+        "now": 52300.0,
+        "rate": 0.97,
+        "rel": 6.05,
+        "vol_ratio": 96,
+        "low_rate": -3.57,
+        "high_rate": 1.54,
+        "score": 5.93,
+        "hot": false
+      },
+      {
+        "code": "128940",
+        "name": "한미약품",
+        "now": 470000.0,
+        "rate": 1.08,
+        "rel": 6.16,
+        "vol_ratio": 86,
+        "low_rate": -4.52,
+        "high_rate": 6.88,
+        "score": 5.73,
+        "hot": false
+      }
+    ]
+  },
+  "summary": [
+    "폭락장 · 코스피 -5.08%, 코스닥 -4.02%",
+    "장중 저점 -8.8%에서 3.7%p 회복한 상태",
+    "코스피 910종목 중 상승 105 · 하락 789 (상한가 5)",
+    "수급: 외국인 0억 · 기관 0억 · 개인 0억 → 외국인 매수 주도"
+  ]
+}
