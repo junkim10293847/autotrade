@@ -10,7 +10,7 @@ import subprocess
 import sys
 import time
 
-FILES = ["state.json", "status.json", "log.md", "plan.json"]
+FILES = ["state.json", "status.json", "log.md", "plan.json", "market.json"]
 
 
 def sh(*a, check=True):
@@ -42,6 +42,7 @@ def main():
         out = {}
         out["state.json"] = mine["state.json"]
         out["status.json"] = mine["status.json"]
+        out["market.json"] = mine["market.json"] or remote["market.json"]
         # 로그: 원격 + 이번에 새로 추가된 줄
         r_log, m_log, o_log = remote["log.md"] or "", mine["log.md"] or "", orig["log.md"] or ""
         new_lines = m_log[len(o_log):] if m_log.startswith(o_log) else ""

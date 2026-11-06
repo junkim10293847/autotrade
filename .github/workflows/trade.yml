@@ -47,6 +47,16 @@ jobs:
           KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}
           KIS_ACCOUNT_REAL: ${{ secrets.KIS_ACCOUNT_REAL }}
         run: python planner.py --auto
+      - name: 오늘 시황
+        continue-on-error: true
+        env:
+          KIS_APP_KEY_DEMO: ${{ secrets.KIS_APP_KEY_DEMO }}
+          KIS_APP_SECRET_DEMO: ${{ secrets.KIS_APP_SECRET_DEMO }}
+          KIS_ACCOUNT_DEMO: ${{ secrets.KIS_ACCOUNT_DEMO }}
+          KIS_APP_KEY_REAL: ${{ secrets.KIS_APP_KEY_REAL }}
+          KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}
+          KIS_ACCOUNT_REAL: ${{ secrets.KIS_ACCOUNT_REAL }}
+        run: python market.py
       - name: 기록 저장
         run: |
           git config user.name "trade-bot"
