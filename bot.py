@@ -307,7 +307,7 @@ def sync_open_orders(kis, state, plan, held):
         return "" if not v.strip("0") else v
 
     def left(r):  # 남은 수량: 응답에 없으면 주문 - 체결 - 취소 - 거부로 계산
-        if str(r.get("rmn_qty") or "").strip():
+        if r.get("rmn_qty") is not None and str(r.get("rmn_qty")).strip() != "":
             return int(_num(r, "rmn_qty"))
         return int(_num(r, "ord_qty") - _num(r, "tot_ccld_qty") - _num(r, "cncl_cfrm_qty") - _num(r, "rjct_qty"))
 
