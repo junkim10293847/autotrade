@@ -10,7 +10,9 @@
 매매에는 영향을 주지 않는다. 실패해도 봇에는 영향 없음.
 """
 import json
+import math
 import os
+import time
 
 import bot
 
@@ -114,7 +116,34 @@ def quote(kis, code):
     hi, lo = num(o, "stck_hgpr"), num(o, "stck_lwpr")
     return {"now": now, "chg": chg, "rate": pct(now), "prev": prev, "open": num(o, "stck_oprc"),
             "high": hi, "low": lo, "high_rate": pct(hi), "low_rate": pct(lo),
-            "w52_high": num(o, "w52_hgpr"), "w52_low": num(o, "w52_lwpr"), "vol": int(num(o, "acml_vol"))}
+            "w52_high": num(o, "w52_hgpr"), "w52_low": num(o, "w52_lwpr"), "vol": int(num(o, "acml_vol")),
+            "vol_ratio": num(o, "prdy_vrss_vol_rate")}  # 전일 대비 거래량 (%)
+
+
+def strong(kis, idx_rate, n=5):
+    """우량주 목록 중 코스피보다 강한 종목: 지수 대비 초과 등락률이 크고 거래량이 늘어난 순
+    점수 = (종목 등락률 - 코스피 등락률) + 2 × log2(거래량 배수)  · 보기용, 자동매매와 무관"""
+    import planner
+    pause = 0.06 if kis.mode == "real" else 0.5
+    rows = []
+    for code, name in planner.UNIVERSE.items():
+        try:
+            q = quote(kis, code)
+        except Exception:
+            q = None
+        time.sleep(pause)
+        if not q or q["rate"] is None:
+            continue
+        rel = q["rate"] - idx_rate
+        if rel <= 0:
+            continue
+        vr = q["vol_ratio"] or 100
+        score = rel + 2 * math.log2(max(vr, 25) / 100)
+        rows.append({"code": code, "name": name, "now": q["now"], "rate": q["rate"], "rel": round(rel, 2),
+                     "vol_ratio": round(vr), "low_rate": q["low_rate"], "high_rate": q["high_rate"],
+                     "score": round(score, 2), "hot": q["rate"] >= 10})
+    rows.sort(key=lambda r: -r["score"])
+    return {"checked": len(planner.UNIVERSE), "beat": len(rows), "top": rows[:n]}
 
 
 def eok(v):
@@ -215,6 +244,11 @@ def main():
     days.append({"date": today, "kospi": m["kospi"]["now"], "kospi_rate": m["kospi"]["rate"],
                  "kosdaq": (m.get("kosdaq") or {}).get("now"), "kosdaq_rate": (m.get("kosdaq") or {}).get("rate")})
     m["days"] = days[-20:]
+    try:
+        m["strong"] = strong(kis, m["kospi"]["rate"])
+    except Exception as e:
+        print("강한 종목 조회 실패", e)
+        m["strong"] = old.get("strong") if old.get("date") == today else None
     m["summary"] = summary(m)
     bot.save(FILE, m)
     print("시황 저장:", " / ".join(m["summary"]))
