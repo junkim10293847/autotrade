@@ -295,68 +295,6 @@ class KIS:
         return rows
 
 
-def sync_open_orders(kis, state, plan, held):
-    """증권사에 실제로 걸려 있는 오늘 주문과 봇 기록을 맞춘다.
-    - 기록에서 빠진 미체결 주문(동시 실행 등으로 유실)은 다시 기록 → 중복 주문·손절 막힘 방지
-    - 계획에서 빠진 종목(앱에서 넘김 등)의 미체결 매수 주문은 취소
-    - 같은 종목에 미체결 매수 주문이 2개 이상이면 마지막 것만 남기고 취소"""
-    rows = kis.daily_fills()
-
-    def orgn(r):  # 원주문번호 (정정·취소 주문에만 있음, 0으로 채워진 값은 없음으로 본다)
-        v = str(r.get("orgn_odno") or "").strip()
-        return "" if not v.strip("0") else v
-
-    def left(r):  # 남은 수량: 응답에 없으면 주문 - 체결 - 취소 - 거부로 계산
-        if r.get("rmn_qty") is not None and str(r.get("rmn_qty")).strip() != "":
-            return int(_num(r, "rmn_qty"))
-        return int(_num(r, "ord_qty") - _num(r, "tot_ccld_qty") - _num(r, "cncl_cfrm_qty") - _num(r, "rjct_qty"))
-
-    refs = {orgn(r) for r in rows} - {""}
-    open_rows = [r for r in rows if left(r) > 0 and r.get("cncl_yn") != "Y"
-                 and not orgn(r) and str(r.get("odno")) not in refs]
-    if not state.get("sync_debug_" + now().date().isoformat()):
-        state["sync_debug_" + now().date().isoformat()] = True
-        smp = [{k: r.get(k) for k in ("odno", "orgn_odno", "pdno", "sll_buy_dvsn_cd", "ord_qty", "tot_ccld_qty", "rmn_qty", "cncl_yn", "cncl_cfrm_qty")} for r in rows[:3]]
-        log(f"미체결 대조 점검 · 오늘 주문 {len(rows)}건 · 미체결 {len(open_rows)}건 · 예시 {smp}")
-    orders = state.setdefault("orders", {})
-    known = {str(o.get("order_no")): o for o in orders.values()}
-    tday = now().strftime("%Y%m%d")
-    for r in open_rows:
-        no = str(r.get("odno"))
-        if no in known:
-            continue
-        side = "sell" if str(r.get("sll_buy_dvsn_cd")) == "01" else "buy"
-        code = str(r.get("pdno"))
-        h = held.get(code, {})
-        o = {"order_no": no, "branch": str(r.get("ord_gno_brno") or ""), "side": side, "code": code,
-             "name": r.get("prdt_name") or h.get("name") or code, "ordered_qty": int(_num(r, "ord_qty")),
-             "limit_price": _num(r, "ord_unpr"), "filled_qty": int(_num(r, "tot_ccld_qty")),
-             "filled_amount": _num(r, "tot_ccld_amt"), "remaining_qty": left(r),
-             "created": now().isoformat(timespec="minutes"), "unit_cost": float(h.get("avg", 0)),
-             "reason": "익절 예약 (복구)" if side == "sell" else "증권사 주문 복구",
-             "status": "partial" if _num(r, "tot_ccld_qty") else "accepted", "last_seen": None}
-        orders[f"{tday}:{no}"] = known[no] = o
-        log(f"기록에 없던 미체결 주문 복구 · {o['name']} {'매도' if side == 'sell' else '매수'} {o['remaining_qty']}주 @ {won(o['limit_price'])}")
-    plan_codes = {s["code"] for s in plan.get("stocks", [])}
-    bot_codes = {o.get("code") for o in orders.values() if o.get("reason") != "증권사 주문 복구"} | set(state.get("watch", {}))
-    by_code = {}
-    for r in open_rows:
-        if str(r.get("sll_buy_dvsn_cd")) != "01":
-            by_code.setdefault(str(r.get("pdno")), []).append(r)
-    for code, rs in by_code.items():
-        rs.sort(key=lambda r: str(r.get("ord_tmd") or "") + str(r.get("odno")))
-        if code not in plan_codes and code not in bot_codes:
-            continue  # 봇이 다룬 적 없는 종목(직접 낸 주문)은 건드리지 않는다
-        drop = rs if code not in plan_codes else rs[:-1]
-        for r in drop:
-            o = known.get(str(r.get("odno")), {})
-            ok, msg = kis.cancel(str(r.get("odno")), str(r.get("ord_gno_brno") or o.get("branch") or ""))
-            if ok:
-                o["status"] = "canceled"
-            why = "계획에서 빠진 종목" if code not in plan_codes else "중복 매수 주문"
-            log(f"{o.get('name', code)} 미체결 매수 {left(r)}주 취소 ({why}) → {'완료' if ok else '실패: ' + msg}")
-
-
 def _num(row, *keys):
     for key in keys:
         value = row.get(key)
@@ -480,10 +418,6 @@ def run(plan, state, kis):
         reconcile_fills(kis, state)
     except Exception as e:
         log(f"체결내역 조회 지연 · 기존 주문 추적 유지: {type(e).__name__}: {e}")
-    try:
-        sync_open_orders(kis, state, plan, held)
-    except Exception as e:
-        log(f"미체결 주문 대조 실패 · 다음 실행 때 재시도: {type(e).__name__}: {e}")
 
     # 아직 보유하지 않은 계획 종목은 (교체 대기·주문 걸림과 상관없이) 매번 현재가를 기록한다 → 앱에서 지정가까지 남은 차이 표시
     watch0 = state.setdefault("watch", {})
@@ -561,13 +495,6 @@ def run(plan, state, kis):
             cut = f"손절 {h['rate']:+.1f}%"
         elif days is not None and days >= hold_days:
             cut = f"{hold_days}일 경과 정리 {h['rate']:+.1f}%"
-        if cut and cut.startswith("손절") and str(plan.get("stop_hold_until", "")) >= now().date().isoformat():
-            # 급락장 손절 보류: 앱에서 정한 날까지 손절 매도를 하지 않고 지켜본다 (익절은 그대로)
-            held_log = state.setdefault("stop_hold_logged", {})
-            if held_log.get(code) != now().date().isoformat():
-                held_log[code] = now().date().isoformat()
-                log(f"{h['name']} {cut} 이지만 손절 보류 중 ({plan.get('stop_hold_until')}까지) · 매도하지 않고 지켜봄")
-            cut = None
         open_sells = today_orders(state, code, "sell")
         tp_open = [(k, o) for k, o in open_sells if str(o.get("reason", "")).startswith("익절 예약")]
         if cut:
