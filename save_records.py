@@ -6,7 +6,6 @@
   - plan.json                : 그 사이 앱에서 바뀌었으면 앱 쪽(원격)을, 아니면 이번 실행 결과를
 사용법: python save_records.py "커밋 메시지"
 """
-import json
 import subprocess
 import sys
 import time
@@ -31,20 +30,6 @@ def show(ref, path):
     return r.stdout if r.returncode == 0 else None
 
 
-def merge_state(remote, mine):
-    """이번 실행 결과를 기준으로 하되, 동시에 끝난 다른 실행이 남긴 주문·시도 기록은 잃지 않게 합친다."""
-    if not remote or not mine:
-        return mine
-    try:
-        r, m = json.loads(remote), json.loads(mine)
-    except ValueError:
-        return mine
-    for k in ("orders", "plan_buy_attempts", "topups", "dropped"):
-        if isinstance(r.get(k), dict):
-            m[k] = {**r[k], **(m.get(k) or {})}
-    return json.dumps(m, ensure_ascii=False, indent=2)
-
-
 def main():
     msg = sys.argv[1] if len(sys.argv) > 1 else "매매 기록"
     base = sh("git", "rev-parse", "HEAD").stdout.strip()          # 실행 시작 시점
@@ -55,7 +40,7 @@ def main():
         remote = {f: show("origin/main", f) for f in FILES}
         sh("git", "reset", "-q", "--hard", "origin/main")
         out = {}
-        out["state.json"] = merge_state(remote["state.json"], mine["state.json"])
+        out["state.json"] = mine["state.json"]
         out["status.json"] = mine["status.json"]
         # 로그: 원격 + 이번에 새로 추가된 줄
         r_log, m_log, o_log = remote["log.md"] or "", mine["log.md"] or "", orig["log.md"] or ""
