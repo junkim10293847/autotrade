@@ -1,0 +1,52 @@
+name: 시황 질문
+
+on:
+  workflow_dispatch:
+    inputs:
+      q:
+        description: 질문
+        required: true
+      id:
+        description: 질문 번호
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ask
+  cancel-in-progress: false
+
+jobs:
+  ask:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: 토큰 캐시
+        uses: actions/cache@v4
+        with:
+          path: .kis_token_*.json
+          key: kis-ask-${{ github.run_id }}
+          restore-keys: kis-
+      - name: 답변 만들기
+        env:
+          Q: ${{ inputs.q }}
+          QID: ${{ inputs.id }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          KIS_APP_KEY_DEMO: ${{ secrets.KIS_APP_KEY_DEMO }}
+          KIS_APP_SECRET_DEMO: ${{ secrets.KIS_APP_SECRET_DEMO }}
+          KIS_ACCOUNT_DEMO: ${{ secrets.KIS_ACCOUNT_DEMO }}
+          KIS_APP_KEY_REAL: ${{ secrets.KIS_APP_KEY_REAL }}
+          KIS_APP_SECRET_REAL: ${{ secrets.KIS_APP_SECRET_REAL }}
+          KIS_ACCOUNT_REAL: ${{ secrets.KIS_ACCOUNT_REAL }}
+        run: python ask.py "$Q" "$QID"
+      - name: 답변 저장
+        run: |
+          git config user.name "trade-bot"
+          git config user.email "trade-bot@users.noreply.github.com"
+          python save_records.py "시황 질문 답변"

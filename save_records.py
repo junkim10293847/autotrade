@@ -10,7 +10,7 @@ import subprocess
 import sys
 import time
 
-FILES = ["state.json", "status.json", "log.md", "plan.json", "market.json"]
+FILES = ["state.json", "status.json", "log.md", "plan.json", "market.json", "answers.json"]
 
 
 def sh(*a, check=True):
@@ -49,6 +49,11 @@ def main():
         out["log.md"] = r_log + ("" if not new_lines or r_log.endswith("\n") or not r_log else "\n") + new_lines
         # 계획: 앱이 그 사이 바꿨으면 앱 것을 존중
         out["plan.json"] = mine["plan.json"] if remote["plan.json"] == orig["plan.json"] else remote["plan.json"]
+        out["answers.json"] = mine["answers.json"] if remote["answers.json"] == orig["answers.json"] else remote["answers.json"]
+        # 이번 실행이 건드리지 않은 파일은 원격(더 최신) 그대로 둔다 (예: 질문 답변 실행이 매매 기록을 덮지 않게)
+        for f in FILES:
+            if mine[f] == orig[f]:
+                out[f] = remote[f]
         changed = False
         for f, text in out.items():
             if text is None:
