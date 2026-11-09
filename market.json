@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-09T09:30+09:00",
+  "updated": "2026-11-09T09:40+09:00",
   "date": "2026-11-09",
   "src": "real",
   "kospi": {
-    "now": 5049.68,
-    "chg": -10.01,
-    "rate": -0.2,
+    "now": 5035.7,
+    "chg": -23.99,
+    "rate": -0.47,
     "open": 5034.2,
-    "high": 5067.0,
+    "high": 5079.08,
     "low": 4990.66,
     "low_rate": -1.36,
-    "high_rate": 0.14,
-    "up": 326,
-    "down": 529,
-    "flat": 41,
-    "limit_up": 4,
-    "limit_down": 0,
-    "amount_eok": 35289,
-    "prev_amount_eok": 289829,
-    "year_high": 9385.59,
-    "from_year_high": 46.2
-  },
-  "kosdaq": {
-    "now": 637.35,
-    "chg": -6.92,
-    "rate": -1.07,
-    "open": 638.82,
-    "high": 643.07,
-    "low": 633.69,
-    "low_rate": -1.64,
-    "high_rate": -0.19,
-    "up": 772,
-    "down": 868,
-    "flat": 100,
+    "high_rate": 0.38,
+    "up": 276,
+    "down": 586,
+    "flat": 43,
     "limit_up": 5,
     "limit_down": 0,
-    "amount_eok": 8528,
+    "amount_eok": 41486,
+    "prev_amount_eok": 289829,
+    "year_high": 9385.59,
+    "from_year_high": 46.35
+  },
+  "kosdaq": {
+    "now": 633.84,
+    "chg": -10.43,
+    "rate": -1.62,
+    "open": 638.82,
+    "high": 643.07,
+    "low": 633.5,
+    "low_rate": -1.67,
+    "high_rate": -0.19,
+    "up": 689,
+    "down": 949,
+    "flat": 105,
+    "limit_up": 5,
+    "limit_down": 0,
+    "amount_eok": 10405,
     "prev_amount_eok": 50701,
     "year_high": 1229.42,
-    "from_year_high": 48.16
+    "from_year_high": 48.44
   },
   "flows": {
     "kospi": {
-      "foreign": 139,
-      "inst": 92,
-      "person": -225
+      "foreign": 262,
+      "inst": 27,
+      "person": -284
     },
     "kosdaq": null
   },
@@ -52,9 +52,9 @@
     "004020": {
       "name": "현대제철",
       "held": true,
-      "now": 28000.0,
-      "chg": -150.0,
-      "rate": -0.53,
+      "now": 27850.0,
+      "chg": -300.0,
+      "rate": -1.07,
       "prev": 28150.0,
       "open": 27450.0,
       "high": 28500.0,
@@ -63,15 +63,15 @@
       "low_rate": -2.49,
       "w52_high": 50400.0,
       "w52_low": 23650.0,
-      "vol": 71347,
-      "vol_ratio": 20.29
+      "vol": 85537,
+      "vol_ratio": 24.33
     },
     "036570": {
       "name": "NC",
       "held": true,
-      "now": 210500.0,
-      "chg": 2000.0,
-      "rate": 0.96,
+      "now": 210000.0,
+      "chg": 1500.0,
+      "rate": 0.72,
       "prev": 208500.0,
       "open": 209000.0,
       "high": 212000.0,
@@ -80,15 +80,15 @@
       "low_rate": -0.72,
       "w52_high": 343500.0,
       "w52_low": 176100.0,
-      "vol": 4972,
-      "vol_ratio": 5.81
+      "vol": 6458,
+      "vol_ratio": 7.54
     },
     "271560": {
       "name": "오리온",
       "held": true,
-      "now": 118900.0,
-      "chg": 500.0,
-      "rate": 0.42,
+      "now": 118500.0,
+      "chg": 100.0,
+      "rate": 0.08,
       "prev": 118400.0,
       "open": 118900.0,
       "high": 120500.0,
@@ -97,8 +97,8 @@
       "low_rate": -1.94,
       "w52_high": 150100.0,
       "w52_low": 100500.0,
-      "vol": 14718,
-      "vol_ratio": 9.86
+      "vol": 17697,
+      "vol_ratio": 11.86
     }
   },
   "news": [
@@ -148,6 +148,11 @@
       "t": "09:30",
       "kospi": -0.2,
       "kosdaq": -1.07
+    },
+    {
+      "t": "09:40",
+      "kospi": -0.47,
+      "kosdaq": -1.62
     }
   ],
   "trails": {
@@ -163,6 +168,10 @@
       {
         "t": "09:30",
         "p": 28000.0
+      },
+      {
+        "t": "09:40",
+        "p": 27850.0
       }
     ],
     "036570": [
@@ -177,6 +186,10 @@
       {
         "t": "09:30",
         "p": 210500.0
+      },
+      {
+        "t": "09:40",
+        "p": 210000.0
       }
     ],
     "271560": [
@@ -191,6 +204,10 @@
       {
         "t": "09:30",
         "p": 118900.0
+      },
+      {
+        "t": "09:40",
+        "p": 118500.0
       }
     ]
   },
@@ -204,81 +221,81 @@
     },
     {
       "date": "2026-11-09",
-      "kospi": 5049.68,
-      "kospi_rate": -0.2,
-      "kosdaq": 637.35,
-      "kosdaq_rate": -1.07
+      "kospi": 5035.7,
+      "kospi_rate": -0.47,
+      "kosdaq": 633.84,
+      "kosdaq_rate": -1.62
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 29,
+    "beat": 30,
     "top": [
-      {
-        "code": "302440",
-        "name": "SK바이오사이언스",
-        "now": 41300.0,
-        "rate": 7.55,
-        "rel": 7.75,
-        "vol_ratio": 58,
-        "low_rate": -0.52,
-        "high_rate": 9.77,
-        "score": 6.2,
-        "hot": false
-      },
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 210500.0,
-        "rate": 7.34,
-        "rel": 7.54,
-        "vol_ratio": 22,
+        "now": 217500.0,
+        "rate": 10.91,
+        "rel": 11.38,
+        "vol_ratio": 26,
         "low_rate": 0.25,
-        "high_rate": 10.66,
-        "score": 3.54,
+        "high_rate": 11.68,
+        "score": 7.45,
+        "hot": true
+      },
+      {
+        "code": "302440",
+        "name": "SK바이오사이언스",
+        "now": 41000.0,
+        "rate": 6.77,
+        "rel": 7.24,
+        "vol_ratio": 65,
+        "low_rate": -0.52,
+        "high_rate": 9.77,
+        "score": 5.99,
         "hot": false
       },
       {
-        "code": "326030",
-        "name": "SK바이오팜",
-        "now": 90600.0,
-        "rate": 2.03,
-        "rel": 2.23,
-        "vol_ratio": 13,
-        "low_rate": -0.9,
-        "high_rate": 4.17,
-        "score": -1.77,
+        "code": "128940",
+        "name": "한미약품",
+        "now": 476000.0,
+        "rate": 1.93,
+        "rel": 2.4,
+        "vol_ratio": 8,
+        "low_rate": -2.14,
+        "high_rate": 3.32,
+        "score": -1.6,
         "hot": false
       },
       {
-        "code": "032830",
-        "name": "삼성생명",
-        "now": 239000.0,
-        "rate": 1.92,
-        "rel": 2.12,
-        "vol_ratio": 16,
-        "low_rate": -2.77,
-        "high_rate": 2.99,
-        "score": -1.88,
+        "code": "006260",
+        "name": "LS",
+        "now": 172600.0,
+        "rate": 0.47,
+        "rel": 0.94,
+        "vol_ratio": 41,
+        "low_rate": -1.51,
+        "high_rate": 2.15,
+        "score": -1.65,
         "hot": false
       },
       {
-        "code": "036460",
-        "name": "한국가스공사",
-        "now": 37150.0,
-        "rate": 1.78,
-        "rel": 1.98,
-        "vol_ratio": 23,
-        "low_rate": 0.14,
-        "high_rate": 2.47,
-        "score": -2.02,
+        "code": "011780",
+        "name": "금호석유",
+        "now": 94200.0,
+        "rate": 1.84,
+        "rel": 2.31,
+        "vol_ratio": 9,
+        "low_rate": -1.51,
+        "high_rate": 2.49,
+        "score": -1.69,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.20%, 코스닥 -1.07%",
-    "코스피 896종목 중 상승 326 · 하락 529 (상한가 4)",
-    "수급: 외국인 +139억 · 기관 +92억 · 개인 -225억 → 개인 매도 주도"
+    "보합권 · 코스피 -0.47%, 코스닥 -1.62%",
+    "코스피 905종목 중 상승 276 · 하락 586 (상한가 5)",
+    "수급: 외국인 +262억 · 기관 +27억 · 개인 -284억 → 개인 매도 주도"
   ]
 }
