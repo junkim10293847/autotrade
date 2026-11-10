@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-10T10:10+09:00",
+  "updated": "2026-11-10T10:20+09:00",
   "date": "2026-11-10",
   "src": "real",
   "kospi": {
-    "now": 5203.42,
-    "chg": 184.57,
-    "rate": 3.68,
+    "now": 5199.94,
+    "chg": 181.09,
+    "rate": 3.61,
     "open": 5247.22,
     "high": 5300.92,
-    "low": 5197.09,
-    "low_rate": 3.55,
+    "low": 5184.58,
+    "low_rate": 3.3,
     "high_rate": 5.62,
-    "up": 667,
-    "down": 197,
-    "flat": 41,
-    "limit_up": 5,
+    "up": 649,
+    "down": 221,
+    "flat": 35,
+    "limit_up": 6,
     "limit_down": 0,
-    "amount_eok": 56657,
+    "amount_eok": 60423,
     "prev_amount_eok": 185019,
     "year_high": 9385.59,
-    "from_year_high": 44.56
+    "from_year_high": 44.6
   },
   "kosdaq": {
-    "now": 660.02,
-    "chg": 21.05,
-    "rate": 3.29,
+    "now": 662.47,
+    "chg": 23.5,
+    "rate": 3.68,
     "open": 661.73,
     "high": 671.91,
     "low": 655.09,
     "low_rate": 2.52,
     "high_rate": 5.16,
-    "up": 1296,
-    "down": 391,
-    "flat": 59,
+    "up": 1298,
+    "down": 381,
+    "flat": 69,
     "limit_up": 3,
     "limit_down": 0,
-    "amount_eok": 19078,
+    "amount_eok": 20243,
     "prev_amount_eok": 45575,
     "year_high": 1229.42,
-    "from_year_high": 46.31
+    "from_year_high": 46.12
   },
   "flows": {
     "kospi": {
-      "foreign": 297,
-      "inst": 541,
-      "person": -839
+      "foreign": 393,
+      "inst": 453,
+      "person": -849
     },
     "kosdaq": null
   },
@@ -52,60 +52,60 @@
     "035720": {
       "name": "카카오",
       "held": true,
-      "now": 32300.0,
-      "chg": 200.0,
-      "rate": 0.62,
+      "now": 32050.0,
+      "chg": -50.0,
+      "rate": -0.16,
       "prev": 32100.0,
       "open": 32550.0,
       "high": 33300.0,
-      "low": 32200.0,
+      "low": 32000.0,
       "high_rate": 3.74,
-      "low_rate": 0.31,
+      "low_rate": -0.31,
       "w52_high": 66700.0,
       "w52_low": 28400.0,
-      "vol": 602098,
-      "vol_ratio": 27.87
+      "vol": 666927,
+      "vol_ratio": 30.87
     },
     "128940": {
       "name": "한미약품",
       "held": true,
-      "now": 491000.0,
-      "chg": 16000.0,
-      "rate": 3.37,
+      "now": 488000.0,
+      "chg": 13000.0,
+      "rate": 2.74,
       "prev": 475000.0,
       "open": 468000.0,
-      "high": 491500.0,
+      "high": 493000.0,
       "low": 467500.0,
-      "high_rate": 3.47,
+      "high_rate": 3.79,
       "low_rate": -1.58,
       "w52_high": 647000.0,
       "w52_low": 302000.0,
-      "vol": 51157,
-      "vol_ratio": 39.49
+      "vol": 54043,
+      "vol_ratio": 41.72
     },
     "259960": {
       "name": "크래프톤",
       "held": true,
-      "now": 217000.0,
-      "chg": -500.0,
-      "rate": -0.23,
+      "now": 215500.0,
+      "chg": -2000.0,
+      "rate": -0.92,
       "prev": 217500.0,
       "open": 218500.0,
       "high": 221000.0,
-      "low": 216500.0,
+      "low": 215000.0,
       "high_rate": 1.61,
-      "low_rate": -0.46,
+      "low_rate": -1.15,
       "w52_high": 303500.0,
       "w52_low": 178500.0,
-      "vol": 21562,
-      "vol_ratio": 19.35
+      "vol": 23769,
+      "vol_ratio": 21.33
     }
   },
   "news": [
     {
-      "time": "10:09",
-      "title": "美 훈풍에 코스피·코스닥 급등…양 시장 '매수 사이드카' 발동",
-      "src": "아시아 경제"
+      "time": "10:18",
+      "title": "與, 증시 부양책 논의 본격화…‘주가 누르기 방지법’ 등 입법 속도",
+      "src": "헤럴드경제"
     }
   ],
   "intraday": [
@@ -143,6 +143,11 @@
       "t": "10:10",
       "kospi": 3.68,
       "kosdaq": 3.29
+    },
+    {
+      "t": "10:20",
+      "kospi": 3.61,
+      "kosdaq": 3.68
     }
   ],
   "trails": {
@@ -174,6 +179,10 @@
       {
         "t": "10:10",
         "p": 32300.0
+      },
+      {
+        "t": "10:20",
+        "p": 32050.0
       }
     ],
     "128940": [
@@ -204,6 +213,10 @@
       {
         "t": "10:10",
         "p": 491000.0
+      },
+      {
+        "t": "10:20",
+        "p": 488000.0
       }
     ],
     "259960": [
@@ -234,6 +247,10 @@
       {
         "t": "10:10",
         "p": 217000.0
+      },
+      {
+        "t": "10:20",
+        "p": 215500.0
       }
     ]
   },
@@ -254,50 +271,50 @@
     },
     {
       "date": "2026-11-10",
-      "kospi": 5203.42,
-      "kospi_rate": 3.68,
-      "kosdaq": 660.02,
-      "kosdaq_rate": 3.29
+      "kospi": 5199.94,
+      "kospi_rate": 3.61,
+      "kosdaq": 662.47,
+      "kosdaq_rate": 3.68
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 28,
+    "beat": 30,
     "top": [
       {
         "code": "003490",
         "name": "대한항공",
         "now": 31800.0,
         "rate": 9.28,
-        "rel": 5.6,
-        "vol_ratio": 265,
+        "rel": 5.67,
+        "vol_ratio": 276,
         "low_rate": 3.44,
         "high_rate": 12.71,
-        "score": 8.41,
+        "score": 8.59,
         "hot": false
       },
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 232000.0,
-        "rate": 11.81,
-        "rel": 8.13,
-        "vol_ratio": 54,
+        "now": 233500.0,
+        "rate": 12.53,
+        "rel": 8.92,
+        "vol_ratio": 55,
         "low_rate": 0.96,
         "high_rate": 17.11,
-        "score": 6.36,
+        "score": 7.21,
         "hot": true
       },
       {
         "code": "010120",
         "name": "LS ELECTRIC",
-        "now": 120800.0,
-        "rate": 8.15,
-        "rel": 4.47,
-        "vol_ratio": 36,
+        "now": 121000.0,
+        "rate": 8.33,
+        "rel": 4.72,
+        "vol_ratio": 39,
         "low_rate": 5.28,
         "high_rate": 11.73,
-        "score": 1.55,
+        "score": 1.98,
         "hot": false
       },
       {
@@ -305,30 +322,31 @@
         "name": "HD현대일렉트릭",
         "now": 382500.0,
         "rate": 7.44,
-        "rel": 3.76,
-        "vol_ratio": 43,
+        "rel": 3.83,
+        "vol_ratio": 48,
         "low_rate": 5.48,
         "high_rate": 11.66,
-        "score": 1.36,
+        "score": 1.69,
         "hot": false
       },
       {
-        "code": "018260",
-        "name": "삼성에스디에스",
-        "now": 230500.0,
-        "rate": 6.47,
-        "rel": 2.79,
-        "vol_ratio": 51,
-        "low_rate": 2.54,
-        "high_rate": 10.39,
-        "score": 0.83,
+        "code": "272210",
+        "name": "한화시스템",
+        "now": 53900.0,
+        "rate": 7.8,
+        "rel": 4.19,
+        "vol_ratio": 36,
+        "low_rate": 2.8,
+        "high_rate": 8.8,
+        "score": 1.22,
         "hot": false
       }
     ]
   },
   "summary": [
-    "급등장 · 코스피 +3.68%, 코스닥 +3.29%",
-    "코스피 905종목 중 상승 667 · 하락 197 (상한가 5)",
-    "수급: 외국인 +297억 · 기관 +541억 · 개인 -839억 → 개인 매도 주도"
+    "급등장 · 코스피 +3.61%, 코스닥 +3.68%",
+    "장중 고점 +5.6%에서 2.0%p 밀린 상태",
+    "코스피 905종목 중 상승 649 · 하락 221 (상한가 6)",
+    "수급: 외국인 +393억 · 기관 +453억 · 개인 -849억 → 개인 매도 주도"
   ]
 }
