@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-10T13:50+09:00",
+  "updated": "2026-11-10T14:00+09:00",
   "mode": "demo",
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-10T13:50:44+09:00",
+    "checked": "2026-11-10T14:00:56+09:00",
     "mode": "demo"
   },
   "positions": [
@@ -13,12 +13,12 @@
       "name": "카카오",
       "qty": 102,
       "avg": 32544.607,
-      "now": 31950.0,
-      "rate": -1.83,
+      "now": 31900.0,
+      "rate": -1.98,
       "days": 1,
       "cost": 3319550,
-      "value": 3258900,
-      "pnl": -60650,
+      "value": 3253800,
+      "pnl": -65750,
       "tracked": true,
       "buy_date": "2026-11-09"
     },
@@ -27,43 +27,40 @@
       "name": "한미약품",
       "qty": 6,
       "avg": 487000.0,
-      "now": 488500.0,
-      "rate": 0.31,
+      "now": 487000.0,
+      "rate": 0.0,
       "days": 5,
       "cost": 2922000,
-      "value": 2931000,
-      "pnl": 9000,
+      "value": 2922000,
+      "pnl": 0,
       "tracked": true,
       "buy_date": "2026-11-05"
-    },
-    {
-      "code": "259960",
-      "name": "크래프톤",
-      "qty": 14,
-      "avg": 221466.666,
-      "now": 214500.0,
-      "rate": -3.15,
-      "days": 6,
-      "cost": 3100533,
-      "value": 3003000,
-      "pnl": -97533,
-      "tracked": true,
-      "buy_date": "2026-11-04"
     }
   ],
   "total": {
-    "cost": 9342083,
-    "value": 9192900,
-    "pnl": -149183,
-    "rate": -1.6,
+    "cost": 6241550,
+    "value": 6175800,
+    "pnl": -65750,
+    "rate": -1.05,
     "cash": 692723,
-    "assets": 10179428,
+    "assets": 10158902,
     "limit": 10000000,
-    "invested": 9342083,
+    "invested": 6241550,
     "reserved": 0,
-    "remaining": 657917
+    "remaining": 3758450
   },
   "history": [
+    {
+      "code": "259960",
+      "name": "크래프톤",
+      "sell_date": "2026-11-10",
+      "buy_date": "2026-11-04",
+      "days": 6,
+      "qty": 15,
+      "price": 214500.0,
+      "pnl": -104500,
+      "reason": "손절 -3.1%"
+    },
     {
       "code": "271560",
       "name": "오리온",
@@ -232,20 +229,20 @@
   ],
   "watch": {
     "259960": {
-      "price": 221500,
-      "checked": "2026-11-10T13:50+09:00",
+      "price": 215500,
+      "checked": "2026-11-10T14:00+09:00",
       "state": "done",
       "room": 252450
     },
     "128940": {
       "price": 487500,
-      "checked": "2026-11-10T13:50+09:00",
+      "checked": "2026-11-10T14:00+09:00",
       "state": "done",
       "room": 252450
     },
     "035720": {
       "price": 32500,
-      "checked": "2026-11-10T13:50+09:00",
+      "checked": "2026-11-10T14:00+09:00",
       "state": "done"
     }
   },
@@ -255,11 +252,11 @@
     "peaks": {}
   },
   "record": {
-    "trades": 15,
+    "trades": 16,
     "wins": 6,
-    "win_rate": 40.0,
-    "realized_year": 468825,
-    "realized_total": 468825,
+    "win_rate": 37.5,
+    "realized_year": 364325,
+    "realized_total": 364325,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -269,17 +266,17 @@
       "code": "259960",
       "name": "크래프톤",
       "ordered_qty": 15,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 15,
-      "status": "accepted",
+      "filled_qty": 15,
+      "filled_amount": 3217500,
+      "avg_fill_price": 214500.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "손절 -3.1%",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-10T13:50+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000007055",
@@ -329,8 +326,8 @@
       "remaining_qty": 15,
       "status": "canceled",
       "reason": "익절 예약 +5% (233,000원)",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 233000.0,
       "created": "2026-11-10T09:10+09:00",
       "last_seen": null
@@ -347,8 +344,8 @@
       "remaining_qty": 1,
       "status": "accepted",
       "reason": "익절 예약 +5% (233,000원)",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 233000.0,
       "created": "2026-11-09T11:40+09:00",
       "last_seen": null
@@ -401,8 +398,8 @@
       "remaining_qty": 14,
       "status": "accepted",
       "reason": "익절 예약 +5% (233,000원)",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 233000.0,
       "created": "2026-11-09T11:30+09:00",
       "last_seen": null
@@ -419,11 +416,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "잔돈 채우기",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 224000.0,
       "created": "2026-11-09T11:30+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000023332",
@@ -441,7 +438,7 @@
       "balance_avg": 487000.0,
       "limit_price": 487000.0,
       "created": "2026-11-09T11:20+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000023338",
@@ -455,11 +452,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 224000.0,
       "created": "2026-11-09T11:20+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000023340",
@@ -477,7 +474,7 @@
       "balance_avg": 32544.607,
       "limit_price": 32550.0,
       "created": "2026-11-09T11:20+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000022684",
@@ -495,7 +492,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-09T11:10+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000022687",
@@ -513,7 +510,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-09T11:10+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000013119",
@@ -531,7 +528,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-09T09:44+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000007110",
@@ -621,7 +618,7 @@
       "balance_avg": 0.0,
       "limit_price": 212000.0,
       "created": "2026-11-06T12:31+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000030912",
@@ -693,7 +690,7 @@
       "balance_avg": 0.0,
       "limit_price": 28700.0,
       "created": "2026-11-06T12:21+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000030256",
@@ -711,7 +708,7 @@
       "balance_avg": 0.0,
       "limit_price": 122000.0,
       "created": "2026-11-06T12:21+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000030220",
@@ -765,7 +762,7 @@
       "balance_avg": 0.0,
       "limit_price": 212000.0,
       "created": "2026-11-06T12:20+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000029602",
@@ -783,7 +780,7 @@
       "balance_avg": 0.0,
       "limit_price": 28700.0,
       "created": "2026-11-06T12:11+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000029613",
@@ -801,7 +798,7 @@
       "balance_avg": 0.0,
       "limit_price": 122000.0,
       "created": "2026-11-06T12:11+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000029588",
@@ -887,8 +884,8 @@
       "remaining_qty": 12,
       "status": "canceled",
       "reason": "증권사 주문 복구",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 205500.0,
       "created": "2026-11-06T09:45+09:00",
       "last_seen": null
@@ -977,8 +974,8 @@
       "remaining_qty": 13,
       "status": "canceled",
       "reason": null,
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 205500.0,
       "created": "2026-11-06T09:10+09:00",
       "last_seen": null
@@ -1089,7 +1086,7 @@
       "balance_avg": 0.0,
       "limit_price": 212000.0,
       "created": "2026-11-05T14:37+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000036218",
@@ -1107,7 +1104,7 @@
       "balance_avg": 0.0,
       "limit_price": 28700.0,
       "created": "2026-11-05T14:36+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000036228",
@@ -1121,8 +1118,8 @@
       "remaining_qty": 8,
       "status": "accepted",
       "reason": null,
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 205500.0,
       "created": "2026-11-05T14:36+09:00",
       "last_seen": null
@@ -1161,7 +1158,7 @@
       "balance_avg": 487000.0,
       "limit_price": 467000.0,
       "created": "2026-11-05T14:36+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000036257",
@@ -1179,7 +1176,7 @@
       "balance_avg": 0.0,
       "limit_price": 122000.0,
       "created": "2026-11-05T14:36+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000001906",
@@ -1197,7 +1194,7 @@
       "balance_avg": 0.0,
       "limit_price": 29850.0,
       "created": "2026-11-05T09:00+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000001957",
@@ -1215,7 +1212,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-05T09:00+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000001983",
@@ -1229,11 +1226,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "익절 예약 +5% (213,500원)",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 213500.0,
       "created": "2026-11-05T09:00+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000035871",
@@ -1287,7 +1284,7 @@
       "balance_avg": 0.0,
       "limit_price": 28700.0,
       "created": "2026-11-04T13:30+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000035141",
@@ -1305,7 +1302,7 @@
       "balance_avg": 0.0,
       "limit_price": 195000.0,
       "created": "2026-11-04T13:30+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000034234",
@@ -1323,7 +1320,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T13:14+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000031900",
@@ -1359,7 +1356,7 @@
       "balance_avg": 0.0,
       "limit_price": 30200.0,
       "created": "2026-11-04T12:31+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "recovered-259960",
@@ -1373,8 +1370,8 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "기록 복구 (체결 기록이 저장되지 않았던 매수)",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 203000.0,
       "created": "2026-11-04T12:20+09:00",
       "last_seen": "2026-11-04T12:20+09:00"
@@ -1413,7 +1410,7 @@
       "balance_avg": 0.0,
       "limit_price": 30200.0,
       "created": "2026-11-04T11:55+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000027852",
@@ -1427,8 +1424,8 @@
       "remaining_qty": 16,
       "status": "accepted",
       "reason": "익절 예약 +5% (213,500원)",
-      "balance_qty": 14,
-      "balance_avg": 221466.666,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 213500.0,
       "created": "2026-11-04T11:36+09:00",
       "last_seen": null
@@ -1449,7 +1446,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T11:21+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000008882",
@@ -1467,7 +1464,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T09:17+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000008886",
@@ -1503,7 +1500,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-04T09:15+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000034808",
@@ -1521,7 +1518,7 @@
       "balance_avg": 0.0,
       "limit_price": 80100.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000034815",
@@ -1539,7 +1536,7 @@
       "balance_avg": 0.0,
       "limit_price": 29300.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000034818",
@@ -1557,7 +1554,7 @@
       "balance_avg": 0.0,
       "limit_price": 176800.0,
       "created": "2026-11-03T14:53+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000033661",
@@ -1575,7 +1572,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000033666",
@@ -1593,7 +1590,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000033671",
@@ -1611,7 +1608,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000033677",
@@ -1629,7 +1626,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T14:39+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000018616",
@@ -1647,7 +1644,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     },
     {
       "order_no": "0000018624",
@@ -1665,7 +1662,7 @@
       "balance_avg": 0.0,
       "limit_price": 116100.0,
       "created": "2026-11-03T10:32+09:00",
-      "last_seen": "2026-11-10T13:50+09:00"
+      "last_seen": "2026-11-10T14:00+09:00"
     }
   ]
 }
