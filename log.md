@@ -345,3 +345,5 @@
 - 2026-11-10 14:06 KST · 새 매수 계획 제안: 현대제철, NAVER, 한국전력
 - 2026-11-10 15:20 KST · API 연결 정상 (모의) · 잔고 2종목 확인 · 장외 주문 없음
 - 2026-11-11 09:00 KST · API 연결 정상 (모의) · 잔고 2종목 확인 · 장외 주문 없음
+- 2026-11-11 09:10 KST · API/매매 오류: ReadTimeout: HTTPSConnectionPool(host='openapivts.koreainvestment.com', port=29443): Read timed out. (read timeout=15)
+- 2026-11-11 09:10 KST · 시황 지수 조회 실패 · real 연결: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')) / demo 연결: HTTPError: 403 Client Error: Forbidden for url: https://openapivts.koreainvestment.com:29443/oauth2/tokenP

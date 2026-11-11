@@ -2,9 +2,9 @@
   "updated": "2026-11-11T09:00+09:00",
   "mode": "demo",
   "api": {
-    "ok": true,
-    "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-11T09:00:01+09:00",
+    "ok": false,
+    "message": "ReadTimeout: HTTPSConnectionPool(host='openapivts.koreainvestment.com', port=29443): Read timed out. (read timeout=15)",
+    "checked": "2026-11-11T09:10:18+09:00",
     "mode": "demo"
   },
   "positions": [
