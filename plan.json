@@ -1,10 +1,10 @@
 {
   "mode": "demo",
   "paused": false,
-  "take_profit_pct": 5,
-  "stop_loss_pct": -3,
+  "take_profit_pct": 10,
+  "stop_loss_pct": -7,
   "hold_days": 14,
-  "max_total_krw": 10000000,
+  "max_total_krw": 2000000,
   "review_every": "2주",
   "stocks": [
     {
@@ -272,5 +272,8 @@
     "start": "2026-11-05",
     "days": 7
   },
-  "stop_hold_until": "2026-11-06"
+  "tp_mode": "limit",
+  "trail_pct": 2,
+  "unfilled_days": 2,
+  "topup": true
 }
