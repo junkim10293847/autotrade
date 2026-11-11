@@ -347,3 +347,7 @@
 - 2026-11-11 09:00 KST · API 연결 정상 (모의) · 잔고 2종목 확인 · 장외 주문 없음
 - 2026-11-11 09:10 KST · API/매매 오류: ReadTimeout: HTTPSConnectionPool(host='openapivts.koreainvestment.com', port=29443): Read timed out. (read timeout=15)
 - 2026-11-11 09:10 KST · 시황 지수 조회 실패 · real 연결: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')) / demo 연결: HTTPError: 403 Client Error: Forbidden for url: https://openapivts.koreainvestment.com:29443/oauth2/tokenP
+- 2026-11-11 09:21 KST · 익절 예약 카카오 102주 @ 34,200원 → 접수
+- 2026-11-11 09:21 KST · 카카오 주문번호 0000007403 저장 · 체결 확인 대기
+- 2026-11-11 09:21 KST · 익절 예약 한미약품 6주 @ 512,000원 → 접수
+- 2026-11-11 09:21 KST · 한미약품 주문번호 0000007420 저장 · 체결 확인 대기
