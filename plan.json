@@ -275,5 +275,7 @@
   "tp_mode": "limit",
   "trail_pct": 2,
   "unfilled_days": 2,
-  "topup": true
+  "topup": true,
+  "exit_by": "2026-11-16",
+  "exit_time": "14:30"
 }

@@ -197,6 +197,10 @@ def main():
         need = state.get("need_plan")
         if not need or plan.get("paused"):
             return
+        if plan.get("exit_by") and bot.now().date().isoformat() >= str(plan["exit_by"]):
+            state.pop("need_plan", None)
+            bot.save(bot.STATE, state)
+            return  # 청산일 이후에는 새 계획을 만들지 않는다
         state.pop("need_plan", None)
         bot.save(bot.STATE, state)
         status = bot.load(bot.STATUS, {})

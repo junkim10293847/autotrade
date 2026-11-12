@@ -20,6 +20,7 @@ import requests
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PLAN, STATE, STATUS, LOG = (os.path.join(ROOT, f) for f in ("plan.json", "state.json", "status.json", "log.md"))
+ARCHIVE = os.path.join(ROOT, "state_archive.json")
 
 URLS = {
     "demo": "https://openapivts.koreainvestment.com:29443",
@@ -307,10 +308,12 @@ def sync_open_orders(kis, state, plan, held):
     orders = state.setdefault("orders", {})
     known = {str(o.get("order_no")): o for o in orders.values()}
     tday = now().strftime("%Y%m%d")
+    related = ({s["code"] for s in plan.get("stocks", [])} | set(state.get("watch", {})) | set(state.get("buys", {}))
+               | {o.get("code") for o in orders.values()})
     for r in open_rows:
         no = str(r.get("odno"))
-        if no in known:
-            continue
+        if no in known or str(r.get("pdno")) not in related:
+            continue  # 봇과 관계없는 종목 주문(직접 낸 주문)은 기록하지 않는다
         side = "sell" if str(r.get("sll_buy_dvsn_cd")) == "01" else "buy"
         code = str(r.get("pdno"))
         h = held.get(code, {})
@@ -431,7 +434,7 @@ def reconcile_fills(kis, state):
                 log(f"실제 매도 체결 {order.get('name')} {delta_qty}주 @ {won(delta_price)} · 실현손익 {won(pnl)}")
                 notify(f"매도 체결 {order.get('name')}", f"{delta_qty}주 · 실현손익 {won(pnl)}")
                 # 교체 매도가 아니면(익절·손절·기간 정리) 한도가 생겼으므로 같은 실행 끝에 새 계획을 자동으로 만든다
-                if order.get("reason") != "교체":
+                if order.get("reason") != "교체" and not str(order.get("reason", "")).startswith("청산"):
                     need = state.setdefault("need_plan", {"since": now().isoformat(timespec="minutes"), "sold": []})
                     need["sold"].append(order.get("name"))
             else:
@@ -470,6 +473,12 @@ def run(plan, state, kis):
         sync_open_orders(kis, state, plan, held)
     except Exception as e:
         log(f"미체결 주문 대조 실패 · 다음 실행 때 재시도: {type(e).__name__}: {e}")
+
+    # 청산 시각이 지났으면 다른 일은 하지 않고 전량 매도만
+    if exit_due(plan):
+        liquidate(plan, state, kis)
+        write_status(plan, state, kis.holdings(), kis)
+        return
 
     # 아직 보유하지 않은 계획 종목은 (교체 대기·주문 걸림과 상관없이) 매번 현재가를 기록한다 → 앱에서 지정가까지 남은 차이 표시
     watch0 = state.setdefault("watch", {})
@@ -620,6 +629,14 @@ def run(plan, state, kis):
                 track_order(state, result, "sell", code, h["name"], h["sellable"], px,
                             reason=why, unit_cost=h["avg"], days=days, rate=h["rate"])
             time.sleep(0.3)
+
+    # 청산일: 정한 날 정한 시각 이후에는 봇이 산 종목을 모두 시장가로 팔고, 그날은 새로 사지 않는다
+    if exit_day(plan):
+        if not state.get("exit_logged") == now().date().isoformat():
+            state["exit_logged"] = now().date().isoformat()
+            log(f"청산일({plan['exit_by']}) · 오늘은 새로 사지 않고 {plan.get('exit_time', '14:30')}에 전부 매도 예정")
+        write_status(plan, state, kis.holdings(), kis)
+        return
 
     # 교체 매도가 남아 있으면 신규 매수 금지
     if replacement.get("pending") or replacement_waiting:
@@ -819,6 +836,63 @@ def top_up(plan, state, kis, held_now, available, cap, plan_key):
             available -= qty * lim
 
 
+def exit_day(plan):
+    d = str(plan.get("exit_by") or "")
+    return bool(d) and now().date().isoformat() >= d
+
+
+def exit_due(plan):
+    d = str(plan.get("exit_by") or "")
+    if not d:
+        return False
+    today = now().date().isoformat()
+    return today > d or (today == d and now().strftime("%H:%M") >= str(plan.get("exit_time", "14:30")))
+
+
+def liquidate(plan, state, kis):
+    """청산: 미체결 매수 취소 → 익절 예약 등 매도 주문 취소 → 보유 전량 시장가 매도 (종목당 하루 한 번)"""
+    today = now().date().isoformat()
+    done = state.setdefault("exit_sells", {})
+    for code, o in [(o.get("code"), o) for _, o in today_orders(state, side="buy")]:
+        ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
+        if ok:
+            o["status"] = "canceled"
+        log(f"청산 · {o.get('name', code)} 미체결 매수 취소 → {'완료' if ok else '실패: ' + msg}")
+    held = kis.holdings()
+    for code, h in held.items():
+        if done.get(code) == today:
+            continue
+        for _, o in today_orders(state, code, "sell"):
+            if str(o.get("reason", "")).startswith("청산"):
+                continue
+            ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
+            if ok:
+                o["status"] = "canceled"
+        time.sleep(0.5)
+        qty = int(h["qty"])
+        if qty <= 0:
+            continue
+        result = kis.order("sell", code, qty)
+        ok = result["ok"]
+        log(f"**청산 매도** {h['name']} {qty}주 시장가 ({plan['exit_by']} 출금 일정) → {'접수' if ok else '실패: ' + result['msg']}")
+        if ok:
+            done[code] = today
+            track_order(state, result, "sell", code, h["name"], qty, None, reason="청산 (출금 일정)",
+                        unit_cost=h["avg"], rate=h["rate"])
+            notify(f"청산 매도 {h['name']}", f"{qty}주 시장가 · 수익률 {h['rate']:+.2f}%")
+    if held and all(done.get(c) == today for c in held):
+        if state.get("exit_notified") != today:
+            state["exit_notified"] = today
+            notify("청산 주문 완료", "봇이 산 종목을 모두 매도 주문했습니다 · 2영업일 뒤 출금 가능")
+
+
+def own_holdings(raw, state):
+    """실전 계좌에는 존박이 직접 산 종목이 있을 수 있으므로 봇이 산 종목만 관리한다"""
+    mine = set(state.get("buys", {})) | {o.get("code") for o in state.get("orders", {}).values()
+                                          if o.get("side") == "buy" and int(o.get("filled_qty", 0) or 0) > 0}
+    return {c: h for c, h in raw.items() if c in mine}
+
+
 def recover_missing(state, held):
     """기록 저장이 실패해 매수 기록이 빠진 보유 종목을 찾아 복구 (매수일은 처음 발견한 날로)"""
     buys = state.setdefault("buys", {})
@@ -920,8 +994,26 @@ def main():
         return
     state = load(STATE, {})
     mode = plan.get("mode", "demo")
+    if state and state.get("mode", "demo") != mode:
+        # 모의 ↔ 실전 전환: 이전 기록은 보관하고 새로 시작 (기록이 섞이지 않게)
+        old = state.get("mode", "demo")
+        arch = load(ARCHIVE, {})
+        arch[f"{old}_{now():%Y%m%d_%H%M}"] = state
+        save(ARCHIVE, arch)
+        log(f"{'실전' if mode == 'real' else '모의'} 전환 · 이전 {'실전' if old == 'real' else '모의'} 기록은 보관하고 새로 시작")
+        state = {}
+        # 이전 모드의 매수 계획으로 실제 돈이 나가지 않도록 계획 종목을 비운다 → 새 계획을 컨펌해야 매수 시작
+        if plan.get("stocks"):
+            log("전환 전 매수 계획(" + ", ".join(s.get("name", s["code"]) for s in plan["stocks"]) + ")은 비움 · 새 계획 컨펌 후 매수")
+        plan["stocks"] = []
+        plan["replacement"] = {"pending": False, "sell_codes": [], "mode": "keep"}
+        save(PLAN, plan)
+    state["mode"] = mode
     try:
         kis = KIS(mode, plan.get("accounts"))
+        if mode == "real" and not plan.get("manage_all_real"):
+            raw_holdings = kis.holdings
+            kis.holdings = lambda: own_holdings(raw_holdings(), state)
         if not market_open() and "--force" not in sys.argv:
             if "--check" in sys.argv:
                 # 기존 코드의 중복 잔고 조회를 제거: 한 번 조회한 결과를 그대로 사용

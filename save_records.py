@@ -10,7 +10,7 @@ import subprocess
 import sys
 import time
 
-FILES = ["state.json", "status.json", "log.md", "plan.json", "market.json", "answers.json"]
+FILES = ["state.json", "status.json", "log.md", "plan.json", "market.json", "answers.json", "state_archive.json"]
 
 
 def sh(*a, check=True):
