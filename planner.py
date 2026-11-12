@@ -210,7 +210,7 @@ def main():
         if room < cap / PICKS * 0.5:
             bot.log(f"{sold} 정리 후 남은 투자 가능액 {bot.won(room)} · 한도가 부족해 새 계획은 만들지 않음")
             return
-        bot.log(f"{sold} 정리로 투자 가능액 {bot.won(room)} 생김 → 새 매수 계획 자동 작성")
+        bot.log((need.get("note") or f"{sold} 정리로") + f" 투자 가능액 {bot.won(room)} → 새 매수 계획 자동 작성")
     try:
         # 종목 중복 확인은 실제 주문이 이루어지는 계좌와 동일한 계좌 기준으로 한다.
         # 모의투자 중에는 모의 계좌, 실전 중에는 실전 계좌의 보유 종목을 조회한다.
@@ -238,7 +238,7 @@ def main():
     names = ", ".join(s["name"] for s in prop["stocks"])
     bot.log(f"새 매수 계획 제안: {names}")
     if auto:
-        bot.notify("매도 완료 · 새 매수 계획이 올라왔습니다", f"{names} · 앱의 매수 예정·검토에서 컨펌해 주세요")
+        bot.notify(("실전 시작 · " if need.get("note") else "매도 완료 · ") + "새 매수 계획이 올라왔습니다", f"{names} · 앱의 매수 예정·검토에서 컨펌해 주세요")
     else:
         bot.notify("새 매수 계획 — 컨펌해 주세요", f"{names} · 앱에서 확인")
 
