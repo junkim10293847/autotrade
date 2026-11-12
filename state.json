@@ -5,10 +5,5 @@
   "orders": {},
   "watch": {},
   "peaks": {},
-  "plan_buy_attempts": {},
-  "need_plan": {
-    "since": "2026-11-12T11:27",
-    "sold": [],
-    "note": "실전 시작"
-  }
+  "plan_buy_attempts": {}
 }

@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-12T11:19+09:00",
+  "updated": "2026-11-12T11:31+09:00",
   "mode": "real",
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-12T11:19:59+09:00",
+    "checked": "2026-11-12T11:31:39+09:00",
     "mode": "real"
   },
   "positions": [],
@@ -13,8 +13,8 @@
     "value": 0,
     "pnl": 0,
     "rate": 0,
-    "cash": 27,
-    "assets": 27,
+    "cash": 2000027,
+    "assets": 2000027,
     "limit": 2000000,
     "invested": 0,
     "reserved": 0,
