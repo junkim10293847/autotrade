@@ -270,7 +270,7 @@
   "confirmed_at": "2026-11-11T01:33:01.526Z",
   "trial": {
     "start": "2026-11-05",
-    "days": 7
+    "days": 14
   },
   "tp_mode": "limit",
   "trail_pct": 2,
