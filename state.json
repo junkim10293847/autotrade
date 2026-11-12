@@ -12,9 +12,9 @@
     },
     "004020": {
       "date": "2026-11-12T11:40+09:00",
-      "qty": 22,
-      "krw": 629200.0,
-      "pending": true,
+      "qty": 23,
+      "krw": 657900.0,
+      "pending": false,
       "requested_qty": 1,
       "requested_krw": 28900.0,
       "last_order_date": "2026-11-12T11:50+09:00"
@@ -48,7 +48,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-12T11:50+09:00"
+      "last_seen": "2026-11-12T11:55+09:00"
     },
     "20261112:0018782800": {
       "order_no": "0018782800",
@@ -67,7 +67,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-12T11:50+09:00"
+      "last_seen": "2026-11-12T11:55+09:00"
     },
     "20261112:0018783500": {
       "order_no": "0018783500",
@@ -86,7 +86,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-12T11:50+09:00"
+      "last_seen": "2026-11-12T11:55+09:00"
     },
     "20261112:0019246000": {
       "order_no": "0019246000",
@@ -96,32 +96,32 @@
       "name": "현대제철",
       "ordered_qty": 1,
       "limit_price": 28900.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 1,
+      "filled_qty": 1,
+      "filled_amount": 28700.0,
+      "remaining_qty": 0,
       "created": "2026-11-12T11:50+09:00",
       "reason": "잔돈 채우기",
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-12T11:55+09:00"
     }
   },
   "watch": {
     "180640": {
       "price": 198600,
-      "checked": "2026-11-12T11:50+09:00",
+      "checked": "2026-11-12T11:55+09:00",
       "state": "done"
     },
     "004020": {
       "price": 28600,
-      "checked": "2026-11-12T11:50+09:00",
+      "checked": "2026-11-12T11:55+09:00",
       "state": "done"
     },
     "035720": {
       "price": 32050,
-      "checked": "2026-11-12T11:50+09:00",
+      "checked": "2026-11-12T11:55+09:00",
       "state": "done"
     }
   },
