@@ -1,27 +1,86 @@
 {
-  "updated": "2026-11-12T11:31+09:00",
+  "updated": "2026-11-12T11:40+09:00",
   "mode": "real",
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-12T11:31:39+09:00",
+    "checked": "2026-11-12T11:40:12+09:00",
     "mode": "real"
   },
-  "positions": [],
+  "positions": [
+    {
+      "code": "004020",
+      "name": "현대제철",
+      "qty": 22,
+      "avg": 28600.0,
+      "now": 28600.0,
+      "rate": 0.0,
+      "days": 0,
+      "cost": 629200,
+      "value": 629200,
+      "pnl": 0,
+      "tracked": true,
+      "buy_date": "2026-11-12"
+    },
+    {
+      "code": "035720",
+      "name": "카카오",
+      "qty": 20,
+      "avg": 32100.0,
+      "now": 32100.0,
+      "rate": 0.0,
+      "days": 0,
+      "cost": 642000,
+      "value": 642000,
+      "pnl": 0,
+      "tracked": true,
+      "buy_date": "2026-11-12"
+    },
+    {
+      "code": "180640",
+      "name": "한진칼",
+      "qty": 3,
+      "avg": 198600.0,
+      "now": 198500.0,
+      "rate": -0.05,
+      "days": 0,
+      "cost": 595800,
+      "value": 595500,
+      "pnl": -300,
+      "tracked": true,
+      "buy_date": "2026-11-12"
+    }
+  ],
   "total": {
-    "cost": 0,
-    "value": 0,
-    "pnl": 0,
-    "rate": 0,
+    "cost": 1867000,
+    "value": 1866700,
+    "pnl": -300,
+    "rate": -0.02,
     "cash": 2000027,
-    "assets": 2000027,
+    "assets": 1999477,
     "limit": 2000000,
-    "invested": 0,
-    "reserved": 0,
-    "remaining": 2000000
+    "invested": 1867000,
+    "reserved": 1886300,
+    "remaining": 0
   },
   "history": [],
-  "watch": {},
+  "watch": {
+    "180640": {
+      "price": 198600,
+      "checked": "2026-11-12T11:40+09:00",
+      "state": "ordered"
+    },
+    "004020": {
+      "price": 28600,
+      "checked": "2026-11-12T11:40+09:00",
+      "state": "ordered"
+    },
+    "035720": {
+      "price": 32050,
+      "checked": "2026-11-12T11:40+09:00",
+      "state": "ordered"
+    }
+  },
   "trail": {
     "mode": "off",
     "pct": 2.0,
@@ -35,5 +94,60 @@
     "realized_total": 0,
     "estimated_legacy_count": 0
   },
-  "orders": []
+  "orders": [
+    {
+      "order_no": "0018781000",
+      "side": "buy",
+      "code": "180640",
+      "name": "한진칼",
+      "ordered_qty": 3,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "avg_fill_price": 0,
+      "remaining_qty": 3,
+      "status": "accepted",
+      "reason": null,
+      "balance_qty": 3,
+      "balance_avg": 198600.0,
+      "limit_price": 200500.0,
+      "created": "2026-11-12T11:40+09:00",
+      "last_seen": null
+    },
+    {
+      "order_no": "0018782800",
+      "side": "buy",
+      "code": "004020",
+      "name": "현대제철",
+      "ordered_qty": 22,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "avg_fill_price": 0,
+      "remaining_qty": 22,
+      "status": "accepted",
+      "reason": null,
+      "balance_qty": 22,
+      "balance_avg": 28600.0,
+      "limit_price": 28900.0,
+      "created": "2026-11-12T11:40+09:00",
+      "last_seen": null
+    },
+    {
+      "order_no": "0018783500",
+      "side": "buy",
+      "code": "035720",
+      "name": "카카오",
+      "ordered_qty": 20,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "avg_fill_price": 0,
+      "remaining_qty": 20,
+      "status": "accepted",
+      "reason": null,
+      "balance_qty": 20,
+      "balance_avg": 32100.0,
+      "limit_price": 32450.0,
+      "created": "2026-11-12T11:40+09:00",
+      "last_seen": null
+    }
+  ]
 }
