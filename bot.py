@@ -638,6 +638,8 @@ def run(plan, state, kis):
                             reason=why, unit_cost=h["avg"], days=days, rate=h["rate"])
             time.sleep(0.3)
 
+    manual_buys(plan, state, kis, cap)
+
     # 청산일: 정한 날 정한 시각 이후에는 봇이 산 종목을 모두 시장가로 팔고, 그날은 새로 사지 않는다
     if exit_day(plan):
         if not state.get("exit_logged") == now().date().isoformat():
@@ -844,6 +846,46 @@ def top_up(plan, state, kis, held_now, available, cap, plan_key):
             available -= qty * lim
 
 
+def manual_buys(plan, state, kis, cap):
+    """앱의 '추가 매수' 버튼으로 존박이 직접 요청한 주문 (봇이 관리하는 보유 종목만, 투자한도 안에서)"""
+    done = state.setdefault("manual_done", {})
+    reqs = [r for r in plan.get("manual_buys", []) if r.get("id") and r["id"] not in done]
+    if not reqs:
+        return
+    held = kis.holdings()
+    for r in reqs:
+        code, qty, name = r["code"], int(r.get("qty", 0)), r.get("name", r["code"])
+        if exit_day(plan):
+            done[r["id"]] = "청산일이라 취소"
+            log(f"{name} 추가 매수 요청 취소 · 청산일({plan['exit_by']})에는 새로 사지 않음")
+            continue
+        if code not in held or qty < 1:
+            done[r["id"]] = "보유 종목 아님"
+            log(f"{name} 추가 매수 요청 취소 · 봇이 관리하는 보유 종목이 아님")
+            continue
+        try:
+            px = round_up_tick(kis.price(code))
+        except Exception as e:
+            log(f"{name} 추가 매수 시세 조회 실패 · 다음 실행에 재시도: {e}")
+            continue
+        invested = sum(h["avg"] * h["qty"] for h in held.values())
+        pending = sum(max(0, int(o.get("remaining_qty", 0) or 0)) * float(o.get("limit_price", 0) or 0)
+                      for _, o in today_orders(state, side="buy"))
+        room = cap - invested - pending
+        if qty * px > room:
+            done[r["id"]] = "한도 부족"
+            log(f"{name} 추가 매수 {qty}주 × {won(px)} = {won(qty * px)} · 남은 한도 {won(room)}보다 커서 취소")
+            notify(f"추가 매수 취소 {name}", f"남은 한도 {won(room)} 부족")
+            continue
+        result = kis.order("buy", code, qty, px)
+        ok = result["ok"]
+        log(f"**추가 매수** {name} {qty}주 @ {won(px)} 지정가 (앱에서 직접 요청) → {'접수' if ok else '실패: ' + result['msg']}")
+        done[r["id"]] = "접수" if ok else "실패"
+        if ok:
+            track_order(state, result, "buy", code, name, qty, px, reason="직접 추가 매수")
+            notify(f"추가 매수 접수 {name}", f"{qty}주 @ {won(px)}")
+
+
 def exit_day(plan):
     d = str(plan.get("exit_by") or "")
     return bool(d) and now().date().isoformat() >= d
@@ -951,6 +993,7 @@ def write_status(plan, state, held, kis):
     realized = sum(t.get("pnl", 0) for t in actual_trades)
     save(STATUS, {
         "updated": now().isoformat(timespec="minutes"), "mode": plan.get("mode", "demo"),
+        "manual_done": state.get("manual_done", {}),
         "api": {"ok": True, "message": "계좌 잔고 조회 정상", "checked": now().isoformat(timespec="seconds"),
                 "mode": plan.get("mode", "demo")},
         "positions": pos,
