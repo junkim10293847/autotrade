@@ -585,6 +585,14 @@ def run(plan, state, kis):
                 track_order(state, result, "sell", code, h["name"], qty, None,
                             reason=cut, unit_cost=h["avg"], days=days, rate=h["rate"])
             continue
+        if plan.get("tp_mode") == "off":
+            # 익절 없음: 손절·청산일로만 판다. 예전에 걸어 둔 익절 예약이 있으면 취소
+            for k, o in tp_open:
+                ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
+                if ok:
+                    o["status"] = "canceled"
+                log(f"{h['name']} 익절 없음 설정 · 익절 예약 취소 → {'완료' if ok else '실패: ' + msg}")
+            continue
         if trail_mode:
             # 추적 익절(C): 증권사 익절 예약 대신 봇이 최고가를 기억했다가, 최고가에서 trail% 빠지면 시장가 매도
             for k, o in tp_open:  # 예약 방식에서 바꿨다면 남아 있는 익절 예약 주문 취소
@@ -1006,6 +1014,7 @@ def main():
         if plan.get("stocks"):
             log("전환 전 매수 계획(" + ", ".join(s.get("name", s["code"]) for s in plan["stocks"]) + ")은 비움 · 새 계획 컨펌 후 매수")
         plan["stocks"] = []
+        plan.pop("proposal", None)
         plan["replacement"] = {"pending": False, "sell_codes": [], "mode": "keep"}
         save(PLAN, plan)
     state["mode"] = mode

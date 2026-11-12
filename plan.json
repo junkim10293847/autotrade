@@ -1,8 +1,8 @@
 {
-  "mode": "demo",
+  "mode": "real",
   "paused": false,
   "take_profit_pct": 10,
-  "stop_loss_pct": -7,
+  "stop_loss_pct": -3,
   "hold_days": 14,
   "max_total_krw": 2000000,
   "review_every": "2주",
@@ -272,7 +272,7 @@
     "start": "2026-11-05",
     "days": 14
   },
-  "tp_mode": "limit",
+  "tp_mode": "off",
   "trail_pct": 2,
   "unfilled_days": 2,
   "topup": true,
