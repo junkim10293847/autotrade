@@ -394,3 +394,4 @@
 - 2026-11-12 15:19 KST · API 연결 정상 (실전) · 잔고 3종목 확인 · 장외 주문 없음
 - 2026-11-13 08:59 KST · API 연결 정상 (실전) · 잔고 3종목 확인 · 장외 주문 없음
 - 2026-11-13 15:12 KST · 미체결 주문 대조 실패 · 다음 실행 때 재시도: RuntimeError: 조회 재시도 4회 실패: SSLError: HTTPSConnectionPool(host='openapi.koreainvestment.com', port=9443): Max retries exceeded with url: /uapi/domestic-stock/v1/trading/inquire-daily-ccld?CANO=****&ACNT_PRDT_CD=****&INQR_STRT_DT=20261113&INQR_END_DT=20261113&SLL_BUY_DVSN_CD=00&CCLD_DVSN=00&INQR_DVSN=00&INQR_DVSN_3=00&PDNO=&ORD_GNO_BRNO=&ODNO=&INQR_DVSN_1=&CTX_AREA_FK100=&CTX_AREA_NK100=&EXCG_ID_DVSN_CD=KRX (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1011)')))
+- 2026-11-13 15:19 KST · API 연결 정상 (실전) · 잔고 3종목 확인 · 장외 주문 없음
