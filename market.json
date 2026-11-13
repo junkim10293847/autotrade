@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-13T10:40+09:00",
+  "updated": "2026-11-13T10:50+09:00",
   "date": "2026-11-13",
   "src": "real",
   "kospi": {
-    "now": 5460.16,
-    "chg": 117.43,
-    "rate": 2.2,
+    "now": 5441.29,
+    "chg": 98.56,
+    "rate": 1.84,
     "open": 5452.41,
     "high": 5504.44,
     "low": 5438.9,
     "low_rate": 1.8,
     "high_rate": 3.03,
-    "up": 700,
-    "down": 164,
-    "flat": 45,
+    "up": 704,
+    "down": 169,
+    "flat": 36,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 55888,
+    "amount_eok": 59389,
     "prev_amount_eok": 214667,
     "year_high": 9385.59,
-    "from_year_high": 41.82
+    "from_year_high": 42.03
   },
   "kosdaq": {
-    "now": 722.01,
-    "chg": 25.48,
-    "rate": 3.66,
+    "now": 718.96,
+    "chg": 22.43,
+    "rate": 3.22,
     "open": 705.96,
     "high": 725.81,
     "low": 705.96,
     "low_rate": 1.35,
     "high_rate": 4.2,
-    "up": 1346,
-    "down": 339,
-    "flat": 64,
-    "limit_up": 5,
+    "up": 1326,
+    "down": 359,
+    "flat": 65,
+    "limit_up": 4,
     "limit_down": 0,
-    "amount_eok": 25516,
+    "amount_eok": 26872,
     "prev_amount_eok": 58570,
     "year_high": 1229.42,
-    "from_year_high": 41.27
+    "from_year_high": 41.52
   },
   "flows": {
     "kospi": {
-      "foreign": -1246,
-      "inst": 545,
-      "person": 651
+      "foreign": -1435,
+      "inst": 607,
+      "person": 774
     },
     "kosdaq": null
   },
@@ -63,42 +63,42 @@
       "low_rate": 1.05,
       "w52_high": 50400.0,
       "w52_low": 23650.0,
-      "vol": 91719,
-      "vol_ratio": 26.25
+      "vol": 103109,
+      "vol_ratio": 29.51
     },
     "035720": {
       "name": "카카오",
       "held": true,
-      "now": 32350.0,
-      "chg": 650.0,
-      "rate": 2.05,
+      "now": 32400.0,
+      "chg": 700.0,
+      "rate": 2.21,
       "prev": 31700.0,
       "open": 31850.0,
-      "high": 32350.0,
+      "high": 32450.0,
       "low": 31500.0,
-      "high_rate": 2.05,
+      "high_rate": 2.37,
       "low_rate": -0.63,
       "w52_high": 64500.0,
       "w52_low": 28400.0,
-      "vol": 530185,
-      "vol_ratio": 29.81
+      "vol": 596357,
+      "vol_ratio": 33.53
     },
     "180640": {
       "name": "한진칼",
       "held": true,
-      "now": 216000.0,
-      "chg": 13000.0,
-      "rate": 6.4,
+      "now": 214500.0,
+      "chg": 11500.0,
+      "rate": 5.67,
       "prev": 203000.0,
       "open": 200000.0,
-      "high": 217500.0,
+      "high": 219000.0,
       "low": 197600.0,
-      "high_rate": 7.14,
+      "high_rate": 7.88,
       "low_rate": -2.66,
       "w52_high": 245000.0,
       "w52_low": 93100.0,
-      "vol": 342679,
-      "vol_ratio": 29.93
+      "vol": 373293,
+      "vol_ratio": 32.61
     }
   },
   "news": [
@@ -183,6 +183,11 @@
       "t": "10:40",
       "kospi": 2.2,
       "kosdaq": 3.66
+    },
+    {
+      "t": "10:50",
+      "kospi": 1.84,
+      "kosdaq": 3.22
     }
   ],
   "trails": {
@@ -226,6 +231,10 @@
       {
         "t": "10:40",
         "p": 29350.0
+      },
+      {
+        "t": "10:50",
+        "p": 29350.0
       }
     ],
     "035720": [
@@ -268,6 +277,10 @@
       {
         "t": "10:40",
         "p": 32350.0
+      },
+      {
+        "t": "10:50",
+        "p": 32400.0
       }
     ],
     "180640": [
@@ -310,6 +323,10 @@
       {
         "t": "10:40",
         "p": 216000.0
+      },
+      {
+        "t": "10:50",
+        "p": 214500.0
       }
     ]
   },
@@ -351,62 +368,62 @@
     },
     {
       "date": "2026-11-13",
-      "kospi": 5460.16,
-      "kospi_rate": 2.2,
-      "kosdaq": 722.01,
-      "kosdaq_rate": 3.66
+      "kospi": 5441.29,
+      "kospi_rate": 1.84,
+      "kosdaq": 718.96,
+      "kosdaq_rate": 3.22
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 47,
+    "beat": 55,
     "top": [
       {
         "code": "016360",
         "name": "삼성증권",
-        "now": 75000.0,
-        "rate": 5.04,
-        "rel": 2.84,
-        "vol_ratio": 63,
+        "now": 74600.0,
+        "rate": 4.48,
+        "rel": 2.64,
+        "vol_ratio": 65,
         "low_rate": 3.36,
         "high_rate": 9.94,
-        "score": 1.51,
-        "hot": false
-      },
-      {
-        "code": "039490",
-        "name": "키움증권",
-        "now": 206500.0,
-        "rate": 7.22,
-        "rel": 5.02,
-        "vol_ratio": 19,
-        "low_rate": 2.28,
-        "high_rate": 8.26,
-        "score": 1.02,
-        "hot": false
-      },
-      {
-        "code": "180640",
-        "name": "한진칼",
-        "now": 216000.0,
-        "rate": 6.4,
-        "rel": 4.2,
-        "vol_ratio": 30,
-        "low_rate": -2.66,
-        "high_rate": 7.14,
-        "score": 0.73,
+        "score": 1.38,
         "hot": false
       },
       {
         "code": "028050",
         "name": "삼성E&A",
-        "now": 68700.0,
-        "rate": 4.09,
-        "rel": 1.89,
-        "vol_ratio": 65,
+        "now": 68800.0,
+        "rate": 4.24,
+        "rel": 2.4,
+        "vol_ratio": 68,
         "low_rate": 0.15,
         "high_rate": 4.55,
-        "score": 0.64,
+        "score": 1.3,
+        "hot": false
+      },
+      {
+        "code": "180640",
+        "name": "한진칼",
+        "now": 215000.0,
+        "rate": 5.91,
+        "rel": 4.07,
+        "vol_ratio": 33,
+        "low_rate": -2.66,
+        "high_rate": 7.88,
+        "score": 0.87,
+        "hot": false
+      },
+      {
+        "code": "039490",
+        "name": "키움증권",
+        "now": 204500.0,
+        "rate": 6.18,
+        "rel": 4.34,
+        "vol_ratio": 21,
+        "low_rate": 2.28,
+        "high_rate": 8.26,
+        "score": 0.34,
         "hot": false
       },
       {
@@ -414,18 +431,18 @@
         "name": "메리츠금융지주",
         "now": 119100.0,
         "rate": 5.77,
-        "rel": 3.57,
-        "vol_ratio": 14,
+        "rel": 3.93,
+        "vol_ratio": 15,
         "low_rate": -0.36,
-        "high_rate": 5.95,
-        "score": -0.43,
+        "high_rate": 6.31,
+        "score": -0.07,
         "hot": false
       }
     ]
   },
   "summary": [
-    "강세 · 코스피 +2.20%, 코스닥 +3.66%",
-    "코스피 909종목 중 상승 700 · 하락 164 (상한가 1)",
-    "수급: 외국인 -1,246억 · 기관 +545억 · 개인 +651억 → 외국인 매도 주도"
+    "강세 · 코스피 +1.84%, 코스닥 +3.22%",
+    "코스피 909종목 중 상승 704 · 하락 169 (상한가 1)",
+    "수급: 외국인 -1,435억 · 기관 +607억 · 개인 +774억 → 외국인 매도 주도"
   ]
 }
