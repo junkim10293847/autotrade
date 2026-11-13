@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-13T10:00+09:00",
+  "updated": "2026-11-13T10:10+09:00",
   "date": "2026-11-13",
   "src": "real",
   "kospi": {
-    "now": 5444.1,
-    "chg": 101.37,
-    "rate": 1.9,
+    "now": 5463.38,
+    "chg": 120.65,
+    "rate": 2.26,
     "open": 5452.41,
     "high": 5504.44,
     "low": 5438.9,
     "low_rate": 1.8,
     "high_rate": 3.03,
-    "up": 673,
-    "down": 198,
-    "flat": 35,
+    "up": 681,
+    "down": 183,
+    "flat": 43,
     "limit_up": 2,
     "limit_down": 0,
-    "amount_eok": 41724,
+    "amount_eok": 45562,
     "prev_amount_eok": 214667,
     "year_high": 9385.59,
-    "from_year_high": 42.0
+    "from_year_high": 41.79
   },
   "kosdaq": {
-    "now": 720.17,
-    "chg": 23.64,
-    "rate": 3.39,
+    "now": 720.95,
+    "chg": 24.42,
+    "rate": 3.51,
     "open": 705.96,
     "high": 725.81,
     "low": 705.96,
     "low_rate": 1.35,
     "high_rate": 4.2,
-    "up": 1338,
-    "down": 336,
-    "flat": 70,
-    "limit_up": 4,
+    "up": 1326,
+    "down": 349,
+    "flat": 72,
+    "limit_up": 3,
     "limit_down": 0,
-    "amount_eok": 19417,
+    "amount_eok": 21028,
     "prev_amount_eok": 58570,
     "year_high": 1229.42,
-    "from_year_high": 41.42
+    "from_year_high": 41.36
   },
   "flows": {
     "kospi": {
-      "foreign": -1093,
-      "inst": 489,
-      "person": 570
+      "foreign": -1311,
+      "inst": 680,
+      "person": 584
     },
     "kosdaq": null
   },
@@ -63,15 +63,15 @@
       "low_rate": 1.05,
       "w52_high": 50400.0,
       "w52_low": 23650.0,
-      "vol": 67376,
-      "vol_ratio": 19.28
+      "vol": 78753,
+      "vol_ratio": 22.54
     },
     "035720": {
       "name": "카카오",
       "held": true,
-      "now": 32075.0,
-      "chg": 375.0,
-      "rate": 1.18,
+      "now": 32100.0,
+      "chg": 400.0,
+      "rate": 1.26,
       "prev": 31700.0,
       "open": 31850.0,
       "high": 32200.0,
@@ -80,15 +80,15 @@
       "low_rate": -0.63,
       "w52_high": 64500.0,
       "w52_low": 28400.0,
-      "vol": 330556,
-      "vol_ratio": 18.59
+      "vol": 386960,
+      "vol_ratio": 21.76
     },
     "180640": {
       "name": "한진칼",
       "held": true,
-      "now": 209000.0,
-      "chg": 6000.0,
-      "rate": 2.96,
+      "now": 210000.0,
+      "chg": 7000.0,
+      "rate": 3.45,
       "prev": 203000.0,
       "open": 200000.0,
       "high": 212500.0,
@@ -97,15 +97,20 @@
       "low_rate": -2.66,
       "w52_high": 245000.0,
       "w52_low": 93100.0,
-      "vol": 237141,
-      "vol_ratio": 20.71
+      "vol": 253601,
+      "vol_ratio": 22.15
     }
   },
   "news": [
     {
-      "time": "09:57",
-      "title": "코스피, 젠슨황 사임에도 2% 상승",
-      "src": "컨슈머타임스"
+      "time": "10:09",
+      "title": "젠슨황 사임에 코스피 '불확실성 완화'…2%대 강세",
+      "src": "아시아 경제"
+    },
+    {
+      "time": "10:08",
+      "title": "[리포트 브리핑]사피엔반도체, '3Q26 Review: AR Glass 출시 + 광통신 신사업' Not Rated - 유진투자증권",
+      "src": "뉴스핌"
     }
   ],
   "intraday": [
@@ -138,6 +143,11 @@
       "t": "10:00",
       "kospi": 1.9,
       "kosdaq": 3.39
+    },
+    {
+      "t": "10:10",
+      "kospi": 2.26,
+      "kosdaq": 3.51
     }
   ],
   "trails": {
@@ -165,6 +175,10 @@
       {
         "t": "10:00",
         "p": 29350.0
+      },
+      {
+        "t": "10:10",
+        "p": 29350.0
       }
     ],
     "035720": [
@@ -191,6 +205,10 @@
       {
         "t": "10:00",
         "p": 32075.0
+      },
+      {
+        "t": "10:10",
+        "p": 32100.0
       }
     ],
     "180640": [
@@ -217,6 +235,10 @@
       {
         "t": "10:00",
         "p": 209000.0
+      },
+      {
+        "t": "10:10",
+        "p": 210000.0
       }
     ]
   },
@@ -258,81 +280,81 @@
     },
     {
       "date": "2026-11-13",
-      "kospi": 5444.1,
-      "kospi_rate": 1.9,
-      "kosdaq": 720.17,
-      "kosdaq_rate": 3.39
+      "kospi": 5463.38,
+      "kospi_rate": 2.26,
+      "kosdaq": 720.95,
+      "kosdaq_rate": 3.51
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 46,
+    "beat": 39,
     "top": [
-      {
-        "code": "055550",
-        "name": "신한지주",
-        "now": 90100.0,
-        "rate": 6.0,
-        "rel": 4.1,
-        "vol_ratio": 17,
-        "low_rate": 0.24,
-        "high_rate": 6.24,
-        "score": 0.1,
-        "hot": false
-      },
       {
         "code": "016360",
         "name": "삼성증권",
-        "now": 73900.0,
-        "rate": 3.5,
-        "rel": 1.6,
-        "vol_ratio": 51,
-        "low_rate": 3.5,
+        "now": 74300.0,
+        "rate": 4.06,
+        "rel": 1.8,
+        "vol_ratio": 54,
+        "low_rate": 3.36,
         "high_rate": 9.94,
-        "score": -0.33,
-        "hot": false
-      },
-      {
-        "code": "138040",
-        "name": "메리츠금융지주",
-        "now": 118800.0,
-        "rate": 5.51,
-        "rel": 3.61,
-        "vol_ratio": 10,
-        "low_rate": -0.36,
-        "high_rate": 5.95,
-        "score": -0.39,
+        "score": 0.04,
         "hot": false
       },
       {
         "code": "039490",
         "name": "키움증권",
-        "now": 203000.0,
-        "rate": 5.4,
-        "rel": 3.5,
-        "vol_ratio": 8,
+        "now": 204500.0,
+        "rate": 6.18,
+        "rel": 3.92,
+        "vol_ratio": 11,
         "low_rate": 2.28,
-        "high_rate": 6.18,
-        "score": -0.5,
+        "high_rate": 6.44,
+        "score": -0.08,
         "hot": false
       },
       {
-        "code": "017670",
-        "name": "SK텔레콤",
-        "now": 85300.0,
-        "rate": 4.66,
-        "rel": 2.76,
-        "vol_ratio": 21,
-        "low_rate": -0.25,
-        "high_rate": 4.91,
-        "score": -1.24,
+        "code": "055550",
+        "name": "신한지주",
+        "now": 89600.0,
+        "rate": 5.41,
+        "rel": 3.15,
+        "vol_ratio": 19,
+        "low_rate": 0.24,
+        "high_rate": 6.24,
+        "score": -0.85,
+        "hot": false
+      },
+      {
+        "code": "018260",
+        "name": "삼성에스디에스",
+        "now": 239000.0,
+        "rate": 3.69,
+        "rel": 1.43,
+        "vol_ratio": 45,
+        "low_rate": -3.04,
+        "high_rate": 4.12,
+        "score": -0.91,
+        "hot": false
+      },
+      {
+        "code": "138040",
+        "name": "메리츠금융지주",
+        "now": 118300.0,
+        "rate": 5.06,
+        "rel": 2.8,
+        "vol_ratio": 11,
+        "low_rate": -0.36,
+        "high_rate": 5.95,
+        "score": -1.2,
         "hot": false
       }
     ]
   },
   "summary": [
-    "강세 · 코스피 +1.90%, 코스닥 +3.39%",
-    "코스피 906종목 중 상승 673 · 하락 198 (상한가 2)",
-    "수급: 외국인 -1,093억 · 기관 +489억 · 개인 +570억 → 외국인 매도 주도"
+    "강세 · 코스피 +2.26%, 코스닥 +3.51%",
+    "코스피 907종목 중 상승 681 · 하락 183 (상한가 2)",
+    "수급: 외국인 -1,311억 · 기관 +680억 · 개인 +584억 → 외국인 매도 주도"
   ]
 }
