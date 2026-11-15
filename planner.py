@@ -78,12 +78,22 @@ def score(closes):
     dd = (c / max(closes[:60]) - 1) * 100
     wk = (c / closes[5] - 1) * 100
     above = (c / ma60 - 1) * 100
-    if wk <= -12 or not (-25 <= dd <= -5):
-        return None
-    # 변동성 큰 이벤트·테마성 종목 제외 (꾸준한 우량주 운용): 최근 20일 하루 ±10% 넘게 움직인 날이 있거나 20일 안에 +40% 넘게 오른 적이 있으면 빼기
+    # 변동성 큰 종목(최근 20일 하루 ±10% 이상 또는 +40% 이상 급등 이력)은 '공격' 후보로 따로 본다
     moves = [abs(closes[i] / closes[i + 1] - 1) * 100 for i in range(20)]
     run_up = (max(closes[:20]) / min(closes[:40]) - 1) * 100
-    if max(moves) >= 10 or run_up >= 40:
+    volatile = max(moves) >= 10 or run_up >= 40
+    high = max(closes[:60])
+    vs20 = (c / ma20 - 1) * 100
+    detail = {"close": round(c), "high60": round(high), "ma20": round(ma20), "ma60": round(ma60),
+              "dd": round(dd, 1), "vs20": round(vs20, 1), "vs60": round(above, 1), "wk5": round(wk, 1),
+              "max_move": round(max(moves), 1), "run_up": round(run_up, 1)}
+    if volatile:
+        # 공격: 큰 흐름(60일선 위)은 살아 있고 급등 뒤 -5~-35% 쉬어가는 중, 최근 5일 -20% 넘는 붕괴는 제외
+        if wk <= -20 or not (-35 <= dd <= -5) or c <= ma60:
+            return None
+        return {"dd": round(dd, 1), "above60": round(above, 1), "close": c, "tier": "attack",
+                "score": -dd + min(above, 60), "detail": detail}
+    if wk <= -12 or not (-25 <= dd <= -5):
         return None
     if c > ma60 and dd <= -8 and c < ma20:
         tier = 1
@@ -94,9 +104,7 @@ def score(closes):
     high = max(closes[:60])
     vs20 = (c / ma20 - 1) * 100
     return {"dd": round(dd, 1), "above60": round(above, 1), "close": c, "tier": tier,
-            "score": (100 if tier == 1 else 0) - dd + above,
-            "detail": {"close": round(c), "high60": round(high), "ma20": round(ma20), "ma60": round(ma60),
-                       "dd": round(dd, 1), "vs20": round(vs20, 1), "vs60": round(above, 1), "wk5": round(wk, 1)}}
+            "score": (100 if tier == 1 else 0) - dd + above, "detail": detail}
 
 
 def reasons(p):
@@ -104,7 +112,10 @@ def reasons(p):
     d = p["detail"]
     won = lambda v: f"{v:,}원"
     r = []
-    if p["tier"] == 1:
+    if p["tier"] == "attack":
+        r.append(f"공격 슬롯: 최근 20일 하루 최대 {d['max_move']}% 움직이거나 {d['run_up']}% 급등한 변동성 큰 종목입니다. "
+                 "크게 오를 수 있지만 크게 빠질 수도 있어 손절·익절 폭을 넓게 따로 적용합니다.")
+    elif p["tier"] == 1:
         r.append("눌림목: 큰 흐름은 오르는 중인데 최근 일시적으로 빠진 상태라, 반등을 노리기 좋은 자리로 판단했습니다.")
     else:
         r.append("조정 초입: 최근 고점에서 내려오기 시작했지만 아직 큰 흐름이 꺾이지 않은 상태입니다. 눌림목 후보가 부족해 채운 종목이라 확신도는 한 단계 낮습니다.")
@@ -163,7 +174,17 @@ def make(plan, state, kis):
             cands.append({"code": code, "name": name, **s})
         time.sleep(0.12)  # 조회 속도 제한
     cands.sort(key=lambda x: -x["score"])
-    picks = cands[:PICKS]
+    ratio = max(0.0, min(1.0, float(plan.get("attack_ratio", 0.5))))
+    n_core, n_att = int(plan.get("core_picks", 2)), int(plan.get("attack_picks", 2))
+    core = [c for c in cands if c["tier"] != "attack"]
+    att = [c for c in cands if c["tier"] == "attack"] if ratio > 0 else []
+    if not att:  # 공격 후보가 없으면 안정 종목으로 채움
+        core, att, ratio = core[:n_core + n_att], [], 0.0
+    elif not core:
+        core, att, ratio = [], att[:n_core + n_att], 1.0
+    else:
+        core, att = core[:n_core], att[:n_att]
+    picks = att + core
     if not picks:
         return None
 
@@ -179,16 +200,26 @@ def make(plan, state, kis):
     cap = float(plan.get("max_total_krw", 2000000))
     # 제안 예산은 전체 한도의 1/3로 제시한다. 실제 주문 시 봇이 계좌 보유원가와
     # 당일 미체결 예약액을 다시 계산해 남은 한도 안에서만 매수한다.
-    each = int((cap / PICKS) // 10000 * 10000)
-    if each < 50000:
+    each_att = int((cap * ratio / max(1, len(att))) // 10000 * 10000) if att else 0
+    each_core = int((cap * (1 - ratio) / max(1, len(core))) // 10000 * 10000) if core else 0
+    if max(each_att, each_core) < 50000:
         return None
+    ar = {"stop_loss_pct": -8, "take_profit_pct": 8, "trail_pct": 4, "tp_mode": "trail", **(plan.get("attack_rules") or {})}
+    label = {1: "눌림목", 2: "조정 초입", "attack": "공격"}
+    stocks = []
+    for p in picks:
+        a = p["tier"] == "attack"
+        item = {"code": p["code"], "name": p["name"], "budget_krw": each_att if a else each_core,
+                "max_buy_price": bot.round_up_tick(p["close"] * 1.01), "style": "attack" if a else "core",
+                "why": f"{label[p['tier']]} · 60일 고점 대비 {p['dd']}%, 60일선 {p['above60']:+}%",
+                "reasons": reasons(p), "news": p.get("news")}
+        if a:
+            item["rules"] = ar
+        stocks.append(item)
     return {
         "created": bot.now().isoformat(timespec="minutes"),
-        "note": f"우량주 {len(universe)}개 중 최근 눌린 {len(picks)}종목 (규칙 자동 선정)",
-        "stocks": [{"code": p["code"], "name": p["name"], "budget_krw": each,
-                    "max_buy_price": bot.round_up_tick(p["close"] * 1.01),
-                    "why": f"{'눌림목' if p['tier'] == 1 else '조정 초입'} · 60일 고점 대비 {p['dd']}%, 60일선 {p['above60']:+}%",
-                    "reasons": reasons(p), "news": p.get("news")} for p in picks],
+        "note": f"우량주 {len(universe)}개 중 안정 {len(core)} · 공격 {len(att)}종목 (공격 비중 {round(ratio * 100)}%)",
+        "stocks": stocks,
     }
 
 

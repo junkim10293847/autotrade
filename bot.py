@@ -538,6 +538,7 @@ def run(plan, state, kis):
 
     trail_mode = plan.get("tp_mode") == "trail"
     trail = float(plan.get("trail_pct", 2))
+    rules_by_code = {s["code"]: s.get("rules") for s in plan.get("stocks", []) if s.get("rules")}
     peaks = state.setdefault("peaks", {})
     for c in list(peaks):  # 팔린 종목의 추적 기록 정리
         if c not in held:
@@ -546,13 +547,18 @@ def run(plan, state, kis):
     #  - 익절: 증권사에 +익절가 지정가 매도 주문을 미리 걸어 둔다 (닿는 순간 체결)
     #  - 손절·기간 정리: 봇이 확인할 때 걸어 둔 익절 주문을 취소하고 시장가로 판다
     for code, h in held.items():
+        rule = rules_by_code.get(code) or {}  # 공격 슬롯 종목은 따로 정한 손절·익절 폭
+        sl_c = float(rule.get("stop_loss_pct", sl))
+        tp_c = float(rule.get("take_profit_pct", tp))
+        trail_c = float(rule.get("trail_pct", trail))
+        trail_mode_c = rule.get("tp_mode", plan.get("tp_mode")) == "trail"
         if code in replace_codes:
             continue
         meta = buys.get(code, {})
         d = meta.get("date")
         days = (now().date() - datetime.fromisoformat(d).date()).days if d else None
         cut = None
-        if h["rate"] <= sl:
+        if h["rate"] <= sl_c:
             cut = f"손절 {h['rate']:+.1f}%"
         elif days is not None and days >= hold_days:
             cut = f"{hold_days}일 경과 정리 {h['rate']:+.1f}%"
@@ -585,7 +591,7 @@ def run(plan, state, kis):
                 track_order(state, result, "sell", code, h["name"], qty, None,
                             reason=cut, unit_cost=h["avg"], days=days, rate=h["rate"])
             continue
-        if plan.get("tp_mode") == "off":
+        if plan.get("tp_mode") == "off" and not rule.get("tp_mode"):
             # 익절 없음: 손절·청산일로만 판다. 예전에 걸어 둔 익절 예약이 있으면 취소
             for k, o in tp_open:
                 ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
@@ -593,21 +599,21 @@ def run(plan, state, kis):
                     o["status"] = "canceled"
                 log(f"{h['name']} 익절 없음 설정 · 익절 예약 취소 → {'완료' if ok else '실패: ' + msg}")
             continue
-        if trail_mode:
-            # 추적 익절(C): 증권사 익절 예약 대신 봇이 최고가를 기억했다가, 최고가에서 trail% 빠지면 시장가 매도
+        if trail_mode_c:
+            # 추적 익절(C): 증권사 익절 예약 대신 봇이 최고가를 기억했다가, 최고가에서 trail_c% 빠지면 시장가 매도
             for k, o in tp_open:  # 예약 방식에서 바꿨다면 남아 있는 익절 예약 주문 취소
                 ok, msg = kis.cancel(o.get("order_no"), o.get("branch"))
                 if ok:
                     o["status"] = "canceled"
                 log(f"{h['name']} 추적 익절로 전환 · 익절 예약 취소 → {'완료' if ok else '실패: ' + msg}")
             pk = peaks.get(code)
-            if pk is None and h["rate"] >= tp:
+            if pk is None and h["rate"] >= tp_c:
                 pk = peaks[code] = {"start": now().isoformat(timespec="minutes"), "peak": h["now"]}
-                log(f"{h['name']} 익절선 +{tp:g}% 도달 ({h['rate']:+.1f}%) → 추적 시작 · 최고가에서 {trail:g}% 빠지면 매도")
-                notify(f"추적 익절 시작 {h['name']}", f"{h['rate']:+.1f}% · 최고가에서 {trail:g}% 빠지면 매도")
+                log(f"{h['name']} 익절선 +{tp_c:g}% 도달 ({h['rate']:+.1f}%) → 추적 시작 · 최고가에서 {trail_c:g}% 빠지면 매도")
+                notify(f"추적 익절 시작 {h['name']}", f"{h['rate']:+.1f}% · 최고가에서 {trail_c:g}% 빠지면 매도")
             if pk is not None:
                 pk["peak"] = max(pk["peak"], h["now"])
-                line = pk["peak"] * (1 - trail / 100)
+                line = pk["peak"] * (1 - trail_c / 100)
                 pk["line"] = round(line)
                 sell_qty = h["qty"] if tp_open else h["sellable"]
                 if h["now"] <= line and sell_qty > 0 and not today_orders(state, code, "sell"):
@@ -623,11 +629,11 @@ def run(plan, state, kis):
             continue
         # 익절 예약(A): 아직 주문이 안 걸린 수량(sellable)만큼 익절가 지정가 매도를 건다
         if h["sellable"] > 0 and h["avg"] > 0:
-            px = round_up_tick(h["avg"] * (1 + tp / 100))
+            px = round_up_tick(h["avg"] * (1 + tp_c / 100))
             if h["now"] >= px:  # 이미 익절가 위면 바로 시장가로
                 px, why = None, f"익절 {h['rate']:+.1f}%"
             else:
-                why = f"익절 예약 +{tp:g}% ({won(px)})"
+                why = f"익절 예약 +{tp_c:g}% ({won(px)})"
             result = kis.order("sell", code, h["sellable"], px)
             ok, msg = result["ok"], result["msg"]
             log(f"{'**매도**' if px is None else '익절 예약'} {h['name']} {h['sellable']}주 {'시장가' if px is None else '@ ' + won(px)} → {'접수' if ok else '실패: ' + msg}")

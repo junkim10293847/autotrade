@@ -282,5 +282,12 @@
         ]
       }
     ]
+  },
+  "attack_ratio": 0.5,
+  "attack_rules": {
+    "stop_loss_pct": -8,
+    "take_profit_pct": 8,
+    "trail_pct": 4,
+    "tp_mode": "trail"
   }
 }
