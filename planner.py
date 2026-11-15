@@ -80,6 +80,11 @@ def score(closes):
     above = (c / ma60 - 1) * 100
     if wk <= -12 or not (-25 <= dd <= -5):
         return None
+    # 변동성 큰 이벤트·테마성 종목 제외 (꾸준한 우량주 운용): 최근 20일 하루 ±10% 넘게 움직인 날이 있거나 20일 안에 +40% 넘게 오른 적이 있으면 빼기
+    moves = [abs(closes[i] / closes[i + 1] - 1) * 100 for i in range(20)]
+    run_up = (max(closes[:20]) / min(closes[:40]) - 1) * 100
+    if max(moves) >= 10 or run_up >= 40:
+        return None
     if c > ma60 and dd <= -8 and c < ma20:
         tier = 1
     elif above >= -5:
