@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-16T14:30+09:00",
+  "updated": "2026-11-16T14:39+09:00",
   "mode": "real",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-16T14:30:23+09:00",
+    "checked": "2026-11-16T14:39:59+09:00",
     "mode": "real"
   },
   "positions": [],
@@ -22,6 +22,17 @@
     "remaining": 2000000
   },
   "history": [
+    {
+      "code": "035720",
+      "name": "카카오",
+      "sell_date": "2026-11-16",
+      "buy_date": null,
+      "days": null,
+      "qty": 20,
+      "price": 32300.0,
+      "pnl": 4000,
+      "reason": "청산 (출금 일정)"
+    },
     {
       "code": "180640",
       "name": "한진칼",
@@ -68,11 +79,11 @@
     "peaks": {}
   },
   "record": {
-    "trades": 2,
-    "wins": 1,
-    "win_rate": 50.0,
-    "realized_year": 38500,
-    "realized_total": 38500,
+    "trades": 3,
+    "wins": 2,
+    "win_rate": 66.7,
+    "realized_year": 42500,
+    "realized_total": 42500,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -82,17 +93,17 @@
       "code": "035720",
       "name": "카카오",
       "ordered_qty": 20,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 20,
-      "status": "accepted",
+      "filled_qty": 20,
+      "filled_amount": 646000,
+      "avg_fill_price": 32300.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "청산 (출금 일정)",
       "balance_qty": 0,
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T14:30+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-16T14:39+09:00"
     },
     {
       "order_no": "0017271000",
@@ -110,7 +121,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T12:29+09:00",
-      "last_seen": "2026-11-16T14:30+09:00"
+      "last_seen": "2026-11-16T14:39+09:00"
     },
     {
       "order_no": "0011910600",
@@ -128,7 +139,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T10:40+09:00",
-      "last_seen": "2026-11-16T14:30+09:00"
+      "last_seen": "2026-11-16T14:39+09:00"
     },
     {
       "order_no": "0019246000",
@@ -146,7 +157,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:50+09:00",
-      "last_seen": "2026-11-16T14:30+09:00"
+      "last_seen": "2026-11-16T14:39+09:00"
     },
     {
       "order_no": "0018781000",
@@ -164,7 +175,7 @@
       "balance_avg": 0.0,
       "limit_price": 200500.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T14:30+09:00"
+      "last_seen": "2026-11-16T14:39+09:00"
     },
     {
       "order_no": "0018782800",
@@ -182,7 +193,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T14:30+09:00"
+      "last_seen": "2026-11-16T14:39+09:00"
     },
     {
       "order_no": "0018783500",
@@ -200,7 +211,7 @@
       "balance_avg": 0.0,
       "limit_price": 32450.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T14:30+09:00"
+      "last_seen": "2026-11-16T14:39+09:00"
     }
   ]
 }
