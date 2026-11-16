@@ -1,40 +1,25 @@
 {
-  "updated": "2026-11-16T14:20+09:00",
+  "updated": "2026-11-16T14:30+09:00",
   "mode": "real",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-16T14:20:02+09:00",
+    "checked": "2026-11-16T14:30:23+09:00",
     "mode": "real"
   },
-  "positions": [
-    {
-      "code": "035720",
-      "name": "카카오",
-      "qty": 20,
-      "avg": 32100.0,
-      "now": 32400.0,
-      "rate": 0.93,
-      "days": 4,
-      "cost": 642000,
-      "value": 648000,
-      "pnl": 6000,
-      "tracked": true,
-      "buy_date": "2026-11-12"
-    }
-  ],
+  "positions": [],
   "total": {
-    "cost": 642000,
-    "value": 648000,
-    "pnl": 6000,
-    "rate": 0.93,
+    "cost": 0,
+    "value": 0,
+    "pnl": 0,
+    "rate": 0,
     "cash": 104067,
-    "assets": 2041515,
+    "assets": 2038133,
     "limit": 2000000,
-    "invested": 642000,
+    "invested": 0,
     "reserved": 0,
-    "remaining": 1358000
+    "remaining": 2000000
   },
   "history": [
     {
@@ -92,6 +77,24 @@
   },
   "orders": [
     {
+      "order_no": "0022714000",
+      "side": "sell",
+      "code": "035720",
+      "name": "카카오",
+      "ordered_qty": 20,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "avg_fill_price": 0,
+      "remaining_qty": 20,
+      "status": "accepted",
+      "reason": "청산 (출금 일정)",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
+      "created": "2026-11-16T14:30+09:00",
+      "last_seen": null
+    },
+    {
       "order_no": "0017271000",
       "side": "sell",
       "code": "180640",
@@ -107,7 +110,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T12:29+09:00",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     {
       "order_no": "0011910600",
@@ -125,7 +128,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T10:40+09:00",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     {
       "order_no": "0019246000",
@@ -143,7 +146,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:50+09:00",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     {
       "order_no": "0018781000",
@@ -161,7 +164,7 @@
       "balance_avg": 0.0,
       "limit_price": 200500.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     {
       "order_no": "0018782800",
@@ -179,7 +182,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     {
       "order_no": "0018783500",
@@ -193,11 +196,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 20,
-      "balance_avg": 32100.0,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 32450.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     }
   ]
 }

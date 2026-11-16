@@ -75,7 +75,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     "20261112:0018782800": {
       "order_no": "0018782800",
@@ -94,7 +94,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     "20261112:0018783500": {
       "order_no": "0018783500",
@@ -113,7 +113,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     "20261112:0019246000": {
       "order_no": "0019246000",
@@ -132,7 +132,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     "20261116:0011910600": {
       "order_no": "0011910600",
@@ -151,7 +151,7 @@
       "days": 4,
       "order_rate": -0.53,
       "status": "filled",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
     },
     "20261116:0017271000": {
       "order_no": "0017271000",
@@ -170,7 +170,26 @@
       "days": 4,
       "order_rate": 7.25,
       "status": "filled",
-      "last_seen": "2026-11-16T14:19+09:00"
+      "last_seen": "2026-11-16T14:30+09:00"
+    },
+    "20261116:0022714000": {
+      "order_no": "0022714000",
+      "branch": "91252",
+      "side": "sell",
+      "code": "035720",
+      "name": "카카오",
+      "ordered_qty": 20,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 20,
+      "created": "2026-11-16T14:30+09:00",
+      "reason": "청산 (출금 일정)",
+      "unit_cost": 32100.0,
+      "days": null,
+      "order_rate": 0.77,
+      "status": "accepted",
+      "last_seen": null
     }
   },
   "watch": {
@@ -213,5 +232,9 @@
     "004020": "2026-11-12"
   },
   "manual_done": {},
-  "exit_logged": "2026-11-16"
+  "exit_logged": "2026-11-16",
+  "exit_sells": {
+    "035720": "2026-11-16"
+  },
+  "exit_notified": "2026-11-16"
 }
