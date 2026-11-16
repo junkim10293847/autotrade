@@ -1,28 +1,14 @@
 {
-  "updated": "2026-11-16T10:30+09:00",
+  "updated": "2026-11-16T10:40+09:00",
   "mode": "real",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-16T10:30:03+09:00",
+    "checked": "2026-11-16T10:40:09+09:00",
     "mode": "real"
   },
   "positions": [
-    {
-      "code": "004020",
-      "name": "현대제철",
-      "qty": 23,
-      "avg": 28604.3478,
-      "now": 28600.0,
-      "rate": -0.01,
-      "days": 4,
-      "cost": 657900,
-      "value": 657800,
-      "pnl": -100,
-      "tracked": true,
-      "buy_date": "2026-11-12"
-    },
     {
       "code": "035720",
       "name": "카카오",
@@ -42,27 +28,27 @@
       "name": "한진칼",
       "qty": 3,
       "avg": 198600.0,
-      "now": 210000.0,
-      "rate": 5.74,
+      "now": 212000.0,
+      "rate": 6.74,
       "days": 4,
       "cost": 595800,
-      "value": 630000,
-      "pnl": 34200,
+      "value": 636000,
+      "pnl": 40200,
       "tracked": true,
       "buy_date": "2026-11-12"
     }
   ],
   "total": {
-    "cost": 1895700,
-    "value": 1931800,
-    "pnl": 36100,
-    "rate": 1.9,
+    "cost": 1237800,
+    "value": 1280000,
+    "pnl": 42200,
+    "rate": 3.41,
     "cash": 104067,
-    "assets": 2035867,
+    "assets": 2035872,
     "limit": 2000000,
-    "invested": 1895700,
+    "invested": 1237800,
     "reserved": 0,
-    "remaining": 104300
+    "remaining": 762200
   },
   "history": [],
   "watch": {
@@ -103,6 +89,24 @@
   },
   "orders": [
     {
+      "order_no": "0011910600",
+      "side": "sell",
+      "code": "004020",
+      "name": "현대제철",
+      "ordered_qty": 23,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "avg_fill_price": 0,
+      "remaining_qty": 23,
+      "status": "accepted",
+      "reason": "손절 -0.5%",
+      "balance_qty": 0,
+      "balance_avg": 0.0,
+      "limit_price": 0.0,
+      "created": "2026-11-16T10:40+09:00",
+      "last_seen": null
+    },
+    {
       "order_no": "0019246000",
       "side": "buy",
       "code": "004020",
@@ -114,11 +118,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "잔돈 채우기",
-      "balance_qty": 23,
-      "balance_avg": 28604.3478,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:50+09:00",
-      "last_seen": "2026-11-16T10:29+09:00"
+      "last_seen": "2026-11-16T10:40+09:00"
     },
     {
       "order_no": "0018781000",
@@ -136,7 +140,7 @@
       "balance_avg": 198600.0,
       "limit_price": 200500.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T10:29+09:00"
+      "last_seen": "2026-11-16T10:40+09:00"
     },
     {
       "order_no": "0018782800",
@@ -150,11 +154,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 23,
-      "balance_avg": 28604.3478,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T10:29+09:00"
+      "last_seen": "2026-11-16T10:40+09:00"
     },
     {
       "order_no": "0018783500",
@@ -172,7 +176,7 @@
       "balance_avg": 32100.0,
       "limit_price": 32450.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T10:29+09:00"
+      "last_seen": "2026-11-16T10:40+09:00"
     }
   ]
 }
