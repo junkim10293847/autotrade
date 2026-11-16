@@ -29,7 +29,21 @@
       "last_order_date": "2026-11-12T11:40+09:00"
     }
   },
-  "trades": [],
+  "trades": [
+    {
+      "code": "004020",
+      "name": "현대제철",
+      "date": "2026-11-16T10:50+09:00",
+      "side": "sell",
+      "qty": 23,
+      "price": 28400.0,
+      "pnl": -4700,
+      "days": 4,
+      "reason": "손절 -0.5%",
+      "estimated": false,
+      "order_no": "0011910600"
+    }
+  ],
   "orders": {
     "20261112:0018781000": {
       "order_no": "0018781000",
@@ -48,7 +62,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     "20261112:0018782800": {
       "order_no": "0018782800",
@@ -67,7 +81,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     "20261112:0018783500": {
       "order_no": "0018783500",
@@ -86,7 +100,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     "20261112:0019246000": {
       "order_no": "0019246000",
@@ -105,7 +119,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     "20261116:0011910600": {
       "order_no": "0011910600",
@@ -115,16 +129,16 @@
       "name": "현대제철",
       "ordered_qty": 23,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 23,
+      "filled_qty": 23,
+      "filled_amount": 653200.0,
+      "remaining_qty": 0,
       "created": "2026-11-16T10:40+09:00",
       "reason": "손절 -0.5%",
       "unit_cost": 28604.3478,
       "days": 4,
       "order_rate": -0.53,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-16T10:50+09:00"
     }
   },
   "watch": {
@@ -134,8 +148,8 @@
       "state": "done"
     },
     "004020": {
-      "price": 28600,
-      "checked": "2026-11-13T15:13+09:00",
+      "price": 28550,
+      "checked": "2026-11-16T10:50+09:00",
       "state": "done"
     },
     "035720": {
@@ -147,8 +161,8 @@
   "peaks": {
     "180640": {
       "start": "2026-11-16T09:19+09:00",
-      "peak": 212000.0,
-      "line": 208820
+      "peak": 213000.0,
+      "line": 209805
     }
   },
   "plan_buy_attempts": {

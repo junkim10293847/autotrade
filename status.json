@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-16T10:40+09:00",
+  "updated": "2026-11-16T10:50+09:00",
   "mode": "real",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-16T10:40:09+09:00",
+    "checked": "2026-11-16T10:50:07+09:00",
     "mode": "real"
   },
   "positions": [
@@ -28,29 +28,41 @@
       "name": "한진칼",
       "qty": 3,
       "avg": 198600.0,
-      "now": 212000.0,
-      "rate": 6.74,
+      "now": 213000.0,
+      "rate": 7.25,
       "days": 4,
       "cost": 595800,
-      "value": 636000,
-      "pnl": 40200,
+      "value": 639000,
+      "pnl": 43200,
       "tracked": true,
       "buy_date": "2026-11-12"
     }
   ],
   "total": {
     "cost": 1237800,
-    "value": 1280000,
-    "pnl": 42200,
-    "rate": 3.41,
+    "value": 1283000,
+    "pnl": 45200,
+    "rate": 3.65,
     "cash": 104067,
-    "assets": 2035872,
+    "assets": 2038872,
     "limit": 2000000,
     "invested": 1237800,
     "reserved": 0,
     "remaining": 762200
   },
-  "history": [],
+  "history": [
+    {
+      "code": "004020",
+      "name": "현대제철",
+      "sell_date": "2026-11-16",
+      "buy_date": "2026-11-12",
+      "days": 4,
+      "qty": 23,
+      "price": 28400.0,
+      "pnl": -4700,
+      "reason": "손절 -0.5%"
+    }
+  ],
   "watch": {
     "180640": {
       "price": 198600,
@@ -58,8 +70,8 @@
       "state": "done"
     },
     "004020": {
-      "price": 28600,
-      "checked": "2026-11-13T15:13+09:00",
+      "price": 28550,
+      "checked": "2026-11-16T10:50+09:00",
       "state": "done"
     },
     "035720": {
@@ -74,17 +86,17 @@
     "peaks": {
       "180640": {
         "start": "2026-11-16T09:19+09:00",
-        "peak": 212000.0,
-        "line": 208820
+        "peak": 213000.0,
+        "line": 209805
       }
     }
   },
   "record": {
-    "trades": 0,
+    "trades": 1,
     "wins": 0,
-    "win_rate": null,
-    "realized_year": 0,
-    "realized_total": 0,
+    "win_rate": 0.0,
+    "realized_year": -4700,
+    "realized_total": -4700,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -94,17 +106,17 @@
       "code": "004020",
       "name": "현대제철",
       "ordered_qty": 23,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 23,
-      "status": "accepted",
+      "filled_qty": 23,
+      "filled_amount": 653200,
+      "avg_fill_price": 28400.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "손절 -0.5%",
       "balance_qty": 0,
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T10:40+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     {
       "order_no": "0019246000",
@@ -122,7 +134,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:50+09:00",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     {
       "order_no": "0018781000",
@@ -140,7 +152,7 @@
       "balance_avg": 198600.0,
       "limit_price": 200500.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     {
       "order_no": "0018782800",
@@ -158,7 +170,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     },
     {
       "order_no": "0018783500",
@@ -176,7 +188,7 @@
       "balance_avg": 32100.0,
       "limit_price": 32450.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T10:40+09:00"
+      "last_seen": "2026-11-16T10:50+09:00"
     }
   ]
 }
