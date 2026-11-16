@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-16T09:50+09:00",
+  "updated": "2026-11-16T10:00+09:00",
   "date": "2026-11-16",
   "src": "real",
   "kospi": {
-    "now": 5285.92,
-    "chg": -4.61,
-    "rate": -0.09,
+    "now": 5278.46,
+    "chg": -12.07,
+    "rate": -0.23,
     "open": 5305.4,
     "high": 5327.99,
     "low": 5247.34,
     "low_rate": -0.82,
     "high_rate": 0.71,
-    "up": 320,
-    "down": 542,
+    "up": 303,
+    "down": 559,
     "flat": 40,
     "limit_up": 0,
     "limit_down": 1,
-    "amount_eok": 31838,
+    "amount_eok": 35027,
     "prev_amount_eok": 167188,
     "year_high": 9385.59,
-    "from_year_high": 43.68
+    "from_year_high": 43.76
   },
   "kosdaq": {
-    "now": 690.09,
-    "chg": -9.57,
-    "rate": -1.37,
+    "now": 688.46,
+    "chg": -11.2,
+    "rate": -1.6,
     "open": 705.88,
     "high": 708.34,
     "low": 685.39,
     "low_rate": -2.04,
     "high_rate": 1.24,
-    "up": 471,
-    "down": 1189,
-    "flat": 79,
+    "up": 458,
+    "down": 1210,
+    "flat": 72,
     "limit_up": 5,
     "limit_down": 1,
-    "amount_eok": 15282,
+    "amount_eok": 16589,
     "prev_amount_eok": 57905,
     "year_high": 1229.42,
-    "from_year_high": 43.87
+    "from_year_high": 44.0
   },
   "flows": {
     "kospi": {
-      "foreign": -705,
-      "inst": 209,
-      "person": 503
+      "foreign": -825,
+      "inst": 207,
+      "person": 623
     },
     "kosdaq": null
   },
@@ -52,9 +52,9 @@
     "004020": {
       "name": "현대제철",
       "held": true,
-      "now": 28900.0,
-      "chg": 0.0,
-      "rate": 0.0,
+      "now": 28800.0,
+      "chg": -100.0,
+      "rate": -0.35,
       "prev": 28900.0,
       "open": 28900.0,
       "high": 29150.0,
@@ -63,15 +63,15 @@
       "low_rate": -1.04,
       "w52_high": 50400.0,
       "w52_low": 23650.0,
-      "vol": 49132,
-      "vol_ratio": 22.21
+      "vol": 57292,
+      "vol_ratio": 25.9
     },
     "035720": {
       "name": "카카오",
       "held": true,
-      "now": 32350.0,
-      "chg": 650.0,
-      "rate": 2.05,
+      "now": 32525.0,
+      "chg": 825.0,
+      "rate": 2.6,
       "prev": 31700.0,
       "open": 31950.0,
       "high": 32750.0,
@@ -80,25 +80,25 @@
       "low_rate": 0.79,
       "w52_high": 64500.0,
       "w52_low": 28400.0,
-      "vol": 306111,
-      "vol_ratio": 19.66
+      "vol": 340314,
+      "vol_ratio": 21.85
     },
     "180640": {
       "name": "한진칼",
       "held": true,
-      "now": 209000.0,
-      "chg": 5500.0,
-      "rate": 2.7,
+      "now": 211500.0,
+      "chg": 8000.0,
+      "rate": 3.93,
       "prev": 203500.0,
       "open": 200500.0,
-      "high": 211000.0,
+      "high": 212000.0,
       "low": 199100.0,
-      "high_rate": 3.69,
+      "high_rate": 4.18,
       "low_rate": -2.16,
       "w52_high": 245000.0,
       "w52_low": 93100.0,
-      "vol": 86246,
-      "vol_ratio": 12.43
+      "vol": 99449,
+      "vol_ratio": 14.33
     }
   },
   "news": [
@@ -158,6 +158,11 @@
       "t": "09:50",
       "kospi": -0.09,
       "kosdaq": -1.37
+    },
+    {
+      "t": "10:00",
+      "kospi": -0.23,
+      "kosdaq": -1.6
     }
   ],
   "trails": {
@@ -181,6 +186,10 @@
       {
         "t": "09:50",
         "p": 28900.0
+      },
+      {
+        "t": "10:00",
+        "p": 28800.0
       }
     ],
     "035720": [
@@ -203,6 +212,10 @@
       {
         "t": "09:50",
         "p": 32350.0
+      },
+      {
+        "t": "10:00",
+        "p": 32525.0
       }
     ],
     "180640": [
@@ -225,6 +238,10 @@
       {
         "t": "09:50",
         "p": 209000.0
+      },
+      {
+        "t": "10:00",
+        "p": 211500.0
       }
     ]
   },
@@ -273,81 +290,81 @@
     },
     {
       "date": "2026-11-16",
-      "kospi": 5285.92,
-      "kospi_rate": -0.09,
-      "kosdaq": 690.09,
-      "kosdaq_rate": -1.37
+      "kospi": 5278.46,
+      "kospi_rate": -0.23,
+      "kosdaq": 688.46,
+      "kosdaq_rate": -1.6
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 69,
+    "beat": 66,
     "top": [
       {
-        "code": "079550",
-        "name": "LIG넥스원",
-        "now": 369500.0,
-        "rate": 5.27,
-        "rel": 5.36,
-        "vol_ratio": 23,
-        "low_rate": 1.42,
-        "high_rate": 5.41,
-        "score": 1.36,
+        "code": "069960",
+        "name": "현대백화점",
+        "now": 88700.0,
+        "rate": 4.23,
+        "rel": 4.46,
+        "vol_ratio": 19,
+        "low_rate": -0.12,
+        "high_rate": 4.47,
+        "score": 0.46,
         "hot": false
       },
       {
         "code": "047810",
         "name": "한국항공우주",
-        "now": 108800.0,
-        "rate": 4.41,
-        "rel": 4.5,
-        "vol_ratio": 26,
+        "now": 107600.0,
+        "rate": 3.26,
+        "rel": 3.49,
+        "vol_ratio": 32,
         "low_rate": 0.77,
-        "high_rate": 4.89,
-        "score": 0.58,
-        "hot": false
-      },
-      {
-        "code": "012450",
-        "name": "한화에어로스페이스",
-        "now": 668000.0,
-        "rate": 4.21,
-        "rel": 4.3,
-        "vol_ratio": 15,
-        "low_rate": 0.78,
         "high_rate": 4.99,
-        "score": 0.3,
-        "hot": false
-      },
-      {
-        "code": "010120",
-        "name": "LS ELECTRIC",
-        "now": 126350.0,
-        "rate": 2.47,
-        "rel": 2.56,
-        "vol_ratio": 33,
-        "low_rate": 1.22,
-        "high_rate": 4.62,
-        "score": -0.65,
+        "score": 0.21,
         "hot": false
       },
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 210000.0,
-        "rate": 3.19,
-        "rel": 3.28,
-        "vol_ratio": 13,
+        "now": 211500.0,
+        "rate": 3.93,
+        "rel": 4.16,
+        "vol_ratio": 14,
         "low_rate": -2.16,
-        "high_rate": 3.69,
-        "score": -0.72,
+        "high_rate": 4.18,
+        "score": 0.16,
+        "hot": false
+      },
+      {
+        "code": "079550",
+        "name": "LIG넥스원",
+        "now": 364000.0,
+        "rate": 3.7,
+        "rel": 3.93,
+        "vol_ratio": 26,
+        "low_rate": 1.42,
+        "high_rate": 5.41,
+        "score": 0.08,
+        "hot": false
+      },
+      {
+        "code": "090430",
+        "name": "아모레퍼시픽",
+        "now": 129400.0,
+        "rate": 2.54,
+        "rel": 2.77,
+        "vol_ratio": 34,
+        "low_rate": -0.16,
+        "high_rate": 2.85,
+        "score": -0.32,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.09%, 코스닥 -1.37%",
-    "코스피 902종목 중 상승 320 · 하락 542 (하한가 1)",
-    "수급: 외국인 -705억 · 기관 +209억 · 개인 +503억 → 외국인 매도 주도"
+    "보합권 · 코스피 -0.23%, 코스닥 -1.60%",
+    "코스피 902종목 중 상승 303 · 하락 559 (하한가 1)",
+    "수급: 외국인 -825억 · 기관 +207억 · 개인 +623억 → 외국인 매도 주도"
   ]
 }
