@@ -42,6 +42,19 @@
       "reason": "손절 -0.5%",
       "estimated": false,
       "order_no": "0011910600"
+    },
+    {
+      "code": "180640",
+      "name": "한진칼",
+      "date": "2026-11-16T12:50+09:00",
+      "side": "sell",
+      "qty": 3,
+      "price": 213000.0,
+      "pnl": 43200,
+      "days": 4,
+      "reason": "추적 익절 (최고 +9.0% → +7.2%)",
+      "estimated": false,
+      "order_no": "0017271000"
     }
   ],
   "orders": {
@@ -62,7 +75,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     "20261112:0018782800": {
       "order_no": "0018782800",
@@ -81,7 +94,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     "20261112:0018783500": {
       "order_no": "0018783500",
@@ -100,7 +113,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     "20261112:0019246000": {
       "order_no": "0019246000",
@@ -119,7 +132,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     "20261116:0011910600": {
       "order_no": "0011910600",
@@ -138,7 +151,7 @@
       "days": 4,
       "order_rate": -0.53,
       "status": "filled",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     "20261116:0017271000": {
       "order_no": "0017271000",
@@ -148,27 +161,27 @@
       "name": "한진칼",
       "ordered_qty": 3,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 3,
+      "filled_qty": 3,
+      "filled_amount": 639000.0,
+      "remaining_qty": 0,
       "created": "2026-11-16T12:29+09:00",
       "reason": "추적 익절 (최고 +9.0% → +7.2%)",
       "unit_cost": 198600.0,
       "days": 4,
       "order_rate": 7.25,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-16T12:50+09:00"
     }
   },
   "watch": {
     "180640": {
-      "price": 198600,
-      "checked": "2026-11-13T15:13+09:00",
+      "price": 211000,
+      "checked": "2026-11-16T12:50+09:00",
       "state": "done"
     },
     "004020": {
-      "price": 28700,
-      "checked": "2026-11-16T12:29+09:00",
+      "price": 28600,
+      "checked": "2026-11-16T12:50+09:00",
       "state": "done"
     },
     "035720": {
@@ -177,13 +190,7 @@
       "state": "done"
     }
   },
-  "peaks": {
-    "180640": {
-      "start": "2026-11-16T09:19+09:00",
-      "peak": 216500.0,
-      "line": 213252
-    }
-  },
+  "peaks": {},
   "plan_buy_attempts": {
     "2026-11-12T02:31:44.842Z:180640": {
       "date": "2026-11-12T11:40+09:00",

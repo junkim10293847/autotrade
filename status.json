@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-16T12:30+09:00",
+  "updated": "2026-11-16T12:50+09:00",
   "mode": "real",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-16T12:30:00+09:00",
+    "checked": "2026-11-16T12:50:08+09:00",
     "mode": "real"
   },
   "positions": [
@@ -38,6 +38,17 @@
   },
   "history": [
     {
+      "code": "180640",
+      "name": "한진칼",
+      "sell_date": "2026-11-16",
+      "buy_date": "2026-11-12",
+      "days": 4,
+      "qty": 3,
+      "price": 213000.0,
+      "pnl": 43200,
+      "reason": "추적 익절 (최고 +9.0% → +7.2%)"
+    },
+    {
       "code": "004020",
       "name": "현대제철",
       "sell_date": "2026-11-16",
@@ -51,13 +62,13 @@
   ],
   "watch": {
     "180640": {
-      "price": 198600,
-      "checked": "2026-11-13T15:13+09:00",
+      "price": 211000,
+      "checked": "2026-11-16T12:50+09:00",
       "state": "done"
     },
     "004020": {
-      "price": 28700,
-      "checked": "2026-11-16T12:29+09:00",
+      "price": 28600,
+      "checked": "2026-11-16T12:50+09:00",
       "state": "done"
     },
     "035720": {
@@ -72,11 +83,11 @@
     "peaks": {}
   },
   "record": {
-    "trades": 1,
-    "wins": 0,
-    "win_rate": 0.0,
-    "realized_year": -4700,
-    "realized_total": -4700,
+    "trades": 2,
+    "wins": 1,
+    "win_rate": 50.0,
+    "realized_year": 38500,
+    "realized_total": 38500,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -86,17 +97,17 @@
       "code": "180640",
       "name": "한진칼",
       "ordered_qty": 3,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 3,
-      "status": "accepted",
+      "filled_qty": 3,
+      "filled_amount": 639000,
+      "avg_fill_price": 213000.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "추적 익절 (최고 +9.0% → +7.2%)",
       "balance_qty": 0,
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T12:29+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     {
       "order_no": "0011910600",
@@ -114,7 +125,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-16T10:40+09:00",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     {
       "order_no": "0019246000",
@@ -132,7 +143,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:50+09:00",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     {
       "order_no": "0018781000",
@@ -150,7 +161,7 @@
       "balance_avg": 0.0,
       "limit_price": 200500.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     {
       "order_no": "0018782800",
@@ -168,7 +179,7 @@
       "balance_avg": 0.0,
       "limit_price": 28900.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     },
     {
       "order_no": "0018783500",
@@ -186,7 +197,7 @@
       "balance_avg": 32100.0,
       "limit_price": 32450.0,
       "created": "2026-11-12T11:40+09:00",
-      "last_seen": "2026-11-16T12:29+09:00"
+      "last_seen": "2026-11-16T12:50+09:00"
     }
   ]
 }
