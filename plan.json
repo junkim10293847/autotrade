@@ -24,7 +24,6 @@
   "topup": true,
   "exit_by": "2026-11-16",
   "exit_time": "14:30",
-  "proposal": null,
   "attack_ratio": 0.5,
   "attack_rules": {
     "stop_loss_pct": -8,
