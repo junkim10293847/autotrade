@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-17T09:00+09:00",
+  "updated": "2026-11-17T09:10+09:00",
   "date": "2026-11-17",
   "src": "real",
   "kospi": {
-    "now": 5100.5,
-    "chg": 0.0,
-    "rate": 0.0,
-    "open": 0.0,
-    "high": 0.0,
-    "low": 0.0,
-    "low_rate": null,
-    "high_rate": null,
-    "up": 35,
-    "down": 95,
-    "flat": 14,
+    "now": 5030.96,
+    "chg": -69.54,
+    "rate": -1.36,
+    "open": 5008.09,
+    "high": 5035.56,
+    "low": 4984.83,
+    "low_rate": -2.27,
+    "high_rate": -1.27,
+    "up": 175,
+    "down": 648,
+    "flat": 51,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 0,
+    "amount_eok": 13106,
     "prev_amount_eok": 164583,
     "year_high": 9385.59,
-    "from_year_high": 45.66
+    "from_year_high": 46.4
   },
   "kosdaq": {
-    "now": 665.65,
-    "chg": 0.0,
-    "rate": 0.0,
-    "open": 0.0,
-    "high": 0.0,
-    "low": 0.0,
-    "low_rate": null,
-    "high_rate": null,
-    "up": 58,
-    "down": 189,
-    "flat": 29,
-    "limit_up": 0,
+    "now": 661.07,
+    "chg": -4.58,
+    "rate": -0.69,
+    "open": 656.82,
+    "high": 661.78,
+    "low": 652.37,
+    "low_rate": -2.0,
+    "high_rate": -0.58,
+    "up": 360,
+    "down": 1271,
+    "flat": 81,
+    "limit_up": 2,
     "limit_down": 0,
-    "amount_eok": 0,
+    "amount_eok": 5406,
     "prev_amount_eok": 48811,
     "year_high": 1229.42,
-    "from_year_high": 45.86
+    "from_year_high": 46.23
   },
   "flows": {
     "kospi": {
-      "foreign": 153,
-      "inst": -106,
-      "person": -31
+      "foreign": 443,
+      "inst": -434,
+      "person": 23
     },
     "kosdaq": null
   },
@@ -52,19 +52,19 @@
     "180640": {
       "name": "한진칼",
       "held": false,
-      "now": 218000.0,
-      "chg": 2500.0,
-      "rate": 1.16,
+      "now": 210000.0,
+      "chg": -5500.0,
+      "rate": -2.55,
       "prev": 215500.0,
       "open": 218000.0,
       "high": 219000.0,
-      "low": 216000.0,
+      "low": 209000.0,
       "high_rate": 1.62,
-      "low_rate": 0.23,
+      "low_rate": -3.02,
       "w52_high": 245000.0,
       "w52_low": 93100.0,
-      "vol": 5283,
-      "vol_ratio": 1.19
+      "vol": 39009,
+      "vol_ratio": 8.78
     },
     "004020": {
       "name": "현대제철",
@@ -73,40 +73,76 @@
       "chg": 0.0,
       "rate": 0.0,
       "prev": 28600.0,
-      "open": 0.0,
-      "high": 0.0,
-      "low": 0.0,
-      "high_rate": null,
-      "low_rate": null,
+      "open": 28500.0,
+      "high": 28650.0,
+      "low": 28100.0,
+      "high_rate": 0.17,
+      "low_rate": -1.75,
       "w52_high": 50400.0,
       "w52_low": 23650.0,
-      "vol": 0,
-      "vol_ratio": 0.0
+      "vol": 12104,
+      "vol_ratio": 5.42
     },
     "035720": {
       "name": "카카오",
       "held": false,
-      "now": 32450.0,
-      "chg": 0.0,
-      "rate": 0.0,
+      "now": 31850.0,
+      "chg": -600.0,
+      "rate": -1.85,
       "prev": 32450.0,
-      "open": 0.0,
-      "high": 0.0,
-      "low": 0.0,
-      "high_rate": null,
-      "low_rate": null,
+      "open": 32350.0,
+      "high": 32350.0,
+      "low": 31700.0,
+      "high_rate": -0.31,
+      "low_rate": -2.31,
       "w52_high": 64500.0,
       "w52_low": 28400.0,
-      "vol": 30,
-      "vol_ratio": 0.0
+      "vol": 93814,
+      "vol_ratio": 6.18
     }
   },
-  "news": [],
+  "news": [
+    {
+      "time": "09:10",
+      "title": "옵토닉스, 코스닥 상장 첫날 장 초반 '따블'",
+      "src": "한국경제신문"
+    },
+    {
+      "time": "09:09",
+      "title": "현대百, 외국인 VIP 문턱 낮춘다…공항 픽업부터 전담 쇼핑까지",
+      "src": "아시아 경제"
+    },
+    {
+      "time": "09:08",
+      "title": "옵토닉스, 코스닥 상장 첫날 공모가 대비 160%대 급등[특징주]",
+      "src": "이데일리"
+    },
+    {
+      "time": "09:08",
+      "title": "키움 KIWOOM 적격TDF2040액티브증권상장지수투자신탁[주식혼합-재간접형] ETF지수 이용 또는 산출의 일시적 중단 및 오류 발생/해소 안내",
+      "src": "거래소 공시"
+    },
+    {
+      "time": "09:08",
+      "title": "한투운용 ACE 글로벌반도체 ETF, 비중 1위 교체…SK하닉 대신 삼전",
+      "src": "서울경제"
+    },
+    {
+      "time": "09:08",
+      "title": "키움 KIWOOM 적격TDF2030액티브증권상장지수투자신탁[주식혼합-재간접형] ETF지수 이용 또는 산출의 일시적 중단 및 오류 발생/해소 안내",
+      "src": "거래소 공시"
+    }
+  ],
   "intraday": [
     {
       "t": "09:00",
       "kospi": 0.0,
       "kosdaq": 0.0
+    },
+    {
+      "t": "09:10",
+      "kospi": -1.36,
+      "kosdaq": -0.69
     }
   ],
   "trails": {
@@ -114,11 +150,19 @@
       {
         "t": "09:00",
         "p": 218000.0
+      },
+      {
+        "t": "09:10",
+        "p": 210000.0
       }
     ],
     "004020": [
       {
         "t": "09:00",
+        "p": 28600.0
+      },
+      {
+        "t": "09:10",
         "p": 28600.0
       }
     ],
@@ -126,6 +170,10 @@
       {
         "t": "09:00",
         "p": 32450.0
+      },
+      {
+        "t": "09:10",
+        "p": 31850.0
       }
     ]
   },
@@ -181,81 +229,81 @@
     },
     {
       "date": "2026-11-17",
-      "kospi": 5100.5,
-      "kospi_rate": 0.0,
-      "kosdaq": 665.65,
-      "kosdaq_rate": 0.0
+      "kospi": 5030.96,
+      "kospi_rate": -1.36,
+      "kosdaq": 661.07,
+      "kosdaq_rate": -0.69
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 13,
+    "beat": 65,
     "top": [
-      {
-        "code": "006400",
-        "name": "삼성SDI",
-        "now": 468000.0,
-        "rate": 1.19,
-        "rel": 1.19,
-        "vol_ratio": 2,
-        "low_rate": -0.11,
-        "high_rate": 1.51,
-        "score": -2.81,
-        "hot": false
-      },
       {
         "code": "007310",
         "name": "오뚜기",
-        "now": 298500.0,
-        "rate": 1.19,
-        "rel": 1.19,
-        "vol_ratio": 4,
+        "now": 300500.0,
+        "rate": 1.86,
+        "rel": 3.22,
+        "vol_ratio": 14,
         "low_rate": 0.0,
-        "high_rate": 1.36,
-        "score": -2.81,
+        "high_rate": 2.54,
+        "score": -0.78,
         "hot": false
       },
       {
-        "code": "128940",
-        "name": "한미약품",
-        "now": 451500.0,
-        "rate": 1.12,
-        "rel": 1.12,
-        "vol_ratio": 1,
+        "code": "006400",
+        "name": "삼성SDI",
+        "now": 470500.0,
+        "rate": 1.73,
+        "rel": 3.09,
+        "vol_ratio": 11,
         "low_rate": -0.11,
-        "high_rate": 1.23,
-        "score": -2.88,
+        "high_rate": 2.81,
+        "score": -0.91,
         "hot": false
       },
       {
-        "code": "012750",
-        "name": "에스원",
-        "now": 102200.0,
-        "rate": 0.99,
-        "rel": 0.99,
-        "vol_ratio": 1,
-        "low_rate": 0.0,
-        "high_rate": 1.88,
-        "score": -3.01,
+        "code": "032640",
+        "name": "LG유플러스",
+        "now": 15850.0,
+        "rate": 1.41,
+        "rel": 2.77,
+        "vol_ratio": 4,
+        "low_rate": 0.19,
+        "high_rate": 1.73,
+        "score": -1.23,
         "hot": false
       },
       {
-        "code": "069960",
-        "name": "현대백화점",
-        "now": 90100.0,
-        "rate": 0.9,
-        "rel": 0.9,
-        "vol_ratio": 1,
-        "low_rate": -0.78,
-        "high_rate": 1.23,
-        "score": -3.1,
+        "code": "011790",
+        "name": "SKC",
+        "now": 72500.0,
+        "rate": 1.26,
+        "rel": 2.62,
+        "vol_ratio": 9,
+        "low_rate": -2.09,
+        "high_rate": 1.54,
+        "score": -1.38,
+        "hot": false
+      },
+      {
+        "code": "003670",
+        "name": "포스코퓨처엠",
+        "now": 172300.0,
+        "rate": 1.12,
+        "rel": 2.48,
+        "vol_ratio": 8,
+        "low_rate": -1.17,
+        "high_rate": 1.47,
+        "score": -1.52,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.00%, 코스닥 +0.00%",
-    "코스피 144종목 중 상승 35 · 하락 95",
-    "수급: 외국인 +153억 · 기관 -106억 · 개인 -31억 → 외국인 매수 주도"
+    "약세 · 코스피 -1.36%, 코스닥 -0.69%",
+    "코스피 874종목 중 상승 175 · 하락 648",
+    "수급: 외국인 +443억 · 기관 -434억 · 개인 +23억 → 외국인 매수 주도"
   ]
 }
