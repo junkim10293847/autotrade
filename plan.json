@@ -1,5 +1,5 @@
 {
-  "mode": "real",
+  "mode": "demo",
   "paused": false,
   "take_profit_pct": 2,
   "stop_loss_pct": -0.5,
