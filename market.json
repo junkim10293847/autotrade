@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-17T13:40+09:00",
+  "updated": "2026-11-17T13:50+09:00",
   "date": "2026-11-17",
   "src": "real",
   "kospi": {
-    "now": 5009.62,
-    "chg": -90.88,
-    "rate": -1.78,
+    "now": 5012.31,
+    "chg": -88.19,
+    "rate": -1.73,
     "open": 5008.09,
     "high": 5084.06,
     "low": 4984.83,
     "low_rate": -2.27,
     "high_rate": -0.32,
-    "up": 181,
-    "down": 701,
+    "up": 179,
+    "down": 703,
     "flat": 30,
     "limit_up": 4,
     "limit_down": 0,
-    "amount_eok": 98780,
+    "amount_eok": 100938,
     "prev_amount_eok": 164583,
     "year_high": 9385.59,
-    "from_year_high": 46.62
+    "from_year_high": 46.6
   },
   "kosdaq": {
-    "now": 655.94,
-    "chg": -9.71,
-    "rate": -1.46,
+    "now": 656.11,
+    "chg": -9.54,
+    "rate": -1.43,
     "open": 656.82,
     "high": 665.79,
     "low": 652.37,
     "low_rate": -2.0,
     "high_rate": 0.02,
-    "up": 395,
-    "down": 1295,
-    "flat": 58,
-    "limit_up": 2,
+    "up": 407,
+    "down": 1276,
+    "flat": 65,
+    "limit_up": 3,
     "limit_down": 1,
-    "amount_eok": 37080,
+    "amount_eok": 38018,
     "prev_amount_eok": 48811,
     "year_high": 1229.42,
-    "from_year_high": 46.65
+    "from_year_high": 46.63
   },
   "flows": {
     "kospi": {
-      "foreign": 2394,
-      "inst": -2582,
-      "person": 227
+      "foreign": 2399,
+      "inst": -2624,
+      "person": 264
     },
     "kosdaq": null
   },
@@ -221,6 +221,11 @@
       "t": "13:40",
       "kospi": -1.78,
       "kosdaq": -1.46
+    },
+    {
+      "t": "13:50",
+      "kospi": -1.73,
+      "kosdaq": -1.43
     }
   ],
   "trails": {},
@@ -276,26 +281,26 @@
     },
     {
       "date": "2026-11-17",
-      "kospi": 5009.62,
-      "kospi_rate": -1.78,
-      "kosdaq": 655.94,
-      "kosdaq_rate": -1.46
+      "kospi": 5012.31,
+      "kospi_rate": -1.73,
+      "kosdaq": 656.11,
+      "kosdaq_rate": -1.43
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 56,
+    "beat": 59,
     "top": [
       {
         "code": "069960",
         "name": "현대백화점",
-        "now": 95900.0,
-        "rate": 7.39,
-        "rel": 9.17,
-        "vol_ratio": 107,
+        "now": 96000.0,
+        "rate": 7.5,
+        "rel": 9.23,
+        "vol_ratio": 110,
         "low_rate": -0.78,
         "high_rate": 9.18,
-        "score": 9.35,
+        "score": 9.51,
         "hot": false
       },
       {
@@ -303,54 +308,54 @@
         "name": "SK바이오사이언스",
         "now": 40400.0,
         "rate": 2.8,
-        "rel": 4.58,
-        "vol_ratio": 190,
+        "rel": 4.53,
+        "vol_ratio": 193,
         "low_rate": -0.13,
         "high_rate": 5.47,
-        "score": 6.44,
+        "score": 6.42,
         "hot": false
       },
       {
         "code": "000100",
         "name": "유한양행",
-        "now": 83200.0,
-        "rate": 2.59,
-        "rel": 4.37,
-        "vol_ratio": 145,
+        "now": 83150.0,
+        "rate": 2.53,
+        "rel": 4.26,
+        "vol_ratio": 149,
         "low_rate": -0.99,
         "high_rate": 4.07,
-        "score": 5.44,
+        "score": 5.4,
         "hot": false
       },
       {
         "code": "023530",
         "name": "롯데쇼핑",
-        "now": 83400.0,
-        "rate": 3.6,
-        "rel": 5.38,
-        "vol_ratio": 70,
+        "now": 83500.0,
+        "rate": 3.73,
+        "rel": 5.46,
+        "vol_ratio": 72,
         "low_rate": -1.99,
         "high_rate": 5.4,
-        "score": 4.35,
+        "score": 4.52,
         "hot": false
       },
       {
         "code": "326030",
         "name": "SK바이오팜",
-        "now": 89500.0,
-        "rate": 1.13,
-        "rel": 2.91,
-        "vol_ratio": 161,
+        "now": 89400.0,
+        "rate": 1.02,
+        "rel": 2.75,
+        "vol_ratio": 166,
         "low_rate": -1.47,
         "high_rate": 3.95,
-        "score": 4.29,
+        "score": 4.21,
         "hot": false
       }
     ]
   },
   "summary": [
-    "약세 · 코스피 -1.78%, 코스닥 -1.46%",
-    "코스피 912종목 중 상승 181 · 하락 701 (상한가 4)",
-    "수급: 외국인 +2,394억 · 기관 -2,582억 · 개인 +227억 → 기관 매도 주도"
+    "약세 · 코스피 -1.73%, 코스닥 -1.43%",
+    "코스피 912종목 중 상승 179 · 하락 703 (상한가 4)",
+    "수급: 외국인 +2,399억 · 기관 -2,624억 · 개인 +264억 → 기관 매도 주도"
   ]
 }
