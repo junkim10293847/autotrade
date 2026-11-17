@@ -1,59 +1,84 @@
 {
-  "updated": "2026-11-17T13:00+09:00",
+  "updated": "2026-11-17T13:10+09:00",
   "date": "2026-11-17",
   "src": "real",
   "kospi": {
-    "now": 5011.55,
-    "chg": -88.95,
-    "rate": -1.74,
+    "now": 4999.83,
+    "chg": -100.67,
+    "rate": -1.97,
     "open": 5008.09,
     "high": 5084.06,
     "low": 4984.83,
     "low_rate": -2.27,
     "high_rate": -0.32,
-    "up": 217,
-    "down": 662,
-    "flat": 33,
+    "up": 197,
+    "down": 690,
+    "flat": 25,
     "limit_up": 4,
     "limit_down": 0,
-    "amount_eok": 87579,
+    "amount_eok": 90624,
     "prev_amount_eok": 164583,
     "year_high": 9385.59,
-    "from_year_high": 46.6
+    "from_year_high": 46.73
   },
   "kosdaq": {
-    "now": 656.5,
-    "chg": -9.15,
-    "rate": -1.37,
+    "now": 654.66,
+    "chg": -10.99,
+    "rate": -1.65,
     "open": 656.82,
     "high": 665.79,
     "low": 652.37,
     "low_rate": -2.0,
     "high_rate": 0.02,
-    "up": 444,
-    "down": 1253,
+    "up": 394,
+    "down": 1303,
     "flat": 51,
     "limit_up": 2,
     "limit_down": 1,
-    "amount_eok": 33693,
+    "amount_eok": 34613,
     "prev_amount_eok": 48811,
     "year_high": 1229.42,
-    "from_year_high": 46.6
+    "from_year_high": 46.75
   },
   "flows": {
     "kospi": {
-      "foreign": 2649,
-      "inst": -2798,
-      "person": 176
+      "foreign": 2448,
+      "inst": -2637,
+      "person": 227
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "12:42",
-      "title": "美증시 10%, 후계자 없는 '세 남자' 손에…빅테크 승계 리스크 도마",
-      "src": "이데일리"
+      "time": "13:06",
+      "title": "코스닥 하락률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "13:06",
+      "title": "코스피 하락률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "13:06",
+      "title": "코스닥 상승률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "13:06",
+      "title": "코스피 상승률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "13:02",
+      "title": "1억원 이상 매도체결 상위 20 종목(코스닥)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "13:02",
+      "title": "1억원 이상 매도체결 상위 20 종목(코스피)",
+      "src": "인포스탁"
     }
   ],
   "intraday": [
@@ -181,6 +206,11 @@
       "t": "13:00",
       "kospi": -1.74,
       "kosdaq": -1.37
+    },
+    {
+      "t": "13:10",
+      "kospi": -1.97,
+      "kosdaq": -1.65
     }
   ],
   "trails": {},
@@ -236,81 +266,81 @@
     },
     {
       "date": "2026-11-17",
-      "kospi": 5011.55,
-      "kospi_rate": -1.74,
-      "kosdaq": 656.5,
-      "kosdaq_rate": -1.37
+      "kospi": 4999.83,
+      "kospi_rate": -1.97,
+      "kosdaq": 654.66,
+      "kosdaq_rate": -1.65
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 57,
+    "beat": 59,
     "top": [
       {
         "code": "069960",
         "name": "현대백화점",
         "now": 96700.0,
         "rate": 8.29,
-        "rel": 10.03,
-        "vol_ratio": 85,
+        "rel": 10.26,
+        "vol_ratio": 89,
         "low_rate": -0.78,
         "high_rate": 9.18,
-        "score": 9.56,
+        "score": 9.94,
         "hot": false
       },
       {
         "code": "302440",
         "name": "SK바이오사이언스",
-        "now": 40600.0,
-        "rate": 3.31,
-        "rel": 5.05,
-        "vol_ratio": 173,
+        "now": 40550.0,
+        "rate": 3.18,
+        "rel": 5.15,
+        "vol_ratio": 177,
         "low_rate": -0.13,
         "high_rate": 5.47,
-        "score": 6.63,
+        "score": 6.8,
         "hot": false
       },
       {
         "code": "000100",
         "name": "유한양행",
-        "now": 83600.0,
-        "rate": 3.08,
-        "rel": 4.82,
-        "vol_ratio": 131,
+        "now": 83300.0,
+        "rate": 2.71,
+        "rel": 4.68,
+        "vol_ratio": 134,
         "low_rate": -0.99,
         "high_rate": 4.07,
-        "score": 5.6,
+        "score": 5.53,
         "hot": false
       },
       {
         "code": "326030",
         "name": "SK바이오팜",
-        "now": 90800.0,
-        "rate": 2.6,
-        "rel": 4.34,
-        "vol_ratio": 133,
+        "now": 90100.0,
+        "rate": 1.81,
+        "rel": 3.78,
+        "vol_ratio": 145,
         "low_rate": -1.47,
         "high_rate": 3.95,
-        "score": 5.16,
+        "score": 4.86,
         "hot": false
       },
       {
         "code": "023530",
         "name": "롯데쇼핑",
-        "now": 83900.0,
-        "rate": 4.22,
-        "rel": 5.96,
-        "vol_ratio": 61,
+        "now": 83400.0,
+        "rate": 3.6,
+        "rel": 5.57,
+        "vol_ratio": 64,
         "low_rate": -1.99,
         "high_rate": 5.4,
-        "score": 4.54,
+        "score": 4.27,
         "hot": false
       }
     ]
   },
   "summary": [
-    "약세 · 코스피 -1.74%, 코스닥 -1.37%",
-    "코스피 912종목 중 상승 217 · 하락 662 (상한가 4)",
-    "수급: 외국인 +2,649억 · 기관 -2,798억 · 개인 +176억 → 기관 매도 주도"
+    "약세 · 코스피 -1.97%, 코스닥 -1.65%",
+    "코스피 912종목 중 상승 197 · 하락 690 (상한가 4)",
+    "수급: 외국인 +2,448억 · 기관 -2,637억 · 개인 +227억 → 기관 매도 주도"
   ]
 }
