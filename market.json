@@ -1,83 +1,68 @@
 {
-  "updated": "2026-11-17T12:20+09:00",
+  "updated": "2026-11-17T12:30+09:00",
   "date": "2026-11-17",
   "src": "real",
   "kospi": {
-    "now": 5073.23,
-    "chg": -27.27,
-    "rate": -0.53,
+    "now": 5058.47,
+    "chg": -42.03,
+    "rate": -0.82,
     "open": 5008.09,
     "high": 5084.06,
     "low": 4984.83,
     "low_rate": -2.27,
     "high_rate": -0.32,
-    "up": 250,
-    "down": 625,
+    "up": 247,
+    "down": 628,
     "flat": 37,
     "limit_up": 3,
     "limit_down": 0,
-    "amount_eok": 78239,
+    "amount_eok": 80056,
     "prev_amount_eok": 164583,
     "year_high": 9385.59,
-    "from_year_high": 45.95
+    "from_year_high": 46.1
   },
   "kosdaq": {
-    "now": 663.59,
-    "chg": -2.06,
-    "rate": -0.31,
+    "now": 662.65,
+    "chg": -3.0,
+    "rate": -0.45,
     "open": 656.82,
     "high": 665.79,
     "low": 652.37,
     "low_rate": -2.0,
     "high_rate": 0.02,
-    "up": 521,
-    "down": 1175,
-    "flat": 52,
+    "up": 519,
+    "down": 1159,
+    "flat": 70,
     "limit_up": 2,
     "limit_down": 0,
-    "amount_eok": 30633,
+    "amount_eok": 31336,
     "prev_amount_eok": 48811,
     "year_high": 1229.42,
-    "from_year_high": 46.02
+    "from_year_high": 46.1
   },
   "flows": {
     "kospi": {
-      "foreign": 2663,
-      "inst": -2727,
-      "person": 89
+      "foreign": 2725,
+      "inst": -2795,
+      "person": 93
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "12:08",
-      "title": "오전장 기술적 분석 특징주 B(코스닥)",
+      "time": "12:23",
+      "title": "코스닥지수 : ▼2.79P(-0.42%), 662.86P",
       "src": "인포스탁"
     },
     {
-      "time": "12:08",
-      "title": "오전장 기술적 분석 특징주 A(코스닥)",
+      "time": "12:23",
+      "title": "코스피지수 : ▼39.17P(-0.77%), 5,061.33P",
       "src": "인포스탁"
     },
     {
-      "time": "12:08",
-      "title": "오전장 기술적 분석 특징주 B(코스피)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "12:08",
-      "title": "오전장 기술적 분석 특징주 A(코스피)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "12:06",
-      "title": "코스닥 하락률 상위 20종목(직전 30분 기준)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "12:06",
-      "title": "코스피 하락률 상위 20종목(직전 30분 기준)",
+      "time": "12:22",
+      "title": "원/달러 환율 : 1,339.3원(▲2.8 )",
       "src": "인포스탁"
     }
   ],
@@ -186,6 +171,11 @@
       "t": "12:20",
       "kospi": -0.53,
       "kosdaq": -0.31
+    },
+    {
+      "t": "12:30",
+      "kospi": -0.82,
+      "kosdaq": -0.45
     }
   ],
   "trails": {},
@@ -241,38 +231,38 @@
     },
     {
       "date": "2026-11-17",
-      "kospi": 5073.23,
-      "kospi_rate": -0.53,
-      "kosdaq": 663.59,
-      "kosdaq_rate": -0.31
+      "kospi": 5058.47,
+      "kospi_rate": -0.82,
+      "kosdaq": 662.65,
+      "kosdaq_rate": -0.45
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 41,
+    "beat": 49,
     "top": [
       {
         "code": "069960",
         "name": "현대백화점",
-        "now": 96200.0,
-        "rate": 7.73,
-        "rel": 8.26,
-        "vol_ratio": 65,
+        "now": 96400.0,
+        "rate": 7.95,
+        "rel": 8.77,
+        "vol_ratio": 70,
         "low_rate": -0.78,
-        "high_rate": 8.06,
-        "score": 7.03,
+        "high_rate": 8.17,
+        "score": 7.74,
         "hot": false
       },
       {
         "code": "302440",
         "name": "SK바이오사이언스",
-        "now": 40700.0,
-        "rate": 3.56,
-        "rel": 4.09,
-        "vol_ratio": 153,
+        "now": 40750.0,
+        "rate": 3.69,
+        "rel": 4.51,
+        "vol_ratio": 155,
         "low_rate": -0.13,
         "high_rate": 5.47,
-        "score": 5.31,
+        "score": 5.78,
         "hot": false
       },
       {
@@ -280,42 +270,42 @@
         "name": "유한양행",
         "now": 83600.0,
         "rate": 3.08,
-        "rel": 3.61,
-        "vol_ratio": 113,
+        "rel": 3.9,
+        "vol_ratio": 117,
         "low_rate": -0.99,
         "high_rate": 4.07,
-        "score": 3.96,
+        "score": 4.36,
         "hot": false
       },
       {
         "code": "326030",
         "name": "SK바이오팜",
-        "now": 90500.0,
-        "rate": 2.26,
-        "rel": 2.79,
-        "vol_ratio": 117,
+        "now": 90700.0,
+        "rate": 2.49,
+        "rel": 3.31,
+        "vol_ratio": 120,
         "low_rate": -1.47,
         "high_rate": 3.95,
-        "score": 3.23,
+        "score": 3.83,
         "hot": false
       },
       {
         "code": "023530",
         "name": "롯데쇼핑",
-        "now": 83500.0,
-        "rate": 3.73,
-        "rel": 4.26,
-        "vol_ratio": 53,
+        "now": 83700.0,
+        "rate": 3.98,
+        "rel": 4.8,
+        "vol_ratio": 55,
         "low_rate": -1.99,
         "high_rate": 5.4,
-        "score": 2.45,
+        "score": 3.07,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.53%, 코스닥 -0.31%",
-    "코스피 912종목 중 상승 250 · 하락 625 (상한가 3)",
-    "수급: 외국인 +2,663억 · 기관 -2,727억 · 개인 +89억 → 기관 매도 주도"
+    "보합권 · 코스피 -0.82%, 코스닥 -0.45%",
+    "코스피 912종목 중 상승 247 · 하락 628 (상한가 3)",
+    "수급: 외국인 +2,725억 · 기관 -2,795억 · 개인 +93억 → 기관 매도 주도"
   ]
 }
