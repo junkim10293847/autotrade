@@ -1,59 +1,84 @@
 {
-  "updated": "2026-11-17T15:19+09:00",
+  "updated": "2026-11-17T15:39+09:00",
   "date": "2026-11-17",
   "src": "real",
   "kospi": {
-    "now": 4972.41,
-    "chg": -128.09,
-    "rate": -2.51,
+    "now": 4968.48,
+    "chg": -132.02,
+    "rate": -2.59,
     "open": 5008.09,
     "high": 5084.06,
     "low": 4957.0,
     "low_rate": -2.81,
     "high_rate": -0.32,
-    "up": 161,
-    "down": 739,
-    "flat": 12,
+    "up": 185,
+    "down": 709,
+    "flat": 18,
     "limit_up": 4,
     "limit_down": 0,
-    "amount_eok": 131645,
+    "amount_eok": 141960,
     "prev_amount_eok": 164583,
     "year_high": 9385.59,
-    "from_year_high": 47.02
+    "from_year_high": 47.06
   },
   "kosdaq": {
-    "now": 650.96,
-    "chg": -14.69,
-    "rate": -2.21,
+    "now": 650.06,
+    "chg": -15.59,
+    "rate": -2.34,
     "open": 656.82,
     "high": 665.79,
     "low": 649.62,
     "low_rate": -2.41,
     "high_rate": 0.02,
-    "up": 345,
-    "down": 1345,
-    "flat": 59,
+    "up": 360,
+    "down": 1319,
+    "flat": 70,
     "limit_up": 3,
     "limit_down": 3,
-    "amount_eok": 46407,
+    "amount_eok": 47012,
     "prev_amount_eok": 48811,
     "year_high": 1229.42,
-    "from_year_high": 47.05
+    "from_year_high": 47.12
   },
   "flows": {
     "kospi": {
-      "foreign": 3949,
-      "inst": -4344,
-      "person": 433
+      "foreign": 3839,
+      "inst": -4441,
+      "person": 642
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "15:08",
-      "title": "무신사 뷰티 성수, 닷새 만에 5억 팔았다…구매객 65%가 외국인",
-      "src": "서울경제"
+      "time": "15:38",
+      "title": "코스닥, 15.59P 내린 650.06 마감(2.34%↓)",
+      "src": "아시아 경제"
+    },
+    {
+      "time": "15:38",
+      "title": "코스피, 132.02P 내린 4968.48 마감(2.59%↓)",
+      "src": "아시아 경제"
+    },
+    {
+      "time": "15:37",
+      "title": "[속보] '5천피' 붕괴…코스피, 9개월여 만에 최저 수준",
+      "src": "매일경제"
+    },
+    {
+      "time": "15:37",
+      "title": "[속보]코스피, 9개월 만에 5000선 아래로 마감",
+      "src": "아시아 경제"
+    },
+    {
+      "time": "15:36",
+      "title": "'5천피' 붕괴…코스피, 9개월여 만에 최저 수준",
+      "src": "연합뉴스"
+    },
+    {
+      "time": "15:36",
+      "title": "코스닥 하락률 상위 50종목",
+      "src": "인포스탁"
     }
   ],
   "intraday": [
@@ -251,6 +276,11 @@
       "t": "15:20",
       "kospi": -2.51,
       "kosdaq": -2.21
+    },
+    {
+      "t": "15:39",
+      "kospi": -2.59,
+      "kosdaq": -2.34
     }
   ],
   "trails": {},
@@ -306,26 +336,26 @@
     },
     {
       "date": "2026-11-17",
-      "kospi": 4972.41,
-      "kospi_rate": -2.51,
-      "kosdaq": 650.96,
-      "kosdaq_rate": -2.21
+      "kospi": 4968.48,
+      "kospi_rate": -2.59,
+      "kosdaq": 650.06,
+      "kosdaq_rate": -2.34
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 61,
+    "beat": 62,
     "top": [
       {
         "code": "069960",
         "name": "현대백화점",
-        "now": 96600.0,
-        "rate": 8.17,
-        "rel": 10.68,
-        "vol_ratio": 160,
+        "now": 96400.0,
+        "rate": 7.95,
+        "rel": 10.54,
+        "vol_ratio": 164,
         "low_rate": -0.78,
         "high_rate": 9.18,
-        "score": 12.03,
+        "score": 11.97,
         "hot": false
       },
       {
@@ -333,23 +363,23 @@
         "name": "유한양행",
         "now": 83200.0,
         "rate": 2.59,
-        "rel": 5.1,
-        "vol_ratio": 200,
+        "rel": 5.18,
+        "vol_ratio": 208,
         "low_rate": -0.99,
         "high_rate": 4.07,
-        "score": 7.1,
+        "score": 7.29,
         "hot": false
       },
       {
         "code": "023530",
         "name": "롯데쇼핑",
-        "now": 83700.0,
-        "rate": 3.98,
-        "rel": 6.49,
-        "vol_ratio": 117,
+        "now": 83800.0,
+        "rate": 4.1,
+        "rel": 6.69,
+        "vol_ratio": 121,
         "low_rate": -1.99,
         "high_rate": 5.4,
-        "score": 6.93,
+        "score": 7.25,
         "hot": false
       },
       {
@@ -357,30 +387,30 @@
         "name": "SK바이오사이언스",
         "now": 39900.0,
         "rate": 1.53,
-        "rel": 4.04,
-        "vol_ratio": 225,
+        "rel": 4.12,
+        "vol_ratio": 228,
         "low_rate": -0.13,
         "high_rate": 5.47,
-        "score": 6.38,
+        "score": 6.5,
         "hot": false
       },
       {
         "code": "326030",
         "name": "SK바이오팜",
-        "now": 89200.0,
-        "rate": 0.79,
-        "rel": 3.3,
-        "vol_ratio": 221,
+        "now": 89000.0,
+        "rate": 0.56,
+        "rel": 3.15,
+        "vol_ratio": 230,
         "low_rate": -1.47,
         "high_rate": 3.95,
-        "score": 5.59,
+        "score": 5.55,
         "hot": false
       }
     ]
   },
   "summary": [
-    "약세 · 코스피 -2.51%, 코스닥 -2.21%",
-    "코스피 912종목 중 상승 161 · 하락 739 (상한가 4)",
-    "수급: 외국인 +3,949억 · 기관 -4,344억 · 개인 +433억 → 기관 매도 주도"
+    "약세 · 코스피 -2.59%, 코스닥 -2.34%",
+    "코스피 912종목 중 상승 185 · 하락 709 (상한가 4)",
+    "수급: 외국인 +3,839억 · 기관 -4,441억 · 개인 +642억 → 기관 매도 주도"
   ]
 }
