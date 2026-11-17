@@ -8,7 +8,21 @@
       "inferred": true
     }
   },
-  "trades": [],
+  "trades": [
+    {
+      "code": "035720",
+      "name": "카카오",
+      "date": "2026-11-17T12:10+09:00",
+      "side": "sell",
+      "qty": 102,
+      "price": 32098.0392,
+      "pnl": -45550,
+      "days": null,
+      "reason": "청산 (출금 일정)",
+      "estimated": false,
+      "order_no": "0000025188"
+    }
+  ],
   "orders": {
     "20261117:0000025188": {
       "order_no": "0000025188",
@@ -18,16 +32,16 @@
       "name": "카카오",
       "ordered_qty": 102,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 102,
+      "filled_qty": 102,
+      "filled_amount": 3274000.0,
+      "remaining_qty": 0,
       "created": "2026-11-17T12:00+09:00",
       "reason": "청산 (출금 일정)",
       "unit_cost": 32544.607,
       "days": null,
       "order_rate": -1.52,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-17T12:10+09:00"
     },
     "20261117:recovered-035720": {
       "order_no": "recovered-035720",

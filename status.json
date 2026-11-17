@@ -1,42 +1,39 @@
 {
-  "updated": "2026-11-17T12:00+09:00",
+  "updated": "2026-11-17T12:10+09:00",
   "mode": "demo",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-17T12:00:11+09:00",
+    "checked": "2026-11-17T12:10:22+09:00",
     "mode": "demo"
   },
-  "positions": [
+  "positions": [],
+  "total": {
+    "cost": 0,
+    "value": 0,
+    "pnl": 0,
+    "rate": 0,
+    "cash": 7048528,
+    "assets": 10315520,
+    "limit": 2000000,
+    "invested": 0,
+    "reserved": 0,
+    "remaining": 2000000
+  },
+  "history": [
     {
       "code": "035720",
       "name": "카카오",
-      "qty": 98,
-      "avg": 32544.607,
-      "now": 32050.0,
-      "rate": -1.52,
-      "days": 0,
-      "cost": 3189371,
-      "value": 3140900,
-      "pnl": -48471,
-      "tracked": true,
-      "buy_date": "2026-11-17"
+      "sell_date": "2026-11-17",
+      "buy_date": null,
+      "days": null,
+      "qty": 102,
+      "price": 32098.0392,
+      "pnl": -45550,
+      "reason": "청산 (출금 일정)"
     }
   ],
-  "total": {
-    "cost": 3189371,
-    "value": 3140900,
-    "pnl": -48471,
-    "rate": -1.52,
-    "cash": 7048528,
-    "assets": 10317412,
-    "limit": 2000000,
-    "invested": 3189371,
-    "reserved": 0,
-    "remaining": 0
-  },
-  "history": [],
   "watch": {},
   "trail": {
     "mode": "trail",
@@ -44,11 +41,11 @@
     "peaks": {}
   },
   "record": {
-    "trades": 0,
+    "trades": 1,
     "wins": 0,
-    "win_rate": null,
-    "realized_year": 0,
-    "realized_total": 0,
+    "win_rate": 0.0,
+    "realized_year": -45550,
+    "realized_total": -45550,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -58,17 +55,17 @@
       "code": "035720",
       "name": "카카오",
       "ordered_qty": 102,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 102,
-      "status": "accepted",
+      "filled_qty": 102,
+      "filled_amount": 3274000,
+      "avg_fill_price": 32098.04,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "청산 (출금 일정)",
-      "balance_qty": 98,
-      "balance_avg": 32544.607,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-17T12:00+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-17T12:10+09:00"
     },
     {
       "order_no": "recovered-035720",
@@ -82,8 +79,8 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "기록 복구 (체결 기록이 저장되지 않았던 매수)",
-      "balance_qty": 98,
-      "balance_avg": 32544.607,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 32544.607,
       "created": "2026-11-17T12:00+09:00",
       "last_seen": "2026-11-17T12:00+09:00"
