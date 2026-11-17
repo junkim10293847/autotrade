@@ -1,84 +1,69 @@
 {
-  "updated": "2026-11-17T14:50+09:00",
+  "updated": "2026-11-17T15:00+09:00",
   "date": "2026-11-17",
   "src": "real",
   "kospi": {
-    "now": 4979.67,
-    "chg": -120.83,
-    "rate": -2.37,
+    "now": 4968.54,
+    "chg": -131.96,
+    "rate": -2.59,
     "open": 5008.09,
     "high": 5084.06,
-    "low": 4974.6,
-    "low_rate": -2.47,
+    "low": 4960.55,
+    "low_rate": -2.74,
     "high_rate": -0.32,
-    "up": 152,
-    "down": 738,
-    "flat": 22,
+    "up": 148,
+    "down": 745,
+    "flat": 19,
     "limit_up": 4,
     "limit_down": 0,
-    "amount_eok": 119276,
+    "amount_eok": 123292,
     "prev_amount_eok": 164583,
     "year_high": 9385.59,
-    "from_year_high": 46.94
+    "from_year_high": 47.06
   },
   "kosdaq": {
-    "now": 652.09,
-    "chg": -13.56,
-    "rate": -2.04,
+    "now": 650.96,
+    "chg": -14.69,
+    "rate": -2.21,
     "open": 656.82,
     "high": 665.79,
-    "low": 650.43,
-    "low_rate": -2.29,
+    "low": 649.9,
+    "low_rate": -2.37,
     "high_rate": 0.02,
-    "up": 354,
-    "down": 1344,
-    "flat": 50,
+    "up": 338,
+    "down": 1358,
+    "flat": 53,
     "limit_up": 3,
-    "limit_down": 2,
-    "amount_eok": 43229,
+    "limit_down": 3,
+    "amount_eok": 44332,
     "prev_amount_eok": 48811,
     "year_high": 1229.42,
-    "from_year_high": 46.96
+    "from_year_high": 47.05
   },
   "flows": {
     "kospi": {
-      "foreign": 2999,
-      "inst": -3276,
-      "person": 316
+      "foreign": 3351,
+      "inst": -3647,
+      "person": 335
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "14:49",
-      "title": "삼성 KODEX 한국부동산리츠인프라부동산상장지수투자신탁[재간접형] ETF기타시장안내",
-      "src": "거래소 공시"
+      "time": "14:58",
+      "title": "美연준 \"대형은행에 쌓인 AI 위험 노출액만 1조달러\"",
+      "src": "이투데이"
     },
     {
-      "time": "14:49",
-      "title": "삼성 KODEX 코스피TotalReturn증권상장지수투자신탁[주식] ETF기타시장안내",
-      "src": "거래소 공시"
+      "time": "14:57",
+      "title": "전일대비 거래량 증가 종목(코스닥)",
+      "src": "인포스탁"
     },
     {
-      "time": "14:48",
-      "title": "현대오토에버, 동반성장지수 3년 연속 최우수…첫 ‘명예기업’ 선정",
-      "src": "매일경제"
-    },
-    {
-      "time": "14:48",
-      "title": "AI 반도체·로봇에 돈 몰렸다...벤처투자 12.6조 역대 최대",
-      "src": "파이낸셜"
-    },
-    {
-      "time": "14:47",
-      "title": "\"코스피 1만p 고점 아닌 뉴노멀\" 모건스탠리, 갑자기 '한국 르네상스'",
-      "src": "파이낸셜"
-    },
-    {
-      "time": "14:47",
-      "title": "K반도체 '어벤저스' 탄생…추미애표 '초격차 전략위' 출범",
-      "src": "머니투데이"
+      "time": "14:57",
+      "title": "전일대비 거래량 증가 종목(코스피)",
+      "src": "인포스탁"
     }
   ],
   "intraday": [
@@ -261,6 +246,11 @@
       "t": "14:50",
       "kospi": -2.37,
       "kosdaq": -2.04
+    },
+    {
+      "t": "15:00",
+      "kospi": -2.59,
+      "kosdaq": -2.21
     }
   ],
   "trails": {},
@@ -316,50 +306,38 @@
     },
     {
       "date": "2026-11-17",
-      "kospi": 4979.67,
-      "kospi_rate": -2.37,
-      "kosdaq": 652.09,
-      "kosdaq_rate": -2.04
+      "kospi": 4968.54,
+      "kospi_rate": -2.59,
+      "kosdaq": 650.96,
+      "kosdaq_rate": -2.21
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 62,
+    "beat": 61,
     "top": [
       {
         "code": "069960",
         "name": "현대백화점",
-        "now": 96900.0,
-        "rate": 8.51,
-        "rel": 10.88,
-        "vol_ratio": 142,
+        "now": 96500.0,
+        "rate": 8.06,
+        "rel": 10.65,
+        "vol_ratio": 149,
         "low_rate": -0.78,
         "high_rate": 9.18,
-        "score": 11.88,
+        "score": 11.8,
         "hot": false
       },
       {
         "code": "023530",
         "name": "롯데쇼핑",
-        "now": 84400.0,
-        "rate": 4.84,
-        "rel": 7.21,
-        "vol_ratio": 104,
+        "now": 84000.0,
+        "rate": 4.35,
+        "rel": 6.94,
+        "vol_ratio": 110,
         "low_rate": -1.99,
         "high_rate": 5.4,
-        "score": 7.33,
-        "hot": false
-      },
-      {
-        "code": "000100",
-        "name": "유한양행",
-        "now": 83400.0,
-        "rate": 2.84,
-        "rel": 5.21,
-        "vol_ratio": 178,
-        "low_rate": -0.99,
-        "high_rate": 4.07,
-        "score": 6.88,
+        "score": 7.22,
         "hot": false
       },
       {
@@ -367,30 +345,42 @@
         "name": "SK바이오사이언스",
         "now": 40150.0,
         "rate": 2.16,
-        "rel": 4.53,
-        "vol_ratio": 215,
+        "rel": 4.75,
+        "vol_ratio": 220,
         "low_rate": -0.13,
         "high_rate": 5.47,
-        "score": 6.74,
+        "score": 7.03,
+        "hot": false
+      },
+      {
+        "code": "000100",
+        "name": "유한양행",
+        "now": 83200.0,
+        "rate": 2.59,
+        "rel": 5.18,
+        "vol_ratio": 183,
+        "low_rate": -0.99,
+        "high_rate": 4.07,
+        "score": 6.93,
         "hot": false
       },
       {
         "code": "326030",
         "name": "SK바이오팜",
-        "now": 89500.0,
-        "rate": 1.13,
-        "rel": 3.5,
-        "vol_ratio": 199,
+        "now": 89300.0,
+        "rate": 0.9,
+        "rel": 3.49,
+        "vol_ratio": 207,
         "low_rate": -1.47,
         "high_rate": 3.95,
-        "score": 5.48,
+        "score": 5.59,
         "hot": false
       }
     ]
   },
   "summary": [
-    "약세 · 코스피 -2.37%, 코스닥 -2.04%",
-    "코스피 912종목 중 상승 152 · 하락 738 (상한가 4)",
-    "수급: 외국인 +2,999억 · 기관 -3,276억 · 개인 +316억 → 기관 매도 주도"
+    "약세 · 코스피 -2.59%, 코스닥 -2.21%",
+    "코스피 912종목 중 상승 148 · 하락 745 (상한가 4)",
+    "수급: 외국인 +3,351억 · 기관 -3,647억 · 개인 +335억 → 기관 매도 주도"
   ]
 }
