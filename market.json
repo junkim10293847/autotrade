@@ -1,74 +1,74 @@
 {
-  "updated": "2026-11-18T14:10+09:00",
+  "updated": "2026-11-18T14:20+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5013.22,
-    "chg": 44.74,
-    "rate": 0.9,
+    "now": 5050.74,
+    "chg": 82.26,
+    "rate": 1.66,
     "open": 5098.82,
     "high": 5133.14,
     "low": 4943.17,
     "low_rate": -0.51,
     "high_rate": 3.31,
-    "up": 366,
-    "down": 513,
-    "flat": 31,
+    "up": 417,
+    "down": 461,
+    "flat": 32,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 113676,
+    "amount_eok": 116586,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.59
+    "from_year_high": 46.19
   },
   "kosdaq": {
-    "now": 655.59,
-    "chg": 5.53,
-    "rate": 0.85,
+    "now": 660.81,
+    "chg": 10.75,
+    "rate": 1.65,
     "open": 664.93,
     "high": 674.3,
     "low": 646.31,
     "low_rate": -0.58,
     "high_rate": 3.73,
-    "up": 794,
-    "down": 888,
-    "flat": 67,
+    "up": 889,
+    "down": 803,
+    "flat": 57,
     "limit_up": 3,
     "limit_down": 0,
-    "amount_eok": 48091,
+    "amount_eok": 48956,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 46.67
+    "from_year_high": 46.25
   },
   "flows": {
     "kospi": {
-      "foreign": 598,
-      "inst": 39,
-      "person": -678
+      "foreign": 785,
+      "inst": -105,
+      "person": -723
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "14:08",
-      "title": "오후장 기술적 분석 특징주 B(코스닥)",
+      "time": "14:20",
+      "title": "1억원 이상 매수체결 상위 20 종목(코스닥)",
       "src": "인포스탁"
     },
     {
-      "time": "14:08",
-      "title": "오후장 기술적 분석 특징주 A(코스닥)",
+      "time": "14:20",
+      "title": "1억원 이상 매수체결 상위 20 종목(코스피)",
       "src": "인포스탁"
     },
     {
-      "time": "14:08",
-      "title": "오후장 기술적 분석 특징주 B(코스피)",
+      "time": "14:19",
+      "title": "[카드] 대신증권, '2027년 글로벌 증시 전망' 온라인 세미나 개최",
       "src": "인포스탁"
     },
     {
-      "time": "14:08",
-      "title": "오후장 기술적 분석 특징주 A(코스피)",
-      "src": "인포스탁"
+      "time": "14:16",
+      "title": "코스피 5000선 재돌파 1%대 상승",
+      "src": "매일경제"
     }
   ],
   "intraday": [
@@ -226,6 +226,11 @@
       "t": "14:10",
       "kospi": 0.9,
       "kosdaq": 0.85
+    },
+    {
+      "t": "14:20",
+      "kospi": 1.66,
+      "kosdaq": 1.65
     }
   ],
   "trails": {},
@@ -288,82 +293,82 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5013.22,
-      "kospi_rate": 0.9,
-      "kosdaq": 655.59,
-      "kosdaq_rate": 0.85
+      "kospi": 5050.74,
+      "kospi_rate": 1.66,
+      "kosdaq": 660.81,
+      "kosdaq_rate": 1.65
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 39,
+    "beat": 31,
     "top": [
       {
         "code": "352820",
         "name": "하이브",
-        "now": 165700.0,
-        "rate": 7.04,
-        "rel": 6.14,
-        "vol_ratio": 196,
+        "now": 166500.0,
+        "rate": 7.56,
+        "rel": 5.9,
+        "vol_ratio": 202,
         "low_rate": -1.49,
         "high_rate": 8.07,
-        "score": 8.08,
+        "score": 7.93,
         "hot": false
       },
       {
         "code": "000150",
         "name": "두산",
-        "now": 579000.0,
-        "rate": 7.02,
-        "rel": 6.12,
+        "now": 584000.0,
+        "rate": 7.95,
+        "rel": 6.29,
         "vol_ratio": 114,
         "low_rate": 4.81,
         "high_rate": 16.27,
-        "score": 6.49,
+        "score": 6.68,
         "hot": false
       },
       {
         "code": "034730",
         "name": "SK",
-        "now": 486000.0,
-        "rate": 4.29,
-        "rel": 3.39,
-        "vol_ratio": 105,
+        "now": 490000.0,
+        "rate": 5.15,
+        "rel": 3.49,
+        "vol_ratio": 108,
         "low_rate": 1.5,
         "high_rate": 5.47,
-        "score": 3.54,
+        "score": 3.71,
         "hot": false
       },
       {
         "code": "009150",
         "name": "삼성전기",
-        "now": 781000.0,
-        "rate": 3.58,
-        "rel": 2.68,
-        "vol_ratio": 107,
+        "now": 786000.0,
+        "rate": 4.24,
+        "rel": 2.58,
+        "vol_ratio": 109,
         "low_rate": -0.93,
         "high_rate": 8.36,
-        "score": 2.88,
+        "score": 2.83,
         "hot": false
       },
       {
-        "code": "047050",
-        "name": "포스코인터내셔널",
-        "now": 50300.0,
-        "rate": 2.86,
-        "rel": 1.96,
-        "vol_ratio": 129,
-        "low_rate": 1.94,
-        "high_rate": 6.34,
-        "score": 2.69,
+        "code": "032830",
+        "name": "삼성생명",
+        "now": 253500.0,
+        "rate": 4.75,
+        "rel": 3.09,
+        "vol_ratio": 91,
+        "low_rate": 0.0,
+        "high_rate": 4.96,
+        "score": 2.82,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.90%, 코스닥 +0.85%",
-    "장중 고점 +3.3%에서 2.4%p 밀린 상태",
-    "코스피 910종목 중 상승 366 · 하락 513",
-    "수급: 외국인 +598억 · 기관 +39억 · 개인 -678억 → 개인 매도 주도"
+    "강세 · 코스피 +1.66%, 코스닥 +1.65%",
+    "장중 저점 -0.5%에서 2.2%p 회복한 상태",
+    "코스피 910종목 중 상승 417 · 하락 461",
+    "수급: 외국인 +785억 · 기관 -105억 · 개인 -723억 → 외국인 매수 주도"
   ]
 }
