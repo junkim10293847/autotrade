@@ -1,64 +1,84 @@
 {
-  "updated": "2026-11-18T09:40+09:00",
+  "updated": "2026-11-18T09:50+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5106.44,
-    "chg": 137.96,
-    "rate": 2.78,
+    "now": 5121.07,
+    "chg": 152.59,
+    "rate": 3.07,
     "open": 5098.82,
     "high": 5133.14,
     "low": 5075.2,
     "low_rate": 2.15,
     "high_rate": 3.31,
-    "up": 560,
-    "down": 306,
-    "flat": 37,
+    "up": 546,
+    "down": 301,
+    "flat": 57,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 30917,
+    "amount_eok": 34629,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 45.59
+    "from_year_high": 45.44
   },
   "kosdaq": {
-    "now": 670.33,
-    "chg": 20.27,
-    "rate": 3.12,
+    "now": 673.59,
+    "chg": 23.53,
+    "rate": 3.62,
     "open": 664.93,
-    "high": 670.46,
+    "high": 673.59,
     "low": 662.14,
     "low_rate": 1.86,
-    "high_rate": 3.14,
-    "up": 1167,
-    "down": 491,
-    "flat": 80,
+    "high_rate": 3.62,
+    "up": 1190,
+    "down": 469,
+    "flat": 82,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 14911,
+    "amount_eok": 17350,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 45.48
+    "from_year_high": 45.21
   },
   "flows": {
     "kospi": {
-      "foreign": -748,
-      "inst": 493,
-      "person": 246
+      "foreign": -562,
+      "inst": 362,
+      "person": 193
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "09:38",
-      "title": "엑사이엔씨, 반도체 공사 확대에 3분기 누적 영업익 397% 증가",
-      "src": "한국경제신문"
+      "time": "09:50",
+      "title": "★ 코스닥 기타법인 매매 종목",
+      "src": "한국투자증권"
     },
     {
-      "time": "09:37",
-      "title": "엔비디아, 삼성전기 증설 추가 자금 지원…AI 반도체 기판 확보 ‘총력’",
-      "src": "헤럴드경제"
+      "time": "09:50",
+      "title": "★ 코스닥 연기금 매매 종목",
+      "src": "한국투자증권"
+    },
+    {
+      "time": "09:50",
+      "title": "★ 코스닥 은행 매매 종목",
+      "src": "한국투자증권"
+    },
+    {
+      "time": "09:50",
+      "title": "★ 코스닥 보험,기타금융 매매 종목",
+      "src": "한국투자증권"
+    },
+    {
+      "time": "09:50",
+      "title": "전일대비 거래량 증가 종목(코스닥)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "09:50",
+      "title": "★ 코스닥 투신 매매 종목",
+      "src": "한국투자증권"
     }
   ],
   "intraday": [
@@ -81,6 +101,11 @@
       "t": "09:40",
       "kospi": 2.78,
       "kosdaq": 3.12
+    },
+    {
+      "t": "09:50",
+      "kospi": 3.07,
+      "kosdaq": 3.62
     }
   ],
   "trails": {},
@@ -143,81 +168,81 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5106.44,
-      "kospi_rate": 2.78,
-      "kosdaq": 670.33,
-      "kosdaq_rate": 3.12
+      "kospi": 5121.07,
+      "kospi_rate": 3.07,
+      "kosdaq": 673.59,
+      "kosdaq_rate": 3.62
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 25,
+    "beat": 24,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 615000.0,
-        "rate": 13.68,
-        "rel": 10.9,
-        "vol_ratio": 52,
+        "now": 617000.0,
+        "rate": 14.05,
+        "rel": 10.98,
+        "vol_ratio": 57,
         "low_rate": 7.95,
         "high_rate": 16.27,
-        "score": 9.02,
+        "score": 9.35,
         "hot": true
-      },
-      {
-        "code": "047050",
-        "name": "포스코인터내셔널",
-        "now": 51600.0,
-        "rate": 5.52,
-        "rel": 2.74,
-        "vol_ratio": 47,
-        "low_rate": 1.94,
-        "high_rate": 6.34,
-        "score": 0.57,
-        "hot": false
       },
       {
         "code": "009150",
         "name": "삼성전기",
-        "now": 795000.0,
-        "rate": 5.44,
-        "rel": 2.66,
-        "vol_ratio": 33,
+        "now": 804000.0,
+        "rate": 6.63,
+        "rel": 3.56,
+        "vol_ratio": 38,
         "low_rate": 4.24,
         "high_rate": 8.36,
-        "score": -0.55,
+        "score": 0.74,
         "hot": false
       },
       {
-        "code": "034730",
-        "name": "SK",
-        "now": 489000.0,
-        "rate": 4.94,
-        "rel": 2.16,
-        "vol_ratio": 39,
-        "low_rate": 2.79,
-        "high_rate": 5.47,
-        "score": -0.57,
+        "code": "047050",
+        "name": "포스코인터내셔널",
+        "now": 51500.0,
+        "rate": 5.32,
+        "rel": 2.25,
+        "vol_ratio": 50,
+        "low_rate": 1.94,
+        "high_rate": 6.34,
+        "score": 0.24,
         "hot": false
       },
       {
         "code": "000660",
         "name": "SK하이닉스",
-        "now": 1159000.0,
-        "rate": 5.56,
-        "rel": 2.78,
-        "vol_ratio": 18,
+        "now": 1171000.0,
+        "rate": 6.65,
+        "rel": 3.58,
+        "vol_ratio": 20,
         "low_rate": 4.19,
         "high_rate": 6.74,
-        "score": -1.22,
+        "score": -0.42,
+        "hot": false
+      },
+      {
+        "code": "034730",
+        "name": "SK",
+        "now": 490000.0,
+        "rate": 5.15,
+        "rel": 2.08,
+        "vol_ratio": 41,
+        "low_rate": 2.79,
+        "high_rate": 5.47,
+        "score": -0.5,
         "hot": false
       }
     ]
   },
   "summary": [
-    "강세 · 코스피 +2.78%, 코스닥 +3.12%",
-    "코스피 903종목 중 상승 560 · 하락 306",
-    "수급: 외국인 -748억 · 기관 +493억 · 개인 +246억 → 외국인 매도 주도"
+    "급등장 · 코스피 +3.07%, 코스닥 +3.62%",
+    "코스피 904종목 중 상승 546 · 하락 301",
+    "수급: 외국인 -562억 · 기관 +362억 · 개인 +193억 → 외국인 매도 주도"
   ]
 }
