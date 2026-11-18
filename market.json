@@ -1,84 +1,74 @@
 {
-  "updated": "2026-11-18T10:40+09:00",
+  "updated": "2026-11-18T10:50+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5006.32,
-    "chg": 37.84,
-    "rate": 0.76,
+    "now": 4995.52,
+    "chg": 27.04,
+    "rate": 0.54,
     "open": 5098.82,
     "high": 5133.14,
-    "low": 5001.93,
-    "low_rate": 0.67,
+    "low": 4985.33,
+    "low_rate": 0.34,
     "high_rate": 3.31,
-    "up": 323,
-    "down": 547,
-    "flat": 39,
+    "up": 298,
+    "down": 581,
+    "flat": 30,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 53559,
+    "amount_eok": 58490,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.66
+    "from_year_high": 46.77
   },
   "kosdaq": {
-    "now": 655.37,
-    "chg": 5.31,
-    "rate": 0.82,
+    "now": 652.78,
+    "chg": 2.72,
+    "rate": 0.42,
     "open": 664.93,
     "high": 674.3,
-    "low": 655.37,
-    "low_rate": 0.82,
+    "low": 651.53,
+    "low_rate": 0.23,
     "high_rate": 3.73,
-    "up": 719,
-    "down": 951,
-    "flat": 74,
+    "up": 621,
+    "down": 1053,
+    "flat": 71,
     "limit_up": 1,
-    "limit_down": 0,
-    "amount_eok": 27888,
+    "limit_down": 1,
+    "amount_eok": 29788,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 46.69
+    "from_year_high": 46.9
   },
   "flows": {
     "kospi": {
-      "foreign": -1222,
-      "inst": 960,
-      "person": 245
+      "foreign": -1170,
+      "inst": 1024,
+      "person": 128
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "10:39",
-      "title": "KB증권(주) 상장지수증권 발행인의 순자본비율",
-      "src": "거래소 공시"
+      "time": "10:49",
+      "title": "[용인 반도체 국가산단]'보상 속도전' 나선 LH…연내 마무리 총력",
+      "src": "연합뉴스"
     },
     {
-      "time": "10:39",
-      "title": "한국투자증권(주) 상장지수증권 괴리율 초과 발생(한투 레버리지코스닥150선물 ETN)",
-      "src": "거래소 공시"
+      "time": "10:49",
+      "title": "[용인 반도체 국가산단] 첫 삽 떴지만…시험대 오른 실행력",
+      "src": "연합뉴스"
     },
     {
-      "time": "10:38",
-      "title": "오전장 기술적 분석 특징주 B(코스닥)",
-      "src": "인포스탁"
+      "time": "10:49",
+      "title": "[용인 반도체 국가산단] 특별법 동원까지…전력 용수 인프라 '적기 공급'",
+      "src": "연합뉴스"
     },
     {
-      "time": "10:38",
-      "title": "오전장 기술적 분석 특징주 A(코스닥)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "10:38",
-      "title": "오전장 기술적 분석 특징주 B(코스피)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "10:38",
-      "title": "오전장 기술적 분석 특징주 A(코스피)",
-      "src": "인포스탁"
+      "time": "10:48",
+      "title": "롯데건설, 사모채 370억원 발행…PF 부담 줄여도 고금리 여전 [fn마켓워치]",
+      "src": "파이낸셜"
     }
   ],
   "intraday": [
@@ -131,6 +121,11 @@
       "t": "10:40",
       "kospi": 0.76,
       "kosdaq": 0.82
+    },
+    {
+      "t": "10:50",
+      "kospi": 0.54,
+      "kosdaq": 0.42
     }
   ],
   "trails": {},
@@ -193,38 +188,38 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5006.32,
-      "kospi_rate": 0.76,
-      "kosdaq": 655.37,
-      "kosdaq_rate": 0.82
+      "kospi": 4995.52,
+      "kospi_rate": 0.54,
+      "kosdaq": 652.78,
+      "kosdaq_rate": 0.42
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 28,
+    "beat": 32,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 594000.0,
-        "rate": 9.8,
-        "rel": 9.04,
-        "vol_ratio": 74,
+        "now": 586000.0,
+        "rate": 8.32,
+        "rel": 7.78,
+        "vol_ratio": 78,
         "low_rate": 7.95,
         "high_rate": 16.27,
-        "score": 8.19,
+        "score": 7.06,
         "hot": false
       },
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 226500.0,
-        "rate": 5.1,
-        "rel": 4.34,
-        "vol_ratio": 57,
+        "now": 228500.0,
+        "rate": 6.03,
+        "rel": 5.49,
+        "vol_ratio": 61,
         "low_rate": -3.02,
-        "high_rate": 6.03,
-        "score": 2.71,
+        "high_rate": 6.26,
+        "score": 4.04,
         "hot": false
       },
       {
@@ -232,43 +227,43 @@
         "name": "SK",
         "now": 483000.0,
         "rate": 3.65,
-        "rel": 2.89,
-        "vol_ratio": 56,
+        "rel": 3.11,
+        "vol_ratio": 59,
         "low_rate": 2.79,
         "high_rate": 5.47,
-        "score": 1.2,
+        "score": 1.57,
         "hot": false
       },
       {
         "code": "047050",
         "name": "포스코인터내셔널",
-        "now": 50300.0,
-        "rate": 2.86,
-        "rel": 2.1,
-        "vol_ratio": 70,
+        "now": 50100.0,
+        "rate": 2.45,
+        "rel": 1.91,
+        "vol_ratio": 80,
         "low_rate": 1.94,
         "high_rate": 6.34,
-        "score": 1.05,
+        "score": 1.27,
         "hot": false
       },
       {
-        "code": "352820",
-        "name": "하이브",
-        "now": 158400.0,
-        "rate": 2.33,
-        "rel": 1.57,
-        "vol_ratio": 49,
-        "low_rate": -1.49,
-        "high_rate": 3.75,
-        "score": -0.47,
+        "code": "036570",
+        "name": "엔씨소프트",
+        "now": 185000.0,
+        "rate": 4.05,
+        "rel": 3.51,
+        "vol_ratio": 45,
+        "low_rate": -0.51,
+        "high_rate": 4.33,
+        "score": 1.21,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.76%, 코스닥 +0.82%",
-    "장중 고점 +3.3%에서 2.5%p 밀린 상태",
-    "코스피 909종목 중 상승 323 · 하락 547",
-    "수급: 외국인 -1,222억 · 기관 +960억 · 개인 +245억 → 외국인 매도 주도"
+    "보합권 · 코스피 +0.54%, 코스닥 +0.42%",
+    "장중 고점 +3.3%에서 2.8%p 밀린 상태",
+    "코스피 909종목 중 상승 298 · 하락 581",
+    "수급: 외국인 -1,170억 · 기관 +1,024억 · 개인 +128억 → 외국인 매도 주도"
   ]
 }
