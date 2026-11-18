@@ -1,59 +1,84 @@
 {
-  "updated": "2026-11-18T11:50+09:00",
+  "updated": "2026-11-18T12:00+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 4947.3,
-    "chg": -21.18,
-    "rate": -0.43,
+    "now": 4974.6,
+    "chg": 6.12,
+    "rate": 0.12,
     "open": 5098.82,
     "high": 5133.14,
-    "low": 4943.79,
-    "low_rate": -0.5,
+    "low": 4943.17,
+    "low_rate": -0.51,
     "high_rate": 3.31,
-    "up": 212,
-    "down": 669,
-    "flat": 29,
+    "up": 238,
+    "down": 640,
+    "flat": 32,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 77921,
+    "amount_eok": 80583,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 47.29
+    "from_year_high": 47.0
   },
   "kosdaq": {
-    "now": 646.72,
-    "chg": -3.34,
-    "rate": -0.51,
+    "now": 651.23,
+    "chg": 1.17,
+    "rate": 0.18,
     "open": 664.93,
     "high": 674.3,
     "low": 646.31,
     "low_rate": -0.58,
     "high_rate": 3.73,
-    "up": 490,
-    "down": 1192,
-    "flat": 67,
+    "up": 569,
+    "down": 1112,
+    "flat": 68,
     "limit_up": 1,
-    "limit_down": 0,
-    "amount_eok": 36703,
+    "limit_down": 1,
+    "amount_eok": 37500,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 47.4
+    "from_year_high": 47.03
   },
   "flows": {
     "kospi": {
-      "foreign": -1275,
-      "inst": 1324,
-      "person": -72
+      "foreign": -1013,
+      "inst": 1057,
+      "person": -67
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "11:50",
-      "title": "전일대비 거래량 증가 종목(코스피)",
-      "src": "인포스탁"
+      "time": "12:00",
+      "title": "코스피 상장사 3분기 누적 영업익 638조…삼전·SK하닉 빼도 64%↑",
+      "src": "이투데이"
+    },
+    {
+      "time": "12:00",
+      "title": "[표] 유가증권시장 3분기 누적 순이익 상 하위 20개사",
+      "src": "연합뉴스"
+    },
+    {
+      "time": "12:00",
+      "title": "[표] 유가증권시장 3분기 누적 영업이익 상 하위 20개사",
+      "src": "연합뉴스"
+    },
+    {
+      "time": "12:00",
+      "title": "반도체 호조로 3분기 충북 광공업생산 30%↑…소매판매 13곳↓",
+      "src": "연합뉴스"
+    },
+    {
+      "time": "12:00",
+      "title": "증시 한파에 '빚투·영끌' 주춤… 3분기 가계빚 증가폭 6개 분기만에 최소 기록",
+      "src": "한국경제신문"
+    },
+    {
+      "time": "12:00",
+      "title": "[게시판] 행안부, 지자체 외국인주민 지원 우수사례 경진대회 개최",
+      "src": "연합뉴스"
     }
   ],
   "intraday": [
@@ -141,6 +166,11 @@
       "t": "11:50",
       "kospi": -0.43,
       "kosdaq": -0.51
+    },
+    {
+      "t": "12:00",
+      "kospi": 0.12,
+      "kosdaq": 0.18
     }
   ],
   "trails": {},
@@ -203,50 +233,50 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 4947.3,
-      "kospi_rate": -0.43,
-      "kosdaq": 646.72,
-      "kosdaq_rate": -0.51
+      "kospi": 4974.6,
+      "kospi_rate": 0.12,
+      "kosdaq": 651.23,
+      "kosdaq_rate": 0.18
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 43,
+    "beat": 42,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 570000.0,
-        "rate": 5.36,
-        "rel": 5.79,
-        "vol_ratio": 91,
+        "now": 581000.0,
+        "rate": 7.39,
+        "rel": 7.27,
+        "vol_ratio": 94,
         "low_rate": 4.81,
         "high_rate": 16.27,
-        "score": 5.53,
+        "score": 7.08,
         "hot": false
       },
       {
         "code": "352820",
         "name": "하이브",
-        "now": 160800.0,
-        "rate": 3.88,
-        "rel": 4.31,
-        "vol_ratio": 88,
+        "now": 161900.0,
+        "rate": 4.59,
+        "rel": 4.47,
+        "vol_ratio": 93,
         "low_rate": -1.49,
-        "high_rate": 4.52,
-        "score": 3.94,
+        "high_rate": 4.59,
+        "score": 4.25,
         "hot": false
       },
       {
         "code": "036570",
         "name": "엔씨소프트",
-        "now": 184900.0,
-        "rate": 3.99,
-        "rel": 4.42,
-        "vol_ratio": 63,
+        "now": 185300.0,
+        "rate": 4.22,
+        "rel": 4.1,
+        "vol_ratio": 65,
         "low_rate": -0.51,
         "high_rate": 4.44,
-        "score": 3.07,
+        "score": 2.85,
         "hot": false
       },
       {
@@ -254,31 +284,31 @@
         "name": "포스코인터내셔널",
         "now": 50100.0,
         "rate": 2.45,
-        "rel": 2.88,
-        "vol_ratio": 100,
+        "rel": 2.33,
+        "vol_ratio": 105,
         "low_rate": 1.94,
         "high_rate": 6.34,
-        "score": 2.87,
+        "score": 2.47,
         "hot": false
       },
       {
-        "code": "180640",
-        "name": "한진칼",
-        "now": 220500.0,
-        "rate": 2.32,
-        "rel": 2.75,
-        "vol_ratio": 76,
-        "low_rate": -3.02,
-        "high_rate": 6.26,
-        "score": 1.96,
+        "code": "034730",
+        "name": "SK",
+        "now": 478500.0,
+        "rate": 2.68,
+        "rel": 2.56,
+        "vol_ratio": 78,
+        "low_rate": 1.5,
+        "high_rate": 5.47,
+        "score": 1.84,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.43%, 코스닥 -0.51%",
-    "장중 고점 +3.3%에서 3.7%p 밀린 상태",
-    "코스피 910종목 중 상승 212 · 하락 669",
-    "수급: 외국인 -1,275억 · 기관 +1,324억 · 개인 -72억 → 기관 매수 주도"
+    "보합권 · 코스피 +0.12%, 코스닥 +0.18%",
+    "장중 고점 +3.3%에서 3.2%p 밀린 상태",
+    "코스피 910종목 중 상승 238 · 하락 640",
+    "수급: 외국인 -1,013억 · 기관 +1,057억 · 개인 -67억 → 기관 매수 주도"
   ]
 }
