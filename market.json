@@ -1,79 +1,64 @@
 {
-  "updated": "2026-11-18T11:20+09:00",
+  "updated": "2026-11-18T11:30+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 4960.69,
-    "chg": -7.79,
-    "rate": -0.16,
+    "now": 4998.71,
+    "chg": 30.23,
+    "rate": 0.61,
     "open": 5098.82,
     "high": 5133.14,
-    "low": 4955.75,
-    "low_rate": -0.26,
+    "low": 4951.01,
+    "low_rate": -0.35,
     "high_rate": 3.31,
-    "up": 218,
-    "down": 665,
-    "flat": 26,
+    "up": 271,
+    "down": 598,
+    "flat": 40,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 69143,
+    "amount_eok": 72915,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 47.15
+    "from_year_high": 46.74
   },
   "kosdaq": {
-    "now": 647.94,
-    "chg": -2.12,
-    "rate": -0.33,
+    "now": 653.19,
+    "chg": 3.13,
+    "rate": 0.48,
     "open": 664.93,
     "high": 674.3,
-    "low": 647.46,
-    "low_rate": -0.4,
+    "low": 647.15,
+    "low_rate": -0.45,
     "high_rate": 3.73,
-    "up": 530,
-    "down": 1145,
-    "flat": 74,
+    "up": 645,
+    "down": 1023,
+    "flat": 81,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 33876,
+    "amount_eok": 35069,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 47.3
+    "from_year_high": 46.87
   },
   "flows": {
     "kospi": {
-      "foreign": -1377,
-      "inst": 1319,
-      "person": 33
+      "foreign": -1202,
+      "inst": 1264,
+      "person": -86
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "11:19",
-      "title": "오전장 특징주★(코스닥)",
-      "src": "인포스탁"
+      "time": "11:30",
+      "title": "\"연간 4%도 넘본다\" 반도체가 바꾼 성장률...내수와 괴리 커",
+      "src": "아시아 경제"
     },
     {
-      "time": "11:19",
-      "title": "오전장 특징주★(코스피)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "11:17",
-      "title": "엔비디아 ‘어닝서프’에 반도체주 상승 주목",
-      "src": "헤럴드경제"
-    },
-    {
-      "time": "11:17",
-      "title": "‘폭풍 매도’ 안 멈췄나…외인, 올해 코스피서 222조원 팔았다",
-      "src": "헤럴드경제"
-    },
-    {
-      "time": "11:16",
-      "title": "美 증시 부진에 ‘캐시카우 ETF’ 뜬다",
-      "src": "헤럴드경제"
+      "time": "11:28",
+      "title": "3%대 급반등하다 '뚝'…코스피, 보합권에서 등락",
+      "src": "연합뉴스"
     }
   ],
   "intraday": [
@@ -146,6 +131,11 @@
       "t": "11:20",
       "kospi": -0.16,
       "kosdaq": -0.33
+    },
+    {
+      "t": "11:30",
+      "kospi": 0.61,
+      "kosdaq": 0.48
     }
   ],
   "trails": {},
@@ -208,38 +198,62 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 4960.69,
-      "kospi_rate": -0.16,
-      "kosdaq": 647.94,
-      "kosdaq_rate": -0.33
+      "kospi": 4998.71,
+      "kospi_rate": 0.61,
+      "kosdaq": 653.19,
+      "kosdaq_rate": 0.48
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 41,
+    "beat": 34,
     "top": [
       {
         "code": "000150",
         "name": "두산",
         "now": 577000.0,
         "rate": 6.65,
-        "rel": 6.81,
-        "vol_ratio": 85,
-        "low_rate": 6.28,
+        "rel": 6.04,
+        "vol_ratio": 88,
+        "low_rate": 5.55,
         "high_rate": 16.27,
-        "score": 6.35,
+        "score": 5.69,
         "hot": false
       },
       {
         "code": "352820",
         "name": "하이브",
-        "now": 159400.0,
-        "rate": 2.97,
-        "rel": 3.13,
-        "vol_ratio": 77,
+        "now": 160900.0,
+        "rate": 3.94,
+        "rel": 3.33,
+        "vol_ratio": 81,
         "low_rate": -1.49,
         "high_rate": 4.52,
-        "score": 2.37,
+        "score": 2.73,
+        "hot": false
+      },
+      {
+        "code": "180640",
+        "name": "한진칼",
+        "now": 223000.0,
+        "rate": 3.48,
+        "rel": 2.87,
+        "vol_ratio": 73,
+        "low_rate": -3.02,
+        "high_rate": 6.26,
+        "score": 1.98,
+        "hot": false
+      },
+      {
+        "code": "036570",
+        "name": "엔씨소프트",
+        "now": 185000.0,
+        "rate": 4.05,
+        "rel": 3.44,
+        "vol_ratio": 60,
+        "low_rate": -0.51,
+        "high_rate": 4.44,
+        "score": 1.96,
         "hot": false
       },
       {
@@ -247,43 +261,19 @@
         "name": "포스코인터내셔널",
         "now": 50100.0,
         "rate": 2.45,
-        "rel": 2.61,
-        "vol_ratio": 90,
+        "rel": 1.84,
+        "vol_ratio": 93,
         "low_rate": 1.94,
         "high_rate": 6.34,
-        "score": 2.3,
-        "hot": false
-      },
-      {
-        "code": "180640",
-        "name": "한진칼",
-        "now": 222000.0,
-        "rate": 3.02,
-        "rel": 3.18,
-        "vol_ratio": 71,
-        "low_rate": -3.02,
-        "high_rate": 6.26,
-        "score": 2.21,
-        "hot": false
-      },
-      {
-        "code": "036570",
-        "name": "엔씨소프트",
-        "now": 184100.0,
-        "rate": 3.54,
-        "rel": 3.7,
-        "vol_ratio": 58,
-        "low_rate": -0.51,
-        "high_rate": 4.44,
-        "score": 2.14,
+        "score": 1.63,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.16%, 코스닥 -0.33%",
-    "장중 고점 +3.3%에서 3.5%p 밀린 상태",
-    "코스피 909종목 중 상승 218 · 하락 665",
-    "수급: 외국인 -1,377억 · 기관 +1,319억 · 개인 +33억 → 외국인 매도 주도"
+    "보합권 · 코스피 +0.61%, 코스닥 +0.48%",
+    "장중 고점 +3.3%에서 2.7%p 밀린 상태",
+    "코스피 909종목 중 상승 271 · 하락 598",
+    "수급: 외국인 -1,202억 · 기관 +1,264억 · 개인 -86억 → 기관 매수 주도"
   ]
 }
