@@ -1,63 +1,78 @@
 {
-  "updated": "2026-11-18T15:00+09:00",
+  "updated": "2026-11-18T15:10+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5053.04,
-    "chg": 84.56,
-    "rate": 1.7,
+    "now": 5063.62,
+    "chg": 95.14,
+    "rate": 1.91,
     "open": 5098.82,
     "high": 5133.14,
     "low": 4943.17,
     "low_rate": -0.51,
     "high_rate": 3.31,
-    "up": 435,
-    "down": 432,
-    "flat": 44,
+    "up": 427,
+    "down": 447,
+    "flat": 37,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 128824,
+    "amount_eok": 132007,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.16
+    "from_year_high": 46.05
   },
   "kosdaq": {
-    "now": 661.52,
-    "chg": 11.46,
-    "rate": 1.76,
+    "now": 661.25,
+    "chg": 11.19,
+    "rate": 1.72,
     "open": 664.93,
     "high": 674.3,
     "low": 646.31,
     "low_rate": -0.58,
     "high_rate": 3.73,
-    "up": 948,
-    "down": 737,
-    "flat": 64,
+    "up": 914,
+    "down": 760,
+    "flat": 75,
     "limit_up": 5,
     "limit_down": 1,
-    "amount_eok": 52609,
+    "amount_eok": 53532,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 46.19
+    "from_year_high": 46.21
   },
   "flows": {
     "kospi": {
-      "foreign": 910,
-      "inst": -296,
-      "person": -665
+      "foreign": 1014,
+      "inst": -360,
+      "person": -692
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "14:39",
-      "title": "1만2000→9000→7500…골드만삭스, 코스피 목표치 또 낮춘 이유",
-      "src": "머니투데이"
+      "time": "15:06",
+      "title": "반도체 호황에 충북 광공업생산 30%↑…전국 소매판매는 뒷걸음",
+      "src": "매일경제"
     },
     {
-      "time": "14:39",
-      "title": "가권지수(대만) 소폭 상승 마감, ▲102.80P(+0.26%), 40,194.91P [장마감]",
+      "time": "15:06",
+      "title": "코스닥 하락률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "15:06",
+      "title": "코스피 하락률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "15:06",
+      "title": "코스닥 상승률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "15:06",
+      "title": "코스피 상승률 상위 20종목(직전 30분 기준)",
       "src": "인포스탁"
     }
   ],
@@ -241,6 +256,11 @@
       "t": "15:00",
       "kospi": 1.7,
       "kosdaq": 1.76
+    },
+    {
+      "t": "15:10",
+      "kospi": 1.91,
+      "kosdaq": 1.72
     }
   ],
   "trails": {},
@@ -303,82 +323,82 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5053.04,
-      "kospi_rate": 1.7,
-      "kosdaq": 661.52,
-      "kosdaq_rate": 1.76
+      "kospi": 5063.62,
+      "kospi_rate": 1.91,
+      "kosdaq": 661.25,
+      "kosdaq_rate": 1.72
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 26,
+    "beat": 24,
     "top": [
       {
         "code": "352820",
         "name": "하이브",
-        "now": 166800.0,
-        "rate": 7.75,
-        "rel": 6.05,
-        "vol_ratio": 229,
+        "now": 166300.0,
+        "rate": 7.43,
+        "rel": 5.52,
+        "vol_ratio": 236,
         "low_rate": -1.49,
         "high_rate": 8.07,
-        "score": 8.44,
+        "score": 7.99,
         "hot": false
       },
       {
         "code": "000150",
         "name": "두산",
-        "now": 585000.0,
-        "rate": 8.13,
-        "rel": 6.43,
-        "vol_ratio": 122,
+        "now": 584000.0,
+        "rate": 7.95,
+        "rel": 6.04,
+        "vol_ratio": 125,
         "low_rate": 4.81,
         "high_rate": 16.27,
-        "score": 7.0,
+        "score": 6.68,
         "hot": false
       },
       {
         "code": "009150",
         "name": "삼성전기",
-        "now": 804000.0,
-        "rate": 6.63,
-        "rel": 4.93,
-        "vol_ratio": 127,
+        "now": 807000.0,
+        "rate": 7.03,
+        "rel": 5.12,
+        "vol_ratio": 132,
         "low_rate": -0.93,
         "high_rate": 8.36,
-        "score": 5.61,
-        "hot": false
-      },
-      {
-        "code": "034730",
-        "name": "SK",
-        "now": 492000.0,
-        "rate": 5.58,
-        "rel": 3.88,
-        "vol_ratio": 122,
-        "low_rate": 1.5,
-        "high_rate": 6.22,
-        "score": 4.45,
+        "score": 5.91,
         "hot": false
       },
       {
         "code": "066570",
         "name": "LG전자",
-        "now": 136800.0,
-        "rate": 5.8,
-        "rel": 4.1,
-        "vol_ratio": 101,
+        "now": 136900.0,
+        "rate": 5.88,
+        "rel": 3.97,
+        "vol_ratio": 103,
         "low_rate": -0.39,
         "high_rate": 6.5,
-        "score": 4.13,
+        "score": 4.06,
+        "hot": false
+      },
+      {
+        "code": "034730",
+        "name": "SK",
+        "now": 490000.0,
+        "rate": 5.15,
+        "rel": 3.24,
+        "vol_ratio": 125,
+        "low_rate": 1.5,
+        "high_rate": 6.22,
+        "score": 3.88,
         "hot": false
       }
     ]
   },
   "summary": [
-    "강세 · 코스피 +1.70%, 코스닥 +1.76%",
-    "장중 저점 -0.5%에서 2.2%p 회복한 상태",
-    "코스피 911종목 중 상승 435 · 하락 432",
-    "수급: 외국인 +910억 · 기관 -296억 · 개인 -665억 → 외국인 매수 주도"
+    "강세 · 코스피 +1.91%, 코스닥 +1.72%",
+    "장중 저점 -0.5%에서 2.4%p 회복한 상태",
+    "코스피 911종목 중 상승 427 · 하락 447",
+    "수급: 외국인 +1,014억 · 기관 -360억 · 개인 -692억 → 외국인 매수 주도"
   ]
 }
