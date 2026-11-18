@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-18T11:00+09:00",
+  "updated": "2026-11-18T11:10+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 4978.65,
-    "chg": 10.17,
-    "rate": 0.2,
+    "now": 5006.44,
+    "chg": 37.96,
+    "rate": 0.76,
     "open": 5098.82,
     "high": 5133.14,
     "low": 4977.07,
     "low_rate": 0.17,
     "high_rate": 3.31,
-    "up": 245,
-    "down": 620,
-    "flat": 44,
+    "up": 294,
+    "down": 584,
+    "flat": 31,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 61773,
+    "amount_eok": 65316,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.95
+    "from_year_high": 46.66
   },
   "kosdaq": {
-    "now": 651.44,
-    "chg": 1.38,
-    "rate": 0.21,
+    "now": 655.53,
+    "chg": 5.47,
+    "rate": 0.84,
     "open": 664.93,
     "high": 674.3,
-    "low": 651.44,
-    "low_rate": 0.21,
+    "low": 650.32,
+    "low_rate": 0.04,
     "high_rate": 3.73,
-    "up": 603,
-    "down": 1077,
-    "flat": 66,
+    "up": 679,
+    "down": 988,
+    "flat": 82,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 31312,
+    "amount_eok": 32604,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 47.01
+    "from_year_high": 46.68
   },
   "flows": {
     "kospi": {
-      "foreign": -1254,
-      "inst": 1173,
-      "person": 61
+      "foreign": -987,
+      "inst": 975,
+      "person": -11
     },
     "kosdaq": null
   },
@@ -121,6 +121,11 @@
       "t": "11:00",
       "kospi": 0.2,
       "kosdaq": 0.21
+    },
+    {
+      "t": "11:10",
+      "kospi": 0.76,
+      "kosdaq": 0.84
     }
   ],
   "trails": {},
@@ -183,26 +188,62 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 4978.65,
-      "kospi_rate": 0.2,
-      "kosdaq": 651.44,
-      "kosdaq_rate": 0.21
+      "kospi": 5006.44,
+      "kospi_rate": 0.76,
+      "kosdaq": 655.53,
+      "kosdaq_rate": 0.84
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 33,
+    "beat": 26,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 580000.0,
-        "rate": 7.21,
-        "rel": 7.01,
-        "vol_ratio": 81,
+        "now": 589000.0,
+        "rate": 8.87,
+        "rel": 8.11,
+        "vol_ratio": 83,
         "low_rate": 7.21,
         "high_rate": 16.27,
-        "score": 6.39,
+        "score": 7.57,
+        "hot": false
+      },
+      {
+        "code": "352820",
+        "name": "하이브",
+        "now": 161700.0,
+        "rate": 4.46,
+        "rel": 3.7,
+        "vol_ratio": 73,
+        "low_rate": -1.49,
+        "high_rate": 4.52,
+        "score": 2.78,
+        "hot": false
+      },
+      {
+        "code": "034730",
+        "name": "SK",
+        "now": 485000.0,
+        "rate": 4.08,
+        "rel": 3.32,
+        "vol_ratio": 65,
+        "low_rate": 2.79,
+        "high_rate": 5.47,
+        "score": 2.06,
+        "hot": false
+      },
+      {
+        "code": "047050",
+        "name": "포스코인터내셔널",
+        "now": 50300.0,
+        "rate": 2.86,
+        "rel": 2.1,
+        "vol_ratio": 87,
+        "low_rate": 1.94,
+        "high_rate": 6.34,
+        "score": 1.68,
         "hot": false
       },
       {
@@ -210,55 +251,19 @@
         "name": "한진칼",
         "now": 223000.0,
         "rate": 3.48,
-        "rel": 3.28,
-        "vol_ratio": 64,
+        "rel": 2.72,
+        "vol_ratio": 67,
         "low_rate": -3.02,
         "high_rate": 6.26,
-        "score": 2.0,
-        "hot": false
-      },
-      {
-        "code": "034730",
-        "name": "SK",
-        "now": 481000.0,
-        "rate": 3.22,
-        "rel": 3.02,
-        "vol_ratio": 62,
-        "low_rate": 2.79,
-        "high_rate": 5.47,
-        "score": 1.63,
-        "hot": false
-      },
-      {
-        "code": "352820",
-        "name": "하이브",
-        "now": 159400.0,
-        "rate": 2.97,
-        "rel": 2.77,
-        "vol_ratio": 62,
-        "low_rate": -1.49,
-        "high_rate": 3.81,
-        "score": 1.41,
-        "hot": false
-      },
-      {
-        "code": "036570",
-        "name": "엔씨소프트",
-        "now": 184500.0,
-        "rate": 3.77,
-        "rel": 3.57,
-        "vol_ratio": 47,
-        "low_rate": -0.51,
-        "high_rate": 4.33,
-        "score": 1.4,
+        "score": 1.58,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.20%, 코스닥 +0.21%",
-    "장중 고점 +3.3%에서 3.1%p 밀린 상태",
-    "코스피 909종목 중 상승 245 · 하락 620",
-    "수급: 외국인 -1,254억 · 기관 +1,173억 · 개인 +61억 → 외국인 매도 주도"
+    "보합권 · 코스피 +0.76%, 코스닥 +0.84%",
+    "장중 고점 +3.3%에서 2.5%p 밀린 상태",
+    "코스피 909종목 중 상승 294 · 하락 584",
+    "수급: 외국인 -987억 · 기관 +975억 · 개인 -11억 → 외국인 매도 주도"
   ]
 }
