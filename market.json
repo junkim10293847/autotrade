@@ -1,69 +1,59 @@
 {
-  "updated": "2026-11-18T09:20+09:00",
+  "updated": "2026-11-18T09:30+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5113.73,
-    "chg": 145.25,
-    "rate": 2.92,
+    "now": 5094.87,
+    "chg": 126.39,
+    "rate": 2.54,
     "open": 5098.82,
     "high": 5133.14,
     "low": 5075.2,
     "low_rate": 2.15,
     "high_rate": 3.31,
-    "up": 548,
-    "down": 280,
-    "flat": 58,
+    "up": 506,
+    "down": 332,
+    "flat": 52,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 20596,
+    "amount_eok": 26793,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 45.52
+    "from_year_high": 45.72
   },
   "kosdaq": {
-    "now": 665.63,
-    "chg": 15.57,
-    "rate": 2.4,
+    "now": 663.7,
+    "chg": 13.64,
+    "rate": 2.1,
     "open": 664.93,
     "high": 666.71,
     "low": 662.14,
     "low_rate": 1.86,
     "high_rate": 2.56,
-    "up": 1172,
-    "down": 473,
-    "flat": 79,
+    "up": 1088,
+    "down": 555,
+    "flat": 89,
     "limit_up": 2,
     "limit_down": 0,
-    "amount_eok": 9348,
+    "amount_eok": 12062,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 45.86
+    "from_year_high": 46.02
   },
   "flows": {
     "kospi": {
-      "foreign": -331,
-      "inst": -11,
-      "person": 334
+      "foreign": -797,
+      "inst": 480,
+      "person": 310
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "09:20",
-      "title": "삼전닉스 쓸어담은 초고수들...증시 상승 베팅 레버리지 ETF도 집중 매수",
-      "src": "한국경제신문"
-    },
-    {
-      "time": "09:19",
-      "title": "엔비디아 실적 앞두고 3대 지수 ‘뚝’…S&P500 7월 이후 최저 [뉴욕증시]",
-      "src": "매일경제"
-    },
-    {
-      "time": "09:18",
-      "title": "고교생도 반도체·AI 배운다…전문대교협·과학창의재단 '학교 밖 교육' 협력",
-      "src": "뉴스핌"
+      "time": "09:28",
+      "title": "코스피, 2% 상승...5000선 회복",
+      "src": "컨슈머타임스"
     }
   ],
   "intraday": [
@@ -76,6 +66,11 @@
       "t": "09:20",
       "kospi": 2.92,
       "kosdaq": 2.4
+    },
+    {
+      "t": "09:30",
+      "kospi": 2.54,
+      "kosdaq": 2.1
     }
   ],
   "trails": {},
@@ -138,81 +133,81 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5113.73,
-      "kospi_rate": 2.92,
-      "kosdaq": 665.63,
-      "kosdaq_rate": 2.4
+      "kospi": 5094.87,
+      "kospi_rate": 2.54,
+      "kosdaq": 663.7,
+      "kosdaq_rate": 2.1
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 15,
+    "beat": 23,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 606000.0,
-        "rate": 12.01,
-        "rel": 9.09,
-        "vol_ratio": 41,
+        "now": 605000.0,
+        "rate": 11.83,
+        "rel": 9.29,
+        "vol_ratio": 47,
         "low_rate": 7.95,
         "high_rate": 16.27,
-        "score": 6.54,
+        "score": 7.13,
         "hot": true
+      },
+      {
+        "code": "047050",
+        "name": "포스코인터내셔널",
+        "now": 51700.0,
+        "rate": 5.73,
+        "rel": 3.19,
+        "vol_ratio": 40,
+        "low_rate": 1.94,
+        "high_rate": 5.73,
+        "score": 0.53,
+        "hot": false
       },
       {
         "code": "000660",
         "name": "SK하이닉스",
-        "now": 1169000.0,
-        "rate": 6.47,
-        "rel": 3.55,
-        "vol_ratio": 11,
+        "now": 1160000.0,
+        "rate": 5.65,
+        "rel": 3.11,
+        "vol_ratio": 16,
         "low_rate": 4.19,
-        "high_rate": 6.56,
-        "score": -0.45,
+        "high_rate": 6.74,
+        "score": -0.89,
         "hot": false
       },
       {
         "code": "009150",
         "name": "삼성전기",
-        "now": 800000.0,
-        "rate": 6.1,
-        "rel": 3.18,
-        "vol_ratio": 26,
+        "now": 793000.0,
+        "rate": 5.17,
+        "rel": 2.63,
+        "vol_ratio": 30,
         "low_rate": 4.38,
         "high_rate": 8.36,
-        "score": -0.76,
+        "score": -0.89,
         "hot": false
       },
       {
-        "code": "047050",
-        "name": "포스코인터내셔널",
-        "now": 51200.0,
-        "rate": 4.7,
-        "rel": 1.78,
-        "vol_ratio": 33,
-        "low_rate": 1.94,
-        "high_rate": 5.73,
-        "score": -1.39,
-        "hot": false
-      },
-      {
-        "code": "016360",
-        "name": "삼성증권",
-        "now": 74600.0,
-        "rate": 4.34,
-        "rel": 1.42,
-        "vol_ratio": 19,
-        "low_rate": 0.84,
-        "high_rate": 4.9,
-        "score": -2.58,
+        "code": "180640",
+        "name": "한진칼",
+        "now": 226000.0,
+        "rate": 4.87,
+        "rel": 2.33,
+        "vol_ratio": 32,
+        "low_rate": -3.02,
+        "high_rate": 5.57,
+        "score": -0.91,
         "hot": false
       }
     ]
   },
   "summary": [
-    "강세 · 코스피 +2.92%, 코스닥 +2.40%",
-    "코스피 886종목 중 상승 548 · 하락 280",
-    "수급: 외국인 -331억 · 기관 -11억 · 개인 +334억 → 개인 매수 주도"
+    "강세 · 코스피 +2.54%, 코스닥 +2.10%",
+    "코스피 890종목 중 상승 506 · 하락 332",
+    "수급: 외국인 -797억 · 기관 +480억 · 개인 +310억 → 외국인 매도 주도"
   ]
 }
