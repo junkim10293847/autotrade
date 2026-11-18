@@ -1,64 +1,69 @@
 {
-  "updated": "2026-11-18T11:30+09:00",
+  "updated": "2026-11-18T11:40+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 4998.71,
-    "chg": 30.23,
-    "rate": 0.61,
+    "now": 4987.07,
+    "chg": 18.59,
+    "rate": 0.37,
     "open": 5098.82,
     "high": 5133.14,
     "low": 4951.01,
     "low_rate": -0.35,
     "high_rate": 3.31,
-    "up": 271,
-    "down": 598,
+    "up": 257,
+    "down": 613,
     "flat": 40,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 72915,
+    "amount_eok": 74994,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.74
+    "from_year_high": 46.86
   },
   "kosdaq": {
-    "now": 653.19,
-    "chg": 3.13,
-    "rate": 0.48,
+    "now": 652.38,
+    "chg": 2.32,
+    "rate": 0.36,
     "open": 664.93,
     "high": 674.3,
     "low": 647.15,
     "low_rate": -0.45,
     "high_rate": 3.73,
-    "up": 645,
-    "down": 1023,
-    "flat": 81,
+    "up": 641,
+    "down": 1042,
+    "flat": 66,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 35069,
+    "amount_eok": 35776,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 46.87
+    "from_year_high": 46.94
   },
   "flows": {
     "kospi": {
-      "foreign": -1202,
-      "inst": 1264,
-      "person": -86
+      "foreign": -1191,
+      "inst": 1214,
+      "person": -47
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "11:30",
-      "title": "\"연간 4%도 넘본다\" 반도체가 바꾼 성장률...내수와 괴리 커",
-      "src": "아시아 경제"
+      "time": "11:36",
+      "title": "코스닥 하락률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
     },
     {
-      "time": "11:28",
-      "title": "3%대 급반등하다 '뚝'…코스피, 보합권에서 등락",
-      "src": "연합뉴스"
+      "time": "11:36",
+      "title": "코스닥 상승률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "11:36",
+      "title": "코스피 상승률 상위 20종목(직전 30분 기준)",
+      "src": "인포스탁"
     }
   ],
   "intraday": [
@@ -136,6 +141,11 @@
       "t": "11:30",
       "kospi": 0.61,
       "kosdaq": 0.48
+    },
+    {
+      "t": "11:40",
+      "kospi": 0.37,
+      "kosdaq": 0.36
     }
   ],
   "trails": {},
@@ -198,50 +208,50 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 4998.71,
-      "kospi_rate": 0.61,
-      "kosdaq": 653.19,
-      "kosdaq_rate": 0.48
+      "kospi": 4987.07,
+      "kospi_rate": 0.37,
+      "kosdaq": 652.38,
+      "kosdaq_rate": 0.36
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 34,
+    "beat": 39,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 577000.0,
-        "rate": 6.65,
-        "rel": 6.04,
-        "vol_ratio": 88,
+        "now": 575000.0,
+        "rate": 6.28,
+        "rel": 5.91,
+        "vol_ratio": 90,
         "low_rate": 5.55,
         "high_rate": 16.27,
-        "score": 5.69,
+        "score": 5.6,
         "hot": false
       },
       {
         "code": "352820",
         "name": "하이브",
-        "now": 160900.0,
-        "rate": 3.94,
-        "rel": 3.33,
-        "vol_ratio": 81,
+        "now": 161300.0,
+        "rate": 4.2,
+        "rel": 3.83,
+        "vol_ratio": 84,
         "low_rate": -1.49,
         "high_rate": 4.52,
-        "score": 2.73,
+        "score": 3.31,
         "hot": false
       },
       {
-        "code": "180640",
-        "name": "한진칼",
-        "now": 223000.0,
-        "rate": 3.48,
-        "rel": 2.87,
-        "vol_ratio": 73,
-        "low_rate": -3.02,
-        "high_rate": 6.26,
-        "score": 1.98,
+        "code": "047050",
+        "name": "포스코인터내셔널",
+        "now": 50300.0,
+        "rate": 2.86,
+        "rel": 2.49,
+        "vol_ratio": 95,
+        "low_rate": 1.94,
+        "high_rate": 6.34,
+        "score": 2.34,
         "hot": false
       },
       {
@@ -249,31 +259,31 @@
         "name": "엔씨소프트",
         "now": 185000.0,
         "rate": 4.05,
-        "rel": 3.44,
-        "vol_ratio": 60,
+        "rel": 3.68,
+        "vol_ratio": 61,
         "low_rate": -0.51,
         "high_rate": 4.44,
-        "score": 1.96,
+        "score": 2.27,
         "hot": false
       },
       {
-        "code": "047050",
-        "name": "포스코인터내셔널",
-        "now": 50100.0,
-        "rate": 2.45,
-        "rel": 1.84,
-        "vol_ratio": 93,
-        "low_rate": 1.94,
-        "high_rate": 6.34,
-        "score": 1.63,
+        "code": "180640",
+        "name": "한진칼",
+        "now": 222000.0,
+        "rate": 3.02,
+        "rel": 2.65,
+        "vol_ratio": 74,
+        "low_rate": -3.02,
+        "high_rate": 6.26,
+        "score": 1.79,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.61%, 코스닥 +0.48%",
-    "장중 고점 +3.3%에서 2.7%p 밀린 상태",
-    "코스피 909종목 중 상승 271 · 하락 598",
-    "수급: 외국인 -1,202억 · 기관 +1,264억 · 개인 -86억 → 기관 매수 주도"
+    "보합권 · 코스피 +0.37%, 코스닥 +0.36%",
+    "장중 고점 +3.3%에서 2.9%p 밀린 상태",
+    "코스피 910종목 중 상승 257 · 하락 613",
+    "수급: 외국인 -1,191억 · 기관 +1,214억 · 개인 -47억 → 기관 매수 주도"
   ]
 }
