@@ -1,69 +1,84 @@
 {
-  "updated": "2026-11-18T10:30+09:00",
+  "updated": "2026-11-18T10:40+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5043.41,
-    "chg": 74.93,
-    "rate": 1.51,
+    "now": 5006.32,
+    "chg": 37.84,
+    "rate": 0.76,
     "open": 5098.82,
     "high": 5133.14,
-    "low": 5034.22,
-    "low_rate": 1.32,
+    "low": 5001.93,
+    "low_rate": 0.67,
     "high_rate": 3.31,
-    "up": 377,
-    "down": 478,
-    "flat": 52,
+    "up": 323,
+    "down": 547,
+    "flat": 39,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 49074,
+    "amount_eok": 53559,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.26
+    "from_year_high": 46.66
   },
   "kosdaq": {
-    "now": 660.66,
-    "chg": 10.6,
-    "rate": 1.63,
+    "now": 655.37,
+    "chg": 5.31,
+    "rate": 0.82,
     "open": 664.93,
     "high": 674.3,
-    "low": 660.01,
-    "low_rate": 1.53,
+    "low": 655.37,
+    "low_rate": 0.82,
     "high_rate": 3.73,
-    "up": 874,
-    "down": 772,
-    "flat": 97,
-    "limit_up": 0,
+    "up": 719,
+    "down": 951,
+    "flat": 74,
+    "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 25835,
+    "amount_eok": 27888,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 46.26
+    "from_year_high": 46.69
   },
   "flows": {
     "kospi": {
-      "foreign": -1093,
-      "inst": 823,
-      "person": 264
+      "foreign": -1222,
+      "inst": 960,
+      "person": 245
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "10:30",
-      "title": "항셍지수(홍콩) 하락 출발, ▼130.78P(-0.56%), 23,377.39P",
+      "time": "10:39",
+      "title": "KB증권(주) 상장지수증권 발행인의 순자본비율",
+      "src": "거래소 공시"
+    },
+    {
+      "time": "10:39",
+      "title": "한국투자증권(주) 상장지수증권 괴리율 초과 발생(한투 레버리지코스닥150선물 ETN)",
+      "src": "거래소 공시"
+    },
+    {
+      "time": "10:38",
+      "title": "오전장 기술적 분석 특징주 B(코스닥)",
       "src": "인포스탁"
     },
     {
-      "time": "10:28",
-      "title": "대한민국 1호 해외송금 기업 이나인페이, 증권신고서 제출…연내 코스닥 상장 목표",
-      "src": "IRGO"
+      "time": "10:38",
+      "title": "오전장 기술적 분석 특징주 A(코스닥)",
+      "src": "인포스탁"
     },
     {
-      "time": "10:27",
-      "title": "한국 오는 외국인 항공권 최대 9% 할인…트리니티항공, 페이팔과 제휴",
-      "src": "헤럴드경제"
+      "time": "10:38",
+      "title": "오전장 기술적 분석 특징주 B(코스피)",
+      "src": "인포스탁"
+    },
+    {
+      "time": "10:38",
+      "title": "오전장 기술적 분석 특징주 A(코스피)",
+      "src": "인포스탁"
     }
   ],
   "intraday": [
@@ -111,6 +126,11 @@
       "t": "10:30",
       "kospi": 1.51,
       "kosdaq": 1.63
+    },
+    {
+      "t": "10:40",
+      "kospi": 0.76,
+      "kosdaq": 0.82
     }
   ],
   "trails": {},
@@ -173,81 +193,82 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5043.41,
-      "kospi_rate": 1.51,
-      "kosdaq": 660.66,
-      "kosdaq_rate": 1.63
+      "kospi": 5006.32,
+      "kospi_rate": 0.76,
+      "kosdaq": 655.37,
+      "kosdaq_rate": 0.82
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 29,
+    "beat": 28,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 598000.0,
-        "rate": 10.54,
-        "rel": 9.03,
-        "vol_ratio": 72,
+        "now": 594000.0,
+        "rate": 9.8,
+        "rel": 9.04,
+        "vol_ratio": 74,
         "low_rate": 7.95,
         "high_rate": 16.27,
-        "score": 8.07,
-        "hot": true
-      },
-      {
-        "code": "047050",
-        "name": "포스코인터내셔널",
-        "now": 51000.0,
-        "rate": 4.29,
-        "rel": 2.78,
-        "vol_ratio": 63,
-        "low_rate": 1.94,
-        "high_rate": 6.34,
-        "score": 1.43,
+        "score": 8.19,
         "hot": false
       },
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 226000.0,
-        "rate": 4.87,
-        "rel": 3.36,
-        "vol_ratio": 50,
+        "now": 226500.0,
+        "rate": 5.1,
+        "rel": 4.34,
+        "vol_ratio": 57,
         "low_rate": -3.02,
-        "high_rate": 5.57,
-        "score": 1.38,
+        "high_rate": 6.03,
+        "score": 2.71,
         "hot": false
       },
       {
         "code": "034730",
         "name": "SK",
-        "now": 485000.0,
-        "rate": 4.08,
-        "rel": 2.57,
-        "vol_ratio": 52,
+        "now": 483000.0,
+        "rate": 3.65,
+        "rel": 2.89,
+        "vol_ratio": 56,
         "low_rate": 2.79,
         "high_rate": 5.47,
-        "score": 0.66,
+        "score": 1.2,
         "hot": false
       },
       {
-        "code": "011070",
-        "name": "LG이노텍",
-        "now": 276000.0,
-        "rate": 2.99,
-        "rel": 1.48,
-        "vol_ratio": 44,
-        "low_rate": 2.43,
-        "high_rate": 5.97,
-        "score": -0.88,
+        "code": "047050",
+        "name": "포스코인터내셔널",
+        "now": 50300.0,
+        "rate": 2.86,
+        "rel": 2.1,
+        "vol_ratio": 70,
+        "low_rate": 1.94,
+        "high_rate": 6.34,
+        "score": 1.05,
+        "hot": false
+      },
+      {
+        "code": "352820",
+        "name": "하이브",
+        "now": 158400.0,
+        "rate": 2.33,
+        "rel": 1.57,
+        "vol_ratio": 49,
+        "low_rate": -1.49,
+        "high_rate": 3.75,
+        "score": -0.47,
         "hot": false
       }
     ]
   },
   "summary": [
-    "강세 · 코스피 +1.51%, 코스닥 +1.63%",
-    "코스피 907종목 중 상승 377 · 하락 478",
-    "수급: 외국인 -1,093억 · 기관 +823억 · 개인 +264억 → 외국인 매도 주도"
+    "보합권 · 코스피 +0.76%, 코스닥 +0.82%",
+    "장중 고점 +3.3%에서 2.5%p 밀린 상태",
+    "코스피 909종목 중 상승 323 · 하락 547",
+    "수급: 외국인 -1,222억 · 기관 +960억 · 개인 +245억 → 외국인 매도 주도"
   ]
 }
