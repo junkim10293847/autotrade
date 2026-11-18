@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-18T14:40+09:00",
+  "updated": "2026-11-18T14:50+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5061.57,
-    "chg": 93.09,
-    "rate": 1.87,
+    "now": 5060.15,
+    "chg": 91.67,
+    "rate": 1.85,
     "open": 5098.82,
     "high": 5133.14,
     "low": 4943.17,
     "low_rate": -0.51,
     "high_rate": 3.31,
-    "up": 428,
-    "down": 451,
-    "flat": 31,
+    "up": 431,
+    "down": 438,
+    "flat": 41,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 122442,
+    "amount_eok": 125687,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.07
+    "from_year_high": 46.09
   },
   "kosdaq": {
-    "now": 662.01,
-    "chg": 11.95,
-    "rate": 1.84,
+    "now": 661.59,
+    "chg": 11.53,
+    "rate": 1.77,
     "open": 664.93,
     "high": 674.3,
     "low": 646.31,
     "low_rate": -0.58,
     "high_rate": 3.73,
-    "up": 914,
-    "down": 777,
-    "flat": 58,
+    "up": 932,
+    "down": 743,
+    "flat": 74,
     "limit_up": 5,
-    "limit_down": 0,
-    "amount_eok": 50691,
+    "limit_down": 1,
+    "amount_eok": 51581,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 46.15
+    "from_year_high": 46.19
   },
   "flows": {
     "kospi": {
-      "foreign": 1044,
-      "inst": -467,
-      "person": -618
+      "foreign": 983,
+      "inst": -342,
+      "person": -684
     },
     "kosdaq": null
   },
@@ -231,6 +231,11 @@
       "t": "14:40",
       "kospi": 1.87,
       "kosdaq": 1.84
+    },
+    {
+      "t": "14:50",
+      "kospi": 1.85,
+      "kosdaq": 1.77
     }
   ],
   "trails": {},
@@ -293,82 +298,82 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5061.57,
-      "kospi_rate": 1.87,
-      "kosdaq": 662.01,
-      "kosdaq_rate": 1.84
+      "kospi": 5060.15,
+      "kospi_rate": 1.85,
+      "kosdaq": 661.59,
+      "kosdaq_rate": 1.77
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 29,
+    "beat": 27,
     "top": [
-      {
-        "code": "000150",
-        "name": "두산",
-        "now": 589000.0,
-        "rate": 8.87,
-        "rel": 7.0,
-        "vol_ratio": 118,
-        "low_rate": 4.81,
-        "high_rate": 16.27,
-        "score": 7.47,
-        "hot": false
-      },
       {
         "code": "352820",
         "name": "하이브",
         "now": 165700.0,
         "rate": 7.04,
-        "rel": 5.17,
-        "vol_ratio": 214,
+        "rel": 5.19,
+        "vol_ratio": 220,
         "low_rate": -1.49,
         "high_rate": 8.07,
-        "score": 7.36,
+        "score": 7.46,
+        "hot": false
+      },
+      {
+        "code": "000150",
+        "name": "두산",
+        "now": 587000.0,
+        "rate": 8.5,
+        "rel": 6.65,
+        "vol_ratio": 119,
+        "low_rate": 4.81,
+        "high_rate": 16.27,
+        "score": 7.16,
         "hot": false
       },
       {
         "code": "009150",
         "name": "삼성전기",
-        "now": 796000.0,
-        "rate": 5.57,
-        "rel": 3.7,
-        "vol_ratio": 115,
+        "now": 807000.0,
+        "rate": 7.03,
+        "rel": 5.18,
+        "vol_ratio": 121,
         "low_rate": -0.93,
         "high_rate": 8.36,
-        "score": 4.11,
+        "score": 5.74,
         "hot": false
       },
       {
         "code": "034730",
         "name": "SK",
-        "now": 491500.0,
-        "rate": 5.47,
-        "rel": 3.6,
-        "vol_ratio": 114,
+        "now": 494000.0,
+        "rate": 6.01,
+        "rel": 4.16,
+        "vol_ratio": 118,
         "low_rate": 1.5,
-        "high_rate": 5.79,
-        "score": 3.98,
+        "high_rate": 6.01,
+        "score": 4.63,
         "hot": false
       },
       {
-        "code": "032830",
-        "name": "삼성생명",
-        "now": 255000.0,
-        "rate": 5.37,
-        "rel": 3.5,
-        "vol_ratio": 99,
-        "low_rate": 0.0,
-        "high_rate": 5.37,
-        "score": 3.48,
+        "code": "066570",
+        "name": "LG전자",
+        "now": 137200.0,
+        "rate": 6.11,
+        "rel": 4.26,
+        "vol_ratio": 95,
+        "low_rate": -0.39,
+        "high_rate": 6.19,
+        "score": 4.12,
         "hot": false
       }
     ]
   },
   "summary": [
-    "강세 · 코스피 +1.87%, 코스닥 +1.84%",
+    "강세 · 코스피 +1.85%, 코스닥 +1.77%",
     "장중 저점 -0.5%에서 2.4%p 회복한 상태",
-    "코스피 910종목 중 상승 428 · 하락 451",
-    "수급: 외국인 +1,044억 · 기관 -467억 · 개인 -618억 → 외국인 매수 주도"
+    "코스피 910종목 중 상승 431 · 하락 438",
+    "수급: 외국인 +983억 · 기관 -342억 · 개인 -684억 → 외국인 매수 주도"
   ]
 }
