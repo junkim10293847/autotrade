@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-18T12:40+09:00",
+  "updated": "2026-11-18T12:50+09:00",
   "date": "2026-11-18",
   "src": "real",
   "kospi": {
-    "now": 5004.2,
-    "chg": 35.72,
-    "rate": 0.72,
+    "now": 5008.99,
+    "chg": 40.51,
+    "rate": 0.82,
     "open": 5098.82,
     "high": 5133.14,
     "low": 4943.17,
     "low_rate": -0.51,
     "high_rate": 3.31,
-    "up": 306,
-    "down": 565,
-    "flat": 39,
+    "up": 325,
+    "down": 547,
+    "flat": 38,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 89478,
+    "amount_eok": 91691,
     "prev_amount_eok": 151116,
     "year_high": 9385.59,
-    "from_year_high": 46.68
+    "from_year_high": 46.63
   },
   "kosdaq": {
-    "now": 654.44,
-    "chg": 4.38,
-    "rate": 0.67,
+    "now": 656.46,
+    "chg": 6.4,
+    "rate": 0.98,
     "open": 664.93,
     "high": 674.3,
     "low": 646.31,
     "low_rate": -0.58,
     "high_rate": 3.73,
-    "up": 692,
-    "down": 993,
-    "flat": 64,
-    "limit_up": 1,
-    "limit_down": 0,
-    "amount_eok": 40263,
+    "up": 730,
+    "down": 950,
+    "flat": 69,
+    "limit_up": 2,
+    "limit_down": 1,
+    "amount_eok": 41024,
     "prev_amount_eok": 51202,
     "year_high": 1229.42,
-    "from_year_high": 46.77
+    "from_year_high": 46.6
   },
   "flows": {
     "kospi": {
-      "foreign": -389,
-      "inst": 430,
-      "person": -65
+      "foreign": -241,
+      "inst": 301,
+      "person": -83
     },
     "kosdaq": null
   },
@@ -73,11 +73,6 @@
     {
       "time": "12:36",
       "title": "코스피 상승률 상위 20종목(직전 30분 기준)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "12:31",
-      "title": "상해종합지수(중국) : ▼14.37P(-0.40%), 3,570.21P [전장마감]",
       "src": "인포스탁"
     }
   ],
@@ -191,6 +186,11 @@
       "t": "12:40",
       "kospi": 0.72,
       "kosdaq": 0.67
+    },
+    {
+      "t": "12:50",
+      "kospi": 0.82,
+      "kosdaq": 0.98
     }
   ],
   "trails": {},
@@ -253,38 +253,38 @@
     },
     {
       "date": "2026-11-18",
-      "kospi": 5004.2,
-      "kospi_rate": 0.72,
-      "kosdaq": 654.44,
-      "kosdaq_rate": 0.67
+      "kospi": 5008.99,
+      "kospi_rate": 0.82,
+      "kosdaq": 656.46,
+      "kosdaq_rate": 0.98
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 39,
+    "beat": 37,
     "top": [
       {
         "code": "000150",
         "name": "두산",
-        "now": 588000.0,
-        "rate": 8.69,
-        "rel": 7.97,
-        "vol_ratio": 100,
+        "now": 593000.0,
+        "rate": 9.61,
+        "rel": 8.79,
+        "vol_ratio": 103,
         "low_rate": 4.81,
         "high_rate": 16.27,
-        "score": 7.97,
+        "score": 8.86,
         "hot": false
       },
       {
         "code": "352820",
         "name": "하이브",
-        "now": 163700.0,
-        "rate": 5.75,
-        "rel": 5.03,
-        "vol_ratio": 120,
+        "now": 163900.0,
+        "rate": 5.88,
+        "rel": 5.06,
+        "vol_ratio": 123,
         "low_rate": -1.49,
         "high_rate": 5.94,
-        "score": 5.55,
+        "score": 5.66,
         "hot": false
       },
       {
@@ -292,43 +292,43 @@
         "name": "엔씨소프트",
         "now": 185500.0,
         "rate": 4.33,
-        "rel": 3.61,
-        "vol_ratio": 71,
+        "rel": 3.51,
+        "vol_ratio": 72,
         "low_rate": -0.51,
         "high_rate": 4.61,
-        "score": 2.63,
+        "score": 2.57,
         "hot": false
       },
       {
         "code": "047050",
         "name": "포스코인터내셔널",
-        "now": 50100.0,
-        "rate": 2.45,
-        "rel": 1.73,
-        "vol_ratio": 112,
+        "now": 50300.0,
+        "rate": 2.86,
+        "rel": 2.04,
+        "vol_ratio": 114,
         "low_rate": 1.94,
         "high_rate": 6.34,
-        "score": 2.07,
+        "score": 2.42,
         "hot": false
       },
       {
         "code": "034730",
         "name": "SK",
-        "now": 481000.0,
-        "rate": 3.22,
-        "rel": 2.5,
-        "vol_ratio": 86,
+        "now": 481500.0,
+        "rate": 3.33,
+        "rel": 2.51,
+        "vol_ratio": 87,
         "low_rate": 1.5,
         "high_rate": 5.47,
-        "score": 2.06,
+        "score": 2.12,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.72%, 코스닥 +0.67%",
-    "장중 고점 +3.3%에서 2.6%p 밀린 상태",
-    "코스피 910종목 중 상승 306 · 하락 565",
-    "수급: 외국인 -389억 · 기관 +430억 · 개인 -65억 → 기관 매수 주도"
+    "보합권 · 코스피 +0.82%, 코스닥 +0.98%",
+    "장중 고점 +3.3%에서 2.5%p 밀린 상태",
+    "코스피 910종목 중 상승 325 · 하락 547",
+    "수급: 외국인 -241억 · 기관 +301억 · 개인 -83억 → 기관 매수 주도"
   ]
 }
