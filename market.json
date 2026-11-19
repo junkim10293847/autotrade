@@ -1,59 +1,64 @@
 {
-  "updated": "2026-11-19T12:20+09:00",
+  "updated": "2026-11-19T12:30+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 4985.69,
-    "chg": -81.75,
-    "rate": -1.61,
+    "now": 5007.42,
+    "chg": -60.02,
+    "rate": -1.18,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
-    "up": 299,
-    "down": 568,
-    "flat": 44,
+    "up": 317,
+    "down": 546,
+    "flat": 48,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 58435,
+    "amount_eok": 60391,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 46.88
+    "from_year_high": 46.65
   },
   "kosdaq": {
-    "now": 652.91,
-    "chg": -9.9,
-    "rate": -1.49,
+    "now": 655.38,
+    "chg": -7.43,
+    "rate": -1.12,
     "open": 668.31,
     "high": 669.46,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.0,
-    "up": 531,
-    "down": 1145,
-    "flat": 72,
+    "up": 568,
+    "down": 1119,
+    "flat": 61,
     "limit_up": 8,
     "limit_down": 0,
-    "amount_eok": 23299,
+    "amount_eok": 23920,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 46.89
+    "from_year_high": 46.69
   },
   "flows": {
     "kospi": {
-      "foreign": -1663,
-      "inst": 1862,
-      "person": -197
+      "foreign": -1601,
+      "inst": 1849,
+      "person": -245
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "12:13",
-      "title": "정관장, 외국인 겨냥 소용량 '뿌리삼' 효과 톡톡…매출 27%↑",
-      "src": "컨슈머타임스"
+      "time": "12:23",
+      "title": "국내 증시조정에 순대외금융자산 다시 늘어…역대 최대 폭 증가",
+      "src": "아시아 경제"
+    },
+    {
+      "time": "12:22",
+      "title": "부동산 전략, 금리가 모든 것 결정…‘고급자산’ 저가매수기회 왔다 [GAII 2026 Live]",
+      "src": "매일경제"
     }
   ],
   "intraday": [
@@ -161,6 +166,11 @@
       "t": "12:20",
       "kospi": -1.61,
       "kosdaq": -1.49
+    },
+    {
+      "t": "12:30",
+      "kospi": -1.18,
+      "kosdaq": -1.12
     }
   ],
   "trails": {},
@@ -230,82 +240,81 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 4985.69,
-      "kospi_rate": -1.61,
-      "kosdaq": 652.91,
-      "kosdaq_rate": -1.49
+      "kospi": 5007.42,
+      "kospi_rate": -1.18,
+      "kosdaq": 655.38,
+      "kosdaq_rate": -1.12
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 60,
+    "beat": 65,
     "top": [
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38150.0,
-        "rate": 9.16,
-        "rel": 10.77,
-        "vol_ratio": 259,
+        "now": 38550.0,
+        "rate": 10.3,
+        "rel": 11.48,
+        "vol_ratio": 263,
         "low_rate": 4.86,
         "high_rate": 12.59,
-        "score": 13.52,
-        "hot": false
+        "score": 14.27,
+        "hot": true
       },
       {
         "code": "352820",
         "name": "하이브",
-        "now": 182000.0,
-        "rate": 9.24,
-        "rel": 10.85,
-        "vol_ratio": 91,
+        "now": 184400.0,
+        "rate": 10.68,
+        "rel": 11.86,
+        "vol_ratio": 95,
         "low_rate": -0.54,
-        "high_rate": 9.54,
-        "score": 10.58,
-        "hot": false
+        "high_rate": 10.71,
+        "score": 11.73,
+        "hot": true
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 139400.0,
-        "rate": 6.66,
-        "rel": 8.27,
-        "vol_ratio": 113,
+        "now": 140200.0,
+        "rate": 7.27,
+        "rel": 8.45,
+        "vol_ratio": 119,
         "low_rate": -0.23,
         "high_rate": 7.96,
-        "score": 8.61,
+        "score": 8.96,
         "hot": false
       },
       {
         "code": "051900",
         "name": "LG생활건강",
-        "now": 253000.0,
-        "rate": 3.69,
-        "rel": 5.3,
-        "vol_ratio": 115,
+        "now": 254000.0,
+        "rate": 4.1,
+        "rel": 5.28,
+        "vol_ratio": 118,
         "low_rate": 1.23,
         "high_rate": 6.35,
-        "score": 5.69,
+        "score": 5.76,
         "hot": false
       },
       {
         "code": "003490",
         "name": "대한항공",
-        "now": 32450.0,
-        "rate": 3.67,
-        "rel": 5.28,
-        "vol_ratio": 75,
+        "now": 32500.0,
+        "rate": 3.83,
+        "rel": 5.01,
+        "vol_ratio": 77,
         "low_rate": 1.12,
         "high_rate": 5.27,
-        "score": 4.45,
+        "score": 4.24,
         "hot": false
       }
     ]
   },
   "summary": [
-    "약세 · 코스피 -1.61%, 코스닥 -1.49%",
-    "장중 고점 +0.7%에서 2.3%p 밀린 상태",
-    "코스피 911종목 중 상승 299 · 하락 568 (상한가 1)",
-    "수급: 외국인 -1,663억 · 기관 +1,862억 · 개인 -197억 → 기관 매수 주도"
+    "약세 · 코스피 -1.18%, 코스닥 -1.12%",
+    "코스피 911종목 중 상승 317 · 하락 546 (상한가 1)",
+    "수급: 외국인 -1,601억 · 기관 +1,849억 · 개인 -245억 → 기관 매수 주도"
   ]
 }
