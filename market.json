@@ -1,84 +1,69 @@
 {
-  "updated": "2026-11-19T13:20+09:00",
+  "updated": "2026-11-19T13:30+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 5079.4,
-    "chg": 11.96,
-    "rate": 0.24,
+    "now": 5075.5,
+    "chg": 8.06,
+    "rate": 0.16,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
-    "up": 377,
-    "down": 476,
-    "flat": 58,
+    "up": 387,
+    "down": 470,
+    "flat": 54,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 74301,
+    "amount_eok": 76350,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 45.88
+    "from_year_high": 45.92
   },
   "kosdaq": {
-    "now": 664.44,
-    "chg": 1.63,
-    "rate": 0.25,
+    "now": 664.53,
+    "chg": 1.72,
+    "rate": 0.26,
     "open": 668.31,
     "high": 669.46,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.0,
-    "up": 764,
-    "down": 898,
-    "flat": 87,
+    "up": 771,
+    "down": 883,
+    "flat": 95,
     "limit_up": 9,
     "limit_down": 0,
-    "amount_eok": 28130,
+    "amount_eok": 28989,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 45.96
+    "from_year_high": 45.95
   },
   "flows": {
     "kospi": {
-      "foreign": -1176,
-      "inst": 1306,
-      "person": -149
+      "foreign": -1158,
+      "inst": 1279,
+      "person": -139
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "13:19",
-      "title": "미래에셋 TIGER 코스피고배당증권상장지수투자신탁(주식) ETF기타시장안내",
-      "src": "거래소 공시"
+      "time": "13:30",
+      "title": "중국 상하이종합지수 오전장 0.44% 하락 마감",
+      "src": "한국경제신문"
     },
     {
-      "time": "13:19",
-      "title": "미래에셋 TIGER 인터넷TOP10 증권상장지수투자신탁(주식) ETF기타시장안내",
-      "src": "거래소 공시"
+      "time": "13:30",
+      "title": "美 금리 인상 전망 힘 실려…'R의 공포' 또 무사히 넘길까 [분석+]",
+      "src": "한국경제신문"
     },
     {
-      "time": "13:19",
-      "title": "미래에셋 TIGER 배당성장증권상장지수투자신탁(주식) ETF기타시장안내",
-      "src": "거래소 공시"
-    },
-    {
-      "time": "13:19",
-      "title": "미래에셋 TIGER 2차전지TOP10 증권상장지수투자신탁(주식) ETF기타시장안내",
-      "src": "거래소 공시"
-    },
-    {
-      "time": "13:19",
-      "title": "원/달러 환율 : 1,331.9원(▼1.8 )",
-      "src": "인포스탁"
-    },
-    {
-      "time": "13:19",
-      "title": "미래에셋 TIGER 2차전지TOP10레버리지 증권상장지수투자신탁(주식-파생형) ETF기타시장안내",
-      "src": "거래소 공시"
+      "time": "13:26",
+      "title": "환율 10% 내리면 가구 생활비 연 16만5000원 절감",
+      "src": "컨슈머타임스"
     }
   ],
   "intraday": [
@@ -216,6 +201,11 @@
       "t": "13:20",
       "kospi": 0.24,
       "kosdaq": 0.25
+    },
+    {
+      "t": "13:30",
+      "kospi": 0.16,
+      "kosdaq": 0.26
     }
   ],
   "trails": {},
@@ -285,50 +275,50 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 5079.4,
-      "kospi_rate": 0.24,
-      "kosdaq": 664.44,
-      "kosdaq_rate": 0.25
+      "kospi": 5075.5,
+      "kospi_rate": 0.16,
+      "kosdaq": 664.53,
+      "kosdaq_rate": 0.26
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 40,
+    "beat": 46,
     "top": [
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38700.0,
-        "rate": 10.73,
-        "rel": 10.49,
-        "vol_ratio": 287,
+        "now": 38650.0,
+        "rate": 10.59,
+        "rel": 10.43,
+        "vol_ratio": 290,
         "low_rate": 4.86,
         "high_rate": 12.59,
-        "score": 13.53,
+        "score": 13.5,
         "hot": true
       },
       {
         "code": "352820",
         "name": "하이브",
-        "now": 186500.0,
-        "rate": 11.94,
-        "rel": 11.7,
-        "vol_ratio": 122,
+        "now": 187400.0,
+        "rate": 12.48,
+        "rel": 12.32,
+        "vol_ratio": 125,
         "low_rate": -0.54,
         "high_rate": 13.75,
-        "score": 12.28,
+        "score": 12.97,
         "hot": true
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 141000.0,
-        "rate": 7.88,
+        "now": 140900.0,
+        "rate": 7.8,
         "rel": 7.64,
-        "vol_ratio": 145,
+        "vol_ratio": 149,
         "low_rate": -0.23,
         "high_rate": 8.34,
-        "score": 8.71,
+        "score": 8.78,
         "hot": false
       },
       {
@@ -336,31 +326,31 @@
         "name": "LG생활건강",
         "now": 254000.0,
         "rate": 4.1,
-        "rel": 3.86,
-        "vol_ratio": 136,
+        "rel": 3.94,
+        "vol_ratio": 138,
         "low_rate": 1.23,
         "high_rate": 6.35,
-        "score": 4.74,
+        "score": 4.86,
         "hot": false
       },
       {
         "code": "069960",
         "name": "현대백화점",
-        "now": 100600.0,
-        "rate": 5.23,
-        "rel": 4.99,
-        "vol_ratio": 91,
+        "now": 100500.0,
+        "rate": 5.13,
+        "rel": 4.97,
+        "vol_ratio": 94,
         "low_rate": -1.36,
         "high_rate": 5.86,
-        "score": 4.73,
+        "score": 4.81,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.24%, 코스닥 +0.25%",
-    "장중 저점 -2.0%에서 2.3%p 회복한 상태",
-    "코스피 911종목 중 상승 377 · 하락 476 (상한가 1)",
-    "수급: 외국인 -1,176억 · 기관 +1,306억 · 개인 -149억 → 기관 매수 주도"
+    "보합권 · 코스피 +0.16%, 코스닥 +0.26%",
+    "장중 저점 -2.0%에서 2.2%p 회복한 상태",
+    "코스피 911종목 중 상승 387 · 하락 470 (상한가 1)",
+    "수급: 외국인 -1,158억 · 기관 +1,279억 · 개인 -139억 → 기관 매수 주도"
   ]
 }
