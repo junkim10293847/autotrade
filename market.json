@@ -1,84 +1,59 @@
 {
-  "updated": "2026-11-19T12:50+09:00",
+  "updated": "2026-11-19T13:00+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 5062.61,
-    "chg": -4.83,
-    "rate": -0.1,
+    "now": 5063.95,
+    "chg": -3.49,
+    "rate": -0.07,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
-    "up": 370,
-    "down": 499,
-    "flat": 42,
+    "up": 364,
+    "down": 497,
+    "flat": 50,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 65838,
+    "amount_eok": 68010,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 46.06
+    "from_year_high": 46.05
   },
   "kosdaq": {
-    "now": 661.66,
-    "chg": -1.15,
-    "rate": -0.17,
+    "now": 660.3,
+    "chg": -2.51,
+    "rate": -0.38,
     "open": 668.31,
     "high": 669.46,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.0,
-    "up": 679,
-    "down": 999,
-    "flat": 71,
+    "up": 661,
+    "down": 1022,
+    "flat": 66,
     "limit_up": 8,
     "limit_down": 0,
-    "amount_eok": 25291,
+    "amount_eok": 26015,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 46.18
+    "from_year_high": 46.29
   },
   "flows": {
     "kospi": {
-      "foreign": -1322,
-      "inst": 1834,
-      "person": -511
+      "foreign": -1444,
+      "inst": 1879,
+      "person": -433
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "12:34",
-      "title": "★ 코스닥 외국인 매매 종목",
-      "src": "한국투자증권"
-    },
-    {
-      "time": "12:34",
-      "title": "★ 코스닥 기타법인 매매 종목",
-      "src": "한국투자증권"
-    },
-    {
-      "time": "12:34",
-      "title": "★ 코스닥 연기금 매매 종목",
-      "src": "한국투자증권"
-    },
-    {
-      "time": "12:34",
-      "title": "★ 코스닥 은행 매매 종목",
-      "src": "한국투자증권"
-    },
-    {
-      "time": "12:34",
-      "title": "★ 코스닥 보험,기타금융 매매 종목",
-      "src": "한국투자증권"
-    },
-    {
-      "time": "12:34",
-      "title": "★ 코스닥 투신 매매 종목",
-      "src": "한국투자증권"
+      "time": "12:50",
+      "title": "전일대비 거래량 증가 종목(코스닥)",
+      "src": "인포스탁"
     }
   ],
   "intraday": [
@@ -201,6 +176,11 @@
       "t": "12:50",
       "kospi": -0.1,
       "kosdaq": -0.17
+    },
+    {
+      "t": "13:00",
+      "kospi": -0.07,
+      "kosdaq": -0.38
     }
   ],
   "trails": {},
@@ -270,81 +250,81 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 5062.61,
-      "kospi_rate": -0.1,
-      "kosdaq": 661.66,
-      "kosdaq_rate": -0.17
+      "kospi": 5063.95,
+      "kospi_rate": -0.07,
+      "kosdaq": 660.3,
+      "kosdaq_rate": -0.38
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 48,
+    "beat": 51,
     "top": [
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38700.0,
-        "rate": 10.73,
-        "rel": 10.83,
-        "vol_ratio": 271,
+        "now": 38800.0,
+        "rate": 11.02,
+        "rel": 11.09,
+        "vol_ratio": 277,
         "low_rate": 4.86,
         "high_rate": 12.59,
-        "score": 13.71,
+        "score": 14.03,
         "hot": true
       },
       {
         "code": "352820",
         "name": "하이브",
-        "now": 186300.0,
-        "rate": 11.82,
-        "rel": 11.92,
-        "vol_ratio": 105,
+        "now": 186600.0,
+        "rate": 12.0,
+        "rel": 12.07,
+        "vol_ratio": 112,
         "low_rate": -0.54,
-        "high_rate": 12.12,
-        "score": 12.06,
+        "high_rate": 13.03,
+        "score": 12.39,
         "hot": true
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 140000.0,
-        "rate": 7.12,
-        "rel": 7.22,
-        "vol_ratio": 128,
+        "now": 139800.0,
+        "rate": 6.96,
+        "rel": 7.03,
+        "vol_ratio": 132,
         "low_rate": -0.23,
         "high_rate": 7.96,
-        "score": 7.93,
+        "score": 7.82,
         "hot": false
       },
       {
         "code": "051900",
         "name": "LG생활건강",
-        "now": 252500.0,
-        "rate": 3.48,
-        "rel": 3.58,
-        "vol_ratio": 127,
+        "now": 253000.0,
+        "rate": 3.69,
+        "rel": 3.76,
+        "vol_ratio": 128,
         "low_rate": 1.23,
         "high_rate": 6.35,
-        "score": 4.26,
+        "score": 4.47,
         "hot": false
       },
       {
-        "code": "069960",
-        "name": "현대백화점",
-        "now": 100100.0,
-        "rate": 4.71,
-        "rel": 4.81,
-        "vol_ratio": 78,
-        "low_rate": -1.36,
-        "high_rate": 5.86,
-        "score": 4.09,
+        "code": "267260",
+        "name": "HD현대일렉트릭",
+        "now": 404000.0,
+        "rate": 5.62,
+        "rel": 5.69,
+        "vol_ratio": 63,
+        "low_rate": 0.13,
+        "high_rate": 5.62,
+        "score": 4.34,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.10%, 코스닥 -0.17%",
-    "코스피 911종목 중 상승 370 · 하락 499 (상한가 1)",
-    "수급: 외국인 -1,322억 · 기관 +1,834억 · 개인 -511억 → 기관 매수 주도"
+    "보합권 · 코스피 -0.07%, 코스닥 -0.38%",
+    "코스피 911종목 중 상승 364 · 하락 497 (상한가 1)",
+    "수급: 외국인 -1,444억 · 기관 +1,879억 · 개인 -433억 → 기관 매수 주도"
   ]
 }
