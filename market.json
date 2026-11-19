@@ -1,74 +1,69 @@
 {
-  "updated": "2026-11-19T10:40+09:00",
+  "updated": "2026-11-19T10:50+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 4988.54,
-    "chg": -78.9,
-    "rate": -1.56,
+    "now": 5001.08,
+    "chg": -66.36,
+    "rate": -1.31,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
-    "up": 296,
-    "down": 562,
-    "flat": 42,
-    "limit_up": 0,
+    "up": 305,
+    "down": 552,
+    "flat": 46,
+    "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 31634,
+    "amount_eok": 35695,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 46.85
+    "from_year_high": 46.72
   },
   "kosdaq": {
-    "now": 653.68,
-    "chg": -9.13,
-    "rate": -1.38,
+    "now": 654.66,
+    "chg": -8.15,
+    "rate": -1.23,
     "open": 668.31,
     "high": 669.46,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.0,
-    "up": 532,
-    "down": 1126,
-    "flat": 79,
-    "limit_up": 6,
+    "up": 572,
+    "down": 1089,
+    "flat": 80,
+    "limit_up": 5,
     "limit_down": 0,
-    "amount_eok": 13174,
+    "amount_eok": 14692,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 46.83
+    "from_year_high": 46.75
   },
   "flows": {
     "kospi": {
-      "foreign": -1151,
-      "inst": 1121,
-      "person": 28
+      "foreign": -1315,
+      "inst": 1434,
+      "person": -122
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "10:39",
-      "title": "[포토] 상승 출발 후 하락 이어가는 코스피",
+      "time": "10:49",
+      "title": "외국인 근로자 임금 체불 사업주…출석요구 7차례 불응해 체포",
+      "src": "뉴스핌"
+    },
+    {
+      "time": "10:45",
+      "title": "KB증권(주) 상장지수증권 괴리율 초과 발생(KB 레버리지 반도체 TOP10 TR ETN)",
+      "src": "거래소 공시"
+    },
+    {
+      "time": "10:45",
+      "title": "이천시, SK하이닉스 연계 ‘22만㎡ 반도체 소부장 클러스터’ 추진",
       "src": "아시아 경제"
-    },
-    {
-      "time": "10:38",
-      "title": "[특징주] 국제 유가 하락에… 정유株 장 초반 일제히 약세",
-      "src": "조선경제i"
-    },
-    {
-      "time": "10:38",
-      "title": "[포토] 등락거듭하는 코스피",
-      "src": "아시아 경제"
-    },
-    {
-      "time": "10:37",
-      "title": "코스피, 앤트로픽 상장 앞두고 1%대↓…상승출발후 하락전환(종합)",
-      "src": "연합뉴스"
     }
   ],
   "intraday": [
@@ -126,6 +121,11 @@
       "t": "10:40",
       "kospi": -1.56,
       "kosdaq": -1.38
+    },
+    {
+      "t": "10:50",
+      "kospi": -1.31,
+      "kosdaq": -1.23
     }
   ],
   "trails": {},
@@ -195,82 +195,82 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 4988.54,
-      "kospi_rate": -1.56,
-      "kosdaq": 653.68,
-      "kosdaq_rate": -1.38
+      "kospi": 5001.08,
+      "kospi_rate": -1.31,
+      "kosdaq": 654.66,
+      "kosdaq_rate": -1.23
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 64,
+    "beat": 55,
     "top": [
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38250.0,
-        "rate": 9.44,
-        "rel": 11.0,
-        "vol_ratio": 167,
+        "now": 38350.0,
+        "rate": 9.73,
+        "rel": 11.04,
+        "vol_ratio": 181,
         "low_rate": 4.86,
         "high_rate": 12.3,
-        "score": 12.47,
+        "score": 12.75,
         "hot": false
       },
       {
         "code": "051900",
         "name": "LG생활건강",
-        "now": 252500.0,
-        "rate": 3.48,
-        "rel": 5.04,
-        "vol_ratio": 71,
+        "now": 251500.0,
+        "rate": 3.07,
+        "rel": 4.38,
+        "vol_ratio": 80,
         "low_rate": 1.23,
         "high_rate": 6.35,
-        "score": 4.05,
+        "score": 3.72,
         "hot": false
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 134400.0,
-        "rate": 2.83,
-        "rel": 4.39,
-        "vol_ratio": 66,
+        "now": 135000.0,
+        "rate": 3.29,
+        "rel": 4.6,
+        "vol_ratio": 73,
         "low_rate": -0.23,
         "high_rate": 7.96,
-        "score": 3.18,
+        "score": 3.7,
         "hot": false
       },
       {
         "code": "001040",
         "name": "CJ",
-        "now": 118600.0,
-        "rate": 4.31,
-        "rel": 5.87,
-        "vol_ratio": 35,
+        "now": 118900.0,
+        "rate": 4.57,
+        "rel": 5.88,
+        "vol_ratio": 42,
         "low_rate": 2.11,
         "high_rate": 6.33,
-        "score": 2.85,
+        "score": 3.37,
         "hot": false
       },
       {
-        "code": "003490",
-        "name": "대한항공",
-        "now": 32150.0,
-        "rate": 2.72,
-        "rel": 4.28,
-        "vol_ratio": 47,
-        "low_rate": 1.12,
-        "high_rate": 5.27,
-        "score": 2.09,
+        "code": "352820",
+        "name": "하이브",
+        "now": 173000.0,
+        "rate": 3.84,
+        "rel": 5.15,
+        "vol_ratio": 50,
+        "low_rate": -0.54,
+        "high_rate": 7.32,
+        "score": 3.14,
         "hot": false
       }
     ]
   },
   "summary": [
-    "약세 · 코스피 -1.56%, 코스닥 -1.38%",
-    "장중 고점 +0.7%에서 2.3%p 밀린 상태",
-    "코스피 900종목 중 상승 296 · 하락 562",
-    "수급: 외국인 -1,151억 · 기관 +1,121억 · 개인 +28억 → 외국인 매도 주도"
+    "약세 · 코스피 -1.31%, 코스닥 -1.23%",
+    "장중 고점 +0.7%에서 2.0%p 밀린 상태",
+    "코스피 903종목 중 상승 305 · 하락 552 (상한가 1)",
+    "수급: 외국인 -1,315억 · 기관 +1,434억 · 개인 -122억 → 기관 매수 주도"
   ]
 }
