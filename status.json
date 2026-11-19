@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-18T15:20+09:00",
+  "updated": "2026-11-19T08:59+09:00",
   "mode": "demo",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-18T15:20:04+09:00",
+    "checked": "2026-11-19T08:59:59+09:00",
     "mode": "demo"
   },
   "positions": [],
@@ -14,7 +14,7 @@
     "value": 0,
     "pnl": 0,
     "rate": 0,
-    "cash": 7048528,
+    "cash": 10315520,
     "assets": 10315520,
     "limit": 2000000,
     "invested": 0,
