@@ -1,73 +1,58 @@
 {
-  "updated": "2026-11-19T15:10+09:00",
+  "updated": "2026-11-19T15:17+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 5094.39,
-    "chg": 26.95,
-    "rate": 0.53,
+    "now": 5078.9,
+    "chg": 11.46,
+    "rate": 0.23,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
-    "up": 507,
-    "down": 360,
-    "flat": 45,
+    "up": 499,
+    "down": 366,
+    "flat": 47,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 98523,
+    "amount_eok": 100557,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 45.72
+    "from_year_high": 45.89
   },
   "kosdaq": {
-    "now": 671.76,
-    "chg": 8.95,
-    "rate": 1.35,
+    "now": 670.69,
+    "chg": 7.88,
+    "rate": 1.19,
     "open": 668.31,
     "high": 673.23,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.57,
-    "up": 1006,
-    "down": 662,
-    "flat": 81,
+    "up": 986,
+    "down": 675,
+    "flat": 88,
     "limit_up": 11,
     "limit_down": 0,
-    "amount_eok": 37054,
+    "amount_eok": 37771,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 45.36
+    "from_year_high": 45.45
   },
   "flows": {
     "kospi": {
-      "foreign": -2406,
-      "inst": 2040,
-      "person": 329
+      "foreign": -2510,
+      "inst": 2130,
+      "person": 339
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "15:08",
-      "title": "오후장 기술적 분석 특징주 B(코스닥)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "15:08",
-      "title": "오후장 기술적 분석 특징주 A(코스닥)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "15:08",
-      "title": "오후장 기술적 분석 특징주 B(코스피)",
-      "src": "인포스탁"
-    },
-    {
-      "time": "15:08",
-      "title": "오후장 기술적 분석 특징주 A(코스피)",
+      "time": "15:15",
+      "title": "수출 1조 달러 '금자탑'…AI 반도체 질주 속 통상·낙수효과 과제",
       "src": "인포스탁"
     }
   ],
@@ -261,6 +246,11 @@
       "t": "15:10",
       "kospi": 0.53,
       "kosdaq": 1.35
+    },
+    {
+      "t": "15:17",
+      "kospi": 0.23,
+      "kosdaq": 1.19
     }
   ],
   "trails": {},
@@ -330,26 +320,26 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 5094.39,
-      "kospi_rate": 0.53,
-      "kosdaq": 671.76,
-      "kosdaq_rate": 1.35
+      "kospi": 5078.9,
+      "kospi_rate": 0.23,
+      "kosdaq": 670.69,
+      "kosdaq_rate": 1.19
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 38,
+    "beat": 41,
     "top": [
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38500.0,
-        "rate": 10.16,
-        "rel": 9.63,
-        "vol_ratio": 324,
+        "now": 38450.0,
+        "rate": 10.01,
+        "rel": 9.78,
+        "vol_ratio": 328,
         "low_rate": 4.86,
         "high_rate": 12.59,
-        "score": 13.02,
+        "score": 13.21,
         "hot": true
       },
       {
@@ -357,55 +347,55 @@
         "name": "하이브",
         "now": 185000.0,
         "rate": 11.04,
-        "rel": 10.51,
-        "vol_ratio": 159,
+        "rel": 10.81,
+        "vol_ratio": 161,
         "low_rate": -0.54,
         "high_rate": 13.99,
-        "score": 11.84,
+        "score": 12.18,
         "hot": true
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 139800.0,
-        "rate": 6.96,
-        "rel": 6.43,
-        "vol_ratio": 207,
+        "now": 140000.0,
+        "rate": 7.12,
+        "rel": 6.89,
+        "vol_ratio": 211,
         "low_rate": -0.23,
         "high_rate": 8.34,
-        "score": 8.53,
+        "score": 9.04,
         "hot": false
       },
       {
         "code": "267260",
         "name": "HD현대일렉트릭",
-        "now": 411500.0,
-        "rate": 7.58,
-        "rel": 7.05,
-        "vol_ratio": 91,
+        "now": 408500.0,
+        "rate": 6.8,
+        "rel": 6.57,
+        "vol_ratio": 93,
         "low_rate": 0.13,
         "high_rate": 7.71,
-        "score": 6.78,
+        "score": 6.37,
         "hot": false
       },
       {
         "code": "009150",
         "name": "삼성전기",
-        "now": 865000.0,
-        "rate": 6.79,
-        "rel": 6.26,
-        "vol_ratio": 69,
+        "now": 864000.0,
+        "rate": 6.67,
+        "rel": 6.44,
+        "vol_ratio": 70,
         "low_rate": -1.6,
         "high_rate": 7.16,
-        "score": 5.18,
+        "score": 5.42,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.53%, 코스닥 +1.35%",
-    "장중 저점 -2.0%에서 2.6%p 회복한 상태",
-    "코스피 912종목 중 상승 507 · 하락 360 (상한가 1)",
-    "수급: 외국인 -2,406억 · 기관 +2,040억 · 개인 +329억 → 외국인 매도 주도"
+    "보합권 · 코스피 +0.23%, 코스닥 +1.19%",
+    "장중 저점 -2.0%에서 2.3%p 회복한 상태",
+    "코스피 912종목 중 상승 499 · 하락 366 (상한가 1)",
+    "수급: 외국인 -2,510억 · 기관 +2,130억 · 개인 +339억 → 외국인 매도 주도"
   ]
 }
