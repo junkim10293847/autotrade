@@ -1,59 +1,69 @@
 {
-  "updated": "2026-11-19T14:20+09:00",
+  "updated": "2026-11-19T14:30+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 5047.29,
-    "chg": -20.15,
-    "rate": -0.4,
+    "now": 5066.71,
+    "chg": -0.73,
+    "rate": -0.01,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
-    "up": 377,
-    "down": 489,
-    "flat": 46,
-    "limit_up": 2,
+    "up": 414,
+    "down": 454,
+    "flat": 44,
+    "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 86668,
+    "amount_eok": 88883,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 46.22
+    "from_year_high": 46.02
   },
   "kosdaq": {
-    "now": 662.45,
-    "chg": -0.36,
-    "rate": -0.05,
+    "now": 666.21,
+    "chg": 3.4,
+    "rate": 0.51,
     "open": 668.31,
     "high": 669.46,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.0,
-    "up": 755,
-    "down": 925,
-    "flat": 69,
-    "limit_up": 10,
+    "up": 819,
+    "down": 846,
+    "flat": 84,
+    "limit_up": 11,
     "limit_down": 0,
-    "amount_eok": 32532,
+    "amount_eok": 33492,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 46.12
+    "from_year_high": 45.81
   },
   "flows": {
     "kospi": {
-      "foreign": -1978,
-      "inst": 1853,
-      "person": 101
+      "foreign": -2116,
+      "inst": 1975,
+      "person": 112
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "14:08",
-      "title": "미국의 반도체 규제 정책 어떻게 달라질까....대중국 규제 및 제재 강화 파장",
+      "time": "14:30",
+      "title": "[K-수출 1조달러] 철광석에서 반도체까지…65년 수출 역사 바꾼 AI",
+      "src": "연합뉴스"
+    },
+    {
+      "time": "14:30",
+      "title": "반도체 호황에도 성장 과실은 '편중'[수출 1조달러 시대]",
       "src": "파이낸셜"
+    },
+    {
+      "time": "14:30",
+      "title": "[K-수출 1조달러] \"쾌거 속 반도체 착시…낙수효과 한계 통상 리스크 과제\"",
+      "src": "연합뉴스"
     }
   ],
   "intraday": [
@@ -221,6 +231,11 @@
       "t": "14:20",
       "kospi": -0.4,
       "kosdaq": -0.05
+    },
+    {
+      "t": "14:30",
+      "kospi": -0.01,
+      "kosdaq": 0.51
     }
   ],
   "trails": {},
@@ -290,81 +305,82 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 5047.29,
-      "kospi_rate": -0.4,
-      "kosdaq": 662.45,
-      "kosdaq_rate": -0.05
+      "kospi": 5066.71,
+      "kospi_rate": -0.01,
+      "kosdaq": 666.21,
+      "kosdaq_rate": 0.51
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 50,
+    "beat": 48,
     "top": [
       {
         "code": "352820",
         "name": "하이브",
-        "now": 188900.0,
-        "rate": 13.39,
-        "rel": 13.79,
-        "vol_ratio": 142,
+        "now": 189900.0,
+        "rate": 13.99,
+        "rel": 14.0,
+        "vol_ratio": 145,
         "low_rate": -0.54,
-        "high_rate": 13.87,
-        "score": 14.8,
+        "high_rate": 13.99,
+        "score": 15.08,
         "hot": true
       },
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38550.0,
-        "rate": 10.3,
-        "rel": 10.7,
-        "vol_ratio": 305,
+        "now": 38500.0,
+        "rate": 10.16,
+        "rel": 10.17,
+        "vol_ratio": 308,
         "low_rate": 4.86,
         "high_rate": 12.59,
-        "score": 13.92,
+        "score": 13.42,
         "hot": true
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 139700.0,
-        "rate": 6.89,
-        "rel": 7.29,
-        "vol_ratio": 179,
+        "now": 140300.0,
+        "rate": 7.35,
+        "rel": 7.36,
+        "vol_ratio": 184,
         "low_rate": -0.23,
         "high_rate": 8.34,
-        "score": 8.98,
+        "score": 9.12,
         "hot": false
       },
       {
         "code": "051900",
         "name": "LG생활건강",
-        "now": 254500.0,
-        "rate": 4.3,
-        "rel": 4.7,
-        "vol_ratio": 151,
+        "now": 255000.0,
+        "rate": 4.51,
+        "rel": 4.52,
+        "vol_ratio": 153,
         "low_rate": 1.23,
         "high_rate": 6.35,
-        "score": 5.88,
+        "score": 5.75,
         "hot": false
       },
       {
         "code": "267260",
         "name": "HD현대일렉트릭",
-        "now": 404000.0,
-        "rate": 5.62,
-        "rel": 6.02,
-        "vol_ratio": 78,
+        "now": 406000.0,
+        "rate": 6.14,
+        "rel": 6.15,
+        "vol_ratio": 80,
         "low_rate": 0.13,
         "high_rate": 6.67,
-        "score": 5.32,
+        "score": 5.52,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.40%, 코스닥 -0.05%",
-    "코스피 912종목 중 상승 377 · 하락 489 (상한가 2)",
-    "수급: 외국인 -1,978억 · 기관 +1,853억 · 개인 +101억 → 외국인 매도 주도"
+    "보합권 · 코스피 -0.01%, 코스닥 +0.51%",
+    "장중 저점 -2.0%에서 2.0%p 회복한 상태",
+    "코스피 912종목 중 상승 414 · 하락 454 (상한가 1)",
+    "수급: 외국인 -2,116억 · 기관 +1,975억 · 개인 +112억 → 외국인 매도 주도"
   ]
 }
