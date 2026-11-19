@@ -1,79 +1,64 @@
 {
-  "updated": "2026-11-19T10:10+09:00",
+  "updated": "2026-11-19T10:20+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 5056.8,
-    "chg": -10.64,
-    "rate": -0.21,
+    "now": 5023.74,
+    "chg": -43.7,
+    "rate": -0.86,
     "open": 5090.04,
     "high": 5103.85,
-    "low": 5045.42,
-    "low_rate": -0.43,
+    "low": 5023.74,
+    "low_rate": -0.86,
     "high_rate": 0.72,
-    "up": 439,
-    "down": 369,
-    "flat": 61,
+    "up": 325,
+    "down": 499,
+    "flat": 57,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 13263,
+    "amount_eok": 19702,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 46.12
+    "from_year_high": 46.47
   },
   "kosdaq": {
-    "now": 662.42,
-    "chg": -0.39,
-    "rate": -0.06,
+    "now": 657.99,
+    "chg": -4.82,
+    "rate": -0.73,
     "open": 668.31,
     "high": 669.46,
-    "low": 661.37,
-    "low_rate": -0.22,
+    "low": 657.99,
+    "low_rate": -0.73,
     "high_rate": 1.0,
-    "up": 788,
-    "down": 785,
-    "flat": 139,
+    "up": 663,
+    "down": 950,
+    "flat": 118,
     "limit_up": 5,
     "limit_down": 0,
-    "amount_eok": 5173,
+    "amount_eok": 8350,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 46.12
+    "from_year_high": 46.48
   },
   "flows": {
     "kospi": {
-      "foreign": -317,
-      "inst": 57,
-      "person": 259
+      "foreign": -326,
+      "inst": 169,
+      "person": 160
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "10:08",
-      "title": "[BioS]씨어스, 코스닥150 신규 편입…\"주요 3개 지수 편입\"",
+      "time": "10:17",
+      "title": "엔비디아 흔들려도 보합권서 버티는 코스피…\"관건은 앤스로픽 상장\"",
       "src": "이투데이"
     },
     {
-      "time": "10:08",
-      "title": "KDI, 내년 성장률 전망 2.2%→3.9%…반도체 호황 반영",
-      "src": "서울경제"
-    },
-    {
-      "time": "10:07",
-      "title": "코스피, 상승 출발 후 보합권에서 등락",
-      "src": "연합뉴스"
-    },
-    {
-      "time": "10:08",
-      "title": "美 12월 금리 인상 확률 95.7%…연준은 빅스텝 신중론",
-      "src": "서울경제"
-    },
-    {
-      "time": "10:07",
-      "title": "귀뚜라미, 6년 연속 '한국의 소비자보호지수' 우수기업 선정",
-      "src": "아시아 경제"
+      "time": "10:17",
+      "title": "위안화 고시환율, 달러당 6.7128 위안… 0.01% 가치 하락",
+      "src": "한국경제신문"
     }
   ],
   "intraday": [
@@ -116,6 +101,11 @@
       "t": "10:10",
       "kospi": -0.21,
       "kosdaq": -0.06
+    },
+    {
+      "t": "10:20",
+      "kospi": -0.86,
+      "kosdaq": -0.73
     }
   ],
   "trails": {},
@@ -185,81 +175,81 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 5056.8,
-      "kospi_rate": -0.21,
-      "kosdaq": 662.42,
-      "kosdaq_rate": -0.06
+      "kospi": 5023.74,
+      "kospi_rate": -0.86,
+      "kosdaq": 657.99,
+      "kosdaq_rate": -0.73
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 61,
+    "beat": 48,
     "top": [
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38600.0,
-        "rate": 10.44,
-        "rel": 10.65,
-        "vol_ratio": 70,
+        "now": 38650.0,
+        "rate": 10.59,
+        "rel": 11.45,
+        "vol_ratio": 117,
         "low_rate": 4.86,
-        "high_rate": 10.87,
-        "score": 9.63,
+        "high_rate": 12.3,
+        "score": 11.9,
         "hot": true
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 138900.0,
-        "rate": 6.27,
-        "rel": 6.48,
-        "vol_ratio": 27,
-        "low_rate": 3.83,
+        "now": 133900.0,
+        "rate": 2.45,
+        "rel": 3.31,
+        "vol_ratio": 44,
+        "low_rate": 1.99,
         "high_rate": 7.96,
-        "score": 2.68,
+        "score": 0.92,
         "hot": false
       },
       {
         "code": "051900",
         "name": "LG생활건강",
-        "now": 257500.0,
-        "rate": 5.53,
-        "rel": 5.74,
-        "vol_ratio": 24,
-        "low_rate": 2.05,
+        "now": 250000.0,
+        "rate": 2.46,
+        "rel": 3.32,
+        "vol_ratio": 42,
+        "low_rate": 1.84,
         "high_rate": 6.35,
-        "score": 1.74,
-        "hot": false
-      },
-      {
-        "code": "069960",
-        "name": "현대백화점",
-        "now": 100400.0,
-        "rate": 5.02,
-        "rel": 5.23,
-        "vol_ratio": 17,
-        "low_rate": 0.84,
-        "high_rate": 5.86,
-        "score": 1.23,
+        "score": 0.8,
         "hot": false
       },
       {
         "code": "001040",
         "name": "CJ",
-        "now": 118900.0,
-        "rate": 4.57,
-        "rel": 4.78,
-        "vol_ratio": 16,
+        "now": 118100.0,
+        "rate": 3.87,
+        "rel": 4.73,
+        "vol_ratio": 23,
         "low_rate": 2.11,
         "high_rate": 6.33,
-        "score": 0.78,
+        "score": 0.73,
+        "hot": false
+      },
+      {
+        "code": "003490",
+        "name": "대한항공",
+        "now": 32150.0,
+        "rate": 2.72,
+        "rel": 3.58,
+        "vol_ratio": 37,
+        "low_rate": 1.12,
+        "high_rate": 5.27,
+        "score": 0.71,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.21%, 코스닥 -0.06%",
-    "코스피 869종목 중 상승 439 · 하락 369 (상한가 1)",
-    "수급: 외국인 -317억 · 기관 +57억 · 개인 +259억 → 외국인 매도 주도"
+    "보합권 · 코스피 -0.86%, 코스닥 -0.73%",
+    "코스피 881종목 중 상승 325 · 하락 499 (상한가 1)",
+    "수급: 외국인 -326억 · 기관 +169억 · 개인 +160억 → 외국인 매도 주도"
   ]
 }
