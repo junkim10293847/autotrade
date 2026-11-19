@@ -475,6 +475,12 @@ def run(plan, state, kis):
         log(f"미체결 주문 대조 실패 · 다음 실행 때 재시도: {type(e).__name__}: {e}")
 
     # 청산 시각이 지났으면 다른 일은 하지 않고 전량 매도만
+    if exit_due(plan) and now().date().isoformat() > str(plan["exit_by"]) and not held:
+        # 청산이 끝난 다음 날부터는 청산일을 자동 해제 (평소 운용으로 복귀)
+        log(f"청산일({plan['exit_by']}) 정리 완료 · 청산일 해제, 평소 규칙으로 운용")
+        plan.pop("exit_by", None)
+        plan.pop("exit_time", None)
+        save(PLAN, plan)
     if exit_due(plan):
         liquidate(plan, state, kis)
         write_status(plan, state, kis.holdings(), kis)
@@ -1064,6 +1070,8 @@ def main():
             log("전환 전 매수 계획(" + ", ".join(s.get("name", s["code"]) for s in plan["stocks"]) + ")은 비움 · 새 계획 컨펌 후 매수")
         plan["stocks"] = []
         plan.pop("proposal", None)
+        plan.pop("exit_by", None)  # 청산일은 그 모드의 돈에 대한 약속이라 전환 때 해제
+        plan.pop("exit_time", None)
         plan["replacement"] = {"pending": False, "sell_codes": [], "mode": "keep"}
         save(PLAN, plan)
     state["mode"] = mode

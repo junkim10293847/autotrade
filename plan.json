@@ -1,8 +1,8 @@
 {
   "mode": "demo",
   "paused": false,
-  "take_profit_pct": 2,
-  "stop_loss_pct": -0.5,
+  "take_profit_pct": 5,
+  "stop_loss_pct": -5,
   "hold_days": 14,
   "max_total_krw": 2000000,
   "review_every": "2주",
@@ -19,11 +19,9 @@
     "days": 21
   },
   "tp_mode": "trail",
-  "trail_pct": 1.5,
+  "trail_pct": 2,
   "unfilled_days": 2,
   "topup": true,
-  "exit_by": "2026-11-16",
-  "exit_time": "14:30",
   "attack_ratio": 0.5,
   "attack_rules": {
     "stop_loss_pct": -8,
