@@ -1,50 +1,50 @@
 {
-  "updated": "2026-11-19T14:10+09:00",
+  "updated": "2026-11-19T14:20+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 5053.1,
-    "chg": -14.34,
-    "rate": -0.28,
+    "now": 5047.29,
+    "chg": -20.15,
+    "rate": -0.4,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
     "up": 377,
-    "down": 492,
-    "flat": 43,
+    "down": 489,
+    "flat": 46,
     "limit_up": 2,
     "limit_down": 0,
-    "amount_eok": 84911,
+    "amount_eok": 86668,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 46.16
+    "from_year_high": 46.22
   },
   "kosdaq": {
-    "now": 662.07,
-    "chg": -0.74,
-    "rate": -0.11,
+    "now": 662.45,
+    "chg": -0.36,
+    "rate": -0.05,
     "open": 668.31,
     "high": 669.46,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.0,
-    "up": 753,
-    "down": 927,
+    "up": 755,
+    "down": 925,
     "flat": 69,
     "limit_up": 10,
     "limit_down": 0,
-    "amount_eok": 31919,
+    "amount_eok": 32532,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 46.15
+    "from_year_high": 46.12
   },
   "flows": {
     "kospi": {
-      "foreign": -1711,
-      "inst": 1617,
-      "person": 77
+      "foreign": -1978,
+      "inst": 1853,
+      "person": 101
     },
     "kosdaq": null
   },
@@ -216,6 +216,11 @@
       "t": "14:10",
       "kospi": -0.28,
       "kosdaq": -0.11
+    },
+    {
+      "t": "14:20",
+      "kospi": -0.4,
+      "kosdaq": -0.05
     }
   ],
   "trails": {},
@@ -285,50 +290,62 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 5053.1,
-      "kospi_rate": -0.28,
-      "kosdaq": 662.07,
-      "kosdaq_rate": -0.11
+      "kospi": 5047.29,
+      "kospi_rate": -0.4,
+      "kosdaq": 662.45,
+      "kosdaq_rate": -0.05
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 47,
+    "beat": 50,
     "top": [
       {
         "code": "352820",
         "name": "하이브",
-        "now": 188500.0,
-        "rate": 13.15,
-        "rel": 13.43,
-        "vol_ratio": 138,
+        "now": 188900.0,
+        "rate": 13.39,
+        "rel": 13.79,
+        "vol_ratio": 142,
         "low_rate": -0.54,
-        "high_rate": 13.75,
-        "score": 14.35,
+        "high_rate": 13.87,
+        "score": 14.8,
         "hot": true
       },
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38650.0,
-        "rate": 10.59,
-        "rel": 10.87,
-        "vol_ratio": 303,
+        "now": 38550.0,
+        "rate": 10.3,
+        "rel": 10.7,
+        "vol_ratio": 305,
         "low_rate": 4.86,
         "high_rate": 12.59,
-        "score": 14.07,
+        "score": 13.92,
         "hot": true
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 139500.0,
-        "rate": 6.73,
-        "rel": 7.01,
-        "vol_ratio": 174,
+        "now": 139700.0,
+        "rate": 6.89,
+        "rel": 7.29,
+        "vol_ratio": 179,
         "low_rate": -0.23,
         "high_rate": 8.34,
-        "score": 8.61,
+        "score": 8.98,
+        "hot": false
+      },
+      {
+        "code": "051900",
+        "name": "LG생활건강",
+        "now": 254500.0,
+        "rate": 4.3,
+        "rel": 4.7,
+        "vol_ratio": 151,
+        "low_rate": 1.23,
+        "high_rate": 6.35,
+        "score": 5.88,
         "hot": false
       },
       {
@@ -336,30 +353,18 @@
         "name": "HD현대일렉트릭",
         "now": 404000.0,
         "rate": 5.62,
-        "rel": 5.9,
-        "vol_ratio": 77,
+        "rel": 6.02,
+        "vol_ratio": 78,
         "low_rate": 0.13,
         "high_rate": 6.67,
-        "score": 5.13,
-        "hot": false
-      },
-      {
-        "code": "051900",
-        "name": "LG생활건강",
-        "now": 253000.0,
-        "rate": 3.69,
-        "rel": 3.97,
-        "vol_ratio": 146,
-        "low_rate": 1.23,
-        "high_rate": 6.35,
-        "score": 5.07,
+        "score": 5.32,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 -0.28%, 코스닥 -0.11%",
-    "코스피 912종목 중 상승 377 · 하락 492 (상한가 2)",
-    "수급: 외국인 -1,711억 · 기관 +1,617억 · 개인 +77억 → 외국인 매도 주도"
+    "보합권 · 코스피 -0.40%, 코스닥 -0.05%",
+    "코스피 912종목 중 상승 377 · 하락 489 (상한가 2)",
+    "수급: 외국인 -1,978억 · 기관 +1,853억 · 개인 +101억 → 외국인 매도 주도"
   ]
 }
