@@ -1,69 +1,64 @@
 {
-  "updated": "2026-11-19T10:50+09:00",
+  "updated": "2026-11-19T11:00+09:00",
   "date": "2026-11-19",
   "src": "real",
   "kospi": {
-    "now": 5001.08,
-    "chg": -66.36,
-    "rate": -1.31,
+    "now": 5022.92,
+    "chg": -44.52,
+    "rate": -0.88,
     "open": 5090.04,
     "high": 5103.85,
     "low": 4963.61,
     "low_rate": -2.05,
     "high_rate": 0.72,
-    "up": 305,
-    "down": 552,
-    "flat": 46,
+    "up": 359,
+    "down": 496,
+    "flat": 49,
     "limit_up": 1,
     "limit_down": 0,
-    "amount_eok": 35695,
+    "amount_eok": 39211,
     "prev_amount_eok": 156626,
     "year_high": 9385.59,
-    "from_year_high": 46.72
+    "from_year_high": 46.48
   },
   "kosdaq": {
-    "now": 654.66,
-    "chg": -8.15,
-    "rate": -1.23,
+    "now": 657.9,
+    "chg": -4.91,
+    "rate": -0.74,
     "open": 668.31,
     "high": 669.46,
     "low": 650.39,
     "low_rate": -1.87,
     "high_rate": 1.0,
-    "up": 572,
-    "down": 1089,
-    "flat": 80,
-    "limit_up": 5,
+    "up": 680,
+    "down": 988,
+    "flat": 76,
+    "limit_up": 7,
     "limit_down": 0,
-    "amount_eok": 14692,
+    "amount_eok": 16218,
     "prev_amount_eok": 60991,
     "year_high": 1229.42,
-    "from_year_high": 46.75
+    "from_year_high": 46.49
   },
   "flows": {
     "kospi": {
-      "foreign": -1315,
-      "inst": 1434,
-      "person": -122
+      "foreign": -1011,
+      "inst": 1254,
+      "person": -246
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "10:49",
-      "title": "외국인 근로자 임금 체불 사업주…출석요구 7차례 불응해 체포",
-      "src": "뉴스핌"
+      "time": "11:00",
+      "title": "농식품부, 뉴욕서 K-푸드 수출 출정식…농산물 등 수출확대 협약",
+      "src": "연합뉴스"
     },
     {
-      "time": "10:45",
-      "title": "KB증권(주) 상장지수증권 괴리율 초과 발생(KB 레버리지 반도체 TOP10 TR ETN)",
-      "src": "거래소 공시"
-    },
-    {
-      "time": "10:45",
-      "title": "이천시, SK하이닉스 연계 ‘22만㎡ 반도체 소부장 클러스터’ 추진",
-      "src": "아시아 경제"
+      "time": "10:57",
+      "title": "中 반도체 장비에 뭉칫돈…“한국의 최대 경쟁자이자 가장 큰 성장 시장” [AI소부장 혁신 포럼]",
+      "src": "이투데이"
     }
   ],
   "intraday": [
@@ -126,6 +121,11 @@
       "t": "10:50",
       "kospi": -1.31,
       "kosdaq": -1.23
+    },
+    {
+      "t": "11:00",
+      "kospi": -0.88,
+      "kosdaq": -0.74
     }
   ],
   "trails": {},
@@ -195,82 +195,81 @@
     },
     {
       "date": "2026-11-19",
-      "kospi": 5001.08,
-      "kospi_rate": -1.31,
-      "kosdaq": 654.66,
-      "kosdaq_rate": -1.23
+      "kospi": 5022.92,
+      "kospi_rate": -0.88,
+      "kosdaq": 657.9,
+      "kosdaq_rate": -0.74
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 55,
+    "beat": 59,
     "top": [
       {
         "code": "008770",
         "name": "호텔신라",
-        "now": 38350.0,
-        "rate": 9.73,
-        "rel": 11.04,
-        "vol_ratio": 181,
+        "now": 39050.0,
+        "rate": 11.73,
+        "rel": 12.61,
+        "vol_ratio": 211,
         "low_rate": 4.86,
-        "high_rate": 12.3,
-        "score": 12.75,
-        "hot": false
+        "high_rate": 12.59,
+        "score": 14.77,
+        "hot": true
       },
       {
-        "code": "051900",
-        "name": "LG생활건강",
-        "now": 251500.0,
-        "rate": 3.07,
-        "rel": 4.38,
-        "vol_ratio": 80,
-        "low_rate": 1.23,
-        "high_rate": 6.35,
-        "score": 3.72,
+        "code": "352820",
+        "name": "하이브",
+        "now": 176400.0,
+        "rate": 5.88,
+        "rel": 6.76,
+        "vol_ratio": 55,
+        "low_rate": -0.54,
+        "high_rate": 7.32,
+        "score": 5.05,
         "hot": false
       },
       {
         "code": "090430",
         "name": "아모레퍼시픽",
-        "now": 135000.0,
-        "rate": 3.29,
-        "rel": 4.6,
-        "vol_ratio": 73,
+        "now": 136100.0,
+        "rate": 4.13,
+        "rel": 5.01,
+        "vol_ratio": 80,
         "low_rate": -0.23,
         "high_rate": 7.96,
-        "score": 3.7,
+        "score": 4.35,
         "hot": false
       },
       {
         "code": "001040",
         "name": "CJ",
-        "now": 118900.0,
-        "rate": 4.57,
-        "rel": 5.88,
-        "vol_ratio": 42,
+        "now": 119700.0,
+        "rate": 5.28,
+        "rel": 6.16,
+        "vol_ratio": 47,
         "low_rate": 2.11,
         "high_rate": 6.33,
-        "score": 3.37,
+        "score": 3.98,
         "hot": false
       },
       {
-        "code": "352820",
-        "name": "하이브",
-        "now": 173000.0,
-        "rate": 3.84,
-        "rel": 5.15,
-        "vol_ratio": 50,
-        "low_rate": -0.54,
-        "high_rate": 7.32,
-        "score": 3.14,
+        "code": "051900",
+        "name": "LG생활건강",
+        "now": 252000.0,
+        "rate": 3.28,
+        "rel": 4.16,
+        "vol_ratio": 88,
+        "low_rate": 1.23,
+        "high_rate": 6.35,
+        "score": 3.79,
         "hot": false
       }
     ]
   },
   "summary": [
-    "약세 · 코스피 -1.31%, 코스닥 -1.23%",
-    "장중 고점 +0.7%에서 2.0%p 밀린 상태",
-    "코스피 903종목 중 상승 305 · 하락 552 (상한가 1)",
-    "수급: 외국인 -1,315억 · 기관 +1,434억 · 개인 -122억 → 기관 매수 주도"
+    "보합권 · 코스피 -0.88%, 코스닥 -0.74%",
+    "코스피 904종목 중 상승 359 · 하락 496 (상한가 1)",
+    "수급: 외국인 -1,011억 · 기관 +1,254억 · 개인 -246억 → 기관 매수 주도"
   ]
 }
