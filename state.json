@@ -41,7 +41,7 @@
       "days": null,
       "order_rate": -1.52,
       "status": "filled",
-      "last_seen": "2026-11-19T15:10+09:00"
+      "last_seen": "2026-11-20T09:00+09:00"
     },
     "20261117:recovered-035720": {
       "order_no": "recovered-035720",
@@ -63,5 +63,9 @@
   "exit_sells": {
     "035720": "2026-11-17"
   },
-  "exit_notified": "2026-11-17"
+  "exit_notified": "2026-11-17",
+  "watch": {},
+  "peaks": {},
+  "manual_done": {},
+  "plan_buy_attempts": {}
 }
