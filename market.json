@@ -1,84 +1,74 @@
 {
-  "updated": "2026-11-20T09:00+09:00",
+  "updated": "2026-11-20T09:10+09:00",
   "date": "2026-11-20",
   "src": "real",
   "kospi": {
-    "now": 5137.89,
-    "chg": 0.0,
-    "rate": 0.0,
-    "open": 0.0,
-    "high": 0.0,
-    "low": 0.0,
-    "low_rate": null,
-    "high_rate": null,
-    "up": 43,
-    "down": 299,
-    "flat": 19,
+    "now": 4957.55,
+    "chg": -180.34,
+    "rate": -3.51,
+    "open": 4928.51,
+    "high": 4959.65,
+    "low": 4927.5,
+    "low_rate": -4.09,
+    "high_rate": -3.47,
+    "up": 140,
+    "down": 709,
+    "flat": 30,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 0,
+    "amount_eok": 8760,
     "prev_amount_eok": 134170,
     "year_high": 9385.59,
-    "from_year_high": 45.26
+    "from_year_high": 47.18
   },
   "kosdaq": {
-    "now": 684.81,
-    "chg": 0.0,
-    "rate": 0.0,
-    "open": 0.0,
-    "high": 0.0,
-    "low": 0.0,
-    "low_rate": null,
-    "high_rate": null,
-    "up": 86,
-    "down": 533,
-    "flat": 47,
-    "limit_up": 0,
-    "limit_down": 0,
-    "amount_eok": 0,
+    "now": 659.91,
+    "chg": -24.9,
+    "rate": -3.64,
+    "open": 660.98,
+    "high": 660.98,
+    "low": 657.38,
+    "low_rate": -4.01,
+    "high_rate": -3.48,
+    "up": 231,
+    "down": 1380,
+    "flat": 80,
+    "limit_up": 2,
+    "limit_down": 1,
+    "amount_eok": 4991,
     "prev_amount_eok": 47950,
     "year_high": 1229.42,
-    "from_year_high": 44.3
+    "from_year_high": 46.32
   },
   "flows": {
     "kospi": {
-      "foreign": -277,
-      "inst": 434,
-      "person": -153
+      "foreign": -541,
+      "inst": 868,
+      "person": -326
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "09:00",
-      "title": "미래에셋증권(주) 상장지수증권 괴리율 초과 발생(미래에셋 코스닥150 선물 ETN B)",
-      "src": "거래소 공시"
+      "time": "09:09",
+      "title": "삼성전자 사업부장, 반도체 메모리 황상준 모바일경험 최원준",
+      "src": "연합뉴스"
     },
     {
-      "time": "09:00",
-      "title": "타임폴리오 TIME 미국나스닥100액티브증권상장지수투자신탁(주식) ETF 괴리율 초과 발생",
-      "src": "거래소 공시"
+      "time": "09:09",
+      "title": "[특징주] 하나에어로, 코스닥 상장 첫날 장 초반 73% 상승",
+      "src": "연합뉴스"
     },
     {
-      "time": "09:00",
-      "title": "용인 반도체클러스터 개발 따라 달라지는 주거환경…교통·생활 인프라 확충에 기대감",
-      "src": "헤럴드경제"
+      "time": "09:08",
+      "title": "[속보]삼성전자 반도체 부문 시스템LSI사업부장에 조상연 사장 승진",
+      "src": "파이낸셜"
     },
     {
-      "time": "08:59",
-      "title": "미래에셋증권(주) 상장지수증권 괴리율 초과 발생(미래에셋 2X 미국 자율주행대표기업 ETN)",
-      "src": "거래소 공시"
-    },
-    {
-      "time": "08:59",
-      "title": "미래에셋증권(주) 상장지수증권 괴리율 초과 발생(미래에셋 레버리지 미국 AI TOP3 ETN)",
-      "src": "거래소 공시"
-    },
-    {
-      "time": "08:58",
-      "title": "미래에셋증권(주) 상장지수증권 괴리율 초과 발생(미래에셋 2X 미국 테크&반도체 TOP3 ETN)",
-      "src": "거래소 공시"
+      "time": "09:07",
+      "title": "[속보] 삼성전자 사업부장, 반도체 메모리 황상준·모바일경험 최원준",
+      "src": "한국경제신문"
     }
   ],
   "intraday": [
@@ -86,6 +76,11 @@
       "t": "09:00",
       "kospi": 0.0,
       "kosdaq": 0.0
+    },
+    {
+      "t": "09:10",
+      "kospi": -3.51,
+      "kosdaq": -3.64
     }
   ],
   "trails": {},
@@ -162,81 +157,81 @@
     },
     {
       "date": "2026-11-20",
-      "kospi": 5137.89,
-      "kospi_rate": 0.0,
-      "kosdaq": 684.81,
-      "kosdaq_rate": 0.0
+      "kospi": 4957.55,
+      "kospi_rate": -3.51,
+      "kosdaq": 659.91,
+      "kosdaq_rate": -3.64
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 8,
+    "beat": 79,
     "top": [
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 223500.0,
-        "rate": 3.47,
-        "rel": 3.47,
-        "vol_ratio": 5,
+        "now": 227500.0,
+        "rate": 5.32,
+        "rel": 8.83,
+        "vol_ratio": 24,
         "low_rate": 0.69,
-        "high_rate": 4.17,
-        "score": -0.53,
-        "hot": false
-      },
-      {
-        "code": "035250",
-        "name": "강원랜드",
-        "now": 14380.0,
-        "rate": 1.77,
-        "rel": 1.77,
-        "vol_ratio": 1,
-        "low_rate": 0.64,
-        "high_rate": 2.05,
-        "score": -2.23,
-        "hot": false
-      },
-      {
-        "code": "033780",
-        "name": "KT&G",
-        "now": 184700.0,
-        "rate": 1.21,
-        "rel": 1.21,
-        "vol_ratio": 1,
-        "low_rate": 0.05,
-        "high_rate": 1.48,
-        "score": -2.79,
-        "hot": false
-      },
-      {
-        "code": "012750",
-        "name": "에스원",
-        "now": 106700.0,
-        "rate": 0.85,
-        "rel": 0.85,
-        "vol_ratio": 1,
-        "low_rate": -0.85,
-        "high_rate": 0.85,
-        "score": -3.15,
+        "high_rate": 6.71,
+        "score": 4.83,
         "hot": false
       },
       {
         "code": "282330",
         "name": "BGF리테일",
-        "now": 141900.0,
-        "rate": 0.64,
-        "rel": 0.64,
-        "vol_ratio": 1,
+        "now": 144200.0,
+        "rate": 2.27,
+        "rel": 5.78,
+        "vol_ratio": 4,
         "low_rate": -0.99,
-        "high_rate": 1.42,
-        "score": -3.36,
+        "high_rate": 2.84,
+        "score": 1.78,
+        "hot": false
+      },
+      {
+        "code": "035250",
+        "name": "강원랜드",
+        "now": 14410.0,
+        "rate": 1.98,
+        "rel": 5.49,
+        "vol_ratio": 2,
+        "low_rate": 0.64,
+        "high_rate": 2.05,
+        "score": 1.49,
+        "hot": false
+      },
+      {
+        "code": "259960",
+        "name": "크래프톤",
+        "now": 200500.0,
+        "rate": 1.73,
+        "rel": 5.24,
+        "vol_ratio": 4,
+        "low_rate": -2.49,
+        "high_rate": 1.73,
+        "score": 1.24,
+        "hot": false
+      },
+      {
+        "code": "271560",
+        "name": "오리온",
+        "now": 120100.0,
+        "rate": 1.52,
+        "rel": 5.03,
+        "vol_ratio": 4,
+        "low_rate": -1.1,
+        "high_rate": 1.94,
+        "score": 1.03,
         "hot": false
       }
     ]
   },
   "summary": [
-    "보합권 · 코스피 +0.00%, 코스닥 +0.00%",
-    "코스피 361종목 중 상승 43 · 하락 299",
-    "수급: 외국인 -277억 · 기관 +434억 · 개인 -153억 → 기관 매수 주도"
+    "급락장 · 코스피 -3.51%, 코스닥 -3.64%",
+    "코스피 879종목 중 상승 140 · 하락 709",
+    "수급: 외국인 -541억 · 기관 +868억 · 개인 -326억 → 기관 매수 주도"
   ]
 }
