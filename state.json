@@ -6,6 +6,42 @@
       "qty": 98,
       "krw": 3189371,
       "inferred": true
+    },
+    "028050": {
+      "date": "2026-11-20T09:32+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 40,
+      "requested_krw": 2452000.0,
+      "last_order_date": "2026-11-20T09:32+09:00"
+    },
+    "326030": {
+      "date": "2026-11-20T09:32+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 28,
+      "requested_krw": 2433200.0,
+      "last_order_date": "2026-11-20T09:32+09:00"
+    },
+    "271560": {
+      "date": "2026-11-20T09:32+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 20,
+      "requested_krw": 2414000.0,
+      "last_order_date": "2026-11-20T09:32+09:00"
+    },
+    "032640": {
+      "date": "2026-11-20T09:32+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 163,
+      "requested_krw": 2495530.0,
+      "last_order_date": "2026-11-20T09:32+09:00"
     }
   },
   "trades": [
@@ -41,7 +77,7 @@
       "days": null,
       "order_rate": -1.52,
       "status": "filled",
-      "last_seen": "2026-11-20T09:29+09:00"
+      "last_seen": "2026-11-20T09:32+09:00"
     },
     "20261117:recovered-035720": {
       "order_no": "recovered-035720",
@@ -58,14 +94,134 @@
       "reason": "기록 복구 (체결 기록이 저장되지 않았던 매수)",
       "status": "filled",
       "last_seen": "2026-11-17T12:00+09:00"
+    },
+    "20261120:0000009043": {
+      "order_no": "0000009043",
+      "branch": "00950",
+      "side": "buy",
+      "code": "028050",
+      "name": "삼성E&A",
+      "ordered_qty": 40,
+      "limit_price": 61300.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 40,
+      "created": "2026-11-20T09:32+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261120:0000009046": {
+      "order_no": "0000009046",
+      "branch": "00950",
+      "side": "buy",
+      "code": "326030",
+      "name": "SK바이오팜",
+      "ordered_qty": 28,
+      "limit_price": 86900.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 28,
+      "created": "2026-11-20T09:32+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261120:0000009049": {
+      "order_no": "0000009049",
+      "branch": "00950",
+      "side": "buy",
+      "code": "271560",
+      "name": "오리온",
+      "ordered_qty": 20,
+      "limit_price": 120700.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 20,
+      "created": "2026-11-20T09:32+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261120:0000009056": {
+      "order_no": "0000009056",
+      "branch": "00950",
+      "side": "buy",
+      "code": "032640",
+      "name": "LG유플러스",
+      "ordered_qty": 163,
+      "limit_price": 15310.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 163,
+      "created": "2026-11-20T09:32+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
     }
   },
   "exit_sells": {
     "035720": "2026-11-17"
   },
   "exit_notified": "2026-11-17",
-  "watch": {},
+  "watch": {
+    "028050": {
+      "price": 60800,
+      "checked": "2026-11-20T09:32+09:00",
+      "state": "ordered"
+    },
+    "326030": {
+      "price": 86100,
+      "checked": "2026-11-20T09:32+09:00",
+      "state": "ordered"
+    },
+    "271560": {
+      "price": 120200,
+      "checked": "2026-11-20T09:32+09:00",
+      "state": "ordered"
+    },
+    "032640": {
+      "price": 15170,
+      "checked": "2026-11-20T09:32+09:00",
+      "state": "ordered"
+    }
+  },
   "peaks": {},
   "manual_done": {},
-  "plan_buy_attempts": {}
+  "plan_buy_attempts": {
+    "2026-11-20T00:32:12.434Z:028050": {
+      "date": "2026-11-20T09:32+09:00",
+      "order_no": "0000009043",
+      "qty": 40
+    },
+    "2026-11-20T00:32:12.434Z:326030": {
+      "date": "2026-11-20T09:32+09:00",
+      "order_no": "0000009046",
+      "qty": 28
+    },
+    "2026-11-20T00:32:12.434Z:271560": {
+      "date": "2026-11-20T09:32+09:00",
+      "order_no": "0000009049",
+      "qty": 20
+    },
+    "2026-11-20T00:32:12.434Z:032640": {
+      "date": "2026-11-20T09:32+09:00",
+      "order_no": "0000009056",
+      "qty": 163
+    }
+  },
+  "sell_orders": {},
+  "topups": {}
 }
