@@ -1,74 +1,79 @@
 {
-  "updated": "2026-11-20T09:10+09:00",
+  "updated": "2026-11-20T09:20+09:00",
   "date": "2026-11-20",
   "src": "real",
   "kospi": {
-    "now": 4957.55,
-    "chg": -180.34,
-    "rate": -3.51,
+    "now": 4959.62,
+    "chg": -178.27,
+    "rate": -3.47,
     "open": 4928.51,
-    "high": 4959.65,
+    "high": 4962.55,
     "low": 4927.5,
     "low_rate": -4.09,
-    "high_rate": -3.47,
-    "up": 140,
-    "down": 709,
-    "flat": 30,
+    "high_rate": -3.41,
+    "up": 151,
+    "down": 706,
+    "flat": 31,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 8760,
+    "amount_eok": 13305,
     "prev_amount_eok": 134170,
     "year_high": 9385.59,
-    "from_year_high": 47.18
+    "from_year_high": 47.16
   },
   "kosdaq": {
-    "now": 659.91,
-    "chg": -24.9,
-    "rate": -3.64,
+    "now": 662.52,
+    "chg": -22.29,
+    "rate": -3.25,
     "open": 660.98,
-    "high": 660.98,
+    "high": 662.52,
     "low": 657.38,
     "low_rate": -4.01,
-    "high_rate": -3.48,
-    "up": 231,
-    "down": 1380,
-    "flat": 80,
+    "high_rate": -3.25,
+    "up": 234,
+    "down": 1406,
+    "flat": 74,
     "limit_up": 2,
     "limit_down": 1,
-    "amount_eok": 4991,
+    "amount_eok": 7767,
     "prev_amount_eok": 47950,
     "year_high": 1229.42,
-    "from_year_high": 46.32
+    "from_year_high": 46.11
   },
   "flows": {
     "kospi": {
-      "foreign": -541,
-      "inst": 868,
-      "person": -326
+      "foreign": -841,
+      "inst": 1178,
+      "person": -335
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "09:09",
-      "title": "삼성전자 사업부장, 반도체 메모리 황상준 모바일경험 최원준",
-      "src": "연합뉴스"
+      "time": "09:20",
+      "title": "★ 코스닥 외국인 매매 종목",
+      "src": "한국투자증권"
     },
     {
-      "time": "09:09",
-      "title": "[특징주] 하나에어로, 코스닥 상장 첫날 장 초반 73% 상승",
-      "src": "연합뉴스"
+      "time": "09:19",
+      "title": "★ 거래소 외국인 매매 종목",
+      "src": "한국투자증권"
     },
     {
-      "time": "09:08",
-      "title": "[속보]삼성전자 반도체 부문 시스템LSI사업부장에 조상연 사장 승진",
-      "src": "파이낸셜"
+      "time": "09:19",
+      "title": "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
+      "src": "서울경제"
     },
     {
-      "time": "09:07",
-      "title": "[속보] 삼성전자 사업부장, 반도체 메모리 황상준·모바일경험 최원준",
+      "time": "09:18",
+      "title": "삼성전자, 전영현·노태문 겸직 해제…반도체서 사장 3명 승진",
       "src": "한국경제신문"
+    },
+    {
+      "time": "09:17",
+      "title": "하나에어로, 코스닥 데뷔 첫 날 84%대 강세",
+      "src": "머니투데이"
     }
   ],
   "intraday": [
@@ -81,6 +86,11 @@
       "t": "09:10",
       "kospi": -3.51,
       "kosdaq": -3.64
+    },
+    {
+      "t": "09:20",
+      "kospi": -3.47,
+      "kosdaq": -3.25
     }
   ],
   "trails": {},
@@ -157,81 +167,81 @@
     },
     {
       "date": "2026-11-20",
-      "kospi": 4957.55,
-      "kospi_rate": -3.51,
-      "kosdaq": 659.91,
-      "kosdaq_rate": -3.64
+      "kospi": 4959.62,
+      "kospi_rate": -3.47,
+      "kosdaq": 662.52,
+      "kosdaq_rate": -3.25
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 79,
+    "beat": 82,
     "top": [
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 227500.0,
-        "rate": 5.32,
-        "rel": 8.83,
-        "vol_ratio": 24,
+        "now": 230000.0,
+        "rate": 6.48,
+        "rel": 9.95,
+        "vol_ratio": 34,
         "low_rate": 0.69,
-        "high_rate": 6.71,
-        "score": 4.83,
+        "high_rate": 7.18,
+        "score": 6.86,
         "hot": false
       },
       {
-        "code": "282330",
-        "name": "BGF리테일",
-        "now": 144200.0,
-        "rate": 2.27,
-        "rel": 5.78,
+        "code": "069960",
+        "name": "현대백화점",
+        "now": 100100.0,
+        "rate": 2.56,
+        "rel": 6.03,
         "vol_ratio": 4,
-        "low_rate": -0.99,
-        "high_rate": 2.84,
-        "score": 1.78,
+        "low_rate": -1.02,
+        "high_rate": 2.87,
+        "score": 2.03,
         "hot": false
       },
       {
         "code": "035250",
         "name": "강원랜드",
-        "now": 14410.0,
-        "rate": 1.98,
-        "rel": 5.49,
-        "vol_ratio": 2,
+        "now": 14490.0,
+        "rate": 2.55,
+        "rel": 6.02,
+        "vol_ratio": 8,
         "low_rate": 0.64,
-        "high_rate": 2.05,
-        "score": 1.49,
+        "high_rate": 2.97,
+        "score": 2.02,
         "hot": false
       },
       {
-        "code": "259960",
-        "name": "크래프톤",
-        "now": 200500.0,
-        "rate": 1.73,
-        "rel": 5.24,
-        "vol_ratio": 4,
-        "low_rate": -2.49,
-        "high_rate": 1.73,
-        "score": 1.24,
+        "code": "015760",
+        "name": "한국전력",
+        "now": 25800.0,
+        "rate": 2.18,
+        "rel": 5.65,
+        "vol_ratio": 25,
+        "low_rate": -2.18,
+        "high_rate": 2.77,
+        "score": 1.65,
         "hot": false
       },
       {
-        "code": "271560",
-        "name": "오리온",
-        "now": 120100.0,
-        "rate": 1.52,
-        "rel": 5.03,
-        "vol_ratio": 4,
-        "low_rate": -1.1,
-        "high_rate": 1.94,
-        "score": 1.03,
+        "code": "138040",
+        "name": "메리츠금융지주",
+        "now": 127900.0,
+        "rate": 2.16,
+        "rel": 5.63,
+        "vol_ratio": 8,
+        "low_rate": -0.96,
+        "high_rate": 2.72,
+        "score": 1.63,
         "hot": false
       }
     ]
   },
   "summary": [
-    "급락장 · 코스피 -3.51%, 코스닥 -3.64%",
-    "코스피 879종목 중 상승 140 · 하락 709",
-    "수급: 외국인 -541억 · 기관 +868억 · 개인 -326억 → 기관 매수 주도"
+    "급락장 · 코스피 -3.47%, 코스닥 -3.25%",
+    "코스피 888종목 중 상승 151 · 하락 706",
+    "수급: 외국인 -841억 · 기관 +1,178억 · 개인 -335억 → 기관 매수 주도"
   ]
 }
