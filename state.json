@@ -44,57 +44,8 @@
       "last_order_date": "2026-11-20T09:40+09:00"
     }
   },
-  "trades": [
-    {
-      "code": "035720",
-      "name": "카카오",
-      "date": "2026-11-17T12:10+09:00",
-      "side": "sell",
-      "qty": 102,
-      "price": 32098.0392,
-      "pnl": -45550,
-      "days": null,
-      "reason": "청산 (출금 일정)",
-      "estimated": false,
-      "order_no": "0000025188"
-    }
-  ],
+  "trades": [],
   "orders": {
-    "20261117:0000025188": {
-      "order_no": "0000025188",
-      "branch": "00950",
-      "side": "sell",
-      "code": "035720",
-      "name": "카카오",
-      "ordered_qty": 102,
-      "limit_price": 0.0,
-      "filled_qty": 102,
-      "filled_amount": 3274000.0,
-      "remaining_qty": 0,
-      "created": "2026-11-17T12:00+09:00",
-      "reason": "청산 (출금 일정)",
-      "unit_cost": 32544.607,
-      "days": null,
-      "order_rate": -1.52,
-      "status": "filled",
-      "last_seen": "2026-11-20T10:00+09:00"
-    },
-    "20261117:recovered-035720": {
-      "order_no": "recovered-035720",
-      "branch": "",
-      "side": "buy",
-      "code": "035720",
-      "name": "카카오",
-      "ordered_qty": 98,
-      "limit_price": 32544.607,
-      "filled_qty": 98,
-      "filled_amount": 3189371,
-      "remaining_qty": 0,
-      "created": "2026-11-17T12:00+09:00",
-      "reason": "기록 복구 (체결 기록이 저장되지 않았던 매수)",
-      "status": "filled",
-      "last_seen": "2026-11-17T12:00+09:00"
-    },
     "20261120:0000009043": {
       "order_no": "0000009043",
       "branch": "00950",
@@ -248,10 +199,6 @@
       "last_seen": null
     }
   },
-  "exit_sells": {
-    "035720": "2026-11-17"
-  },
-  "exit_notified": "2026-11-17",
   "watch": {
     "028050": {
       "price": 60800,
