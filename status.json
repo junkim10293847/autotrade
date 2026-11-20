@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-20T09:20+09:00",
+  "updated": "2026-11-20T09:30+09:00",
   "mode": "demo",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-20T09:20:16+09:00",
+    "checked": "2026-11-20T09:30:06+09:00",
     "mode": "demo"
   },
   "positions": [],
@@ -16,10 +16,10 @@
     "rate": 0,
     "cash": 10315520,
     "assets": 10315520,
-    "limit": 2000000,
+    "limit": 10000000,
     "invested": 0,
     "reserved": 0,
-    "remaining": 2000000
+    "remaining": 10000000
   },
   "history": [
     {
@@ -36,7 +36,7 @@
   ],
   "watch": {},
   "trail": {
-    "mode": "trail",
+    "mode": "limit",
     "pct": 2.0,
     "peaks": {}
   },
@@ -65,7 +65,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-17T12:00+09:00",
-      "last_seen": "2026-11-20T09:20+09:00"
+      "last_seen": "2026-11-20T09:29+09:00"
     },
     {
       "order_no": "recovered-035720",

@@ -1,79 +1,79 @@
 {
-  "updated": "2026-11-20T09:20+09:00",
+  "updated": "2026-11-20T09:30+09:00",
   "date": "2026-11-20",
   "src": "real",
   "kospi": {
-    "now": 4959.62,
-    "chg": -178.27,
-    "rate": -3.47,
+    "now": 4949.28,
+    "chg": -188.61,
+    "rate": -3.67,
     "open": 4928.51,
-    "high": 4962.55,
+    "high": 4969.43,
     "low": 4927.5,
     "low_rate": -4.09,
-    "high_rate": -3.41,
-    "up": 151,
-    "down": 706,
-    "flat": 31,
+    "high_rate": -3.28,
+    "up": 166,
+    "down": 694,
+    "flat": 29,
     "limit_up": 0,
     "limit_down": 0,
-    "amount_eok": 13305,
+    "amount_eok": 16781,
     "prev_amount_eok": 134170,
     "year_high": 9385.59,
-    "from_year_high": 47.16
+    "from_year_high": 47.27
   },
   "kosdaq": {
-    "now": 662.52,
-    "chg": -22.29,
-    "rate": -3.25,
+    "now": 660.06,
+    "chg": -24.75,
+    "rate": -3.61,
     "open": 660.98,
-    "high": 662.52,
+    "high": 665.15,
     "low": 657.38,
     "low_rate": -4.01,
-    "high_rate": -3.25,
-    "up": 234,
-    "down": 1406,
-    "flat": 74,
+    "high_rate": -2.87,
+    "up": 265,
+    "down": 1403,
+    "flat": 56,
     "limit_up": 2,
     "limit_down": 1,
-    "amount_eok": 7767,
+    "amount_eok": 10013,
     "prev_amount_eok": 47950,
     "year_high": 1229.42,
-    "from_year_high": 46.11
+    "from_year_high": 46.31
   },
   "flows": {
     "kospi": {
-      "foreign": -841,
-      "inst": 1178,
-      "person": -335
+      "foreign": -966,
+      "inst": 1301,
+      "person": -332
     },
     "kosdaq": null
   },
   "quotes": {},
   "news": [
     {
-      "time": "09:20",
-      "title": "★ 코스닥 외국인 매매 종목",
-      "src": "한국투자증권"
+      "time": "09:29",
+      "title": "[포토] 4% 하락 출발한 코스피",
+      "src": "아시아 경제"
     },
     {
-      "time": "09:19",
-      "title": "★ 거래소 외국인 매매 종목",
-      "src": "한국투자증권"
+      "time": "09:29",
+      "title": "[포토] 코스피 장초반 3~4%대 급락",
+      "src": "아시아 경제"
     },
     {
-      "time": "09:19",
-      "title": "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
-      "src": "서울경제"
+      "time": "09:28",
+      "title": "[포토] 장중 3~4%대 급락 출발한 코스피",
+      "src": "아시아 경제"
     },
     {
-      "time": "09:18",
-      "title": "삼성전자, 전영현·노태문 겸직 해제…반도체서 사장 3명 승진",
-      "src": "한국경제신문"
+      "time": "09:28",
+      "title": "앤트로픽 상장 여파에 유동성 이탈…코스피 4% 급락 출발(상보)",
+      "src": "연합뉴스"
     },
     {
-      "time": "09:17",
-      "title": "하나에어로, 코스닥 데뷔 첫 날 84%대 강세",
-      "src": "머니투데이"
+      "time": "09:27",
+      "title": "[포토] 코스피 하락 어디까지",
+      "src": "아시아 경제"
     }
   ],
   "intraday": [
@@ -91,6 +91,11 @@
       "t": "09:20",
       "kospi": -3.47,
       "kosdaq": -3.25
+    },
+    {
+      "t": "09:30",
+      "kospi": -3.67,
+      "kosdaq": -3.61
     }
   ],
   "trails": {},
@@ -167,81 +172,81 @@
     },
     {
       "date": "2026-11-20",
-      "kospi": 4959.62,
-      "kospi_rate": -3.47,
-      "kosdaq": 662.52,
-      "kosdaq_rate": -3.25
+      "kospi": 4949.28,
+      "kospi_rate": -3.67,
+      "kosdaq": 660.06,
+      "kosdaq_rate": -3.61
     }
   ],
   "strong": {
     "checked": 106,
-    "beat": 82,
+    "beat": 80,
     "top": [
       {
         "code": "180640",
         "name": "한진칼",
-        "now": 230000.0,
-        "rate": 6.48,
-        "rel": 9.95,
-        "vol_ratio": 34,
+        "now": 233000.0,
+        "rate": 7.87,
+        "rel": 11.54,
+        "vol_ratio": 46,
         "low_rate": 0.69,
-        "high_rate": 7.18,
-        "score": 6.86,
+        "high_rate": 8.56,
+        "score": 9.33,
         "hot": false
       },
       {
-        "code": "069960",
-        "name": "현대백화점",
-        "now": 100100.0,
-        "rate": 2.56,
-        "rel": 6.03,
-        "vol_ratio": 4,
-        "low_rate": -1.02,
-        "high_rate": 2.87,
-        "score": 2.03,
-        "hot": false
-      },
-      {
-        "code": "035250",
-        "name": "강원랜드",
-        "now": 14490.0,
-        "rate": 2.55,
-        "rel": 6.02,
-        "vol_ratio": 8,
-        "low_rate": 0.64,
-        "high_rate": 2.97,
-        "score": 2.02,
+        "code": "086280",
+        "name": "현대글로비스",
+        "now": 208000.0,
+        "rate": 2.21,
+        "rel": 5.88,
+        "vol_ratio": 38,
+        "low_rate": -2.51,
+        "high_rate": 2.7,
+        "score": 3.08,
         "hot": false
       },
       {
         "code": "015760",
         "name": "한국전력",
-        "now": 25800.0,
-        "rate": 2.18,
-        "rel": 5.65,
-        "vol_ratio": 25,
+        "now": 25900.0,
+        "rate": 2.57,
+        "rel": 6.24,
+        "vol_ratio": 30,
         "low_rate": -2.18,
         "high_rate": 2.77,
-        "score": 1.65,
+        "score": 2.79,
         "hot": false
       },
       {
         "code": "138040",
         "name": "메리츠금융지주",
-        "now": 127900.0,
-        "rate": 2.16,
-        "rel": 5.63,
-        "vol_ratio": 8,
+        "now": 128600.0,
+        "rate": 2.72,
+        "rel": 6.39,
+        "vol_ratio": 14,
         "low_rate": -0.96,
-        "high_rate": 2.72,
-        "score": 1.63,
+        "high_rate": 3.12,
+        "score": 2.39,
+        "hot": false
+      },
+      {
+        "code": "035250",
+        "name": "강원랜드",
+        "now": 14470.0,
+        "rate": 2.41,
+        "rel": 6.08,
+        "vol_ratio": 9,
+        "low_rate": 0.64,
+        "high_rate": 2.97,
+        "score": 2.08,
         "hot": false
       }
     ]
   },
   "summary": [
-    "급락장 · 코스피 -3.47%, 코스닥 -3.25%",
-    "코스피 888종목 중 상승 151 · 하락 706",
-    "수급: 외국인 -841억 · 기관 +1,178억 · 개인 -335억 → 기관 매수 주도"
+    "급락장 · 코스피 -3.67%, 코스닥 -3.61%",
+    "코스피 889종목 중 상승 166 · 하락 694",
+    "수급: 외국인 -966억 · 기관 +1,301억 · 개인 -332억 → 기관 매수 주도"
   ]
 }
