@@ -90,7 +90,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:29+09:00"
+      "last_seen": "2026-11-23T09:39+09:00"
     },
     "20261120:0000009046": {
       "order_no": "0000009046",
@@ -109,7 +109,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:29+09:00"
+      "last_seen": "2026-11-23T09:39+09:00"
     },
     "20261120:0000009049": {
       "order_no": "0000009049",
@@ -128,7 +128,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:29+09:00"
+      "last_seen": "2026-11-23T09:39+09:00"
     },
     "20261120:0000009056": {
       "order_no": "0000009056",
@@ -147,7 +147,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:29+09:00"
+      "last_seen": "2026-11-23T09:39+09:00"
     },
     "20261120:0000009834": {
       "order_no": "0000009834",
@@ -204,7 +204,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:29+09:00"
+      "last_seen": "2026-11-23T09:39+09:00"
     },
     "20261120:0000010868": {
       "order_no": "0000010868",
@@ -280,7 +280,7 @@
       "days": 3,
       "order_rate": -3.71,
       "status": "filled",
-      "last_seen": "2026-11-23T09:29+09:00"
+      "last_seen": "2026-11-23T09:39+09:00"
     },
     "20261123:0000005613": {
       "order_no": "0000005613",
@@ -299,28 +299,47 @@
       "days": 3,
       "order_rate": -3.39,
       "status": "filled",
-      "last_seen": "2026-11-23T09:29+09:00"
+      "last_seen": "2026-11-23T09:39+09:00"
+    },
+    "20261123:0000010862": {
+      "order_no": "0000010862",
+      "branch": "00950",
+      "side": "sell",
+      "code": "028050",
+      "name": "삼성E&A",
+      "ordered_qty": 40,
+      "limit_price": 0.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 40,
+      "created": "2026-11-23T09:40+09:00",
+      "reason": "손절 -10.4%",
+      "unit_cost": 60800.0,
+      "days": 3,
+      "order_rate": -10.36,
+      "status": "accepted",
+      "last_seen": null
     }
   },
   "watch": {
     "028050": {
       "price": 60800,
-      "checked": "2026-11-23T09:30+09:00",
+      "checked": "2026-11-23T09:40+09:00",
       "state": "done"
     },
     "326030": {
       "price": 86100,
-      "checked": "2026-11-23T09:30+09:00",
+      "checked": "2026-11-23T09:40+09:00",
       "state": "done"
     },
     "271560": {
-      "price": 116700,
-      "checked": "2026-11-23T09:30+09:00",
+      "price": 116400,
+      "checked": "2026-11-23T09:40+09:00",
       "state": "done"
     },
     "032640": {
-      "price": 14660,
-      "checked": "2026-11-23T09:30+09:00",
+      "price": 14560,
+      "checked": "2026-11-23T09:40+09:00",
       "state": "done"
     }
   },
