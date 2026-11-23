@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-23T09:40+09:00",
+  "updated": "2026-11-23T09:50+09:00",
   "mode": "demo",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-23T09:40:04+09:00",
+    "checked": "2026-11-23T09:50:11+09:00",
     "mode": "demo"
   },
   "positions": [
@@ -14,29 +14,40 @@
       "name": "SK바이오팜",
       "qty": 28,
       "avg": 86185.714,
-      "now": 83900.0,
-      "rate": -2.65,
+      "now": 83700.0,
+      "rate": -2.88,
       "days": 3,
       "cost": 2413200,
-      "value": 2349200,
-      "pnl": -64000,
+      "value": 2343600,
+      "pnl": -69600,
       "tracked": true,
       "buy_date": "2026-11-20"
     }
   ],
   "total": {
     "cost": 2413200,
-    "value": 2349200,
-    "pnl": -64000,
-    "rate": -2.65,
+    "value": 2343600,
+    "pnl": -69600,
+    "rate": -2.88,
     "cash": 10315520,
-    "assets": 9789438,
+    "assets": 9783838,
     "limit": 10000000,
     "invested": 2413200,
     "reserved": 0,
     "remaining": 7586800
   },
   "history": [
+    {
+      "code": "028050",
+      "name": "삼성E&A",
+      "sell_date": "2026-11-23",
+      "buy_date": "2026-11-20",
+      "days": 3,
+      "qty": 40,
+      "price": 54407.5,
+      "pnl": -255700,
+      "reason": "손절 -10.4%"
+    },
     {
       "code": "271560",
       "name": "오리온",
@@ -62,23 +73,23 @@
   ],
   "watch": {
     "028050": {
-      "price": 60800,
-      "checked": "2026-11-23T09:40+09:00",
+      "price": 54500,
+      "checked": "2026-11-23T09:50+09:00",
       "state": "done"
     },
     "326030": {
       "price": 86100,
-      "checked": "2026-11-23T09:40+09:00",
+      "checked": "2026-11-23T09:50+09:00",
       "state": "done"
     },
     "271560": {
-      "price": 116400,
-      "checked": "2026-11-23T09:40+09:00",
+      "price": 117300,
+      "checked": "2026-11-23T09:50+09:00",
       "state": "done"
     },
     "032640": {
-      "price": 14560,
-      "checked": "2026-11-23T09:40+09:00",
+      "price": 14750,
+      "checked": "2026-11-23T09:50+09:00",
       "state": "done"
     }
   },
@@ -88,11 +99,11 @@
     "peaks": {}
   },
   "record": {
-    "trades": 2,
+    "trades": 3,
     "wins": 0,
     "win_rate": 0.0,
-    "realized_year": -189720,
-    "realized_total": -189720,
+    "realized_year": -445420,
+    "realized_total": -445420,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -102,17 +113,17 @@
       "code": "028050",
       "name": "삼성E&A",
       "ordered_qty": 40,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 40,
-      "status": "accepted",
+      "filled_qty": 40,
+      "filled_amount": 2176300,
+      "avg_fill_price": 54407.5,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "손절 -10.4%",
       "balance_qty": 0,
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-23T09:40+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-23T09:50+09:00"
     },
     {
       "order_no": "0000005600",
@@ -130,7 +141,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-23T09:10+09:00",
-      "last_seen": "2026-11-23T09:39+09:00"
+      "last_seen": "2026-11-23T09:50+09:00"
     },
     {
       "order_no": "0000005613",
@@ -148,7 +159,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-23T09:10+09:00",
-      "last_seen": "2026-11-23T09:39+09:00"
+      "last_seen": "2026-11-23T09:50+09:00"
     },
     {
       "order_no": "0000001444",
@@ -256,7 +267,7 @@
       "balance_avg": 0.0,
       "limit_price": 15310.0,
       "created": "2026-11-20T09:40+09:00",
-      "last_seen": "2026-11-23T09:39+09:00"
+      "last_seen": "2026-11-23T09:50+09:00"
     },
     {
       "order_no": "0000009043",
@@ -274,7 +285,7 @@
       "balance_avg": 0.0,
       "limit_price": 61300.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:39+09:00"
+      "last_seen": "2026-11-23T09:50+09:00"
     },
     {
       "order_no": "0000009046",
@@ -292,7 +303,7 @@
       "balance_avg": 86185.714,
       "limit_price": 86900.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:39+09:00"
+      "last_seen": "2026-11-23T09:50+09:00"
     },
     {
       "order_no": "0000009049",
@@ -310,7 +321,7 @@
       "balance_avg": 0.0,
       "limit_price": 120700.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:39+09:00"
+      "last_seen": "2026-11-23T09:50+09:00"
     },
     {
       "order_no": "0000009056",
@@ -328,7 +339,7 @@
       "balance_avg": 0.0,
       "limit_price": 15310.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:39+09:00"
+      "last_seen": "2026-11-23T09:50+09:00"
     }
   ]
 }
