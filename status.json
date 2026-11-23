@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-23T15:10+09:00",
+  "updated": "2026-11-23T15:19+09:00",
   "mode": "demo",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-23T15:10:30+09:00",
+    "checked": "2026-11-23T15:19:59+09:00",
     "mode": "demo"
   },
   "positions": [
@@ -14,23 +14,23 @@
       "name": "SK바이오팜",
       "qty": 28,
       "avg": 86185.714,
-      "now": 81400.0,
-      "rate": -5.55,
+      "now": 80900.0,
+      "rate": -6.13,
       "days": 3,
       "cost": 2413200,
-      "value": 2279200,
-      "pnl": -134000,
+      "value": 2265200,
+      "pnl": -148000,
       "tracked": true,
       "buy_date": "2026-11-20"
     }
   ],
   "total": {
     "cost": 2413200,
-    "value": 2279200,
-    "pnl": -134000,
-    "rate": -5.55,
+    "value": 2265200,
+    "pnl": -148000,
+    "rate": -6.13,
     "cash": 10315520,
-    "assets": 9719438,
+    "assets": 9705438,
     "limit": 10000000,
     "invested": 2413200,
     "reserved": 0,
