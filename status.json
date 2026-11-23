@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-23T09:10+09:00",
+  "updated": "2026-11-23T09:20+09:00",
   "mode": "demo",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-23T09:10:13+09:00",
+    "checked": "2026-11-23T09:20:08+09:00",
     "mode": "demo"
   },
   "positions": [
@@ -14,40 +14,12 @@
       "name": "삼성E&A",
       "qty": 40,
       "avg": 60800.0,
-      "now": 57500.0,
-      "rate": -5.43,
+      "now": 56700.0,
+      "rate": -6.74,
       "days": 3,
       "cost": 2432000,
-      "value": 2300000,
-      "pnl": -132000,
-      "tracked": true,
-      "buy_date": "2026-11-20"
-    },
-    {
-      "code": "032640",
-      "name": "LG유플러스",
-      "qty": 4,
-      "avg": 15173.701,
-      "now": 14620.0,
-      "rate": -3.65,
-      "days": 3,
-      "cost": 60695,
-      "value": 58480,
-      "pnl": -2215,
-      "tracked": true,
-      "buy_date": "2026-11-20"
-    },
-    {
-      "code": "271560",
-      "name": "오리온",
-      "qty": 20,
-      "avg": 120175.0,
-      "now": 115700.0,
-      "rate": -3.72,
-      "days": 3,
-      "cost": 2403500,
-      "value": 2314000,
-      "pnl": -89500,
+      "value": 2268000,
+      "pnl": -164000,
       "tracked": true,
       "buy_date": "2026-11-20"
     },
@@ -56,48 +28,71 @@
       "name": "SK바이오팜",
       "qty": 28,
       "avg": 86185.714,
-      "now": 83800.0,
-      "rate": -2.77,
+      "now": 83700.0,
+      "rate": -2.88,
       "days": 3,
       "cost": 2413200,
-      "value": 2346400,
-      "pnl": -66800,
+      "value": 2343600,
+      "pnl": -69600,
       "tracked": true,
       "buy_date": "2026-11-20"
     }
   ],
   "total": {
-    "cost": 7309395,
-    "value": 7018880,
-    "pnl": -290515,
-    "rate": -3.97,
+    "cost": 4845200,
+    "value": 4611600,
+    "pnl": -233600,
+    "rate": -4.82,
     "cash": 10315520,
-    "assets": 9920066,
+    "assets": 9880190,
     "limit": 10000000,
-    "invested": 7309395,
+    "invested": 4845200,
     "reserved": 0,
-    "remaining": 2690605
+    "remaining": 5154800
   },
-  "history": [],
+  "history": [
+    {
+      "code": "271560",
+      "name": "오리온",
+      "sell_date": "2026-11-23",
+      "buy_date": "2026-11-20",
+      "days": 3,
+      "qty": 20,
+      "price": 115700.0,
+      "pnl": -89500,
+      "reason": "손절 -3.4%"
+    },
+    {
+      "code": "032640",
+      "name": "LG유플러스",
+      "sell_date": "2026-11-23",
+      "buy_date": "2026-11-20",
+      "days": 3,
+      "qty": 181,
+      "price": 14620.0,
+      "pnl": -100220,
+      "reason": "손절 -3.7%"
+    }
+  ],
   "watch": {
     "028050": {
       "price": 60800,
-      "checked": "2026-11-23T09:10+09:00",
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     },
     "326030": {
       "price": 86100,
-      "checked": "2026-11-23T09:10+09:00",
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     },
     "271560": {
-      "price": 120200,
-      "checked": "2026-11-23T09:10+09:00",
+      "price": 117200,
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     },
     "032640": {
-      "price": 15170,
-      "checked": "2026-11-23T09:10+09:00",
+      "price": 14740,
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     }
   },
@@ -107,11 +102,11 @@
     "peaks": {}
   },
   "record": {
-    "trades": 0,
+    "trades": 2,
     "wins": 0,
-    "win_rate": null,
-    "realized_year": 0,
-    "realized_total": 0,
+    "win_rate": 0.0,
+    "realized_year": -189720,
+    "realized_total": -189720,
     "estimated_legacy_count": 0
   },
   "orders": [
@@ -121,17 +116,17 @@
       "code": "032640",
       "name": "LG유플러스",
       "ordered_qty": 181,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 181,
-      "status": "accepted",
+      "filled_qty": 181,
+      "filled_amount": 2646220,
+      "avg_fill_price": 14620.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "손절 -3.7%",
-      "balance_qty": 4,
-      "balance_avg": 15173.701,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-23T09:10+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     {
       "order_no": "0000005613",
@@ -139,17 +134,17 @@
       "code": "271560",
       "name": "오리온",
       "ordered_qty": 20,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 20,
-      "status": "accepted",
+      "filled_qty": 20,
+      "filled_amount": 2314000,
+      "avg_fill_price": 115700.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": "손절 -3.4%",
-      "balance_qty": 20,
-      "balance_avg": 120175.0,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-23T09:10+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     {
       "order_no": "0000001444",
@@ -163,8 +158,8 @@
       "remaining_qty": 181,
       "status": "canceled",
       "reason": "익절 예약 +10% (16,700원)",
-      "balance_qty": 4,
-      "balance_avg": 15173.701,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 16700.0,
       "created": "2026-11-23T09:00+09:00",
       "last_seen": null
@@ -181,8 +176,8 @@
       "remaining_qty": 20,
       "status": "canceled",
       "reason": "익절 예약 +10% (132,200원)",
-      "balance_qty": 20,
-      "balance_avg": 120175.0,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 132200.0,
       "created": "2026-11-23T09:00+09:00",
       "last_seen": null
@@ -199,8 +194,8 @@
       "remaining_qty": 18,
       "status": "accepted",
       "reason": "익절 예약 +10% (16,700원)",
-      "balance_qty": 4,
-      "balance_avg": 15173.701,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 16700.0,
       "created": "2026-11-20T09:50+09:00",
       "last_seen": null
@@ -217,8 +212,8 @@
       "remaining_qty": 163,
       "status": "accepted",
       "reason": "익절 예약 +10% (16,690원)",
-      "balance_qty": 4,
-      "balance_avg": 15173.701,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 16690.0,
       "created": "2026-11-20T09:40+09:00",
       "last_seen": null
@@ -235,8 +230,8 @@
       "remaining_qty": 20,
       "status": "accepted",
       "reason": "익절 예약 +10% (132,200원)",
-      "balance_qty": 20,
-      "balance_avg": 120175.0,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 132200.0,
       "created": "2026-11-20T09:40+09:00",
       "last_seen": null
@@ -253,11 +248,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "잔돈 채우기",
-      "balance_qty": 4,
-      "balance_avg": 15173.701,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 15310.0,
       "created": "2026-11-20T09:40+09:00",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     {
       "order_no": "0000009043",
@@ -275,7 +270,7 @@
       "balance_avg": 60800.0,
       "limit_price": 61300.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     {
       "order_no": "0000009046",
@@ -293,7 +288,7 @@
       "balance_avg": 86185.714,
       "limit_price": 86900.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     {
       "order_no": "0000009049",
@@ -307,11 +302,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 20,
-      "balance_avg": 120175.0,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 120700.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     {
       "order_no": "0000009056",
@@ -325,11 +320,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 4,
-      "balance_avg": 15173.701,
+      "balance_qty": 0,
+      "balance_avg": 0.0,
       "limit_price": 15310.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     }
   ]
 }

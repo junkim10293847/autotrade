@@ -44,7 +44,34 @@
       "last_order_date": "2026-11-20T09:40+09:00"
     }
   },
-  "trades": [],
+  "trades": [
+    {
+      "code": "032640",
+      "name": "LG유플러스",
+      "date": "2026-11-23T09:19+09:00",
+      "side": "sell",
+      "qty": 181,
+      "price": 14620.0,
+      "pnl": -100220,
+      "days": 3,
+      "reason": "손절 -3.7%",
+      "estimated": false,
+      "order_no": "0000005600"
+    },
+    {
+      "code": "271560",
+      "name": "오리온",
+      "date": "2026-11-23T09:19+09:00",
+      "side": "sell",
+      "qty": 20,
+      "price": 115700.0,
+      "pnl": -89500,
+      "days": 3,
+      "reason": "손절 -3.4%",
+      "estimated": false,
+      "order_no": "0000005613"
+    }
+  ],
   "orders": {
     "20261120:0000009043": {
       "order_no": "0000009043",
@@ -63,7 +90,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     "20261120:0000009046": {
       "order_no": "0000009046",
@@ -82,7 +109,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     "20261120:0000009049": {
       "order_no": "0000009049",
@@ -101,7 +128,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     "20261120:0000009056": {
       "order_no": "0000009056",
@@ -120,7 +147,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     "20261120:0000009834": {
       "order_no": "0000009834",
@@ -177,7 +204,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-23T09:10+09:00"
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     "20261120:0000010868": {
       "order_no": "0000010868",
@@ -244,16 +271,16 @@
       "name": "LG유플러스",
       "ordered_qty": 181,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 181,
+      "filled_qty": 181,
+      "filled_amount": 2646220.0,
+      "remaining_qty": 0,
       "created": "2026-11-23T09:10+09:00",
       "reason": "손절 -3.7%",
       "unit_cost": 15173.701,
       "days": 3,
       "order_rate": -3.71,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-23T09:19+09:00"
     },
     "20261123:0000005613": {
       "order_no": "0000005613",
@@ -263,37 +290,37 @@
       "name": "오리온",
       "ordered_qty": 20,
       "limit_price": 0.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 20,
+      "filled_qty": 20,
+      "filled_amount": 2314000.0,
+      "remaining_qty": 0,
       "created": "2026-11-23T09:10+09:00",
       "reason": "손절 -3.4%",
       "unit_cost": 120175.0,
       "days": 3,
       "order_rate": -3.39,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-23T09:19+09:00"
     }
   },
   "watch": {
     "028050": {
       "price": 60800,
-      "checked": "2026-11-23T09:10+09:00",
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     },
     "326030": {
       "price": 86100,
-      "checked": "2026-11-23T09:10+09:00",
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     },
     "271560": {
-      "price": 120200,
-      "checked": "2026-11-23T09:10+09:00",
+      "price": 117200,
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     },
     "032640": {
-      "price": 15170,
-      "checked": "2026-11-23T09:10+09:00",
+      "price": 14740,
+      "checked": "2026-11-23T09:20+09:00",
       "state": "done"
     }
   },
