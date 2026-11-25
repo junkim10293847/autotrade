@@ -13,7 +13,7 @@ import math
 import os
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import requests
@@ -651,6 +651,7 @@ def run(plan, state, kis):
             time.sleep(0.3)
 
     manual_buys(plan, state, kis, cap)
+    auto_pilot(plan, state, kis, cap)
 
     # 청산일: 정한 날 정한 시각 이후에는 봇이 산 종목을 모두 시장가로 팔고, 그날은 새로 사지 않는다
     if exit_day(plan):
@@ -856,6 +857,38 @@ def top_up(plan, state, kis, held_now, available, cap, plan_key):
             meta["requested_krw"] = float(qty * lim)
             meta["last_order_date"] = now().isoformat(timespec="minutes")
             available -= qty * lim
+
+
+def auto_pilot(plan, state, kis, cap):
+    """자동 운용: 추천 계획을 자동으로 컨펌하고, 놀고 있는 돈이 있으면 하루 한 번 새 추천을 요청한다.
+    모의는 기본 켜짐, 실전은 앱에서 '자동 운용'을 켠 경우만."""
+    if not plan.get("auto_confirm", plan.get("mode", "demo") == "demo") or plan.get("paused") or exit_day(plan):
+        return
+    today = now().date().isoformat()
+    held = kis.holdings()
+    pr = plan.get("proposal")
+    if pr and pr.get("stocks"):
+        # 보유 중인 종목만 남기고, 아직 못 산 예전 계획 종목은 정리한 뒤 새 추천으로 교체
+        keep = [s for s in plan.get("stocks", []) if s["code"] in held]
+        dropped = [s.get("name", s["code"]) for s in plan.get("stocks", []) if s["code"] not in held]
+        have = {s["code"] for s in keep}
+        new = [s for s in pr["stocks"] if s["code"] not in have]
+        plan["stocks"] = keep + new
+        plan["replacement"] = {"pending": False, "sell_codes": [], "mode": "keep"}
+        plan["confirmed_at"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        plan["proposal"] = None
+        save(PLAN, plan)
+        names = ", ".join(s["name"] for s in new) or "추가 종목 없음"
+        log(f"**자동 컨펌** {names}" + (f" · 못 산 예전 계획 정리: {', '.join(dropped)}" if dropped else ""))
+        notify("자동 컨펌 · 매수 시작", names)
+        return
+    invested = sum(h["avg"] * h["qty"] for h in held.values())
+    waiting = [s for s in plan.get("stocks", []) if s["code"] not in held]
+    if cap - invested >= cap * 0.25 and not waiting and state.get("auto_plan_day") != today \
+            and now().strftime("%H:%M") < "14:30" and not state.get("need_plan"):
+        state["auto_plan_day"] = today
+        state["need_plan"] = {"since": now().isoformat(timespec="minutes"), "sold": [], "note": "자동 운용 · 놀고 있는 돈"}
+        log(f"자동 운용 · 투자 가능액 {won(cap - invested)} → 새 추천 요청")
 
 
 def manual_buys(plan, state, kis, cap):

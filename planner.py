@@ -274,7 +274,10 @@ def main():
     names = ", ".join(s["name"] for s in prop["stocks"])
     bot.log(f"새 매수 계획 제안: {names}")
     if auto:
-        bot.notify(("실전 시작 · " if need.get("note") else "매도 완료 · ") + "새 매수 계획이 올라왔습니다", f"{names} · 앱의 매수 예정·검토에서 컨펌해 주세요")
+        if plan.get("auto_confirm", plan.get("mode", "demo") == "demo"):
+            bot.notify("새 추천 · 자동 매수 예정", f"{names} · 10분 안에 자동 컨펌 후 매수합니다")
+        else:
+            bot.notify(("실전 시작 · " if need.get("note") else "매도 완료 · ") + "새 매수 계획이 올라왔습니다", f"{names} · 앱의 매수 예정·검토에서 컨펌해 주세요")
     else:
         bot.notify("새 매수 계획 — 컨펌해 주세요", f"{names} · 앱에서 확인")
 
