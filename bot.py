@@ -652,6 +652,7 @@ def run(plan, state, kis):
 
     manual_buys(plan, state, kis, cap)
     auto_pilot(plan, state, kis, cap)
+    weekly_summary(plan, state, kis)
 
     # 청산일: 정한 날 정한 시각 이후에는 봇이 산 종목을 모두 시장가로 팔고, 그날은 새로 사지 않는다
     if exit_day(plan):
@@ -884,11 +885,34 @@ def auto_pilot(plan, state, kis, cap):
         return
     invested = sum(h["avg"] * h["qty"] for h in held.values())
     waiting = [s for s in plan.get("stocks", []) if s["code"] not in held]
-    if cap - invested >= cap * 0.25 and not waiting and state.get("auto_plan_day") != today \
+    if cap - invested >= cap * float(plan.get("auto_idle_ratio", 0.15)) and not waiting and state.get("auto_plan_day") != today \
             and now().strftime("%H:%M") < "14:30" and not state.get("need_plan"):
         state["auto_plan_day"] = today
         state["need_plan"] = {"since": now().isoformat(timespec="minutes"), "sold": [], "note": "자동 운용 · 놀고 있는 돈"}
         log(f"자동 운용 · 투자 가능액 {won(cap - invested)} → 새 추천 요청")
+
+
+def weekly_summary(plan, state, kis):
+    """매주 금요일 15:00 이후 한 번: 이번 주 실현손익·매매 수·현재 평가손익을 알림으로 보낸다"""
+    n = now()
+    if n.weekday() != 4 or n.strftime("%H:%M") < "15:00":
+        return
+    wk = n.strftime("%G-W%V")
+    if state.get("weekly_sent") == wk:
+        return
+    state["weekly_sent"] = wk
+    monday = (n.date() - timedelta(days=n.weekday())).isoformat()
+    sells = [t for t in state.get("trades", []) if t.get("side") == "sell" and str(t.get("date", ""))[:10] >= monday]
+    realized = sum(float(t.get("pnl", 0)) for t in sells)
+    wins = sum(1 for t in sells if float(t.get("pnl", 0)) > 0)
+    held = kis.holdings()
+    cost = sum(h["avg"] * h["qty"] for h in held.values())
+    unreal = sum((h["now"] - h["avg"]) * h["qty"] for h in held.values())
+    mode = "실전" if plan.get("mode") == "real" else "모의"
+    body = (f"실현 {won(realized)} ({len(sells)}건, 수익 {wins}건) · 보유 {len(held)}종목 평가 {won(unreal)}"
+            + (f" ({unreal / cost * 100:+.1f}%)" if cost else ""))
+    log(f"주간 요약({mode}) · {body}")
+    notify(f"이번 주 자동 운용 ({mode})", body)
 
 
 def manual_buys(plan, state, kis, cap):
