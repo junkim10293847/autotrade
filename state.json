@@ -9,9 +9,9 @@
     },
     "028050": {
       "date": "2026-11-20T09:32+09:00",
-      "qty": 40,
-      "krw": 2432000.0,
-      "pending": true,
+      "qty": 65,
+      "krw": 3924500.0,
+      "pending": false,
       "requested_qty": 25,
       "requested_krw": 1512500.0,
       "last_order_date": "2026-11-25T14:20+09:00"
@@ -27,9 +27,9 @@
     },
     "271560": {
       "date": "2026-11-20T09:32+09:00",
-      "qty": 20,
-      "krw": 2403500.0,
-      "pending": true,
+      "qty": 32,
+      "krw": 3830500.0,
+      "pending": false,
       "requested_qty": 12,
       "requested_krw": 1441200.0,
       "last_order_date": "2026-11-25T14:20+09:00"
@@ -45,18 +45,18 @@
     },
     "128940": {
       "date": "2026-11-25T14:20+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 3,
+      "krw": 1404000.0,
+      "pending": false,
       "requested_qty": 3,
       "requested_krw": 1425000.0,
       "last_order_date": "2026-11-25T14:20+09:00"
     },
     "069960": {
       "date": "2026-11-25T14:20+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 16,
+      "krw": 1455400.0,
+      "pending": false,
       "requested_qty": 16,
       "requested_krw": 1473600.0,
       "last_order_date": "2026-11-25T14:20+09:00"
@@ -121,7 +121,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261120:0000009046": {
       "order_no": "0000009046",
@@ -140,7 +140,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261120:0000009049": {
       "order_no": "0000009049",
@@ -159,7 +159,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261120:0000009056": {
       "order_no": "0000009056",
@@ -178,7 +178,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261120:0000009834": {
       "order_no": "0000009834",
@@ -235,7 +235,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261120:0000010868": {
       "order_no": "0000010868",
@@ -311,7 +311,7 @@
       "days": 3,
       "order_rate": -3.71,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261123:0000005613": {
       "order_no": "0000005613",
@@ -330,7 +330,7 @@
       "days": 3,
       "order_rate": -3.39,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261123:0000010862": {
       "order_no": "0000010862",
@@ -349,7 +349,7 @@
       "days": 3,
       "order_rate": -10.36,
       "status": "filled",
-      "last_seen": "2026-11-25T14:20+09:00"
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261125:0000026073": {
       "order_no": "0000026073",
@@ -359,16 +359,16 @@
       "name": "삼성E&A",
       "ordered_qty": 25,
       "limit_price": 60500.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 25,
+      "filled_qty": 25,
+      "filled_amount": 1492500.0,
+      "remaining_qty": 0,
       "created": "2026-11-25T14:20+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261125:0000026076": {
       "order_no": "0000026076",
@@ -378,16 +378,16 @@
       "name": "한미약품",
       "ordered_qty": 3,
       "limit_price": 475000.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 3,
+      "filled_qty": 3,
+      "filled_amount": 1404000.0,
+      "remaining_qty": 0,
       "created": "2026-11-25T14:20+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261125:0000026079": {
       "order_no": "0000026079",
@@ -397,16 +397,16 @@
       "name": "현대백화점",
       "ordered_qty": 16,
       "limit_price": 92100.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 16,
+      "filled_qty": 16,
+      "filled_amount": 1455400.0,
+      "remaining_qty": 0,
       "created": "2026-11-25T14:20+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-25T14:30+09:00"
     },
     "20261125:0000026084": {
       "order_no": "0000026084",
@@ -416,14 +416,52 @@
       "name": "오리온",
       "ordered_qty": 12,
       "limit_price": 120100.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 12,
+      "filled_qty": 12,
+      "filled_amount": 1427000.0,
+      "remaining_qty": 0,
       "created": "2026-11-25T14:20+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
+      "status": "filled",
+      "last_seen": "2026-11-25T14:30+09:00"
+    },
+    "20261125:0000026489": {
+      "order_no": "0000026489",
+      "branch": "00950",
+      "side": "sell",
+      "code": "069960",
+      "name": "현대백화점",
+      "ordered_qty": 16,
+      "limit_price": 100100.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 16,
+      "created": "2026-11-25T14:30+09:00",
+      "reason": "익절 예약 +10% (100,100원)",
+      "unit_cost": 90962.5,
+      "days": 0,
+      "order_rate": 0.37,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261125:0000026491": {
+      "order_no": "0000026491",
+      "branch": "00950",
+      "side": "sell",
+      "code": "271560",
+      "name": "오리온",
+      "ordered_qty": 12,
+      "limit_price": 130900.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 12,
+      "created": "2026-11-25T14:30+09:00",
+      "reason": "익절 예약 +10% (130,900원)",
+      "unit_cost": 118916.666,
+      "days": 5,
+      "order_rate": 0.32,
       "status": "accepted",
       "last_seen": null
     }
@@ -431,19 +469,19 @@
   "watch": {
     "028050": {
       "price": 59650,
-      "checked": "2026-11-25T14:20+09:00",
-      "state": "ordered",
+      "checked": "2026-11-25T14:30+09:00",
+      "state": "done",
       "room": 7586800
     },
     "326030": {
       "price": 89700,
-      "checked": "2026-11-25T14:20+09:00",
-      "state": "enough"
+      "checked": "2026-11-25T14:30+09:00",
+      "state": "done"
     },
     "271560": {
       "price": 118900,
-      "checked": "2026-11-25T14:20+09:00",
-      "state": "ordered",
+      "checked": "2026-11-25T14:30+09:00",
+      "state": "done",
       "room": 7586800
     },
     "032640": {
@@ -460,8 +498,8 @@
     },
     "128940": {
       "price": 467500,
-      "checked": "2026-11-25T14:20+09:00",
-      "state": "ordered",
+      "checked": "2026-11-25T14:30+09:00",
+      "state": "done",
       "room": 7586800
     },
     "302440": {
@@ -472,8 +510,8 @@
     },
     "069960": {
       "price": 90900,
-      "checked": "2026-11-25T14:20+09:00",
-      "state": "ordered",
+      "checked": "2026-11-25T14:30+09:00",
+      "state": "done",
       "room": 7586800
     }
   },
