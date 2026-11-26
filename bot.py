@@ -486,6 +486,11 @@ def run(plan, state, kis):
         write_status(plan, state, kis.holdings(), kis)
         return
 
+    # 손실 한도: 넘으면 새 매수를 멈추고 손절·익절 관리만 계속
+    if loss_guard(plan, state, kis):
+        write_status(plan, state, kis.holdings(), kis)
+        return
+
     # 아직 보유하지 않은 계획 종목은 (교체 대기·주문 걸림과 상관없이) 매번 현재가를 기록한다 → 앱에서 지정가까지 남은 차이 표시
     watch0 = state.setdefault("watch", {})
     for item in plan.get("stocks", []):
@@ -860,10 +865,32 @@ def top_up(plan, state, kis, held_now, available, cap, plan_key):
             available -= qty * lim
 
 
+def loss_guard(plan, state, kis):
+    """이 모드 시작 후 실현손익 + 평가손익이 -손실 한도 이하면 새 매수 중지 (한 번 걸리면 앱에서 한도를 바꿀 때까지 유지)"""
+    lim = float(plan.get("max_loss_krw") or 0)
+    if lim <= 0:
+        state.pop("loss_stop", None)
+        return False
+    if state.get("loss_stop") and float(state["loss_stop"].get("limit", 0)) == lim:
+        return True
+    held = kis.holdings()
+    realized = sum(float(t.get("pnl", 0)) for t in state.get("trades", []) if t.get("side") == "sell")
+    unreal = sum((h["now"] - h["avg"]) * h["qty"] for h in held.values())
+    total = realized + unreal
+    if total > -lim:
+        state.pop("loss_stop", None)
+        return False
+    state["loss_stop"] = {"at": now().isoformat(timespec="minutes"), "limit": lim, "pnl": round(total)}
+    log(f"**손실 한도 도달** 실현+평가 {won(total)} (한도 -{won(lim)}) → 새 매수 중지 · 보유 종목 손절·익절 관리는 계속")
+    notify("손실 한도 도달 · 새 매수 중지", f"누적 {won(total)} · 보유 종목은 규칙대로 관리합니다")
+    return True
+
+
 def auto_pilot(plan, state, kis, cap):
     """자동 운용: 추천 계획을 자동으로 컨펌하고, 놀고 있는 돈이 있으면 하루 한 번 새 추천을 요청한다.
     모의는 기본 켜짐, 실전은 앱에서 '자동 운용'을 켠 경우만."""
-    if not plan.get("auto_confirm", plan.get("mode", "demo") == "demo") or plan.get("paused") or exit_day(plan):
+    if not plan.get("auto_confirm", plan.get("mode", "demo") == "demo") or plan.get("paused") or exit_day(plan) \
+            or state.get("loss_stop"):
         return
     today = now().date().isoformat()
     held = kis.holdings()
@@ -1127,8 +1154,14 @@ def main():
             log("전환 전 매수 계획(" + ", ".join(s.get("name", s["code"]) for s in plan["stocks"]) + ")은 비움 · 새 계획 컨펌 후 매수")
         plan["stocks"] = []
         plan.pop("proposal", None)
-        plan.pop("exit_by", None)  # 청산일은 그 모드의 돈에 대한 약속이라 전환 때 해제
-        plan.pop("exit_time", None)
+        if mode == "real" and plan.get("real_start"):
+            # 실전 시작용으로 미리 정해 둔 설정 적용 (한도·손실 한도·청산일 등), 한 번만
+            rs = plan.pop("real_start")
+            plan.update(rs)
+            log("실전 시작 설정 적용 · " + ", ".join(f"{k}={v}" for k, v in rs.items()))
+        if str(plan.get("exit_by") or "") < now().date().isoformat():  # 지난 청산일만 해제 (앞으로의 청산일은 유지)
+            plan.pop("exit_by", None)
+            plan.pop("exit_time", None)
         plan["replacement"] = {"pending": False, "sell_codes": [], "mode": "keep"}
         save(PLAN, plan)
     state["mode"] = mode

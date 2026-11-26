@@ -449,5 +449,12 @@
   },
   "proposal": null,
   "auto_confirm": true,
-  "auto_idle_ratio": 0.15
+  "auto_idle_ratio": 0.15,
+  "real_start": {
+    "max_total_krw": 1000000,
+    "max_loss_krw": 50000,
+    "exit_by": "2026-12-04",
+    "exit_time": "14:30",
+    "auto_confirm": true
+  }
 }
