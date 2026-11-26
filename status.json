@@ -1,11 +1,11 @@
 {
-  "updated": "2026-11-26T09:20+09:00",
+  "updated": "2026-11-26T09:30+09:00",
   "mode": "demo",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-26T09:20:20+09:00",
+    "checked": "2026-11-26T09:30:27+09:00",
     "mode": "demo"
   },
   "positions": [
@@ -14,26 +14,26 @@
       "name": "삼성E&A",
       "qty": 28,
       "avg": 59614.285,
-      "now": 58900.0,
-      "rate": -1.2,
+      "now": 58800.0,
+      "rate": -1.37,
       "days": 6,
       "cost": 1669200,
-      "value": 1649200,
-      "pnl": -20000,
+      "value": 1646400,
+      "pnl": -22800,
       "tracked": true,
       "buy_date": "2026-11-20"
     },
     {
       "code": "069960",
       "name": "현대백화점",
-      "qty": 16,
-      "avg": 90962.5,
-      "now": 86700.0,
-      "rate": -4.69,
+      "qty": 19,
+      "avg": 90557.894,
+      "now": 88300.0,
+      "rate": -2.49,
       "days": 1,
-      "cost": 1455400,
-      "value": 1387200,
-      "pnl": -68200,
+      "cost": 1720600,
+      "value": 1677700,
+      "pnl": -42900,
       "tracked": true,
       "buy_date": "2026-11-25"
     },
@@ -42,26 +42,26 @@
       "name": "한미약품",
       "qty": 3,
       "avg": 468000.0,
-      "now": 467000.0,
-      "rate": -0.21,
+      "now": 464500.0,
+      "rate": -0.75,
       "days": 1,
       "cost": 1404000,
-      "value": 1401000,
-      "pnl": -3000,
+      "value": 1393500,
+      "pnl": -10500,
       "tracked": true,
       "buy_date": "2026-11-25"
     },
     {
       "code": "271560",
       "name": "오리온",
-      "qty": 13,
-      "avg": 118961.538,
-      "now": 119500.0,
-      "rate": 0.45,
+      "qty": 14,
+      "avg": 119007.142,
+      "now": 119600.0,
+      "rate": 0.5,
       "days": 6,
-      "cost": 1546500,
-      "value": 1553500,
-      "pnl": 7000,
+      "cost": 1666100,
+      "value": 1674400,
+      "pnl": 8300,
       "tracked": true,
       "buy_date": "2026-11-20"
     },
@@ -70,27 +70,27 @@
       "name": "SK바이오팜",
       "qty": 28,
       "avg": 86185.714,
-      "now": 92100.0,
-      "rate": 6.86,
+      "now": 91500.0,
+      "rate": 6.17,
       "days": 6,
       "cost": 2413200,
-      "value": 2578800,
-      "pnl": 165600,
+      "value": 2562000,
+      "pnl": 148800,
       "tracked": true,
       "buy_date": "2026-11-20"
     }
   ],
   "total": {
-    "cost": 8488300,
-    "value": 8569700,
-    "pnl": 81400,
-    "rate": 0.96,
+    "cost": 8873100,
+    "value": 8954000,
+    "pnl": 80900,
+    "rate": 0.91,
     "cash": 7440238,
-    "assets": 9934008,
+    "assets": 9933458,
     "limit": 10000000,
-    "invested": 8488300,
-    "reserved": 301600,
-    "remaining": 1210100
+    "invested": 8873100,
+    "reserved": 1477300,
+    "remaining": 0
   },
   "history": [
     {
@@ -130,56 +130,56 @@
   "watch": {
     "028050": {
       "price": 59000,
-      "checked": "2026-11-26T09:20+09:00",
-      "state": "ordered",
+      "checked": "2026-11-26T09:30+09:00",
+      "state": "done",
       "room": 7586800
     },
     "326030": {
       "price": 91800,
-      "checked": "2026-11-26T09:20+09:00",
-      "state": "enough"
+      "checked": "2026-11-26T09:30+09:00",
+      "state": "done"
     },
     "271560": {
       "price": 119600,
-      "checked": "2026-11-26T09:20+09:00",
-      "state": "ordered",
+      "checked": "2026-11-26T09:30+09:00",
+      "state": "done",
       "room": 7586800
     },
     "032640": {
-      "price": 14910,
-      "checked": "2026-11-26T09:20+09:00",
+      "price": 14870,
+      "checked": "2026-11-26T09:30+09:00",
       "state": "no_budget",
-      "room": 1506300
+      "room": 1235400
     },
     "128940": {
       "price": 466500,
-      "checked": "2026-11-26T09:20+09:00",
-      "state": "enough",
+      "checked": "2026-11-26T09:30+09:00",
+      "state": "done",
       "room": 7586800
     },
     "069960": {
-      "price": 86900,
-      "checked": "2026-11-26T09:20+09:00",
-      "state": "failed",
+      "price": 88400,
+      "checked": "2026-11-26T09:30+09:00",
+      "state": "ordered",
       "room": 7586800
     },
     "008770": {
-      "price": 38750,
-      "checked": "2026-11-26T09:20+09:00",
+      "price": 38850,
+      "checked": "2026-11-26T09:30+09:00",
       "state": "no_budget",
-      "room": 1506300
+      "room": 1235400
     },
     "259960": {
-      "price": 208500,
-      "checked": "2026-11-26T09:20+09:00",
+      "price": 208000,
+      "checked": "2026-11-26T09:30+09:00",
       "state": "no_budget",
-      "room": 1506300
+      "room": 1235400
     },
     "001040": {
-      "price": 121800,
-      "checked": "2026-11-26T09:20+09:00",
+      "price": 123500,
+      "checked": "2026-11-26T09:30+09:00",
       "state": "no_budget",
-      "room": 1506300
+      "room": 1235400
     }
   },
   "trail": {
@@ -197,10 +197,10 @@
   },
   "orders": [
     {
-      "order_no": "0000007911",
+      "order_no": "0000009647",
       "side": "buy",
-      "code": "028050",
-      "name": "삼성E&A",
+      "code": "069960",
+      "name": "현대백화점",
       "ordered_qty": 3,
       "filled_qty": 0,
       "filled_amount": 0,
@@ -208,11 +208,47 @@
       "remaining_qty": 3,
       "status": "accepted",
       "reason": null,
+      "balance_qty": 19,
+      "balance_avg": 90557.894,
+      "limit_price": 92100.0,
+      "created": "2026-11-26T09:30+09:00",
+      "last_seen": null
+    },
+    {
+      "order_no": "0000009696",
+      "side": "buy",
+      "code": "271560",
+      "name": "오리온",
+      "ordered_qty": 10,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "avg_fill_price": 0,
+      "remaining_qty": 10,
+      "status": "accepted",
+      "reason": "잔돈 채우기",
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
+      "limit_price": 120100.0,
+      "created": "2026-11-26T09:30+09:00",
+      "last_seen": null
+    },
+    {
+      "order_no": "0000007911",
+      "side": "buy",
+      "code": "028050",
+      "name": "삼성E&A",
+      "ordered_qty": 3,
+      "filled_qty": 3,
+      "filled_amount": 176700,
+      "avg_fill_price": 58900.0,
+      "remaining_qty": 0,
+      "status": "filled",
+      "reason": null,
       "balance_qty": 28,
       "balance_avg": 59614.285,
       "limit_price": 60500.0,
       "created": "2026-11-26T09:20+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000007936",
@@ -220,17 +256,17 @@
       "code": "271560",
       "name": "오리온",
       "ordered_qty": 1,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "avg_fill_price": 0,
-      "remaining_qty": 1,
-      "status": "accepted",
+      "filled_qty": 1,
+      "filled_amount": 119500,
+      "avg_fill_price": 119500.0,
+      "remaining_qty": 0,
+      "status": "filled",
       "reason": null,
-      "balance_qty": 13,
-      "balance_avg": 118961.538,
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
       "limit_price": 120100.0,
       "created": "2026-11-26T09:20+09:00",
-      "last_seen": null
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000026489",
@@ -244,8 +280,8 @@
       "remaining_qty": 16,
       "status": "canceled",
       "reason": "익절 예약 +10% (100,100원)",
-      "balance_qty": 16,
-      "balance_avg": 90962.5,
+      "balance_qty": 19,
+      "balance_avg": 90557.894,
       "limit_price": 100100.0,
       "created": "2026-11-25T14:30+09:00",
       "last_seen": null
@@ -262,8 +298,8 @@
       "remaining_qty": 12,
       "status": "canceled",
       "reason": "익절 예약 +10% (130,900원)",
-      "balance_qty": 13,
-      "balance_avg": 118961.538,
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
       "limit_price": 130900.0,
       "created": "2026-11-25T14:30+09:00",
       "last_seen": null
@@ -284,7 +320,7 @@
       "balance_avg": 59614.285,
       "limit_price": 60500.0,
       "created": "2026-11-25T14:20+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000026076",
@@ -302,7 +338,7 @@
       "balance_avg": 468000.0,
       "limit_price": 475000.0,
       "created": "2026-11-25T14:20+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000026079",
@@ -316,11 +352,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 16,
-      "balance_avg": 90962.5,
+      "balance_qty": 19,
+      "balance_avg": 90557.894,
       "limit_price": 92100.0,
       "created": "2026-11-25T14:20+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000026084",
@@ -334,11 +370,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 13,
-      "balance_avg": 118961.538,
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
       "limit_price": 120100.0,
       "created": "2026-11-25T14:20+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000010862",
@@ -356,7 +392,7 @@
       "balance_avg": 59614.285,
       "limit_price": 0.0,
       "created": "2026-11-23T09:40+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000005600",
@@ -374,7 +410,7 @@
       "balance_avg": 0.0,
       "limit_price": 0.0,
       "created": "2026-11-23T09:10+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000005613",
@@ -388,11 +424,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": "손절 -3.4%",
-      "balance_qty": 13,
-      "balance_avg": 118961.538,
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
       "limit_price": 0.0,
       "created": "2026-11-23T09:10+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000001444",
@@ -424,8 +460,8 @@
       "remaining_qty": 20,
       "status": "canceled",
       "reason": "익절 예약 +10% (132,200원)",
-      "balance_qty": 13,
-      "balance_avg": 118961.538,
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
       "limit_price": 132200.0,
       "created": "2026-11-23T09:00+09:00",
       "last_seen": null
@@ -478,8 +514,8 @@
       "remaining_qty": 20,
       "status": "accepted",
       "reason": "익절 예약 +10% (132,200원)",
-      "balance_qty": 13,
-      "balance_avg": 118961.538,
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
       "limit_price": 132200.0,
       "created": "2026-11-20T09:40+09:00",
       "last_seen": null
@@ -500,7 +536,7 @@
       "balance_avg": 0.0,
       "limit_price": 15310.0,
       "created": "2026-11-20T09:40+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000009043",
@@ -518,7 +554,7 @@
       "balance_avg": 59614.285,
       "limit_price": 61300.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000009046",
@@ -536,7 +572,7 @@
       "balance_avg": 86185.714,
       "limit_price": 86900.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000009049",
@@ -550,11 +586,11 @@
       "remaining_qty": 0,
       "status": "filled",
       "reason": null,
-      "balance_qty": 13,
-      "balance_avg": 118961.538,
+      "balance_qty": 14,
+      "balance_avg": 119007.142,
       "limit_price": 120700.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     },
     {
       "order_no": "0000009056",
@@ -572,7 +608,7 @@
       "balance_avg": 0.0,
       "limit_price": 15310.0,
       "created": "2026-11-20T09:32+09:00",
-      "last_seen": "2026-11-26T09:19+09:00"
+      "last_seen": "2026-11-26T09:30+09:00"
     }
   ]
 }
