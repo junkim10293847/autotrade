@@ -175,7 +175,13 @@ def make(plan, state, kis):
         time.sleep(0.12)  # 조회 속도 제한
     cands.sort(key=lambda x: -x["score"])
     ratio = max(0.0, min(1.0, float(plan.get("attack_ratio", 0.5))))
-    n_core, n_att = int(plan.get("core_picks", 2)), int(plan.get("attack_picks", 2))
+    cap0 = float(plan.get("max_total_krw", 2000000))
+    small = cap0 <= 1500000  # 소액(150만 원 이하)은 안정 1 + 공격 1, 2종목만
+    n_core = int(plan.get("core_picks", 1 if small else 2))
+    n_att = int(plan.get("attack_picks", 1 if small else 2))
+    # 1주 가격이 종목당 예산의 절반을 넘으면 몇 주 못 사서 빼기 (소액일수록 중요)
+    per = cap0 / max(1, n_core + n_att)
+    cands = [c for c in cands if c["close"] <= per / 2]
     core = [c for c in cands if c["tier"] != "attack"]
     att = [c for c in cands if c["tier"] == "attack"] if ratio > 0 else []
     if not att:  # 공격 후보가 없으면 안정 종목으로 채움
