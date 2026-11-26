@@ -27,9 +27,9 @@
     },
     "271560": {
       "date": "2026-11-20T09:32+09:00",
-      "qty": 33,
-      "krw": 3950000.0,
-      "pending": true,
+      "qty": 43,
+      "krw": 5144000.0,
+      "pending": false,
       "requested_qty": 10,
       "requested_krw": 1201000.0,
       "last_order_date": "2026-11-26T09:30+09:00"
@@ -54,9 +54,9 @@
     },
     "069960": {
       "date": "2026-11-25T14:20+09:00",
-      "qty": 16,
-      "krw": 1455400.0,
-      "pending": true,
+      "qty": 19,
+      "krw": 1720600.0,
+      "pending": false,
       "requested_qty": 3,
       "requested_krw": 276300.0,
       "last_order_date": "2026-11-26T09:30+09:00"
@@ -121,7 +121,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261120:0000009046": {
       "order_no": "0000009046",
@@ -140,7 +140,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261120:0000009049": {
       "order_no": "0000009049",
@@ -159,7 +159,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261120:0000009056": {
       "order_no": "0000009056",
@@ -178,7 +178,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261120:0000009834": {
       "order_no": "0000009834",
@@ -235,7 +235,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261120:0000010868": {
       "order_no": "0000010868",
@@ -311,7 +311,7 @@
       "days": 3,
       "order_rate": -3.71,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261123:0000005613": {
       "order_no": "0000005613",
@@ -330,7 +330,7 @@
       "days": 3,
       "order_rate": -3.39,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261123:0000010862": {
       "order_no": "0000010862",
@@ -349,7 +349,7 @@
       "days": 3,
       "order_rate": -10.36,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261125:0000026073": {
       "order_no": "0000026073",
@@ -368,7 +368,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261125:0000026076": {
       "order_no": "0000026076",
@@ -387,7 +387,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261125:0000026079": {
       "order_no": "0000026079",
@@ -406,7 +406,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261125:0000026084": {
       "order_no": "0000026084",
@@ -425,7 +425,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261125:0000026489": {
       "order_no": "0000026489",
@@ -482,7 +482,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261126:0000007936": {
       "order_no": "0000007936",
@@ -501,7 +501,7 @@
       "days": null,
       "order_rate": null,
       "status": "filled",
-      "last_seen": "2026-11-26T09:30+09:00"
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261126:0000009647": {
       "order_no": "0000009647",
@@ -511,16 +511,16 @@
       "name": "현대백화점",
       "ordered_qty": 3,
       "limit_price": 92100.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 3,
+      "filled_qty": 3,
+      "filled_amount": 265200.0,
+      "remaining_qty": 0,
       "created": "2026-11-26T09:30+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-26T09:40+09:00"
     },
     "20261126:0000009696": {
       "order_no": "0000009696",
@@ -530,41 +530,41 @@
       "name": "오리온",
       "ordered_qty": 10,
       "limit_price": 120100.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 10,
+      "filled_qty": 10,
+      "filled_amount": 1194000.0,
+      "remaining_qty": 0,
       "created": "2026-11-26T09:30+09:00",
       "reason": "잔돈 채우기",
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-26T09:40+09:00"
     }
   },
   "watch": {
     "028050": {
       "price": 59000,
-      "checked": "2026-11-26T09:30+09:00",
+      "checked": "2026-11-26T09:40+09:00",
       "state": "done",
       "room": 7586800
     },
     "326030": {
       "price": 91800,
-      "checked": "2026-11-26T09:30+09:00",
+      "checked": "2026-11-26T09:40+09:00",
       "state": "done"
     },
     "271560": {
       "price": 119600,
-      "checked": "2026-11-26T09:30+09:00",
+      "checked": "2026-11-26T09:40+09:00",
       "state": "done",
       "room": 7586800
     },
     "032640": {
-      "price": 14870,
-      "checked": "2026-11-26T09:30+09:00",
+      "price": 14920,
+      "checked": "2026-11-26T09:40+09:00",
       "state": "no_budget",
-      "room": 1235400
+      "room": 52500
     },
     "180640": {
       "price": 244500,
@@ -574,7 +574,7 @@
     },
     "128940": {
       "price": 466500,
-      "checked": "2026-11-26T09:30+09:00",
+      "checked": "2026-11-26T09:40+09:00",
       "state": "done",
       "room": 7586800
     },
@@ -586,27 +586,27 @@
     },
     "069960": {
       "price": 88400,
-      "checked": "2026-11-26T09:30+09:00",
-      "state": "ordered",
+      "checked": "2026-11-26T09:40+09:00",
+      "state": "done",
       "room": 7586800
     },
     "008770": {
-      "price": 38850,
-      "checked": "2026-11-26T09:30+09:00",
+      "price": 38800,
+      "checked": "2026-11-26T09:40+09:00",
       "state": "no_budget",
-      "room": 1235400
+      "room": 52500
     },
     "259960": {
-      "price": 208000,
-      "checked": "2026-11-26T09:30+09:00",
+      "price": 209000,
+      "checked": "2026-11-26T09:40+09:00",
       "state": "no_budget",
-      "room": 1235400
+      "room": 52500
     },
     "001040": {
-      "price": 123500,
-      "checked": "2026-11-26T09:30+09:00",
+      "price": 124200,
+      "checked": "2026-11-26T09:40+09:00",
       "state": "no_budget",
-      "room": 1235400
+      "room": 52500
     }
   },
   "peaks": {},
