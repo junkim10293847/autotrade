@@ -455,6 +455,9 @@
     "max_loss_krw": 100000,
     "exit_by": "2026-12-04",
     "exit_time": "14:30",
-    "auto_confirm": true
+    "auto_confirm": true,
+    "core_picks": 2,
+    "attack_picks": 1,
+    "attack_ratio": 0.3333
   }
 }
