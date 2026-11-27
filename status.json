@@ -1,84 +1,84 @@
 {
-  "updated": "2026-11-27T09:39+09:00",
+  "updated": "2026-11-27T09:40+09:00",
   "mode": "real",
   "manual_done": {},
   "api": {
     "ok": true,
     "message": "계좌 잔고 조회 정상",
-    "checked": "2026-11-27T09:39:12+09:00",
+    "checked": "2026-11-27T09:40:49+09:00",
     "mode": "real"
   },
   "positions": [
     {
       "code": "028050",
       "name": "삼성E&A",
-      "qty": 11,
-      "avg": 57600.0,
-      "now": 57600.0,
-      "rate": 0.0,
+      "qty": 22,
+      "avg": 57525.0,
+      "now": 57450.0,
+      "rate": -0.13,
       "days": 0,
-      "cost": 633600,
-      "value": 633600,
-      "pnl": 0,
+      "cost": 1265550,
+      "value": 1263900,
+      "pnl": -1650,
       "tracked": true,
       "buy_date": "2026-11-27"
     },
     {
       "code": "032640",
       "name": "LG유플러스",
-      "qty": 44,
-      "avg": 14780.0,
-      "now": 14780.0,
-      "rate": 0.0,
+      "qty": 88,
+      "avg": 14763.0682,
+      "now": 14770.0,
+      "rate": 0.04,
       "days": 0,
-      "cost": 650320,
-      "value": 650320,
-      "pnl": 0,
+      "cost": 1299150,
+      "value": 1299760,
+      "pnl": 610,
       "tracked": true,
       "buy_date": "2026-11-27"
     },
     {
       "code": "271560",
       "name": "오리온",
-      "qty": 5,
+      "qty": 10,
       "avg": 116100.0,
       "now": 116100.0,
       "rate": 0.0,
       "days": 0,
-      "cost": 580500,
-      "value": 580500,
+      "cost": 1161000,
+      "value": 1161000,
       "pnl": 0,
       "tracked": true,
       "buy_date": "2026-11-27"
     }
   ],
   "total": {
-    "cost": 1864420,
-    "value": 1864420,
-    "pnl": 0,
-    "rate": 0.0,
+    "cost": 3725700,
+    "value": 3724660,
+    "pnl": -1040,
+    "rate": -0.03,
     "cash": 2000000,
-    "assets": 1999750,
+    "assets": 1998450,
     "limit": 2000000,
-    "invested": 1864420,
+    "invested": 3725700,
     "reserved": 1885920,
     "remaining": 0
   },
   "history": [],
   "watch": {
     "028050": {
-      "price": 57600,
-      "checked": "2026-11-27T09:39+09:00",
+      "price": 57450,
+      "checked": "2026-11-27T09:40+09:00",
       "state": "ordered"
     },
     "271560": {
       "price": 116000,
-      "checked": "2026-11-27T09:39+09:00",
+      "checked": "2026-11-27T09:40+09:00",
       "state": "ordered"
     },
     "032640": {
-      "price": 14800,
-      "checked": "2026-11-27T09:39+09:00",
+      "price": 14740,
+      "checked": "2026-11-27T09:40+09:00",
       "state": "ordered"
     }
   },
@@ -97,7 +97,7 @@
   },
   "orders": [
     {
-      "order_no": "0007307900",
+      "order_no": "0007479300",
       "side": "buy",
       "code": "028050",
       "name": "삼성E&A",
@@ -108,14 +108,14 @@
       "remaining_qty": 11,
       "status": "accepted",
       "reason": null,
-      "balance_qty": 11,
-      "balance_avg": 57600.0,
+      "balance_qty": 22,
+      "balance_avg": 57525.0,
       "limit_price": 57800.0,
-      "created": "2026-11-27T09:39+09:00",
+      "created": "2026-11-27T09:40+09:00",
       "last_seen": null
     },
     {
-      "order_no": "0007311200",
+      "order_no": "0007482600",
       "side": "buy",
       "code": "271560",
       "name": "오리온",
@@ -126,14 +126,14 @@
       "remaining_qty": 5,
       "status": "accepted",
       "reason": null,
-      "balance_qty": 5,
+      "balance_qty": 10,
       "balance_avg": 116100.0,
       "limit_price": 118200.0,
-      "created": "2026-11-27T09:39+09:00",
+      "created": "2026-11-27T09:40+09:00",
       "last_seen": null
     },
     {
-      "order_no": "0007312700",
+      "order_no": "0007485800",
       "side": "buy",
       "code": "032640",
       "name": "LG유플러스",
@@ -144,10 +144,10 @@
       "remaining_qty": 44,
       "status": "accepted",
       "reason": null,
-      "balance_qty": 44,
-      "balance_avg": 14780.0,
+      "balance_qty": 88,
+      "balance_avg": 14763.0682,
       "limit_price": 14980.0,
-      "created": "2026-11-27T09:39+09:00",
+      "created": "2026-11-27T09:40+09:00",
       "last_seen": null
     }
   ]
