@@ -477,9 +477,13 @@ def run(plan, state, kis):
     # 청산 시각이 지났으면 다른 일은 하지 않고 전량 매도만
     if exit_due(plan) and now().date().isoformat() > str(plan["exit_by"]) and not held:
         # 청산이 끝난 다음 날부터는 청산일을 자동 해제 (평소 운용으로 복귀)
-        log(f"청산일({plan['exit_by']}) 정리 완료 · 청산일 해제, 평소 규칙으로 운용")
+        log(f"청산일({plan['exit_by']}) 정리 완료 · 기간 종료 → 자동 운용 끔 (다시 시작하려면 앱에서 켜기)")
+        notify("운용 기간 종료", "모두 매도 완료 · 자동 운용을 껐습니다 · 2영업일 뒤 출금 가능")
         plan.pop("exit_by", None)
         plan.pop("exit_time", None)
+        plan["auto_confirm"] = False
+        plan["stocks"] = []
+        plan["proposal"] = None
         save(PLAN, plan)
     if exit_due(plan):
         liquidate(plan, state, kis)
