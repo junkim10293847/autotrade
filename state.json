@@ -1,11 +1,131 @@
 {
   "mode": "real",
-  "buys": {},
+  "buys": {
+    "028050": {
+      "date": "2026-11-27T09:39+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 11,
+      "requested_krw": 635800.0,
+      "last_order_date": "2026-11-27T09:39+09:00"
+    },
+    "271560": {
+      "date": "2026-11-27T09:39+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 5,
+      "requested_krw": 591000.0,
+      "last_order_date": "2026-11-27T09:39+09:00"
+    },
+    "032640": {
+      "date": "2026-11-27T09:39+09:00",
+      "qty": 0,
+      "krw": 0,
+      "pending": true,
+      "requested_qty": 44,
+      "requested_krw": 659120.0,
+      "last_order_date": "2026-11-27T09:39+09:00"
+    }
+  },
   "trades": [],
-  "orders": {},
-  "watch": {},
+  "orders": {
+    "20261127:0007307900": {
+      "order_no": "0007307900",
+      "branch": "91252",
+      "side": "buy",
+      "code": "028050",
+      "name": "삼성E&A",
+      "ordered_qty": 11,
+      "limit_price": 57800.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 11,
+      "created": "2026-11-27T09:39+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261127:0007311200": {
+      "order_no": "0007311200",
+      "branch": "91252",
+      "side": "buy",
+      "code": "271560",
+      "name": "오리온",
+      "ordered_qty": 5,
+      "limit_price": 118200.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 5,
+      "created": "2026-11-27T09:39+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    },
+    "20261127:0007312700": {
+      "order_no": "0007312700",
+      "branch": "91252",
+      "side": "buy",
+      "code": "032640",
+      "name": "LG유플러스",
+      "ordered_qty": 44,
+      "limit_price": 14980.0,
+      "filled_qty": 0,
+      "filled_amount": 0,
+      "remaining_qty": 44,
+      "created": "2026-11-27T09:39+09:00",
+      "reason": null,
+      "unit_cost": 0.0,
+      "days": null,
+      "order_rate": null,
+      "status": "accepted",
+      "last_seen": null
+    }
+  },
+  "watch": {
+    "028050": {
+      "price": 57600,
+      "checked": "2026-11-27T09:39+09:00",
+      "state": "ordered"
+    },
+    "271560": {
+      "price": 116000,
+      "checked": "2026-11-27T09:39+09:00",
+      "state": "ordered"
+    },
+    "032640": {
+      "price": 14800,
+      "checked": "2026-11-27T09:39+09:00",
+      "state": "ordered"
+    }
+  },
   "peaks": {},
   "manual_done": {},
   "auto_plan_day": "2026-11-27",
-  "plan_buy_attempts": {}
+  "plan_buy_attempts": {
+    "2026-11-27T00:39:05.433505Z:028050": {
+      "date": "2026-11-27T09:39+09:00",
+      "order_no": "0007307900",
+      "qty": 11
+    },
+    "2026-11-27T00:39:05.433505Z:271560": {
+      "date": "2026-11-27T09:39+09:00",
+      "order_no": "0007311200",
+      "qty": 5
+    },
+    "2026-11-27T00:39:05.433505Z:032640": {
+      "date": "2026-11-27T09:39+09:00",
+      "order_no": "0007312700",
+      "qty": 44
+    }
+  },
+  "sell_orders": {},
+  "topups": {}
 }
