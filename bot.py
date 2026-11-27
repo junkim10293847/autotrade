@@ -197,6 +197,28 @@ class KIS:
         p = r.json().get("output", {}).get("stck_prpr")
         return int(p) if p else None
 
+    def orderable_cash(self):
+        """미수 없이 살 수 있는 금액 (매수가능조회 nrcvb_buy_amt), 실패하면 D+2 예수금"""
+        try:
+            r = self.get_read(f"{self.base}/uapi/domestic-stock/v1/trading/inquire-psbl-order", timeout=15,
+                              headers=self._h(self.tr("TTTC8908R")),
+                              params={"CANO": self.acct, "ACNT_PRDT_CD": self.prod, "PDNO": "005930", "ORD_UNPR": "",
+                                      "ORD_DVSN": "01", "CMA_EVLU_AMT_ICLD_YN": "N", "OVRS_ICLD_YN": "N"})
+            o = r.json().get("output") or {}
+            v = o.get("nrcvb_buy_amt") or o.get("ord_psbl_cash")
+            if v not in (None, ""):
+                return float(v)
+        except Exception:
+            pass
+        r = self.get_read(f"{self.base}/uapi/domestic-stock/v1/trading/inquire-balance", timeout=20,
+                          headers=self._h(self.tr("TTTC8434R")),
+                          params={"CANO": self.acct, "ACNT_PRDT_CD": self.prod, "AFHR_FLPR_YN": "N", "OFL_YN": "",
+                                  "INQR_DVSN": "02", "UNPR_DVSN": "01", "FUND_STTL_ICLD_YN": "N",
+                                  "FNCG_AMT_AUTO_RDPT_YN": "N", "PRCS_DVSN": "00",
+                                  "CTX_AREA_FK100": "", "CTX_AREA_NK100": ""})
+        s = (r.json().get("output2") or [{}])[0]
+        return float(s.get("prvs_rcdl_excc_amt") or 0)
+
     def holdings(self):
         r = self.get_read(f"{self.base}/uapi/domestic-stock/v1/trading/inquire-balance", timeout=20,
                           headers=self._h(self.tr("TTTC8434R")),
@@ -784,8 +806,26 @@ def run(plan, state, kis):
             watch[code] = {**watch.get(code, {}), "state": "no_budget", "room": round(available)}
             continue
         cost = qty * px
+        # 중복 주문 방지: 동시에 돈 다른 실행이 이미 오늘 이 종목 매수 주문을 냈으면 (봇 기록에 없어도) 증권사 기준으로 확인해 건너뛴다
+        if broker_bought_today(kis, state, code):
+            log(f"{name} 오늘 이미 증권사에 매수 주문이 있음 · 중복 매수 방지로 건너뜀")
+            watch[code] = {**watch.get(code, {}), "state": "ordered"}
+            continue
+        # 실제 주문 가능 현금을 넘는 매수는 하지 않는다 (미수 방지)
+        cash_ok = kis_cash(kis)
+        if cash_ok is not None and cost > cash_ok:
+            qty = int(cash_ok // px)
+            if qty < 1:
+                log(f"{name} 매수 보류 · 주문 가능 현금 {won(cash_ok)} 부족 (미수 방지)")
+                watch[code] = {**watch.get(code, {}), "state": "no_budget", "room": round(cash_ok)}
+                continue
+            cost = qty * px
         result = kis.order("buy", code, qty, px)
         ok, msg = result["ok"], result["msg"]
+        if ok:
+            _BROKER_BUYS.add(code)
+            if _CASH[0] is not None:
+                _CASH[0] -= cost
         log(f"**매수 주문 걸기** {name} {qty}주 @ {won(px)} 지정가 (현재가 {won(price)}, 예산 {won(budget)}) → {'접수' if ok else '실패: ' + msg}")
         if not ok:
             notify(f"매수 주문 실패 {name}", msg)
@@ -888,6 +928,35 @@ def loss_guard(plan, state, kis):
     log(f"**손실 한도 도달** 실현+평가 {won(total)} (한도 -{won(lim)}) → 새 매수 중지 · 보유 종목 손절·익절 관리는 계속")
     notify("손실 한도 도달 · 새 매수 중지", f"누적 {won(total)} · 보유 종목은 규칙대로 관리합니다")
     return True
+
+
+_BROKER_BUYS = set()
+_BROKER_LOADED = [False]
+_CASH = [None]
+
+
+def broker_bought_today(kis, state, code):
+    """증권사 당일 주문 내역 기준, 이 종목에 오늘 낸 매수 주문(취소 제외)이 있는지"""
+    if not _BROKER_LOADED[0]:
+        _BROKER_LOADED[0] = True
+        try:
+            for r in kis.daily_fills():
+                if str(r.get("sll_buy_dvsn_cd")) == "02" and r.get("cncl_yn") != "Y" and int(_num(r, "ord_qty")) > 0 \
+                        and not str(r.get("orgn_odno") or "").strip("0 "):
+                    _BROKER_BUYS.add(str(r.get("pdno")))
+        except Exception as e:
+            log(f"당일 주문 조회 실패 · 중복 확인 생략: {type(e).__name__}: {e}")
+    return code in _BROKER_BUYS
+
+
+def kis_cash(kis):
+    """주문 가능 현금 (한 실행에서 한 번 조회하고, 낸 주문만큼 차감)"""
+    if _CASH[0] is None:
+        try:
+            _CASH[0] = float(kis.orderable_cash())
+        except Exception:
+            return None
+    return _CASH[0]
 
 
 def auto_pilot(plan, state, kis, cap):
