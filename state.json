@@ -3,27 +3,27 @@
   "buys": {
     "028050": {
       "date": "2026-11-27T09:40+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 11,
+      "krw": 631950.0,
+      "pending": false,
       "requested_qty": 11,
       "requested_krw": 635800.0,
       "last_order_date": "2026-11-27T09:40+09:00"
     },
     "271560": {
       "date": "2026-11-27T09:40+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 5,
+      "krw": 580500.0,
+      "pending": false,
       "requested_qty": 5,
       "requested_krw": 591000.0,
       "last_order_date": "2026-11-27T09:40+09:00"
     },
     "032640": {
       "date": "2026-11-27T09:40+09:00",
-      "qty": 0,
-      "krw": 0,
-      "pending": true,
+      "qty": 44,
+      "krw": 648830.0,
+      "pending": false,
       "requested_qty": 44,
       "requested_krw": 659120.0,
       "last_order_date": "2026-11-27T09:40+09:00"
@@ -39,16 +39,16 @@
       "name": "삼성E&A",
       "ordered_qty": 11,
       "limit_price": 57800.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 11,
+      "filled_qty": 11,
+      "filled_amount": 631950.0,
+      "remaining_qty": 0,
       "created": "2026-11-27T09:40+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-27T09:49+09:00"
     },
     "20261127:0007482600": {
       "order_no": "0007482600",
@@ -58,16 +58,16 @@
       "name": "오리온",
       "ordered_qty": 5,
       "limit_price": 118200.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 5,
+      "filled_qty": 5,
+      "filled_amount": 580500.0,
+      "remaining_qty": 0,
       "created": "2026-11-27T09:40+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-27T09:49+09:00"
     },
     "20261127:0007485800": {
       "order_no": "0007485800",
@@ -77,33 +77,33 @@
       "name": "LG유플러스",
       "ordered_qty": 44,
       "limit_price": 14980.0,
-      "filled_qty": 0,
-      "filled_amount": 0,
-      "remaining_qty": 44,
+      "filled_qty": 44,
+      "filled_amount": 648830.0,
+      "remaining_qty": 0,
       "created": "2026-11-27T09:40+09:00",
       "reason": null,
       "unit_cost": 0.0,
       "days": null,
       "order_rate": null,
-      "status": "accepted",
-      "last_seen": null
+      "status": "filled",
+      "last_seen": "2026-11-27T09:49+09:00"
     }
   },
   "watch": {
     "028050": {
-      "price": 57450,
-      "checked": "2026-11-27T09:40+09:00",
-      "state": "ordered"
+      "price": 57300,
+      "checked": "2026-11-27T09:50+09:00",
+      "state": "enough"
     },
     "271560": {
-      "price": 116000,
-      "checked": "2026-11-27T09:40+09:00",
-      "state": "ordered"
+      "price": 116100,
+      "checked": "2026-11-27T09:50+09:00",
+      "state": "enough"
     },
     "032640": {
-      "price": 14740,
-      "checked": "2026-11-27T09:40+09:00",
-      "state": "ordered"
+      "price": 14720,
+      "checked": "2026-11-27T09:50+09:00",
+      "state": "enough"
     }
   },
   "peaks": {},
@@ -124,6 +124,24 @@
       "date": "2026-11-27T09:40+09:00",
       "order_no": "0007485800",
       "qty": 44
+    },
+    "2026-11-27T00:39:05.433505Z:028050": {
+      "date": "2026-11-27T09:50+09:00",
+      "order_no": null,
+      "qty": 0,
+      "enough": true
+    },
+    "2026-11-27T00:39:05.433505Z:271560": {
+      "date": "2026-11-27T09:50+09:00",
+      "order_no": null,
+      "qty": 0,
+      "enough": true
+    },
+    "2026-11-27T00:39:05.433505Z:032640": {
+      "date": "2026-11-27T09:50+09:00",
+      "order_no": null,
+      "qty": 0,
+      "enough": true
     }
   },
   "sell_orders": {},
